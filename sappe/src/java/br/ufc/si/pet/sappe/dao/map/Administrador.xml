@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Administrador.xml
+    Created on : 29 de Dezembro de 2011, 10:01
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Administrador">
+    <resultMap id="administradorResult" class="administrador">
+        <result property="id" column="id"/>
+        <result property="dataCriacao" column="data_criacao"/>
+        <result property="ativo" column="ativo"/>
+        <result property="usuario" column="usuario_id" select="getUsuarioById"/>
+    </resultMap>
+
+    <insert id="addAdministrador" parameterClass="administrador">
+        INSERT INTO sappe.perfil(
+        id, usuario_id, papel_id, data_criacao, ativo)
+        VALUES (#id#, #usuario.id#, 1, #dataCriacao#, #ativo#);
+    </insert>
+
+    <update id="updateAdministrador" parameterClass="administrador">
+        UPDATE sappe.perfil
+        SET usuario_id=#usuario.id#, papel_id=2, data_criacao=#dataCriacao#, ativo=#ativo#
+        WHERE id=#id#;
+    </update>
+
+    <update id="reativarAdministrador" parameterClass="administrador">
+        UPDATE sappe.perfil
+        SET ativo=TRUE
+        WHERE id=#id#;
+        UPDATE sappe.usuario
+        SET email=#usuario.email#, senha= #usuario.senha#
+        WHERE id=#usuario.id#;
+    </update>
+
+    <delete id="deleteAdministrador" parameterClass="long">
+        DELETE FROM sappe.perfil
+        WHERE id=#var#;
+    </delete>
+
+    <select id="getAdministradorByUsuarioId" resultClass="administrador"
+            parameterClass="long"
+            resultMap="administradorResult">
+        SELECT *
+        FROM sappe.perfil, sappe.papel
+        WHERE perfil.usuario_id = #var# AND
+        perfil.papel_id = papel.id AND
+        perfil.ativo= TRUE AND
+        papel.id = 2;
+    </select>
+
+    <select id="getAdministradorByUsuarioIdToAtivaConta" resultClass="administrador"
+            parameterClass="long"
+            resultMap="administradorResult">
+        SELECT *
+        FROM sappe.perfil, sappe.papel
+        WHERE perfil.usuario_id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id = 2;
+    </select>
+
+    <select id="getAdministradorById" resultClass="administrador"
+            parameterClass="long"
+            resultMap="administradorResult">
+        SELECT *
+        FROM sappe.perfil, sappe.papel
+        WHERE perfil.id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id=2;
+    </select>
+
+    <select id="getMaxIdAdministrador" resultClass="long">
+        SELECT MAX(id)
+        FROM sappe.perfil;
+    </select>
+
+</sqlMap>

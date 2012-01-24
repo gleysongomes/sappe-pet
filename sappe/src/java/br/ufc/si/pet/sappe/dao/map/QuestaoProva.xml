@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : QuestaoProva.xml
+    Created on : 29 de Dezembro de 2011, 10:20
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="QuestaoProva">
+
+    <resultMap id="questaoProvaResult" class="questao_prova">
+        <result property="id" column="id"/>
+        <result property="prova_id" column="prova_id"/>
+        <result property="questao_id" column="questao_id"/>
+        <result property="nome" column="nome"/>
+        <result property="item_marcado" column="item_marcado"/>
+        <result property="resposta" column="resposta"/>
+        <result property="status" column="status"/>
+        <result property="dica" column="dica"/>
+        <result property="nota" column="nota"/>
+    </resultMap>
+
+    <insert id="addQuestaoProva" parameterClass="questao_prova">
+        INSERT INTO sappe.questao_prova(id, prova_id,questao_id, nome, item_marcado, resposta, status, dica, nota)
+        VALUES (#id#, #prova_id#, #questao_id#, #nome#, #item_marcado#, #resposta#, #status#, #dica#, #nota#);
+    </insert>
+
+    <update id="updateQuestaoProvaByIdProva" parameterClass="questao_prova">
+        UPDATE sappe.questao_prova
+        SET status=#status#,dica=#dica#
+        WHERE id=#id# AND prova_id=#prova_id#;
+    </update>
+    
+    <update id="updateQuestaoProva" parameterClass="questao_prova">
+        UPDATE sappe.questao_prova
+        SET item_marcado=#item_marcado#,resposta=#resposta#
+        WHERE id=#id# AND prova_id=#prova_id#;
+    </update>
+
+    <select id="getListQuestaoProvaById" resultClass="questao_prova" parameterClass="long" resultMap="questaoProvaResult">
+        SELECT *
+        FROM sappe.questao_prova
+        WHERE prova_id = #var# ORDER BY id;
+    </select>
+
+    <select id="getQuestaoProvaById" resultClass="questao_prova" parameterClass="long" resultMap="questaoProvaResult">
+        SELECT *
+        FROM sappe.questao_prova
+        WHERE id = #var# ORDER BY id;
+    </select>
+
+    <select id="getMaxIdQuestaoProva" resultClass="long">
+        SELECT MAX(id)
+        FROM sappe.questao_prova;
+    </select>
+
+</sqlMap>
+

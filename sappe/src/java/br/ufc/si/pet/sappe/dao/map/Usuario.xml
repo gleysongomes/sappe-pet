@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Usuario.xml
+    Created on : 29 de Dezembro de 2011, 10:02
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Usuario">
+
+    <resultMap id="usuarioResult" class="usuario">
+        <result property="id" column="id"/>
+        <result property="nome" column="nome"/>
+        <result property="email" column="email"/>
+        <result property="telefone" column="telefone"/>
+        <result property="instituicao" column="instituicao"/>
+        <result property="cidade" column="cidade"/>
+        <result property="estado" column="estado"/>
+        <result property="senha" column="senha"/>
+        <result property="codigo" column="codigo"/>
+    </resultMap>
+
+    <insert id="addUsuario" parameterClass="usuario" >
+        INSERT INTO sappe.usuario(id, nome, email, telefone, instituicao, cidade, estado, senha, codigo)
+        VALUES (#id#, #nome#, #email#, #telefone#, #instituicao#, #cidade#, #estado#, #senha#, #codigo#);
+    </insert>
+
+    <delete id="deleteUsuario" parameterClass="long">
+        DELETE FROM sappe.usuario
+        WHERE id = #var#;
+    </delete>
+
+    <update id="updateUsuario" parameterClass="usuario">
+        UPDATE sappe.usuario
+        SET nome=#nome#, email=#email#, telefone=#telefone#, instituicao=#instituicao#, cidade=#cidade#, estado=#estado#, senha=#senha#, codigo=#codigo# WHERE  id=#id#;
+    </update>
+
+    <select id="getUsuarioByEmail" resultClass="usuario"
+            parameterClass="java.lang.String"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM sappe.usuario
+        WHERE email = #var#;
+    </select>
+
+    <select id="getUsuarioByCodigo" resultClass="usuario"
+            parameterClass="java.lang.String"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM sappe.usuario
+        WHERE codigo = #var#;
+    </select>
+
+
+
+    <select id="getUsuarioById" resultClass="usuario"
+            parameterClass="long"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM sappe.usuario
+        WHERE id = #var#;
+    </select>
+
+    <select id="getUsuarioByNome" resultClass="usuario"
+            parameterClass="java.lang.String"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM sappe.usuario
+        WHERE nome LIKE #var#;
+    </select>
+
+    <select id="getMaxIdUsuario" resultClass="long">
+        SELECT MAX(id)
+        FROM sappe.usuario;
+    </select>
+
+</sqlMap>

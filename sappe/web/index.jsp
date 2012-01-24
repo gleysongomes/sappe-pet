@@ -1,19 +1,68 @@
-<%-- 
+<%--
     Document   : index
-    Created on : 24/01/2012, 17:10:02
+    Created on : 28/12/2011, 18:20:23
     Author     : gleyson
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="css/styleIndex.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="Script.js"> </script>
+        <title></title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div id="tudo">
+            <div id="topo"><img src="images/sappe2.gif" width="959" height="76" alt="sappe2"/></div>
+                <%@include file="/menu.jsp" %>
+            <br />
+            <div id="esquerda">
+                <div id="LoginSenha">
+                    <div align="center">
+                        <form action="ServletCentral" method="POST">
+                            <input type="hidden" name="comando" value="CmdLogin" />
+                            <div class="input">
+                                <div id="">
+                                    <label>Email:</label><br/>
+                                    <input type="text" name="email" value="" size="20"/><br/>
+                                    <label>Senha:</label><br/>
+                                    <input type="password" name="senha" value="" size="20"/><br/><br/>
+                                    <label>Conta:</label><br/>
+                                    <select name="conta" style="width: 150px;">
+                                        <option value="alu">Aluno</option>
+                                        <option value="admin">Administrador</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br />
+                            <table border="0">
+                                <thead>
+                                    <tr>
+                                        <th width="95px;">
+                                            <input class="button" title="Enviar" type="submit" value="Enviar" name="enviar" />
+                                        </th>
+                                        <th width="95px;">
+                                            <input class="button" title="Limpar" type="reset" value="Limpar" name="Limpar" />
+                                        </th>
+                                </thead>
+                            </table>
+                        </form>
+                        <br /><br />
+                        <p><a style="font-size: small" href="recuperar_senha.jsp">Esqueceu a senha?</a></p>
+                    </div>
+                </div>
+            </div>
+            <div id="meio">
+            </div>
+            <div id="direita"></div>
+            <div id="footer">
+                <center><img alt="Logotipo UFC"  class="imagemUFC" src="images/UFC2.png"/></center>
+                <h6>Versão 1.12 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
+            </div>
+        </div>
     </body>
 </html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Exame.xml
+    Created on : 29 de Dezembro de 2011, 10:21
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Exame">
+
+    <resultMap id="exameResult" class="exame">
+        <result property="id" column="id"/>
+        <result property="nome" column="nome"/>
+    </resultMap>
+
+    <select id="getExameById" resultClass="exame" parameterClass="integer" resultMap="exameResult">
+        SELECT *
+        FROM sappe.exame
+        WHERE id = #var#;
+    </select>
+
+</sqlMap>

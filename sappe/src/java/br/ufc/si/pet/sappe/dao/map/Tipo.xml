@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Tipo.xml
+    Created on : 12 de Janeiro de 2012, 19:04
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Tipo">
+    <resultMap id="tipoResult" class="tipo">
+        <result property="id" column="id"/>
+        <result property="nome" column="nome"/>
+    </resultMap>
+
+    <select id="getTipoById" resultClass="tipo"
+            parameterClass="long"
+            resultMap="tipoResult">
+        SELECT *
+        FROM sappe.tipo
+        WHERE id = #var#;
+    </select>
+
+</sqlMap>

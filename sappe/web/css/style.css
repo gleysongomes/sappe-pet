@@ -1,0 +1,348 @@
+body {
+    margin:10px;
+    padding:0;
+    background: url("../images/fundo3.gif")top left repeat-x fixed;
+    border-left: none;
+    border-right:none;
+    text-align:center; 
+}
+
+a.button2 {
+    background: #3074ad;
+    background-position: 100px 100px;
+    border-bottom: .25em;
+    border: 0;
+    color: #fff;
+    display: inline;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 10px;
+    padding: .2em 1em;
+    text-decoration: none;
+}
+
+a.button2:hover{
+    background-color: #a3cfde;
+    cursor: pointer;
+}
+
+#bh{
+    border-top: 6px #DCE3E6 solid;
+    margin-top: -55px;
+    height: 30px;
+}
+
+#cadastro{
+    /*color: #000066;*/
+    text-align: left;
+    background-color: #FFF;
+    display: block;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#content table{
+    width: 690px;
+    margin:0 10px;
+    border: #000000 solid 2px;
+    border-collapse: collapse;
+}
+
+#content table tr td.center{
+    text-align: center;
+}
+
+#content table tr td.centerNoPrint{
+    text-align: center;
+}
+
+#content table tr th {
+    text-align: center;
+    background: #3074ad;
+    border: #000000 solid 2px;
+    padding: 2px 10px;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#content table tr td {
+    text-align: left;
+    border: #000000 solid 1px;
+    padding: 2.5px 10px;
+    color: #000000;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+#content table tr td a {
+    margin: 0 7px;
+    text-decoration: none;
+}
+
+#content table tr td a:hover{
+    color: #3074ad;
+}
+
+#content table.center tr td{
+    text-align: center;
+}
+
+#content table.center tr td input{
+    text-align: center;
+}
+
+.datatableHeader{
+    background-color:#0069AA;
+    color:white;
+    font-size:12pt;
+    font-weight:normal;
+    padding:10px;
+    margin:10px;
+}
+
+.errorMessage{
+    color: red;
+    font-size: 12px;
+}
+
+#esquerda {
+    float:left;
+    width:150px;
+    border-top: 1px #696969 solid;
+    border-bottom: 1px #696969 solid;
+    height:375px;
+    background:#f5f5f5;
+    margin:0 15px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    text-align:justify;
+    padding:20px;
+    font-family: Arial, Verdana;
+    color:#4F4F4F;
+    font-size:12px;
+    box-shadow: 0px 8px 10px #828282;
+    -webkit-box-shadow: 0px 8px 10px #828282;
+    -moz-box-shadow: 0px 8px 10px #828282;
+}
+
+#footer{
+    clear:both;
+    width: 920px;
+    height: 120px;
+    padding: 0 20px;
+    color: #555;
+    background: #E6E9E9;
+}
+
+#footer h6{
+    font-size: 12px;
+    text-align: center;
+    padding-bottom: -5px;
+    padding-top: -10px;
+    margin-top: 10px;
+}
+
+input.button{
+    font-weight: bold;
+    border: 1px solid #ffffff;
+    background: #3074ad;
+    color: #ffffff;
+    font-size: 15px;
+    margin: -20px 10px;
+    display: inline;
+    padding: 4px 8px;
+    -moz-border-radius: 11px;
+}
+
+input.button:hover{
+    background-color: #a3cfde;
+    cursor: pointer;
+}
+
+input.button3{
+    background: #3074ad;
+    background-position: 100px 100px;
+    border-bottom: .25em;
+    border: 0;
+    color: #fff;
+    display: inline;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 10px;
+    padding: .2em 1em;
+    text-decoration: none;
+}
+
+input.button3:hover{
+    text-decoration: none;
+    background: #a3cfde;
+}
+
+
+input, select,textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    background-color:white;
+    border-style:ridge;
+    border:1px solid lightgray;
+    padding:2px;
+    margin:4px;
+    margin-bottom:4px;
+}
+
+.imagemPdf {
+    float: right;
+}
+
+#meio{
+    float:left;
+    width:900px;
+    height:300px;
+    background:#FFFFFF;
+    margin:0 -1px;
+    border-top: 2px #b5b5b5 solid;
+    border-left: 2px #b5b5b5 solid;
+    overflow:auto;
+    text-align:justify;
+    padding:28px;
+    font-family: Arial, Verdana;
+    color:#4F4F4F;
+    font-size:15px;
+}
+
+#menu{
+    width:959px;
+    height:27px;
+    background:#69c;
+    margin:0 0px;
+    max-width: 960px;
+    box-shadow: 0px 10px 15px #828282;
+    -webkit-box-shadow: 0px 10px 15px #828282;
+    -moz-box-shadow: 0px 10px 15px #828282;
+}
+
+.mensagemErro{
+    color: red;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.mensagemSucesso{
+    color: blue;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#nav, #nav ul {
+    width: 90em;
+    list-style: none;
+    font: bold 12px Verdana, Arial, Helvetica, sans-serif;
+    padding: 0px;
+    margin: 0;
+}
+
+#nav li {
+    float: left;
+}
+
+#nav a {
+    display: block;
+    width: 11em;
+    height: 2em;
+    line-height: 2;
+    text-align: center;
+    text-decoration: none;
+    background-color: #69c;
+    color: #fff;
+    border: 0px solid #F5F5F5;
+    border-width: 0 0px 1px;
+}
+
+#nav a:hover {
+    text-decoration: none;
+    background: #C1CDC1;
+    color:#00868B;
+    box-shadow: 0px 8px 15px #363636;
+    -webkit-box-shadow: 0px 8px 15px #363636;
+    -moz-box-shadow: 0px 8px 15px #363636;
+}
+
+#nav li ul {
+    position: absolute;
+    left: -660em;
+    width: 0em;
+    margin: 0;
+}
+
+#nav ul ul {
+    margin: -2.1em 10em 0 0.1em;
+}
+
+#nav li:hover ul ul,
+#nav li.over ul ul {
+    left: -660em;
+}
+
+#nav li:hover ul,
+#nav li li:hover ul,
+#nav li.over ul,
+#nav li li.over ul {
+    left: auto;
+}
+
+#nav li:hover ul li ul {
+    display: none;
+}
+
+#nav li:hover ul li:hover ul {
+    display: block;
+}
+
+.sucessoMessage{
+    color: blue;
+    font-size: 12px;
+}
+
+.titulo {
+    font-size: 14pt;
+    color: #156aa6;
+    font-weight:bold;
+    padding:5px;
+    margin:5px;
+}
+
+.titulo2{
+    font-size: 12pt;
+    color: #0069AA;;
+    font-weight:bold;
+    padding:5px;
+    margin:5px;
+}
+
+#tudo{
+    width: 960px;
+    margin:0 auto;
+    background: #F3F3F3;
+    text-align:left; 
+    border: 0px #fff solid;
+    border-left: 1px #458B74 solid;
+    border-right: 1px #458B74 solid;
+    border-top: 2px #b5b5b5 solid;
+    border-left: 2px #b5b5b5 solid;
+}
+
+#topo{
+    width:960px;
+    height:75px;
+    background-image: url("../images/sappe2.gif");
+    width: 960px;
+    height: 75px;
+    border: 1px #fff solid;
+    border-left:none;
+    border-right:none;
+}

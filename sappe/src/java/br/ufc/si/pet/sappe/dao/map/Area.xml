@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Area.xml
+    Created on : 29 de Dezembro de 2011, 10:23
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Area">
+
+    <resultMap id="areaResult" class="area">
+        <result property="id" column="id"/>
+        <result property="exame_id" column="exame_id"/>
+        <result property="nome" column="nome"/>
+    </resultMap>
+
+    <select id="getAreaById" resultClass="area" parameterClass="long" resultMap="areaResult">
+        SELECT *
+        FROM sappe.area
+        WHERE id = #var#;
+    </select>
+
+</sqlMap>

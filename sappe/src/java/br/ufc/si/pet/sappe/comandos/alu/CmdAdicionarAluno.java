@@ -1,0 +1,92 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.ufc.si.pet.sappe.comandos.alu;
+
+import br.ufc.si.pet.sappe.entidades.Perfil;
+import br.ufc.si.pet.sappe.entidades.Usuario;
+import br.ufc.si.pet.sappe.interfaces.Comando;
+import br.ufc.si.pet.sappe.service.PapelService;
+import br.ufc.si.pet.sappe.service.PerfilService;
+import br.ufc.si.pet.sappe.service.UsuarioService;
+import br.ufc.si.pet.sappe.util.SendMail;
+import br.ufc.si.pet.sappe.util.Util;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ *
+ * @author gleyson
+ */
+public class CmdAdicionarAluno implements Comando {
+
+    public String executa(HttpServletRequest request, HttpServletResponse response) {
+
+        HttpSession hS = request.getSession(true);
+
+        String nome = request.getParameter("nome");
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+        String rSenha = request.getParameter("rsenha");
+
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        Date data = Util.treatToDate(dateFormat.format(date));
+        UsuarioService usuarioService = new UsuarioService();
+        Usuario usuario = usuarioService.getUsuarioByEmail(email);
+        if (nome == null || nome.trim().isEmpty() || email == null || email.trim().isEmpty()
+                || senha == null || senha.trim().isEmpty() || rSenha == null || rSenha.trim().isEmpty()) {
+            hS.setAttribute("erro", "Preencha todos os campos obrigatórios (*).");
+            return "/cadastro.jsp";
+        } else if (!senha.trim().equals(rSenha)) {
+            hS.setAttribute("erro", "A senha não confere com a sua confirmação.");
+            return "/cadastro.jsp";
+        } else if (usuario != null) {
+            hS.setAttribute("erro", "Este email já está cadastrado.");
+            return "/cadastro.jsp";
+        } else {
+            Usuario u = new Usuario();
+            u.setNome(nome);
+            u.setEmail(email);
+            u.setSenha(senha);
+            u.setCodigo(Util.createRandomString(9));
+            UsuarioService uS = new UsuarioService();
+            uS.insertUsuario(u);
+            Perfil perfil = new Perfil();
+            perfil.setUsuario(u);
+            perfil.setPapel(new PapelService().getPapelById(1L));
+            perfil.setDataCriacao(data);
+            perfil.setAtivo(false);
+            PerfilService pS = new PerfilService();
+            if (pS.insertPerfil(perfil)) {
+                try {
+                    //Usuario user = new Usuario();
+                    //user = uS.getUsuarioById(perfil.getUsuario().getId());
+                    //hS.setAttribute("user", perfil);
+                    System.out.println("===" + perfil.getUsuario().getEmail());
+                    SendMail.sendMail(perfil.getUsuario().getEmail(), "Ativar sua conta.", "Oi " + perfil.getUsuario().getNome() + ", <br />"
+                            + "para ter seu cadastro aceito, ative sua conta.<br /><br />"
+                            + "<a href=" + "http://localhost:8084/sappe/ServletCentral?comando=CmdAtivarConta&id=" + perfil.getId() + "&cod=" + perfil.getUsuario().getCodigo() + "> Ativa minha conta </a>");
+                } catch (AddressException ex) {
+                    Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (MessagingException ex) {
+                    Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                hS.setAttribute("sucesso", "Para ter seu cadastro aceito entre no email fornecido e ative sua conta.");
+                return "/cadastro.jsp";
+            } else {
+                hS.setAttribute("erro", "Erro ao tentar cadastrar.");
+                return "/cadastro.jsp";
+            }
+        }
+    }
+}

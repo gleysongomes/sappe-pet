@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+    <settings
+        cacheModelsEnabled="true"
+        enhancementEnabled="true"
+        lazyLoadingEnabled="true"
+        maxRequests="32"
+        maxSessions="10"
+        maxTransactions="5"
+        useStatementNamespaces="false" />
+
+    <!--aliases-->
+    <typeAlias alias="administrador" type="br.ufc.si.pet.sappe.entidades.Administrador"/>
+    <typeAlias alias="aluno" type="br.ufc.si.pet.sappe.entidades.Aluno"/>
+    <typeAlias alias="questao" type="br.ufc.si.pet.sappe.entidades.Questao"/>
+    <typeAlias alias="area" type="br.ufc.si.pet.sappe.entidades.Area"/>
+    <typeAlias alias="exame" type="br.ufc.si.pet.sappe.entidades.Exame"/>
+    <typeAlias alias="prova" type="br.ufc.si.pet.sappe.entidades.Prova"/>
+    <typeAlias alias="questao_prova" type="br.ufc.si.pet.sappe.entidades.QuestaoProva"/>
+    <typeAlias alias="usuario" type="br.ufc.si.pet.sappe.entidades.Usuario"/>
+    <typeAlias alias="papel" type="br.ufc.si.pet.sappe.entidades.Papel"/>
+    <typeAlias alias="perfil" type="br.ufc.si.pet.sappe.entidades.Perfil"/>
+    <typeAlias alias="tipo" type="br.ufc.si.pet.sappe.entidades.Tipo"/>
+
+    <!--configuration-->
+    <transactionManager type="JDBC">
+        <dataSource type="SIMPLE">
+            <property name="JDBC.Driver" value="org.postgresql.Driver"/>
+            <property name="JDBC.ConnectionURL" value="jdbc:postgresql://localhost:5432/postgres"/>
+            <property name="JDBC.Username" value="postgres"/>
+            <property name="JDBC.Password" value="postgres"/>
+        </dataSource>
+    </transactionManager>
+
+    <!--mapping-->
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Administrador.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Aluno.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Questao.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Area.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Exame.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Prova.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/QuestaoProva.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Usuario.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Papel.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Perfil.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Tipo.xml"/>
+</sqlMapConfig>

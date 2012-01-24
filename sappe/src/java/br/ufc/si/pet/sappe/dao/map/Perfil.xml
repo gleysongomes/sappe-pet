@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Perfil.xml
+    Created on : 29 de Dezembro de 2011, 09:56
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Perfil">
+
+    <resultMap id="perfilResult" class="perfil">
+        <result property="id" column="id"/>
+        <result property="usuario.id" column="usuario_id"/>
+        <result property="papel.id" column="papel_id"/>
+        <result property="dataCriacao" column="data_criacao"/>
+        <result property="ativo" column="ativo"/>
+    </resultMap>
+
+    <update id="ativarPerfil" parameterClass="perfil">
+        UPDATE sappe.perfil
+        SET ativo=#ativo#
+        WHERE id=#id#;
+    </update>
+
+    <insert id="addPerfil" parameterClass="perfil">
+        INSERT INTO sappe.perfil(
+        id,usuario_id,papel_id, data_criacao,ativo)
+        VALUES (#id#, #usuario.id#, #papel.id#, #dataCriacao#,#ativo#);
+    </insert>
+
+
+    <delete id="deletePerfil" parameterClass="long">
+        DELETE FROM sappe.perfil
+        WHERE id=#var#;
+    </delete>
+
+    <select id="getPerfilById" resultClass="perfil"
+            parameterClass="long"
+            resultMap="perfilResult">
+        SELECT *
+        FROM sappe.perfil
+        WHERE id = #var#;
+    </select>
+
+    <select id="getPerfilByUsuarioId" resultClass="perfil" parameterClass="long">
+        SELECT  *
+        FROM sappe.perfil
+        WHERE usuario_id=#var#;
+    </select>
+
+    <select id="getMaxIdPerfil" resultClass="long">
+        SELECT MAX(id)
+        FROM sappe.perfil;
+    </select>
+</sqlMap>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Questao.xml
+    Created on : 29 de Dezembro de 2011, 10:21
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Questao">
+
+    <resultMap id="questaoResult" class="questao">
+        <result property="id" column="id"/>
+        <result property="exame_id" column="exame_id"/>
+        <result property="area_id" column="area_id"/>
+        <result property="nome" column="nome"/>
+        <result property="ano" column="ano"/>
+    </resultMap>
+
+    <select id="getListQuestoes" resultClass="questao" parameterClass="long" resultMap="questaoResult">
+       SELECT *
+       FROM sappe.questao
+       WHERE ano = #var#;
+    </select>
+
+    <select id="getListQuestoesByArea" resultClass="questao" parameterClass="long" resultMap="questaoResult">
+        SELECT *
+        FROM sappe.questao
+        WHERE area_id = #var#;
+    </select>
+    
+</sqlMap>

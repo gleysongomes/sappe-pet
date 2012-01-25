@@ -57,11 +57,11 @@
                         </thead>
                     </table>
                     <% if (qp.getDica() != null && !(qp.getDica().trim().equals(""))) {%>
-                    <label>Dica para solução desta Questão:<br><textarea cols="60" rows="6" disabled><%= qp.getDica()%></textarea></label><br /><br />
+                    <label>Dica para solução desta Questão:<br><textarea cols="50" rows="6" disabled><%= qp.getDica()%></textarea></label><br /><br />
                         <%}%>
                     <br />
                     <label style="font-size: 15px;">Argumente sua resposta:</label><br />
-                    <textarea cols="60" rows="2" name="res<%= itemIncr%>" onkeydown="textCounter(this.form.res<%= itemIncr%>,this.form.remLen<%= itemIncr%>,299);" onkeyup="textCounter(this.form.res<%= itemIncr%>,this.form.remLen<%= itemIncr%>,299);"><%=qp.getResposta()%></textarea>
+                    <textarea cols="50" rows="2" name="res<%= itemIncr%>" onkeydown="textCounter(this.form.res<%= itemIncr%>,this.form.remLen<%= itemIncr%>,299);" onkeyup="textCounter(this.form.res<%= itemIncr%>,this.form.remLen<%= itemIncr%>,299);"><%=qp.getResposta()%></textarea>
                     <br /><label style="font-size: 9pt; color: gray; font-style: normal;">Limite de 299 caracteres. Faltam <input readonly type="text" name="remLen<%= itemIncr%>" size="3" maxlength="3" value="299" disabled>.</label><br/>
                     <br/>
                     <%itemIncr++;}%>

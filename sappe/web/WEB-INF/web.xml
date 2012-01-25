@@ -17,6 +17,10 @@
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdRealizarPoscompPadrao</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CmdEditarCadastro</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdEditarCadastro</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CmdGerarPDFProva</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdGerarPdfProva</servlet-class>
     </servlet>
@@ -60,6 +64,12 @@
         <servlet-name>CmdGerarRelatorio</servlet-name>
         <url-pattern>/CmdGerarRelatorio</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CmdEditarCadastro</servlet-name>
+        <url-pattern>/CmdEditarCadastro</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>CmdRealizarPoscompPadrao</servlet-name>
         <url-pattern>/CmdRealizarPoscompPadrao</url-pattern>

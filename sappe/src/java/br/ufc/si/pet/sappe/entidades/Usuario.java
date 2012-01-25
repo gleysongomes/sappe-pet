@@ -11,16 +11,24 @@ package br.ufc.si.pet.sappe.entidades;
 public class Usuario extends Bean {
 
     private String nome;
+    private String email;
     private String codigo;
+    private String senha;
+    private String fone;
+    private String instituicao;
+    private String rua;
+    private String bairro;
+    private Integer numero;
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
     private String cidade;
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+    private String uf;
 
     public String getCodigo() {
         return codigo;
@@ -28,6 +36,22 @@ public class Usuario extends Bean {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getEmail() {
@@ -38,12 +62,12 @@ public class Usuario extends Bean {
         this.email = email;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getFone() {
+        return fone;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setFone(String fone) {
+        this.fone = fone;
     }
 
     public String getInstituicao() {
@@ -62,6 +86,14 @@ public class Usuario extends Bean {
         this.nome = nome;
     }
 
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
     public String getSenha() {
         return senha;
     }
@@ -70,18 +102,13 @@ public class Usuario extends Bean {
         this.senha = senha;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getUf() {
+        return uf;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
-    private String estado;
-    private String email;
-    private String instituicao;
-    private String senha;
-    private String telefone;
 
     public boolean validaSenha(String senha) {
         if (this.senha.equals(senha)) {

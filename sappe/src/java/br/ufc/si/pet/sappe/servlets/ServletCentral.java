@@ -11,6 +11,7 @@ import br.ufc.si.pet.sappe.comandos.admin.CmdAdminSalvarCorrecaoProva;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta;
+import br.ufc.si.pet.sappe.comandos.alu.CmdEditarCadastro;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoes;
 import br.ufc.si.pet.sappe.comandos.alu.CmdEditarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdGerarPdfProva;
@@ -70,34 +71,40 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdLogin", cmdo);
         cmdo = new CmdLogout();
         comandos.put("CmdLogout", cmdo);
-        cmdo = new CmdListarQuestoes();
-        comandos.put("CmdListarQuestoes", cmdo);
-        cmdo = new CmdSalvarProva();
-        comandos.put("CmdSalvarProva", cmdo);
-        cmdo = new CmdVisualizarProvas();
-        comandos.put("CmdVisualizarProvas", cmdo);
-        cmdo = new CmdEditarProva();
-        comandos.put("CmdEditarProva", cmdo);
-        cmdo = new CmdVisualizarResultado();
-        comandos.put("CmdVisualizarResultado", cmdo);
-        cmdo = new CmdSalvarProvaEditada();
-        comandos.put("CmdSalvarProvaEditada", cmdo);
-        cmdo = new CmdGerarRelatorio();
-        comandos.put("CmdGerarRelatorio", cmdo);
-        cmdo = new CmdGerarPdfProva();
-        comandos.put("CmdGerarPdfProva", cmdo);
+
+        //Aluno
         cmdo = new CmdAdicionarAluno();
         comandos.put("CmdAdicionarAluno", cmdo);
         cmdo = new CmdAtivarConta();
         comandos.put("CmdAtivarConta", cmdo);
-        cmdo = new CmdAdminVisualizarProvas();
-        comandos.put("CmdAdminVisualizarProvas", cmdo);
+        cmdo = new CmdEditarCadastro();
+        comandos.put("CmdEditarCadastro", cmdo);
+        cmdo = new CmdEditarProva();
+        comandos.put("CmdEditarProva", cmdo);
+        cmdo = new CmdGerarPdfProva();
+        comandos.put("CmdGerarPdfProva", cmdo);
+        cmdo = new CmdGerarRelatorio();
+        comandos.put("CmdGerarRelatorio", cmdo);
+        cmdo = new CmdListarQuestoes();
+        comandos.put("CmdListarQuestoes", cmdo);
+        cmdo = new CmdListarQuestoesExamePadrao();
+        comandos.put("CmdListarQuestoesExamePadrao", cmdo);
+        cmdo = new CmdSalvarProva();
+        comandos.put("CmdSalvarProva", cmdo);
+        cmdo = new CmdSalvarProvaEditada();
+        comandos.put("CmdSalvarProvaEditada", cmdo);
+        cmdo = new CmdVisualizarProvas();
+        comandos.put("CmdVisualizarProvas", cmdo);
+        cmdo = new CmdVisualizarResultado();
+        comandos.put("CmdVisualizarResultado", cmdo);
+        
+        //Administrador
         cmdo = new CmdAdminCorrigirProva();
         comandos.put("CmdAdminCorrigirProva", cmdo);
         cmdo = new CmdAdminSalvarCorrecaoProva();
         comandos.put("CmdAdminSalvarCorrecaoProva", cmdo);
-        cmdo = new CmdListarQuestoesExamePadrao();
-        comandos.put("CmdListarQuestoesExamePadrao", cmdo);
+        cmdo = new CmdAdminVisualizarProvas();
+        comandos.put("CmdAdminVisualizarProvas", cmdo);  
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 

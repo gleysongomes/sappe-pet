@@ -24,7 +24,7 @@
             <a href="../cadastro.jsp">Novo Cadastro</a>
         </li>
         <li>
-            <a href="../alu/editar_cadastro.jsp">Editar Cadastro</a>
+            <a href="../ServletCentral?comando=CmdEditarCadastro">Editar Cadastro</a>
         </li>
         <li>
             <a href="../ServletCentral?comando=CmdGerarRelatorio">Relatório</a>

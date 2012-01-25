@@ -21,22 +21,21 @@
                 <%@include file="/menu.jsp" %>
             <br />
             <div id="esquerda">
-                <div id="LoginSenha">
+                <div id="loginSenha">
                     <div align="center">
                         <form action="ServletCentral" method="POST">
                             <input type="hidden" name="comando" value="CmdLogin" />
-                            <div class="input">
-                                <div id="">
-                                    <label>Email:</label><br/>
-                                    <input type="text" name="email" value="" size="20"/><br/>
-                                    <label>Senha:</label><br/>
-                                    <input type="password" name="senha" value="" size="20"/><br/><br/>
-                                    <label>Conta:</label><br/>
-                                    <select name="conta" style="width: 150px;">
-                                        <option value="alu">Aluno</option>
-                                        <option value="admin">Administrador</option>
-                                    </select>
-                                </div>
+                            <div id="">
+                                <label>Email:</label><br/>
+                                <input type="text" name="email" value="" size="20"/><br/>
+                                <label>Senha:</label><br/>
+                                <input type="password" name="senha" value="" size="20"/><br/><br/>
+                                <label>Conta:</label><br/>
+                                <select name="conta" style="width: 180px;">
+                                    <option value="0">Selecione</option>
+                                    <option value="alu">Aluno</option>
+                                    <option value="admin">Administrador</option>
+                                </select>
                             </div>
                             <br />
                             <table border="0">

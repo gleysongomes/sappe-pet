@@ -23,6 +23,7 @@
         <result property="status" column="status"/>
         <result property="dica" column="dica"/>
         <result property="nota" column="nota"/>
+        <result property="nome_arquivo" column="nome_arquivo"/>
     </resultMap>
 
     <insert id="addQuestaoProva" parameterClass="questao_prova">

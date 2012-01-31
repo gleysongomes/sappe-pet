@@ -55,6 +55,9 @@
                     </thead>
                 </table>
                 <br />
+                <label>Arquivo: <%if(qp.getNome_arquivo()==null||
+                                               qp.getNome_arquivo().trim().equals("")){%><%=""%><%}else{%><a href="../ServletCentral?comando=CmdVisualizarArquivo&id=<%=qp.getId() %>"><%=qp.getNome_arquivo()%><%}%></a></label>
+                <br /><br />
                 <label>Status:  <%if (qp.getStatus() == 0) {%> <label>A ser corrigida...</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else {%><label style="color: red;">Errada</label><%}%></label><br /><br />
                 <%itemIncr++;}%>
                 <br />

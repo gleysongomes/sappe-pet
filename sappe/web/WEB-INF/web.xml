@@ -52,9 +52,21 @@
         <servlet-name>CmdListarQuestoesExamePadrao</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoesExamePadrao</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletUploud</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.servlets.ServletUploud</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdVisualizarArquivo</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarArquivo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletUploud</servlet-name>
+        <url-pattern>/ServletUploud</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CmdCorrigirQuestoes</servlet-name>
@@ -64,12 +76,10 @@
         <servlet-name>CmdGerarRelatorio</servlet-name>
         <url-pattern>/CmdGerarRelatorio</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>CmdEditarCadastro</servlet-name>
         <url-pattern>/CmdEditarCadastro</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>CmdRealizarPoscompPadrao</servlet-name>
         <url-pattern>/CmdRealizarPoscompPadrao</url-pattern>
@@ -101,6 +111,10 @@
     <servlet-mapping>
         <servlet-name>CmdListarQuestoesExamePadrao</servlet-name>
         <url-pattern>/CmdListarQuestoesExamePadrao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdVisualizarArquivo</servlet-name>
+        <url-pattern>/CmdVisualizarArquivo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

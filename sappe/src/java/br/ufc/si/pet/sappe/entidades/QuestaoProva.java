@@ -12,7 +12,15 @@ public class QuestaoProva extends Bean {
 
     private Long prova_id;
     private Long questao_id;
+    private String nome_arquivo;
 
+    public String getNome_arquivo() {
+        return nome_arquivo;
+    }
+
+    public void setNome_arquivo(String nome_arquivo) {
+        this.nome_arquivo = nome_arquivo;
+    }
     public Long getQuestao_id() {
         return questao_id;
     }

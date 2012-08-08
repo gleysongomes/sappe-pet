@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.ufc.si.pet.sappe.comandos.alu;
 
 import br.ufc.si.pet.sappe.entidades.Perfil;
@@ -18,6 +17,8 @@ import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.TipoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.Msg;
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,7 +33,7 @@ import org.joda.time.DateTime;
  */
 public class CmdListarQuestoesExamePadrao implements Comando {
 
-    public String executa(HttpServletRequest request, HttpServletResponse response) {
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
         HttpSession hS = request.getSession(true);
         Long id = Long.parseLong(request.getParameter("id"));
@@ -41,15 +42,12 @@ public class CmdListarQuestoesExamePadrao implements Comando {
         String caminho = request.getParameter("caminho");
         if (ano == 0)
             return Mensagens(request, caminho, "Selecione uma opção.");
-
         DateTime hI = new DateTime();
         QuestaoService qS = new QuestaoService();
         List<Questao> listaDeQuestoes = qS.getListQuestoes(ano);
         List<Questao> subListaDeQuestoes = new ArrayList<Questao>();
-
-        if (listaDeQuestoes.size() == 0)
+        if (listaDeQuestoes.size() == 0) 
             return Mensagens(request, caminho, Msg.msg);
-
         Perfil perfil = (Perfil) hS.getAttribute("user");
         Usuario usuario = new Usuario();
         UsuarioService uS = new UsuarioService();
@@ -86,7 +84,7 @@ public class CmdListarQuestoesExamePadrao implements Comando {
                 return Mensagens(request, caminho, Msg.msg2);
             Collections.shuffle(subListaDeQuestoes);
             List<Questao> subListaDeQuestoes2 = new ArrayList<Questao>();
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++) 
                 subListaDeQuestoes2.add(subListaDeQuestoes.get(i));
             hS.setAttribute("subListaDeQuestoes", subListaDeQuestoes2);
         }

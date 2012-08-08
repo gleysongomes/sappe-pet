@@ -23,37 +23,28 @@ public class CmdSalvarCadastroEditado implements Comando {
         HttpSession hS = request.getSession(true);
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
-        String telefone = request.getParameter("telefone");
-        String instituicao = request.getParameter("instituicao");
-        String rua = request.getParameter("rua");
-        String bairro = request.getParameter("bairro");
-        Integer nunero = Integer.getInteger(request.getParameter("numero"));
-        String cidade = request.getParameter("cidade");
-        String uf = request.getParameter("uf");
-        String senha = request.getParameter("senha");
+        String santiga = request.getParameter("santiga");
+        String senha = request.getParameter("nsenha");
         String rSenha = request.getParameter("rsenha");
         if (!senha.trim().equals(rSenha)) {
             hS.setAttribute("erro", "A senha não confere com a sua confirmação.");
-            return "/alu/cadastro.jsp";
+            return "/alu/editar_cadastro.jsp";
         }
         Perfil perfil = (Perfil) hS.getAttribute("user");
         UsuarioService usuarioService = new UsuarioService();
         Usuario u = new Usuario();
         u = usuarioService.getUsuarioById(perfil.getUsuario().getId());
+        if (!santiga.trim().equals(u.getSenha())) {
+            hS.setAttribute("erro", "A senha antiga é inexistente.");
+            return "/alu/editar_cadastro.jsp";
+        }
         u.setNome(nome);
         u.setEmail(email);
-        u.setFone(telefone);
-        u.setBairro(bairro);
-        u.setInstituicao(instituicao);
-        u.setCidade(cidade);
-        u.setRua(rua);
-        u.setNumero(nunero);
-        u.setUf(uf);
         u.setSenha(senha);
         if (usuarioService.updateUsuario(u)) {
             hS.setAttribute("sucesso", "Cadastro editado com sucesso.");
         } else {
-            hS.setAttribute("sucesso", "Erro ao tentar editar seu cadastro..");
+            hS.setAttribute("erro", "Erro ao tentar editar seu cadastro..");
         }
         return "/alu/editar_cadastro.jsp";
     }

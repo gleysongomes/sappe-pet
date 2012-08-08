@@ -4,6 +4,7 @@
     Autdor     : gleyson
 --%>
 
+<%@page import="br.ufc.si.pet.sappe.util.Util"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.Tipo"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.Questao"%>
 <%@page import="java.util.List"%>
@@ -34,13 +35,13 @@
                 <div id="bh"></div>
                 <form id="lsQ" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSalvarProva" />
-                    <%@include file="/error.jsp" %>
+                    <%@include file="../error.jsp" %>
                     <%
                                 int itemIncr = 1;
                                 List<Questao> questoes = (List<Questao>) session.getAttribute("subListaDeQuestoes");
                                 for (Questao q : questoes) {
                     %>
-                    <label>Questão <%= itemIncr%>:<br /><img src="../images/poscomp/<%= q.getNome()%>" alt="images"/>
+                    <label>Questão <%= itemIncr%>:<br /><img src="/home/gleyson/.netbeans/6.8/apache-tomcat-6.0.20_base/temp/<%=q.getNome()%>" alt="images"/>
                     </label><br />
                     <table border="0">
                         <thead>
@@ -54,10 +55,8 @@
                         </thead>
                     </table>
                     <br />
-                    <label style="font-size: 15px;">Argumente sua resposta:</label><br />
-                    <textarea cols="50" rows="2" name="res<%= itemIncr%>" onkeydown="textCounter(this.form.res<%= itemIncr%>,this.form.remLen<%= itemIncr%>,299);" onkeyup="textCounter(this.form.res<%= itemIncr%>,this.form.remLen<%= itemIncr%>,299);"></textarea>
-                    <br /><label style="font-size: 9pt; color: gray; font-style: normal;">Limite de 299 caracteres. Faltam <input readonly type="text" name="remLen<%= itemIncr%>" size="3" maxlength="3" value="299" disabled>.</label><br/><br />
-                        <%itemIncr++;}%>
+                    <%itemIncr++;
+                                }%>
                     <br /><br />
                     <table border="0">
                         <thead>

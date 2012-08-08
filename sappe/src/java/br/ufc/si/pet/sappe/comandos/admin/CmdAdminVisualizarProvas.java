@@ -29,6 +29,7 @@ public class CmdAdminVisualizarProvas implements Comando {
         String caminho = request.getParameter("caminho");
         if (id == 0)
             return Mensagens(request, caminho, "Selecione uma área.");
+
         ProvaService pS = new ProvaService();
         List<Prova> provas = pS.getProvaByTipoId(id);
 

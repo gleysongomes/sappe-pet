@@ -60,6 +60,18 @@
         <servlet-name>CmdVisualizarArquivo</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarArquivo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdVisualizarHistorico</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarHistorico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAdminAdicionarQuestao</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.ServletAdminAdicionarQuestao</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdRecuperarSenha</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -115,6 +127,18 @@
     <servlet-mapping>
         <servlet-name>CmdVisualizarArquivo</servlet-name>
         <url-pattern>/CmdVisualizarArquivo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdVisualizarHistorico</servlet-name>
+        <url-pattern>/CmdVisualizarHistorico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdminAdicionarQuestao</servlet-name>
+        <url-pattern>/ServletAdminAdicionarQuestao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdRecuperarSenha</servlet-name>
+        <url-pattern>/CmdRecuperarSenha</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

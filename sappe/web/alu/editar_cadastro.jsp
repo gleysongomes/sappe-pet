@@ -30,11 +30,15 @@
                 <label><h2 class="titulo2">Editar Cadastro</h2></label><br /><br /><br />
                 <div id="bh"></div>
                 <form name="editarCadastro" action="../ServletCentral" method="POST">
-                    <input type="hidden" name="comando" value="CmdEditarCadastro" />
-                    <%@include file="/error.jsp" %>
+                    <input type="hidden" name="comando" value="CmdSalvarCadastroEditado" />
+                    <%@include file="../error.jsp" %>
                     <div id="cadastro">
                         <table border="0">
                             <tbody>
+                                <tr>
+                                    <td>Login (*):</td>
+                                    <td><input type="text" name="login" value="<%= usuario.getLogin()%>" size="40" readonly="false"/></td>
+                                </tr>
                                 <tr>
                                     <td>Nome (*):</td>
                                     <td><input type="text" name="nome" value="<%= usuario.getNome()%>" size="40" /></td>
@@ -43,39 +47,13 @@
                                     <td>Email (*):</td>
                                     <td><input type="text" name="email" value="<%= usuario.getEmail()%>" size="40" /></td>
                                 </tr>
-
                                 <tr>
-                                    <td>Telefone :</td>
-                                    <td><input type="text" name="telefone" value="<%= usuario.getFone()%>" size="40" /></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Instituição :</td>
-                                    <td><input type="text" name="instituicao" value="<%= usuario.getEmail()%>" size="40" /></td>
+                                    <td>Senha Antiga (*):</td>
+                                    <td><input type="password" name="santiga" value="" size="40" /></td>
                                 </tr>
                                 <tr>
-                                    <td>Rua :</td>
-                                    <td><input type="text" name="rua" value="<%= usuario.getRua()%>" size="40" /></td>
-                                </tr>
-                                <tr>
-                                    <td>Bairro :</td>
-                                    <td><input type="text" name="bairro" value="<%= usuario.getBairro()%>" size="40" /></td>
-                                </tr>
-                                <tr>
-                                    <td>Numero :</td>
-                                    <td><input type="text" name="numero" value="<%= usuario.getNumero()%>" size="40" /></td>
-                                </tr>
-                                <tr>
-                                    <td>Cidade :</td>
-                                    <td><input type="text" name="cidade" value="<%= usuario.getCidade()%>" size="40" /></td>
-                                </tr>
-                                <tr>
-                                    <td>UF :</td>
-                                    <td><input type="text" name="uf" value="<%= usuario.getUf()%>" size="40" /></td>
-                                </tr>
-                                <tr>
-                                    <td>Senha (*):</td>
-                                    <td><input type="password" name="senha" value="" size="40" /></td>
+                                    <td>Nova Senha (*):</td>
+                                    <td><input type="password" name="nsenha" value="" size="40" /></td>
                                 </tr>
                                 <tr>
                                     <td>Repita Senha (*):</td>

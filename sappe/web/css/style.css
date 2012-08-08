@@ -4,7 +4,7 @@ body {
     background: url("../images/fundo3.gif")top left repeat-x fixed;
     border-left: none;
     border-right:none;
-    text-align:center; 
+    text-align:center;
 }
 
 a.button2 {
@@ -130,7 +130,7 @@ a.button2:hover{
 #footer{
     clear:both;
     width: 920px;
-    height: 120px;
+    height: 170px;
     padding: 0 20px;
     color: #555;
     background: #E6E9E9;
@@ -215,7 +215,7 @@ input, select,textarea {
 
 #menu{
     width:959px;
-    height:27px;
+    height:31px;
     background:#69c;
     margin:0 0px;
     max-width: 960px;
@@ -239,7 +239,7 @@ input, select,textarea {
 }
 
 #nav, #nav ul {
-    width: 90em;
+    width: 80em;
     list-style: none;
     font: bold 12px Verdana, Arial, Helvetica, sans-serif;
     padding: 0px;
@@ -253,8 +253,8 @@ input, select,textarea {
 #nav a {
     display: block;
     width: 11em;
-    height: 2em;
-    line-height: 2;
+    height: 2.5em;
+    line-height: 2.5;
     text-align: center;
     text-decoration: none;
     background-color: #69c;
@@ -328,7 +328,7 @@ input, select,textarea {
     width: 960px;
     margin:0 auto;
     background: #F3F3F3;
-    text-align:left; 
+    text-align:left;
     border: 0px #fff solid;
     border-left: 1px #458B74 solid;
     border-right: 1px #458B74 solid;
@@ -340,8 +340,6 @@ input, select,textarea {
     width:960px;
     height:75px;
     background-image: url("../images/sappe2.gif");
-    width: 960px;
-    height: 75px;
     border: 1px #fff solid;
     border-left:none;
     border-right:none;

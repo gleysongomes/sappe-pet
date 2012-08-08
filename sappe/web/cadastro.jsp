@@ -26,10 +26,14 @@
                 <div id="bh"></div>
                 <form name="addAluno" action="ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdAdicionarAluno" />
-                    <%@include file="/error.jsp" %>
+                    <%@include file="error.jsp" %>
                     <div id="cadastro">
                         <table border="0">
                             <tbody>
+                                <tr>
+                                    <td>Login (*):</td>
+                                    <td><input type="text" name="login" value="" size="40" /></td>
+                                </tr>
                                 <tr>
                                     <td>Nome (*):</td>
                                     <td><input type="text" name="nome" value="" size="40" /></td>

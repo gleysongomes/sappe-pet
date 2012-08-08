@@ -17,14 +17,14 @@
         <result property="id" column="id"/>
         <result property="exame_id" column="exame_id"/>
         <result property="area_id" column="area_id"/>
-        <result property="nome" column="nome"/>
         <result property="ano" column="ano"/>
+        <result property="nome" column="nome"/>
     </resultMap>
 
     <select id="getListQuestoes" resultClass="questao" parameterClass="long" resultMap="questaoResult">
-       SELECT *
-       FROM sappe.questao
-       WHERE ano = #var#;
+        SELECT *
+        FROM sappe.questao
+        WHERE ano = #var#;
     </select>
 
     <select id="getListQuestoesByArea" resultClass="questao" parameterClass="long" resultMap="questaoResult">
@@ -32,5 +32,5 @@
         FROM sappe.questao
         WHERE area_id = #var#;
     </select>
-    
+
 </sqlMap>

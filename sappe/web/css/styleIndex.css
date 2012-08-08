@@ -64,7 +64,7 @@ body {
 #footer{
     clear:both;
     width: 920px;
-    height: 110px;
+    height: 160px;
     padding: 0px 20px;
     color: #555;
     background: #E6E9E9;
@@ -145,7 +145,7 @@ input, select,textarea {
 
 #menu{
     width:959px;
-    height:27px;
+    height:32px;
     background:#69c;
     margin:0 0px;
     max-width: 960px;
@@ -155,7 +155,7 @@ input, select,textarea {
 
 
 #nav, #nav ul {
-    width: 90em;
+    width: 80em;
     list-style: none;
     font: bold 12px Verdana, Arial, Helvetica, sans-serif;
     padding: 0px;
@@ -169,8 +169,8 @@ input, select,textarea {
 #nav a {
     display: block;
     width: 11em;
-    height: 2em;
-    line-height: 2;
+    height: 2.5em;
+    line-height: 2.5;
     text-align: center;
     text-decoration: none;
     background-color: #69c;
@@ -236,7 +236,7 @@ input, select,textarea {
 
 #tudo { 
     width: 960px;
-    height: 578px;
+    height: 629px;
     margin:0 auto;
     background: url("../images/meio.png");
     text-align:left;

@@ -22,16 +22,16 @@ public class CmdLogin implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) {
         HttpSession hS = request.getSession(true);
-        String email = request.getParameter("email");
+        String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         String conta = request.getParameter("conta");
 
-        if (senha == null || email == null || conta == null || senha.trim().isEmpty()
-                || email.trim().isEmpty() || conta.trim().isEmpty()) {
+        if (senha == null || login == null || conta == null || senha.trim().isEmpty()
+                || login.trim().isEmpty() || conta.trim().isEmpty()) {
             hS.setAttribute("erro", "Preencha todos os campos.");
         } else {
             Usuario user = new Usuario();
-            user.setEmail(email);
+            user.setLogin(login);
             user.setSenha(senha);
             UsuarioService userService = new UsuarioService();
             Perfil perfil = userService.validarUsuario(user, conta);

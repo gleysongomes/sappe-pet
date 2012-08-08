@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufc.si.pet.sappe.servlets;
+package br.ufc.si.pet.sappe.comandos.admin;
 
+import br.ufc.si.pet.sappe.util.Util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,7 +16,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,45 +29,57 @@ import org.apache.commons.fileupload.FileUploadException;
  *
  * @author gleyson
  */
-public class ServletUploud extends HttpServlet {
+public class ServletAdminAdicionarQuestao extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession hS = request.getSession(true);
-        Long id = Long.parseLong(request.getParameter("id"));
+        int eid = 0, aid = 0;
+        String ano = " ";
         DiskFileUpload fu = new DiskFileUpload();
         fu.setSizeMax(1000000);
         List fileItems = fu.parseRequest(request);
         Iterator itr = fileItems.iterator();
         while (itr.hasNext()) {
             FileItem fi = (FileItem) itr.next();
-            if (!fi.isFormField()) {
-                System.out.println("\nNAME: " + fi.getName());
-                System.out.println("SIZE: " + fi.getSize());
-                File fNew = new File("/tmp/", fi.getName());
-                System.out.println(fNew.getAbsolutePath());
-                fi.write(fNew);
-                System.out.println("===" + id);
-                Class.forName("org.postgresql.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
-                File arquivo = new File("/tmp/" + fi.getName());
-                FileInputStream fiS = new FileInputStream(arquivo);
-                PreparedStatement pS = conn.prepareStatement("UPDATE sappe.questao_prova  SET nome_arquivo=?, arquivo=? WHERE id=?;");
-                pS.setString(1, fi.getName());
-                pS.setBinaryStream(2, fiS, (int) arquivo.length());
-                pS.setLong(3, id);
-                pS.execute();
-                pS.close();
-                conn.close();
-                hS.setAttribute("sucesso", "Arquivo enviado com sucesso.");
+            String id = fi.getFieldName();
+            String valor = fi.getString();
+            if (id.equals("aid")) {
+                aid = Integer.parseInt(valor);
+            } else if (id.equals("eid")) {
+                eid = Integer.parseInt(valor);
+            } else if (id.equals("ano")) {
+                ano = valor;
+            } else if (!fi.isFormField()) {
+                try {
+                    File fNew = new File("/tmp/", fi.getName());
+                    System.out.println(fNew.getAbsolutePath());
+                    fi.write(fNew);
+                    Class.forName("org.postgresql.Driver");
+                    Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
+                    File arquivo = new File(Util.ctemp() + fi.getName());
+                    FileInputStream fiS = new FileInputStream(arquivo);
+                    PreparedStatement pS = conn.prepareStatement("INSERT INTO sappe.questao(exame_id, area_id, ano, arquivo, nome) VALUES(?,?,?,?,?)");
+                    pS.setInt(1, eid);
+                    pS.setInt(2, aid);
+                    pS.setString(3, ano);
+                    pS.setBinaryStream(4, fiS, (int) arquivo.length());
+                    pS.setString(5, fi.getName());
+                    pS.execute();
+                    pS.close();
+                    conn.close();
+                    hS.setAttribute("sucesso", "Cadastro realizado com sucesso.");
+                    response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                } catch (Exception ex) {
+                    hS.setAttribute("erro", "Erro ao tentar cadastrar.");
+                    ex.printStackTrace();
+                }
             }
         }
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/alu/enviar_arquivo.jsp");
-        requestDispatcher.forward(request, response);
     }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
@@ -81,18 +93,18 @@ public class ServletUploud extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServletUploud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAdminAdicionarQuestao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ServletUploud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAdminAdicionarQuestao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileUploadException ex) {
-            Logger.getLogger(ServletUploud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAdminAdicionarQuestao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUploud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAdminAdicionarQuestao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -105,18 +117,18 @@ public class ServletUploud extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServletUploud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAdminAdicionarQuestao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ServletUploud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAdminAdicionarQuestao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileUploadException ex) {
-            Logger.getLogger(ServletUploud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAdminAdicionarQuestao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUploud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAdminAdicionarQuestao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

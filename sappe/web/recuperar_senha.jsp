@@ -24,11 +24,14 @@
             <div id="meio">
                 <label><h2 class="titulo2">Recuperar Senha</h2></label><br /><br /><br />
                 <div id="bh"></div>
-                <%@include file="/error.jsp" %>
-                <label>Digite aqui o email que você cadastrou:</label><br><br>
-                <input type="text" name="email" class="buscar" style="width: 300px"/><br><br>
-                <input type="submit" value="Enviar"  class="button3">
-                <a href="" title="Voltar" onclick="history.back(); return false;" class="button2">Voltar</a>
+                <form action="ServletCentral" method="POST">
+                    <input type="hidden" name="comando" value="CmdRecuperarSenha" />
+                    <%@include file="error.jsp" %>
+                    <label>Digite aqui o email que você cadastrou:</label><br><br>
+                    <input type="text" name="email" class="buscar" style="width: 300px"/><br><br>
+                    <input type="submit" value="Enviar"  class="button3">
+                    <a href="" title="Voltar" onclick="history.back(); return false;" class="button2">Voltar</a>
+                </form>
             </div>
             <div id="direita"></div>
             <div id="footer">

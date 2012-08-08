@@ -32,7 +32,7 @@ public class CmdAdicionarAluno implements Comando {
     public String executa(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession hS = request.getSession(true);
-
+        String login = request.getParameter("login");
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
@@ -55,6 +55,7 @@ public class CmdAdicionarAluno implements Comando {
             return "/cadastro.jsp";
         } else {
             Usuario u = new Usuario();
+            u.setLogin(login);
             u.setNome(nome);
             u.setEmail(email);
             u.setSenha(senha);

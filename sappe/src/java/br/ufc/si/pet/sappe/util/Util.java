@@ -154,31 +154,9 @@ public class Util {
         return null;
     }
 
-    private static int Part(int L[], int p, int r) {
-        int i = p - 1, j, u, v;
-        for (j = p; j < r; j++) {
-            if (L[j] <= L[r]) {
-                i++;
-                u = L[i];
-                L[i] = L[j];
-                L[i] = u;
-            }
-        }
-        v = L[i + 1];
-        L[i + 1] = L[r];
-        L[r] = v;
-        return i + 1;
-    }
-
-    private static void rQuickSortSort(int L[], int p, int r) {
-        if (p < r) {
-            int q = Part(L, p, r);
-            rQuickSortSort(L, p, q - 1);
-            rQuickSortSort(L, q + 1, r);
-        }
-    }
-
-    public static void QuickSort(int L[], int n) {
-        rQuickSortSort(L, 0, n - 1);
+    public static String ctemp() {
+        String property = "java.io.tmpdir";
+        String tempDir = System.getProperty(property);
+        return tempDir + "/";
     }
 }

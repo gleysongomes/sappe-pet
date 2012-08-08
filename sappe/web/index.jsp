@@ -26,8 +26,8 @@
                         <form action="ServletCentral" method="POST">
                             <input type="hidden" name="comando" value="CmdLogin" />
                             <div id="">
-                                <label>Email:</label><br/>
-                                <input type="text" name="email" value="" size="20"/><br/>
+                                <label>Login:</label><br/>
+                                <input type="text" name="login" value="" size="20"/><br/>
                                 <label>Senha:</label><br/>
                                 <input type="password" name="senha" value="" size="20"/><br/><br/>
                                 <label>Conta:</label><br/>

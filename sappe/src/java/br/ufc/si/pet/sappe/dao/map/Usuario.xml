@@ -15,22 +15,16 @@
 
     <resultMap id="usuarioResult" class="usuario">
         <result property="id" column="id"/>
+        <result property="login" column="login"/>
         <result property="nome" column="nome"/>
         <result property="email" column="email"/>
         <result property="senha" column="senha"/>
         <result property="codigo" column="codigo"/>
-        <result property="fone" column="fone"/>
-        <result property="instituicao" column="instituicao"/>
-        <result property="rua" column="rua"/>
-        <result property="bairro" column="bairro"/>
-        <result property="numero" column="numero"/>
-        <result property="cidade" column="cidade"/>
-        <result property="uf" column="uf"/>
     </resultMap>
 
     <insert id="addUsuario" parameterClass="usuario" >
-        INSERT INTO sappe.usuario(id, nome, email, senha, codigo, fone, instituicao, rua, bairro, numero, cidade, uf)
-        VALUES (#id#, #nome#, #email#, #senha#, #codigo#,#fone#, #instituicao#, #rua#, #bairro#, #numero#, #cidade#, #uf#);
+        INSERT INTO sappe.usuario(id, login, nome, email, senha, codigo)
+        VALUES (#id#, #login#, #nome#, #email#, #senha#, #codigo#);
     </insert>
 
     <delete id="deleteUsuario" parameterClass="long">
@@ -40,7 +34,7 @@
 
     <update id="updateUsuario" parameterClass="usuario">
         UPDATE sappe.usuario
-        SET nome=#nome#, email=#email#, senha=#senha#, codigo=#codigo#, fone=#fone#, instituicao=#instituicao#, rua=#rua#, bairro=#bairro#, numero=#numero#, cidade=#cidade#, uf=#uf# WHERE  id=#id#;
+        SET nome=#nome#, email=#email#, senha=#senha# WHERE  id=#id#;
     </update>
 
     <select id="getUsuarioByEmail" resultClass="usuario"

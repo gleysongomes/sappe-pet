@@ -6,8 +6,7 @@ package br.ufc.si.pet.sappe.servlets;
 
 import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
-import br.ufc.si.pet.sappe.comandos.admin.CmdAdminCorrigirProva;
-import br.ufc.si.pet.sappe.comandos.admin.CmdAdminSalvarCorrecaoProva;
+import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta;
@@ -17,6 +16,7 @@ import br.ufc.si.pet.sappe.comandos.alu.CmdEditarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdGerarPdfProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdGerarRelatorio;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoesExamePadrao;
+import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarCadastroEditado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProvaEditada;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarArquivo;
@@ -100,14 +100,14 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdVisualizarProvas", cmdo);
         cmdo = new CmdVisualizarResultado();
         comandos.put("CmdVisualizarResultado", cmdo);
-        
+        cmdo = new CmdSalvarCadastroEditado();
+        comandos.put("CmdSalvarCadastroEditado", cmdo);
+        cmdo = new CmdRecuperarSenha();
+        comandos.put("CmdRecuperarSenha", cmdo);
+
         //Administrador
-        cmdo = new CmdAdminCorrigirProva();
-        comandos.put("CmdAdminCorrigirProva", cmdo);
-        cmdo = new CmdAdminSalvarCorrecaoProva();
-        comandos.put("CmdAdminSalvarCorrecaoProva", cmdo);
         cmdo = new CmdAdminVisualizarProvas();
-        comandos.put("CmdAdminVisualizarProvas", cmdo);  
+        comandos.put("CmdAdminVisualizarProvas", cmdo);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 

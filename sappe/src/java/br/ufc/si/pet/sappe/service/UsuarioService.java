@@ -54,8 +54,8 @@ public class UsuarioService {
     }
 
     public Perfil validarUsuario(Usuario usuarioEntrada, String conta) {
-        Usuario user = getUsuarioByEmail(usuarioEntrada.getEmail());
-        System.out.println("====>>" + user.getEmail());
+        Usuario user = getUsuarioByLogin(usuarioEntrada.getLogin());
+        System.out.println("====>>" + user.getLogin());
 
         if (user != null) {
             Perfil perfil = null;

@@ -55,8 +55,6 @@
         WHERE codigo = #var#;
     </select>
 
-
-
     <select id="getUsuarioById" resultClass="usuario"
             parameterClass="long"
             resultMap="usuarioResult">
@@ -64,6 +62,15 @@
         SELECT *
         FROM sappe.usuario
         WHERE id = #var#;
+    </select>
+
+    <select id="getUsuarioByLogin" resultClass="usuario"
+            parameterClass="java.lang.String"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM sappe.usuario
+        WHERE login=#var#;
     </select>
 
     <select id="getUsuarioByNome" resultClass="usuario"

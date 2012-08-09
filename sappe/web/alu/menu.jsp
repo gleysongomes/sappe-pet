@@ -12,7 +12,7 @@
 <div id="menu">
     <ul id="nav">
         <li>
-            <a href="index.jsp">Home</a>
+            <a href="../alu/index.jsp">Home</a>
         </li>
         <li>
             <a href="../alu/realizar_prova.jsp">Realizar Prova</a>

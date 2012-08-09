@@ -30,7 +30,7 @@
     <transactionManager type="JDBC">
         <dataSource type="SIMPLE">
             <property name="JDBC.Driver" value="org.postgresql.Driver"/>
-            <property name="JDBC.ConnectionURL" value="jdbc:postgresql://localhost:5432/Sappe"/>
+            <property name="JDBC.ConnectionURL" value="jdbc:postgresql://localhost:5432/postgres"/>
             <property name="JDBC.Username" value="postgres"/>
             <property name="JDBC.Password" value="postgres"/>
         </dataSource>

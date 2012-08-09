@@ -11,9 +11,7 @@ public class UsuarioDAO {
     public Usuario getByLogin(String login) throws SQLException {
         Usuario usuario = null;
         usuario = (Usuario) PostGresMapConfig.getSqlMapClient().queryForObject("getUsuarioByLogin", login);
-
         return usuario;
-
     }
 
     public void insert(Usuario usuario) throws SQLException {

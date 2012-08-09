@@ -70,7 +70,7 @@ public class CmdListarQuestoesExamePadrao implements Comando {
                     List<QuestaoProva> qps = questaoProvaService.getListQuestaoProvaById(p.getId());
                     for (QuestaoProva qp : qps) {
                         if (qp.getQuestao_id().equals(q.getId())
-                                && usuario.getId().equals(p.getUsuario_id())) {
+                                && usuario.getId().equals(p.getPerfil_id())) {
                             condicao = 0;
                         }
                     }

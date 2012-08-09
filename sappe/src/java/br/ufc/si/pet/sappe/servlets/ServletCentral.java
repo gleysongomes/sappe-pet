@@ -8,6 +8,7 @@ import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
 import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
+import br.ufc.si.pet.sappe.comandos.admin.cmdCadastrarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta;
 import br.ufc.si.pet.sappe.comandos.alu.CmdEditarCadastro;
@@ -105,6 +106,8 @@ public class ServletCentral extends HttpServlet {
         //Administrador
         cmdo = new CmdAdminVisualizarProvas();
         comandos.put("CmdAdminVisualizarProvas", cmdo);
+       // cmdo = new cmdCadastrarProva();
+       // comandos.put("CmdCadastrarProva", cmdo);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 

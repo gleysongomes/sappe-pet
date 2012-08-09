@@ -10,7 +10,7 @@
             <a href="../admin/index.jsp">Home</a>
         </li>
         <li>
-            <a href="../admin/admin_buscar_provas.jsp">Corrigir Provas</a>
+            <a href="../admin/admin_adicionar_questao.jsp">Cadastrar Questão</a>
         </li>
         <li>
             <a href="../ServletCentral?comando=CmdLogout">Sair</a>

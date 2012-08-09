@@ -8,7 +8,7 @@
 <div id="menu">
     <ul id="nav">
         <li>
-            <a href="../alu/index.jsp">Home</a>
+            <a href="../admin/index.jsp">Home</a>
         </li>
         <li>
             <a href="../alu/poscomp_padrao.jsp">Poscomp Padrão</a>

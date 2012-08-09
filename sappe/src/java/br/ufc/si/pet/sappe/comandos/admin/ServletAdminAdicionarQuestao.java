@@ -57,7 +57,7 @@ public class ServletAdminAdicionarQuestao extends HttpServlet {
                     System.out.println(fNew.getAbsolutePath());
                     fi.write(fNew);
                     Class.forName("org.postgresql.Driver");
-                    Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
+                    Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/sappe", "postgres", "postgres");
                     File arquivo = new File(Util.ctemp() + fi.getName());
                     FileInputStream fiS = new FileInputStream(arquivo);
                     PreparedStatement pS = conn.prepareStatement("INSERT INTO sappe.questao(exame_id, area_id, ano, arquivo, nome) VALUES(?,?,?,?,?)");

@@ -89,14 +89,16 @@ public class Prova extends Bean {
         this.tempo_prova = tempo_prova;
     }
 
-    public Long getUsuario_id() {
-        return usuario_id;
+    public Long getPerfil_id() {
+        return perfil_id;
     }
 
-    public void setUsuario_id(Long usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setPerfil_id(Long perfil_id) {
+        this.perfil_id = perfil_id;
     }
-    private Long usuario_id;
+
+    
+    private Long perfil_id;
     private int respondida;
     private int branca;
     private String tempo_prova;

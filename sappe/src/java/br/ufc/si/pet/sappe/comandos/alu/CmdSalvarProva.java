@@ -46,7 +46,7 @@ public class CmdSalvarProva implements Comando {
             DateTime dT = new DateTime();
             Prova prova = new Prova();
             prova.setTipo_id(tipo.getId());
-            prova.setUsuario_id(a.getUsuario().getId());
+            prova.setPerfil_id(a.getUsuario().getId());
             prova.setNumero_questoes(nQ);
             prova.setRespondida(r);
             prova.setBranca(b);

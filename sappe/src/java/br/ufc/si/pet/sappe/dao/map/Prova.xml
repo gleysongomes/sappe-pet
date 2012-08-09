@@ -15,7 +15,7 @@
     <resultMap id="provaResult" class="prova">
         <result property="id" column="id"/>
         <result property="tipo_id" column="tipo_id"/>
-        <result property="usuario_id" column="usuario_id"/>
+        <result property="perfil_id" column="perfil_id"/>
         <result property="numero_questoes" column="numero_questoes"/>
         <result property="respondida" column="respondida"/>
         <result property="branca" column="branca"/>
@@ -26,8 +26,8 @@
     </resultMap>
 
     <insert id="addProva" parameterClass="prova">
-        INSERT INTO sappe.prova(id, tipo_id,usuario_id, numero_questoes, respondida, branca, tempo_prova, data, aceitas, erradas)
-        VALUES (#id#, #tipo_id#, #usuario_id#, #numero_questoes#, #respondida#, #branca#, #tempo_prova#, #data#, #aceitas#, #erradas#);
+        INSERT INTO sappe.prova(id, tipo_id,perfil_id, numero_questoes, respondida, branca, tempo_prova, data, aceitas, erradas)
+        VALUES (#id#, #tipo_id#, #perfil_id#, #numero_questoes#, #respondida#, #branca#, #tempo_prova#, #data#, #aceitas#, #erradas#);
     </insert>
 
     <update id="updateProva" parameterClass="prova">
@@ -63,7 +63,7 @@
     <select id="getAllListProvas" resultClass="prova" parameterClass="long" resultMap="provaResult">
         SELECT *
         FROM sappe.prova
-        WHERE usuario_id = #var#;
+        WHERE perfil_id = #var#;
     </select>
 
     <select id="getMaxIdProva" resultClass="long">

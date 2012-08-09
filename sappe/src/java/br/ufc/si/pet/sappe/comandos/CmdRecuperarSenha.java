@@ -5,8 +5,10 @@
 package br.ufc.si.pet.sappe.comandos;
 
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
+import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
+import br.ufc.si.pet.sappe.service.PerfilService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.SendMail;
 import java.io.IOException;

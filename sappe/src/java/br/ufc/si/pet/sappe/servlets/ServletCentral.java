@@ -105,8 +105,6 @@ public class ServletCentral extends HttpServlet {
         //Administrador
         cmdo = new CmdAdminVisualizarProvas();
         comandos.put("CmdAdminVisualizarProvas", cmdo);
-       // cmdo = new cmdCadastrarProva();
-       // comandos.put("CmdCadastrarProva", cmdo);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 

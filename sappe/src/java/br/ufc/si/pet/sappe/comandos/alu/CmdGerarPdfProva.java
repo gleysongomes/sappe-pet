@@ -101,7 +101,7 @@ public class CmdGerarPdfProva implements Comando {
                 String msg = "" + request.getSession().getServletContext().getRealPath("");
                 String conteudo2[] = msg.split("/build/web");
                 Image jpg2 = Image.getInstance("" + new ImageIcon(
-                        "" + conteudo2[0] + "/web/images/poscomp/" + qP.getNome()));
+                        "" + conteudo2[0] + "/web/images/poscomp/"));
                 table.addCell(jpg2);
                 table.addCell(new Phrase("\nResposta:\n", fonteConteudo));
                 table.addCell("\n\n\n\n\n\n\n\n\n");

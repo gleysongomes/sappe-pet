@@ -30,60 +30,66 @@ public class CmdSalvarProva implements Comando {
 
         HttpSession hS = request.getSession(true);
         try {
+            List<Questao> questoes = (List<Questao>) hS.getAttribute("subListaDeQuestoes");
             Tipo tipo = (Tipo) hS.getAttribute("tipo");
             DateTime hI = (DateTime) hS.getAttribute("hI");
             Integer nQ = (Integer) hS.getAttribute("oP");
             Aluno a = (Aluno) hS.getAttribute("user");
-            int i, r = 0, b = 0;
-            for (i = 1; i <= nQ; i++) {
+            int i, resolvidas = 0, brancas = 0, certas = 0, erradas = 0;
+            for (i = 0; i < nQ; i++) {
                 String itemEscolhido = (String) request.getParameter("iM" + i);
-                String respostaQuestao = (String) request.getParameter("res" + i);
-                if (itemEscolhido == null || respostaQuestao == null
-                        || respostaQuestao.trim().equals(""))b++;
-                else r++;
+                if (itemEscolhido == null)
+                    brancas++;
+                else if (itemEscolhido.equals(questoes.get(i).getItem()))
+                {certas++;resolvidas++;}
+                else
+                {erradas++;resolvidas++;}
             }
 
             DateTime dT = new DateTime();
             Prova prova = new Prova();
             prova.setTipo_id(tipo.getId());
-            prova.setPerfil_id(a.getUsuario().getId());
+            prova.setUsuario_id(a.getUsuario().getId());
             prova.setNumero_questoes(nQ);
-            prova.setRespondida(r);
-            prova.setBranca(b);
+            prova.setRespondidas(resolvidas);
+            prova.setBrancas(brancas);
+            prova.setCertas(certas);
+            prova.setErradas(erradas);
             prova.setTempo_prova(Util.calcularTempo(hI.toString(), dT.toString()));
             prova.setData(Util.treatToString(new Date()));
             ProvaService pS = new ProvaService();
             pS.inserir(prova);
             //System.out.println("="+prova.getId());
             QuestaoProvaService qpS = new QuestaoProvaService();
-            List<Questao> questoes = (List<Questao>) hS.getAttribute("subListaDeQuestoes");
-            int count = 1;
+            //List<Questao> questoes = (List<Questao>) hS.getAttribute("subListaDeQuestoes");
+            int count = 0, status;
             for (Questao questao : questoes) {
                 String iM = (String) request.getParameter("iM" + count);
-                //System.out.println("==" + iM);
-                String res = (String) request.getParameter("res" + count);
-                QuestaoProva qP = inserir(prova.getId(), questao.getId(), questao.getNome(), iM, res, 0, "", 0);
+                if (iM == null)
+                    status = 0;
+                else if (iM.equals(questoes.get(count).getItem()))
+                    status = 1;
+                else
+                    status = 2;
+                QuestaoProva qP = inserir(prova.getId(), questao.getId(), iM, status);
                 qpS.inserir(qP);
                 count++;
             }
             hS.setAttribute("sucesso", "Prova salva com sucesso.");
-        } catch (Exception e) {
+        } catch (Error e) {
+            e.printStackTrace();
             hS.setAttribute("erro", "Erro ao tentar salvar a prova.");
         }
         return "/alu/listar_questoes.jsp";
     }
 
-    public QuestaoProva inserir(Long prova_id, Long questao_id, String nome, String item_marcado, String resposta, Integer status, String dica, int nota) {
+    public QuestaoProva inserir(Long prova_id, Long questao_id, String item_marcado, Integer status) {
 
         QuestaoProva qP = new QuestaoProva();
         qP.setProva_id(prova_id);
         qP.setQuestao_id(questao_id);
-        qP.setNome(nome);
         qP.setItem_marcado(item_marcado);
-        qP.setResposta(resposta);
         qP.setStatus(status);
-        qP.setDica(dica);
-        qP.setNota(nota);
         return qP;
     }
 }

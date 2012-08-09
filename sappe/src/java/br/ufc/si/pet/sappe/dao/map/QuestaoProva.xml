@@ -17,29 +17,24 @@
         <result property="id" column="id"/>
         <result property="prova_id" column="prova_id"/>
         <result property="questao_id" column="questao_id"/>
-        <result property="nome" column="nome"/>
         <result property="item_marcado" column="item_marcado"/>
-        <result property="resposta" column="resposta"/>
         <result property="status" column="status"/>
-        <result property="dica" column="dica"/>
-        <result property="nota" column="nota"/>
-        <result property="nome_arquivo" column="nome_arquivo"/>
     </resultMap>
 
     <insert id="addQuestaoProva" parameterClass="questao_prova">
-        INSERT INTO sappe.questao_prova(id, prova_id,questao_id, nome, item_marcado, resposta, status, dica, nota)
-        VALUES (#id#, #prova_id#, #questao_id#, #nome#, #item_marcado#, #resposta#, #status#, #dica#, #nota#);
+        INSERT INTO sappe.questao_prova(id, prova_id,questao_id, item_marcado, status)
+        VALUES (#id#, #prova_id#, #questao_id#, #item_marcado#, #status#);
     </insert>
 
     <update id="updateQuestaoProvaByIdProva" parameterClass="questao_prova">
         UPDATE sappe.questao_prova
-        SET status=#status#,dica=#dica#
+        SET item_marcado=#item_marcado#, status=#status#
         WHERE id=#id# AND prova_id=#prova_id#;
     </update>
     
     <update id="updateQuestaoProva" parameterClass="questao_prova">
         UPDATE sappe.questao_prova
-        SET item_marcado=#item_marcado#,resposta=#resposta#
+        SET item_marcado=#item_marcado#, status=#status#
         WHERE id=#id# AND prova_id=#prova_id#;
     </update>
 

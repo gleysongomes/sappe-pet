@@ -19,18 +19,33 @@
         <result property="area_id" column="area_id"/>
         <result property="ano" column="ano"/>
         <result property="nome" column="nome"/>
+        <result property="item" column="item"/>
     </resultMap>
 
     <select id="getListQuestoes" resultClass="questao" parameterClass="long" resultMap="questaoResult">
         SELECT *
         FROM sappe.questao
-        WHERE ano = #var#;
+        WHERE ano = #var# ORDER BY id;
     </select>
 
-    <select id="getListQuestoesByArea" resultClass="questao" parameterClass="long" resultMap="questaoResult">
+    <select id="getQuestaoById" resultClass="questao" parameterClass="long" resultMap="questaoResult">
         SELECT *
         FROM sappe.questao
-        WHERE area_id = #var#;
+        WHERE id = #var# ORDER BY id;
     </select>
+    
+    <select id="getListQuestoesByArea" resultClass="questao" parameterClass="integer" resultMap="questaoResult">
+        SELECT *
+        FROM sappe.questao WHERE #id# IN ((SELECT id FROM sappe.questao WHERE area_id=1)
+        EXCEPT
+        (SELECT questao_id FROM sappe.questao_prova as qp WHERE EXISTS(SELECT id FROM sappe.prova as p WHERE qp.prova_id=#id# AND p.usuario_id=2)))
+    </select>
+
+    <!--<select id="getListQuestoesByArea" resultClass="questao" parameterClass="long" resultMap="questaoResult">
+        SELECT *
+        FROM sappe.questao
+        WHERE area_id = #var# ORDER BY id;
+    </select> -->
+
 
 </sqlMap>

@@ -19,7 +19,7 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="/alu/menu2.jsp" %>
+            <%@include file="../admin/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
                 <label><h2 class="titulo2">Adicionar Questão</h2></label><br /><br /><br />
@@ -45,9 +45,19 @@
                         <input type="text" name="ano" value="" size="20" />
                     </label>
                     <br />
+                    <label style="font: caption; font-size: 15px;">Item Certo: <select name="ic">
+                            <option value="0">Selecione</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                        </select>
+                    </label>
+                    <br />
                     <label style="font: caption; font-size: 15px;">Questão: </label>
                     <input type="file" name="questao" value="" />
-                    <br />
+                    <br /><br /><br />
                     <input type="submit" id="btn" value="Cadastrar" name="cadastrar" class="button"/>
                 </form>
             </div>

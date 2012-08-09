@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : listar_questoes
     Created on : 28/12/2011, 21:54:10
     Autdor     : gleyson
@@ -24,7 +24,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div id="tudo"> 
+        <div id="tudo">
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
@@ -37,11 +37,11 @@
                     <input type="hidden" name="comando" value="CmdSalvarProva" />
                     <%@include file="../error.jsp" %>
                     <%
-                                int itemIncr = 1;
+                                int itemIncr = 0;
                                 List<Questao> questoes = (List<Questao>) session.getAttribute("subListaDeQuestoes");
                                 for (Questao q : questoes) {
                     %>
-                    <label>Questão <%= itemIncr%>:<br /><img src="/home/gleyson/.netbeans/6.8/apache-tomcat-6.0.20_base/temp/<%=q.getNome()%>" alt="images"/>
+                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" alt="images"/>
                     </label><br />
                     <table border="0">
                         <thead>
@@ -55,8 +55,7 @@
                         </thead>
                     </table>
                     <br />
-                    <%itemIncr++;
-                                }%>
+                    <%itemIncr++;}%>
                     <br /><br />
                     <table border="0">
                         <thead>

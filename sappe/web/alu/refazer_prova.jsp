@@ -39,11 +39,11 @@
                 <form name="rP" action="../ServletCentral" method="post">
                     <input type="hidden" name="comando" value="CmdSalvarProvaEditada" />
                     <%
-                                int itemIncr = 1;
+                                int itemIncr = 0;
                                 List<QuestaoProva> qPs = (List<QuestaoProva>) session.getAttribute("qPs");
                                 for (QuestaoProva qp : qPs) {
                     %>
-                    <label>Questão <%= itemIncr%>:<br /><img src="../images/poscomp/<%= qp.getNome()%>" alt="images"/>
+                    <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qp.getQuestao_id()%>" alt="images"/>
                     </label><br />
                     <table border="0">
                         <thead>
@@ -56,14 +56,6 @@
                             </tr>
                         </thead>
                     </table>
-                    <% if (qp.getDica() != null && !(qp.getDica().trim().equals(""))) {%>
-                    <label>Dica para solução desta Questão:<br><textarea cols="50" rows="6" disabled><%= qp.getDica()%></textarea></label><br /><br />
-                        <%}%>
-                    <br />
-                    <label style="font-size: 15px;">Argumente sua resposta:</label><br />
-                    <textarea cols="50" rows="2" name="res<%= itemIncr%>" onkeydown="textCounter(this.form.res<%= itemIncr%>,this.form.remLen<%= itemIncr%>,299);" onkeyup="textCounter(this.form.res<%= itemIncr%>,this.form.remLen<%= itemIncr%>,299);"><%=qp.getResposta()%></textarea>
-                    <br /><label style="font-size: 9pt; color: gray; font-style: normal;">Limite de 299 caracteres. Faltam <input readonly type="text" name="remLen<%= itemIncr%>" size="3" maxlength="3" value="299" disabled>.</label><br/>
-                    <a href="../alu/enviar_arquivo.jsp?id=<%= qp.getId()%>" onclick="window.open(this.href,'win2','width=390,height=200,menubar=yes,resizable=yes'); return false">Enviar Arquivo</a><label style="font-size: 10pt; color: gray; font-style: normal;"> (Ex: Um arquivo pdf com a resposta desta questão)</label>
                     <br /><br /><br />
                     <%itemIncr++;}%>
                     <br /><br />

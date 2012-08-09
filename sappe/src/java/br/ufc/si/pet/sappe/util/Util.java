@@ -4,6 +4,8 @@
  */
 package br.ufc.si.pet.sappe.util;
 
+import java.io.File;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -154,9 +156,19 @@ public class Util {
         return null;
     }
 
-    public static String ctemp() {
-        String property = "java.io.tmpdir";
-        String tempDir = System.getProperty(property);
-        return tempDir + "/";
+    public static void criarPastaTemporaria() {
+        File dir = new File("/web/temp");
+        dir.mkdir();
+    }
+
+    public static void excluirPastaTemporaria() {
+        File dir = new File("/web/temp");
+        dir.mkdir();
+        dir.delete();
+    }
+
+    public static void main(String args[]) throws IOException {
+        File dir = new File("/web/temp");
+        dir.mkdir();
     }
 }

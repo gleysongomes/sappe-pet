@@ -12,15 +12,25 @@ public class QuestaoProva extends Bean {
 
     private Long prova_id;
     private Long questao_id;
-    private String nome_arquivo;
+    private String item_marcado;
+    private Integer status;
 
-    public String getNome_arquivo() {
-        return nome_arquivo;
+    public Long getProva_id() {
+        return prova_id;
     }
 
-    public void setNome_arquivo(String nome_arquivo) {
-        this.nome_arquivo = nome_arquivo;
+    public void setProva_id(Long prova_id) {
+        this.prova_id = prova_id;
     }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public Long getQuestao_id() {
         return questao_id;
     }
@@ -36,58 +46,4 @@ public class QuestaoProva extends Bean {
     public void setItem_marcado(String item_marcado) {
         this.item_marcado = item_marcado;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getNota() {
-        return nota;
-    }
-
-    public void setNota(int nota) {
-        this.nota = nota;
-    }
-
-    public Long getProva_id() {
-        return prova_id;
-    }
-
-    public void setProva_id(Long prova_id) {
-        this.prova_id = prova_id;
-    }
-
-    public String getResposta() {
-        return resposta;
-    }
-
-    public void setResposta(String resposta) {
-        this.resposta = resposta;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-    private String nome;
-    private String item_marcado;
-    private String resposta;
-    private Integer status;
-    private String dica;
-
-    public String getDica() {
-        return dica;
-    }
-
-    public void setDica(String dica) {
-        this.dica = dica;
-    }
-    private int nota;
 }

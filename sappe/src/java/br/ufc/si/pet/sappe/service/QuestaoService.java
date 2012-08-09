@@ -36,13 +36,24 @@ public class QuestaoService {
         }
     }
 
+    public Questao getQuestaoById(Long id) {
+        try {
+            Questao q = questaoDAO.getById(id);
+            return q;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     /**
      *
      * @return
      */
-    public ArrayList<Questao> getListQuestoesByArea(Long id) {
+    public ArrayList<Questao> getListQuestoesByArea(int idArea,int idUser, int n) {
         try {
-            ArrayList<Questao> questaos = questaoDAO.getListQuestoesByArea(id);
+            ArrayList<Questao> questaos = questaoDAO.getListQuestoesByArea(idArea,idUser, n);
+            System.out.println("-------"+questaos.size());
             return questaos;
         } catch (SQLException ex) {
             Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);

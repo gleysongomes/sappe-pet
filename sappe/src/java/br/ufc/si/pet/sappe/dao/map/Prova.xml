@@ -15,55 +15,55 @@
     <resultMap id="provaResult" class="prova">
         <result property="id" column="id"/>
         <result property="tipo_id" column="tipo_id"/>
-        <result property="perfil_id" column="perfil_id"/>
+        <result property="usuario_id" column="usuario_id"/>
         <result property="numero_questoes" column="numero_questoes"/>
-        <result property="respondida" column="respondida"/>
-        <result property="branca" column="branca"/>
+        <result property="respondidas" column="respondidas"/>
+        <result property="brancas" column="brancas"/>
         <result property="tempo_prova" column="tempo_prova"/>
         <result property="data" column="data"/>
-        <result property="aceitas" column="aceitas"/>
+        <result property="certas" column="certas"/>
         <result property="erradas" column="erradas"/>
     </resultMap>
 
     <insert id="addProva" parameterClass="prova">
-        INSERT INTO sappe.prova(id, tipo_id,perfil_id, numero_questoes, respondida, branca, tempo_prova, data, aceitas, erradas)
-        VALUES (#id#, #tipo_id#, #perfil_id#, #numero_questoes#, #respondida#, #branca#, #tempo_prova#, #data#, #aceitas#, #erradas#);
+        INSERT INTO sappe.prova(id, tipo_id,usuario_id, numero_questoes, respondidas, brancas, tempo_prova, data, certas, erradas)
+        VALUES (#id#, #tipo_id#, #usuario_id#, #numero_questoes#, #respondidas#, #brancas#, #tempo_prova#, #data#, #certas#, #erradas#);
     </insert>
 
     <update id="updateProva" parameterClass="prova">
         UPDATE sappe.prova
-        SET respondida=#respondida#,branca=#branca#,tempo_prova=#tempo_prova#, data=#data#
+        SET respondidas=#respondidas#,brancas=#brancas#,tempo_prova=#tempo_prova#, data=#data#
         WHERE id=#id#;
     </update>
-    
+
     <update id="updateProvaById" parameterClass="prova">
         UPDATE sappe.prova
-        SET aceitas=#aceitas#,erradas=#erradas#
+        SET respondidas=#respondidas#,brancas=#brancas#,tempo_prova=#tempo_prova#, data=#data#
         WHERE id=#id#;
     </update>
 
     <select id="getListProva" resultClass="prova" resultMap="provaResult">
         SELECT *
-        FROM sappe.prova;
+        FROM sappe.prova ORDER BY id;
     </select>
 
 
     <select id="getProvaById" resultClass="prova" parameterClass="long" resultMap="provaResult">
         SELECT *
         FROM sappe.prova
-        WHERE id = #var#;
+        WHERE id = #var# ORDER BY id;
     </select>
 
     <select id="getProvaByTipoId" resultClass="prova" parameterClass="long" resultMap="provaResult">
         SELECT *
         FROM sappe.prova
-        WHERE tipo_id = #var#;
+        WHERE tipo_id = #var# ORDER BY id;
     </select>
 
     <select id="getAllListProvas" resultClass="prova" parameterClass="long" resultMap="provaResult">
         SELECT *
         FROM sappe.prova
-        WHERE perfil_id = #var#;
+        WHERE usuario_id = #var# ORDER BY id;
     </select>
 
     <select id="getMaxIdProva" resultClass="long">
@@ -72,4 +72,3 @@
     </select>
 
 </sqlMap>
-

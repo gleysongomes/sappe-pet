@@ -4,7 +4,6 @@
  */
 package br.ufc.si.pet.sappe.comandos.admin;
 
-import br.ufc.si.pet.sappe.util.Util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -36,46 +35,56 @@ public class ServletAdminAdicionarQuestao extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession hS = request.getSession(true);
         int eid = 0, aid = 0;
-        String ano = " ";
-        DiskFileUpload fu = new DiskFileUpload();
-        fu.setSizeMax(1000000);
-        List fileItems = fu.parseRequest(request);
-        Iterator itr = fileItems.iterator();
-        while (itr.hasNext()) {
-            FileItem fi = (FileItem) itr.next();
-            String id = fi.getFieldName();
-            String valor = fi.getString();
-            if (id.equals("aid")) {
-                aid = Integer.parseInt(valor);
-            } else if (id.equals("eid")) {
-                eid = Integer.parseInt(valor);
-            } else if (id.equals("ano")) {
-                ano = valor;
-            } else if (!fi.isFormField()) {
-                try {
-                    File fNew = new File("/tmp/", fi.getName());
-                    System.out.println(fNew.getAbsolutePath());
-                    fi.write(fNew);
-                    Class.forName("org.postgresql.Driver");
-                    Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/sappe", "postgres", "postgres");
-                    File arquivo = new File(Util.ctemp() + fi.getName());
-                    FileInputStream fiS = new FileInputStream(arquivo);
-                    PreparedStatement pS = conn.prepareStatement("INSERT INTO sappe.questao(exame_id, area_id, ano, arquivo, nome) VALUES(?,?,?,?,?)");
-                    pS.setInt(1, eid);
-                    pS.setInt(2, aid);
-                    pS.setString(3, ano);
-                    pS.setBinaryStream(4, fiS, (int) arquivo.length());
-                    pS.setString(5, fi.getName());
-                    pS.execute();
-                    pS.close();
-                    conn.close();
-                    hS.setAttribute("sucesso", "Cadastro realizado com sucesso.");
-                    response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
-                } catch (Exception ex) {
-                    hS.setAttribute("erro", "Erro ao tentar cadastrar.");
-                    ex.printStackTrace();
+        String ano = "", ic = "";
+        try {
+            DiskFileUpload fu = new DiskFileUpload();
+            fu.setSizeMax(1000000);
+            List fileItems = fu.parseRequest(request);
+            Iterator itr = fileItems.iterator();
+            while (itr.hasNext()) {
+                FileItem fi = (FileItem) itr.next();
+                String id = fi.getFieldName();
+                String valor = fi.getString();
+                if (id.equals("aid")) {
+                    aid = Integer.parseInt(valor);
+                } else if (id.equals("eid")) {
+                    eid = Integer.parseInt(valor);
+                } else if (id.equals("ano")) {
+                    ano = valor;
+                } else if (id.equals("ic")) {
+                    ic = valor;
+                } else if (!fi.isFormField()) {
+                    try {
+                        File fNew = new File("/tmp/", fi.getName());
+                        System.out.println(fNew.getAbsolutePath());
+                        fi.write(fNew);
+                        Class.forName("org.postgresql.Driver");
+                        Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
+                        File arquivo = new File("/tmp/" + fi.getName());
+                        FileInputStream fiS = new FileInputStream(arquivo);
+                        PreparedStatement pS = conn.prepareStatement("INSERT INTO sappe.questao(exame_id, area_id, ano, arquivo, nome, item) VALUES(?,?,?,?,?,?)");
+                        pS.setInt(1, eid);
+                        pS.setInt(2, aid);
+                        pS.setString(3, ano);
+                        pS.setBinaryStream(4, fiS, (int) arquivo.length());
+                        pS.setString(5, fi.getName());
+                        pS.setString(6, ic);
+                        pS.execute();
+                        pS.close();
+                        conn.close();
+                        fileItems.clear();
+                        hS.setAttribute("sucesso", "Cadastro realizado com sucesso.");
+                        response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                    } catch (Exception ex) {
+                        hS.setAttribute("erro", "Erro ao tentar cadastrar.");
+                        ex.printStackTrace();
+                    }
                 }
             }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            hS.setAttribute("erro", ex.getMessage());
+            response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
         }
     }
 

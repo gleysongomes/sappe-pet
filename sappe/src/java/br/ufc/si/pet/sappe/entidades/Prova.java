@@ -10,8 +10,40 @@ package br.ufc.si.pet.sappe.entidades;
  */
 public class Prova extends Bean {
 
-    private Long tipo_id;
+    private int brancas;
+    private Integer certas;
+    private String data;
+    private Integer erradas;
     private String nome_arquivo;
+    private Integer numero_questoes;
+    private int respondidas;
+    private String tempo_prova;
+    private Long tipo_id;
+    private Long usuario_id;
+
+    public int getBrancas() {
+        return brancas;
+    }
+
+    public void setBrancas(int brancas) {
+        this.brancas = brancas;
+    }
+
+    public Integer getCertas() {
+        return certas;
+    }
+
+    public void setCertas(Integer certas) {
+        this.certas = certas;
+    }
+
+    public int getRespondidas() {
+        return respondidas;
+    }
+
+    public void setRespondidas(int respondidas) {
+        this.respondidas = respondidas;
+    }
 
     public String getNome_arquivo() {
         return nome_arquivo;
@@ -29,17 +61,6 @@ public class Prova extends Bean {
         this.tipo_id = tipo_id;
     }
 
-    private Integer numero_questoes;
-    private Integer aceitas;
-
-    public Integer getAceitas() {
-        return aceitas;
-    }
-
-    public void setAceitas(Integer aceitas) {
-        this.aceitas = aceitas;
-    }
-
     public Integer getErradas() {
         return erradas;
     }
@@ -47,7 +68,6 @@ public class Prova extends Bean {
     public void setErradas(Integer erradas) {
         this.erradas = erradas;
     }
-    private Integer erradas;
 
     public Integer getNumero_questoes() {
         return numero_questoes;
@@ -55,14 +75,6 @@ public class Prova extends Bean {
 
     public void setNumero_questoes(Integer numero_questoes) {
         this.numero_questoes = numero_questoes;
-    }
-
-    public int getBranca() {
-        return branca;
-    }
-
-    public void setBranca(int branca) {
-        this.branca = branca;
     }
 
     public String getData() {
@@ -73,14 +85,6 @@ public class Prova extends Bean {
         this.data = data;
     }
 
-    public int getRespondida() {
-        return respondida;
-    }
-
-    public void setRespondida(int respondida) {
-        this.respondida = respondida;
-    }
-
     public String getTempo_prova() {
         return tempo_prova;
     }
@@ -89,18 +93,11 @@ public class Prova extends Bean {
         this.tempo_prova = tempo_prova;
     }
 
-    public Long getPerfil_id() {
-        return perfil_id;
+    public Long getUsuario_id() {
+        return usuario_id;
     }
 
-    public void setPerfil_id(Long perfil_id) {
-        this.perfil_id = perfil_id;
+    public void setUsuario_id(Long usuario_id) {
+        this.usuario_id = usuario_id;
     }
-
-    
-    private Long perfil_id;
-    private int respondida;
-    private int branca;
-    private String tempo_prova;
-    private String data;
 }

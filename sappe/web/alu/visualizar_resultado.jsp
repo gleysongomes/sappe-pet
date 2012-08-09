@@ -37,11 +37,11 @@
                 <label><h3 class="titulo2"><%=tipoProva2%></h3></label><br /><br /><br />
                 <div id="bh"></div>
                 <%
-                            int itemIncr = 1;
+                            int itemIncr = 0;
                             List<QuestaoProva> qPs = (List<QuestaoProva>) session.getAttribute("qPs2");
                             for (QuestaoProva qp : qPs) {
                 %>
-                <label>Questão <%= itemIncr%>:<br /><img src="../images/poscomp/<%= qp.getNome()%>" alt="images"/>
+                <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qp.getQuestao_id() %>" alt="images"/>
                 </label><br />
                 <table border="0">
                     <thead>
@@ -55,10 +55,7 @@
                     </thead>
                 </table>
                 <br />
-                <label>Arquivo: <%if(qp.getNome_arquivo()==null||
-                                               qp.getNome_arquivo().trim().equals("")){%><%=""%><%}else{%><a href="../ServletCentral?comando=CmdVisualizarArquivo&id=<%=qp.getId() %>"><%=qp.getNome_arquivo()%><%}%></a></label>
-                <br /><br />
-                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>A ser corrigida...</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else {%><label style="color: red;">Errada</label><%}%></label><br /><br />
+                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>Branca</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else {%><label style="color: red;">Errada</label><%}%></label><br /><br />
                 <%itemIncr++;}%>
                 <br />
                 <h3>Relatório da Prova</h3><br>
@@ -73,7 +70,9 @@
                             <tr>
                                 <th width="200px">Tipo da Prova</th>
                                 <th>Questões Respondidas</th>
+                                <th>Questões Certas</th>
                                 <th>Questões Brancas</th>
+                                <th>Questões Erradas</th>
                                 <th>Tempo de Prova</th>
                                 <th>Último Acesso</th>
                             </tr>
@@ -81,8 +80,10 @@
                         <tbody>
                             <tr>
                                 <td><%= tipo.getNome()%></td>
-                                <td><%= p.getRespondida()%></td>
-                                <td><%= p.getBranca()%></td>
+                                <td><%= p.getRespondidas()%></td>
+                                <td><%= p.getCertas() %></td>
+                                <td><%= p.getBrancas()%></td>
+                                <td><%= p.getErradas() %></td>
                                 <td><%= p.getTempo_prova()%></td>
                                 <td><%= p.getData()%></td>
                             </tr>

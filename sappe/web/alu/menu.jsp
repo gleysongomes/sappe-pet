@@ -27,9 +27,6 @@
             <a href="../ServletCentral?comando=CmdEditarCadastro">Editar Cadastro</a>
         </li>
         <li>
-            <a href="../ServletCentral?comando=CmdGerarRelatorio">Relatório</a>
-        </li>
-        <li>
             <a href="../ServletCentral?comando=CmdLogout">Sair</a>
         </li>
     </ul>

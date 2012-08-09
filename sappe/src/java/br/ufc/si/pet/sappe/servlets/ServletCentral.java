@@ -8,18 +8,17 @@ import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
 import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
-import br.ufc.si.pet.sappe.comandos.admin.cmdCadastrarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta;
 import br.ufc.si.pet.sappe.comandos.alu.CmdEditarCadastro;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoes;
 import br.ufc.si.pet.sappe.comandos.alu.CmdEditarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdGerarPdfProva;
+import br.ufc.si.pet.sappe.comandos.alu.CmdListarImagesById;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoesExamePadrao;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarCadastroEditado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProvaEditada;
-import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarArquivo;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultado;
 import br.ufc.si.pet.sappe.interfaces.Comando;
@@ -92,8 +91,6 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdSalvarProva", cmdo);
         cmdo = new CmdSalvarProvaEditada();
         comandos.put("CmdSalvarProvaEditada", cmdo);
-        cmdo = new CmdVisualizarArquivo();
-        comandos.put("CmdVisualizarArquivo", cmdo);
         cmdo = new CmdVisualizarProvas();
         comandos.put("CmdVisualizarProvas", cmdo);
         cmdo = new CmdVisualizarResultado();
@@ -102,6 +99,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdSalvarCadastroEditado", cmdo);
         cmdo = new CmdRecuperarSenha();
         comandos.put("CmdRecuperarSenha", cmdo);
+        cmdo = new CmdListarImagesById();
+        comandos.put("CmdListarImagesById", cmdo);
 
         //Administrador
         cmdo = new CmdAdminVisualizarProvas();

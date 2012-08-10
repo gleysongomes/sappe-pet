@@ -7,6 +7,7 @@ package br.ufc.si.pet.sappe.servlets;
 import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
 import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
+import br.ufc.si.pet.sappe.comandos.CmdRedirecionar;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta;
@@ -101,6 +102,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdRecuperarSenha", cmdo);
         cmdo = new CmdListarImagesById();
         comandos.put("CmdListarImagesById", cmdo);
+        cmdo = new CmdRedirecionar();
+        comandos.put("CmdRedirecionar", cmdo);
 
         //Administrador
         cmdo = new CmdAdminVisualizarProvas();

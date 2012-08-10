@@ -4,13 +4,13 @@
  */
 package br.ufc.si.pet.sappe.comandos.alu;
 
+import br.ufc.si.pet.sappe.entidades.Area;
 import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.QuestaoProva;
-import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.interfaces.Comando;
+import br.ufc.si.pet.sappe.service.AreaService;
 import br.ufc.si.pet.sappe.service.ProvaService;
 import br.ufc.si.pet.sappe.service.QuestaoProvaService;
-import br.ufc.si.pet.sappe.service.TipoService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,9 +32,9 @@ public class CmdVisualizarResultado implements Comando {
         List<QuestaoProva> qPs = qpS.getListQuestaoProvaById(id);
         hS.setAttribute("qPs2", qPs);
         Prova p = pS.getProvaById(id);
-        TipoService tS = new TipoService();
-        Tipo tipo = tS.getTipoById(p.getTipo_id());
-        hS.setAttribute("tipoProva2", tipo.getNome());
+        AreaService aS = new AreaService();
+        Area area = aS.getAreaById(p.getArea_id());
+        hS.setAttribute("tipoProva2", area.getNome());
         return "/alu/visualizar_resultado.jsp";
     }
 }

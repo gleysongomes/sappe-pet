@@ -4,12 +4,13 @@
  */
 package br.ufc.si.pet.sappe.comandos.alu;
 
+import br.ufc.si.pet.sappe.entidades.Area;
 import br.ufc.si.pet.sappe.entidades.Perfil;
+import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.Questao;
-import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.interfaces.Comando;
+import br.ufc.si.pet.sappe.service.AreaService;
 import br.ufc.si.pet.sappe.service.QuestaoService;
-import br.ufc.si.pet.sappe.service.TipoService;
 import br.ufc.si.pet.sappe.util.Msg;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +35,12 @@ public class CmdListarQuestoes implements Comando {
         DateTime hI = new DateTime();
         QuestaoService qS = new QuestaoService();
         Perfil perfil = (Perfil) hS.getAttribute("user");
-        int idUser = perfil.getUsuario().getId().intValue();
-        List<Questao> subListaDeQuestoes = qS.getListQuestoesByArea(idArea.intValue(), idUser, nq);
+        Long u = perfil.getUsuario().getId();
+        Prova prova = new Prova();
+        prova.setArea_id(idArea);
+        prova.setUsuario_id(u);
+        prova.setNumero_questoes(nq);
+        List<Questao> subListaDeQuestoes = qS.getListQuestoesByArea(prova);
         System.out.println("====++" + subListaDeQuestoes.size());
         if (nq == 0) {
             return Mensagens(request, caminho, "Selecione uma opção.");
@@ -45,10 +50,10 @@ public class CmdListarQuestoes implements Comando {
             return Mensagens(request, caminho, Msg.msg2);
         } else {
             hS.setAttribute("subListaDeQuestoes", subListaDeQuestoes);
-            hS.setAttribute("hi", hI);
-            TipoService tS = new TipoService();
-            Tipo tipo = tS.getTipoById(idArea);
-            hS.setAttribute("tipo", tipo);
+            hS.setAttribute("hI", hI);
+            AreaService aS = new AreaService();
+            Area a = aS.getAreaById(idArea);
+            hS.setAttribute("area", a);
             hS.setAttribute("oP", nq);
             return "/alu/listar_questoes.jsp";
         }

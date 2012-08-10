@@ -8,10 +8,10 @@
     <div id="menu">
         <ul id="nav" >
             <li>
-                <a href="index.jsp">Home</a>
+                <a href="ServletCentral?comando=CmdRedirecionar&url=/index.jsp">Home</a>
             </li>
             <li>
-                <a href="cadastro.jsp">Cadastro</a>
+                <a href="ServletCentral?comando=CmdRedirecionar&url=/cadastro.jsp">Cadastro</a>
             </li>
         </ul>
     </div>

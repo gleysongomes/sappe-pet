@@ -5,9 +5,11 @@
 package br.ufc.si.pet.sappe.service;
 
 import br.ufc.si.pet.sappe.dao.QuestaoDAO;
+import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,9 +52,9 @@ public class QuestaoService {
      *
      * @return
      */
-    public ArrayList<Questao> getListQuestoesByArea(int idArea,int idUser, int n) {
+    public ArrayList<Questao> getListQuestoesByArea(Prova prova) {
         try {
-            ArrayList<Questao> questaos = questaoDAO.getListQuestoesByArea(idArea,idUser, n);
+            ArrayList<Questao> questaos = questaoDAO.getListQuestoesByArea(prova);
             System.out.println("-------"+questaos.size());
             return questaos;
         } catch (SQLException ex) {

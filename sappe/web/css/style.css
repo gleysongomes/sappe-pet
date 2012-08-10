@@ -93,7 +93,7 @@ a.button2:hover{
     text-align: center;
 }
 
-.datatableHeader{
+.tabela{
     background-color:#0069AA;
     color:white;
     font-size:12pt;
@@ -130,7 +130,7 @@ a.button2:hover{
 #footer{
     clear:both;
     width: 920px;
-    height: 170px;
+    height: 140px;
     padding: 0 20px;
     color: #555;
     background: #E6E9E9;

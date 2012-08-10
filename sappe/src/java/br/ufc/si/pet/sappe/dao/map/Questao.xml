@@ -33,12 +33,12 @@
         FROM sappe.questao
         WHERE id = #var# ORDER BY id;
     </select>
-    
-    <select id="getListQuestoesByArea" resultClass="questao" parameterClass="integer" resultMap="questaoResult">
+
+    <select id="getListQuestoesByArea" resultClass="questao" parameterClass="prova" resultMap="questaoResult">
         SELECT *
-        FROM sappe.questao WHERE #id# IN ((SELECT id FROM sappe.questao WHERE area_id=1)
+        FROM sappe.questao WHERE id IN ((SELECT id FROM sappe.questao WHERE area_id=#area_id#)
         EXCEPT
-        (SELECT questao_id FROM sappe.questao_prova as qp WHERE EXISTS(SELECT id FROM sappe.prova as p WHERE qp.prova_id=#id# AND p.usuario_id=2)))
+        (SELECT questao_id FROM sappe.questao_prova as qp WHERE EXISTS(SELECT id FROM sappe.prova as p WHERE qp.prova_id=id AND p.usuario_id=#usuario_id#))) ORDER BY random() LIMIT #numero_questoes#;
     </select>
 
     <!--<select id="getListQuestoesByArea" resultClass="questao" parameterClass="long" resultMap="questaoResult">

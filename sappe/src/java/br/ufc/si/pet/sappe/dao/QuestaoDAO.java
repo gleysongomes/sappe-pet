@@ -5,9 +5,11 @@
 package br.ufc.si.pet.sappe.dao;
 
 import br.ufc.si.pet.sappe.dao.config.PostGresMapConfig;
+import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -23,7 +25,7 @@ public class QuestaoDAO {
         return (Questao) PostGresMapConfig.getSqlMapClient().queryForObject("getQuestaoById", id);
     }
 
-    public ArrayList<Questao> getListQuestoesByArea(int idArea, int idUser, int n) throws SQLException {
-        return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getListQuestoesByArea", idArea, idUser, n);
+    public ArrayList<Questao> getListQuestoesByArea(Prova prova) throws SQLException {
+        return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getListQuestoesByArea", prova);
     }
 }

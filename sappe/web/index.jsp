@@ -25,11 +25,12 @@
                     <div align="center">
                         <form action="ServletCentral" method="POST">
                             <input type="hidden" name="comando" value="CmdLogin" />
+                            <%@include file="error.jsp" %>
                             <div id="">
                                 <label>Login:</label><br/>
                                 <input type="text" name="login" value="" size="20"/><br/>
                                 <label>Senha:</label><br/>
-                                <input type="password" name="senha" value="" size="20"/><br/><br/>
+                                <input type="password" name="senha" value="" size="20"/><br/>
                                 <label>Conta:</label><br/>
                                 <select name="conta" style="width: 180px;">
                                     <option value="0">Selecione</option>
@@ -37,7 +38,7 @@
                                     <option value="admin">Administrador</option>
                                 </select>
                             </div>
-                            <br />
+                            <br /><br />
                             <table border="0">
                                 <thead>
                                     <tr>
@@ -50,7 +51,6 @@
                                 </thead>
                             </table>
                         </form>
-                        <br /><br />
                         <p><a style="font-size: small" href="recuperar_senha.jsp">Esqueceu a senha?</a></p>
                     </div>
                 </div>

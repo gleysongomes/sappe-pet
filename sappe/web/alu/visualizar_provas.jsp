@@ -4,8 +4,8 @@
     Author     : gleyson
 --%>
 
-<%@page import="br.ufc.si.pet.sappe.service.TipoService"%>
-<%@page import="br.ufc.si.pet.sappe.entidades.Tipo"%>
+<%@page import="br.ufc.si.pet.sappe.service.AreaService"%>
+<%@page import="br.ufc.si.pet.sappe.entidades.Area"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.Prova"%>
 <%@page import="java.util.List"%>
 
@@ -33,20 +33,20 @@
                     <table>
                         <thead>
                             <tr>
-                                <th class="datatableHeader">Prova</th>
-                                <th class="datatableHeader">Ações</th>
+                                <th class="tabela">Prova</th>
+                                <th class="tabela">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <%
                                         List<Prova> provas = (List<Prova>) session.getAttribute("provas");
                                         for (Prova p : provas) {
-                                            TipoService tS = new TipoService();
-                                            Tipo tipo = tS.getTipoById(p.getTipo_id());
+                                            AreaService tS = new AreaService();
+                                            Area area = tS.getAreaById(p.getArea_id());
                             %>
                             <tr>
                                 <td>
-                                    <%= tipo.getNome()%> - <%= p.getData()%>
+                                    <%= area.getNome()%> - <%= p.getData()%>
                                 </td>
                                 <td><a href="../ServletCentral?comando=CmdEditarProva&id=<%= p.getId()%>">Refazer Prova</a>/<a href="../ServletCentral?comando=CmdVisualizarResultado&id=<%= p.getId()%>">Visualizar Resultado</a></td>
                             </tr>

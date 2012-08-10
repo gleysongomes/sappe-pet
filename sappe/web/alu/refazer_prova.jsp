@@ -38,6 +38,8 @@
                 <div id="bh"></div>
                 <form name="rP" action="../ServletCentral" method="post">
                     <input type="hidden" name="comando" value="CmdSalvarProvaEditada" />
+                    <%@include file="../error.jsp" %>
+
                     <%
                                 int itemIncr = 0;
                                 List<QuestaoProva> qPs = (List<QuestaoProva>) session.getAttribute("qPs");
@@ -57,13 +59,14 @@
                         </thead>
                     </table>
                     <br /><br /><br />
-                    <%itemIncr++;}%>
+                    <%itemIncr++;
+                                }%>
                     <br /><br />
                     <table border="0">
                         <thead>
                             <tr>
                                 <th><input type="submit" value="Enviar" name="Enviar" class="button"/></th>
-                                <th width="100px"><input type="reset" value="Cancelar" name="Cancelar" class="button"/></th>
+                                <th width="100px"><a href=""><input type="button" value="Voltar" name="Voltar" class="button"/></a></th>
                             </tr>
                         </thead>
                     </table>

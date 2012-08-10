@@ -29,7 +29,7 @@
                     <input type="hidden" name="id" value="7" />
                     <input type="hidden" name="nQ" value="70" />
                     <input type="hidden" name="caminho" value="/alu/poscomp_padrao.jsp" />
-                    <%@include file="/error.jsp" %>
+                    <%@include file="../error.jsp" %>
                     <label style="font: caption; font-size: 15px;">Selecione o ano da prova:<select name="ano">
                             <option value="0">Selecione</option>
                             <option value="2002">2002</option>

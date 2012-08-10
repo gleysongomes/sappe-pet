@@ -5,14 +5,15 @@
 package br.ufc.si.pet.sappe.comandos.alu;
 
 import br.ufc.si.pet.sappe.entidades.Aluno;
+import br.ufc.si.pet.sappe.entidades.Area;
 import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoProva;
-import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.ProvaService;
 import br.ufc.si.pet.sappe.service.QuestaoProvaService;
 import br.ufc.si.pet.sappe.util.Util;
+import com.ibatis.sqlmap.client.SqlMapException;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -29,26 +30,29 @@ public class CmdSalvarProva implements Comando {
     public String executa(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession hS = request.getSession(true);
+
         try {
             List<Questao> questoes = (List<Questao>) hS.getAttribute("subListaDeQuestoes");
-            Tipo tipo = (Tipo) hS.getAttribute("tipo");
+            Area area = (Area) hS.getAttribute("area");
             DateTime hI = (DateTime) hS.getAttribute("hI");
             Integer nQ = (Integer) hS.getAttribute("oP");
             Aluno a = (Aluno) hS.getAttribute("user");
             int i, resolvidas = 0, brancas = 0, certas = 0, erradas = 0;
             for (i = 0; i < nQ; i++) {
                 String itemEscolhido = (String) request.getParameter("iM" + i);
-                if (itemEscolhido == null)
+                if (itemEscolhido == null) {
                     brancas++;
-                else if (itemEscolhido.equals(questoes.get(i).getItem()))
-                {certas++;resolvidas++;}
-                else
-                {erradas++;resolvidas++;}
+                } else if (itemEscolhido.equals(questoes.get(i).getItem())) {
+                    certas++;
+                    resolvidas++;
+                } else {
+                    erradas++;
+                    resolvidas++;
+                }
             }
-
             DateTime dT = new DateTime();
             Prova prova = new Prova();
-            prova.setTipo_id(tipo.getId());
+            prova.setArea_id(area.getId());
             prova.setUsuario_id(a.getUsuario().getId());
             prova.setNumero_questoes(nQ);
             prova.setRespondidas(resolvidas);
@@ -59,9 +63,7 @@ public class CmdSalvarProva implements Comando {
             prova.setData(Util.treatToString(new Date()));
             ProvaService pS = new ProvaService();
             pS.inserir(prova);
-            //System.out.println("="+prova.getId());
             QuestaoProvaService qpS = new QuestaoProvaService();
-            //List<Questao> questoes = (List<Questao>) hS.getAttribute("subListaDeQuestoes");
             int count = 0, status;
             for (Questao questao : questoes) {
                 String iM = (String) request.getParameter("iM" + count);
@@ -76,9 +78,15 @@ public class CmdSalvarProva implements Comando {
                 count++;
             }
             hS.setAttribute("sucesso", "Prova salva com sucesso.");
-        } catch (Error e) {
+        } catch (SqlMapException e) {
             e.printStackTrace();
             hS.setAttribute("erro", "Erro ao tentar salvar a prova.");
+        } catch (NullPointerException npe) {
+            hS.setAttribute("erro", "Erro ao tentar salvar a prova.");
+            npe.printStackTrace();
+        } catch (Exception e) {
+            hS.setAttribute("erro", "Erro ao tentar salvar a prova.");
+            e.printStackTrace();
         }
         return "/alu/listar_questoes.jsp";
     }

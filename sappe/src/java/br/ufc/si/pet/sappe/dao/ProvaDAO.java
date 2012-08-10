@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class ProvaDAO {
 
     public void inserir(Prova p) throws SQLException {
-   //     p.setId(proxId());
+        p.setId(proxId());
         PostGresMapConfig.getSqlMapClient().insert("addProva", p);
     }
 

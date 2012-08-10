@@ -17,12 +17,13 @@
         <result property="id" column="id"/>
         <result property="ano" column="ano"/>
         <result property="tpid" column="tpid"/>
+        <result property="ide" column="ide"/>
         <result property="qtdq" column="qtdq"/>
     </resultMap>
 
     <insert id="addUtility" parameterClass="utility" >
-        INSERT INTO sappe.utility(id, ano, tpid, qtdq)
-        VALUES (#id#, #ano#, #tpid#, #qtdq#);
+        INSERT INTO sappe.utility(id, ano, tpid, ide, qtdq)
+        VALUES (#id#, #ano#, #tpid#, #ide#, #qtdq#);
     </insert>
 
 </sqlMap>

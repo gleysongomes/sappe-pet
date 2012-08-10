@@ -29,6 +29,7 @@ public class CmdListarQuestoes implements Comando {
 
         HttpSession hS = request.getSession(true);
         Long id = Long.parseLong(request.getParameter("id"));
+        Long ide = Long.parseLong(request.getParameter("ide"));
         Integer nq = Integer.parseInt(request.getParameter("nQ"));
         String caminho = request.getParameter("caminho");
 
@@ -40,6 +41,7 @@ public class CmdListarQuestoes implements Comando {
         utility.setTpid(id);
         utility.setId(u);
         utility.setQtdq(nq);
+        utility.setIde(ide);
         List<Questao> subListaDeQuestoes = qS.getListQuestoesByArea(utility);
         System.out.println("====++" + subListaDeQuestoes.size());
         if (nq == 0) {

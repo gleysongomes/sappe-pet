@@ -13,6 +13,15 @@ public class Utility extends Bean {
     private String ano;
     private int qtdq;
     private Long tpid;
+    private Long ide;
+
+    public Long getIde() {
+        return ide;
+    }
+
+    public void setIde(Long ide) {
+        this.ide = ide;
+    }
 
     public Long getTpid() {
         return tpid;

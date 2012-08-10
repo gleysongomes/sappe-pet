@@ -27,6 +27,7 @@
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdListarQuestoesExamePadrao" />
                     <input type="hidden" name="id" value="7" />
+                    <input type="hidden" name="ide" value="7" />
                     <input type="hidden" name="nQ" value="70" />
                     <input type="hidden" name="caminho" value="/alu/poscomp_padrao.jsp" />
                     <%@include file="../error.jsp" %>

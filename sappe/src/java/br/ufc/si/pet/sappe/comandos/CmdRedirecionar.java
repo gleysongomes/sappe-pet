@@ -22,20 +22,9 @@ public class CmdRedirecionar implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
         HttpSession session = request.getSession(true);
-        try {
-            String str = request.getParameter("url");
-            session.removeAttribute("sucesso");
-            session.removeAttribute("erro");
-            Perfil perfil = (Perfil) session.getAttribute("user");
-            if (perfil != null)
-                return str;
-            else{
-                session.setAttribute("erro", "Faça login novamente.");
-                return "/index.jsp";
-            }
-        } catch (NullPointerException npe) {
-            npe.printStackTrace();
-            return "/index.jsp";
-        }
+        String str = request.getParameter("url");
+        session.removeAttribute("sucesso");
+        session.removeAttribute("erro");
+        return str;
     }
 }

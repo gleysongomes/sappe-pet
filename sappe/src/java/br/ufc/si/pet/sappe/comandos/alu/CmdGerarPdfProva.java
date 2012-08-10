@@ -5,14 +5,14 @@
 package br.ufc.si.pet.sappe.comandos.alu;
 
 import br.ufc.si.pet.sappe.entidades.Aluno;
-import br.ufc.si.pet.sappe.entidades.Area;
 import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.QuestaoProva;
+import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.AlunoService;
-import br.ufc.si.pet.sappe.service.AreaService;
 import br.ufc.si.pet.sappe.service.QuestaoProvaService;
+import br.ufc.si.pet.sappe.service.TipoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.Util;
 import com.lowagie.text.Document;
@@ -81,9 +81,9 @@ public class CmdGerarPdfProva implements Comando {
             Usuario u = uS.getUsuarioById(alu.getUsuario().getId());
             String nome = u.getNome();
             String conteudo[] = nome.split(" ");
-            AreaService areaService = new AreaService();
-            Area area = areaService.getAreaById(prova.getArea_id());
-            es.addCell(new Phrase(area.getNome() + "           "
+            TipoService tipoService = new TipoService();
+            Tipo tipo = tipoService.getTipoById(prova.getTipo_id());
+            es.addCell(new Phrase(tipo.getNome() + "           "
                     + "                    " + "Nome: " + conteudo[0]
                     + "       "
                     + "Data: " + Util.treatToString(new Date()), fonteDesc));

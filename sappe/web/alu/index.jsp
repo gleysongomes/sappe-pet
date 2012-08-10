@@ -25,7 +25,7 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="/alu/menu.jsp" %>
+            <%@include file="../alu/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
                 <label><h2 class="titulo2">Bem-vindo: <%= alu.getUsuario().getNome()%></h2></label><br /><br /><br />

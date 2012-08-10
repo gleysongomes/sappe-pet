@@ -14,7 +14,7 @@
 <sqlMap namespace="Prova">
     <resultMap id="provaResult" class="prova">
         <result property="id" column="id"/>
-        <result property="area_id" column="area_id"/>
+        <result property="tipo_id" column="tipo_id"/>
         <result property="usuario_id" column="usuario_id"/>
         <result property="numero_questoes" column="numero_questoes"/>
         <result property="respondidas" column="respondidas"/>
@@ -26,8 +26,8 @@
     </resultMap>
 
     <insert id="addProva" parameterClass="prova">
-        INSERT INTO sappe.prova(id, area_id,usuario_id, numero_questoes, respondidas, brancas, tempo_prova, data, certas, erradas)
-        VALUES (#id#, #area_id#, #usuario_id#, #numero_questoes#, #respondidas#, #brancas#, #tempo_prova#, #data#, #certas#, #erradas#);
+        INSERT INTO sappe.prova(id, tipo_id,usuario_id, numero_questoes, respondidas, brancas, tempo_prova, data, certas, erradas)
+        VALUES (#id#, #tipo_id#, #usuario_id#, #numero_questoes#, #respondidas#, #brancas#, #tempo_prova#, #data#, #certas#, #erradas#);
     </insert>
 
     <update id="updateProva" parameterClass="prova">
@@ -57,7 +57,7 @@
     <select id="getProvaByTipoId" resultClass="prova" parameterClass="long" resultMap="provaResult">
         SELECT *
         FROM sappe.prova
-        WHERE area_id = #var# ORDER BY id;
+        WHERE tipo_id = #var# ORDER BY id;
     </select>
 
     <select id="getAllListProvas" resultClass="prova" parameterClass="long" resultMap="provaResult">

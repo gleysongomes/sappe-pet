@@ -33,6 +33,7 @@
                     <label style="font: caption; font-size: 15px;">Selecione o ano da prova:<select name="ano">
                             <option value="0">Selecione</option>
                             <option value="2002">2002</option>
+                            <option value="2008">2008</option>
                         </select>
                     </label>
                     <input type="submit" value="Buscar" name="Buscar" class="button3"/>

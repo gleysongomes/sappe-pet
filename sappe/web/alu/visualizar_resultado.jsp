@@ -31,7 +31,7 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="/alu/menu.jsp" %>
+            <%@include file="../alu/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
                 <label><h3 class="titulo2"><%=tipoProva2%></h3></label><br /><br /><br />
@@ -101,7 +101,7 @@
             </div>
             <div id="direita"></div>
             <div id="footer">
-                <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
+                <center><img alt="Logoarea UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
             </div>
         </div>

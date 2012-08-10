@@ -25,6 +25,7 @@
     <typeAlias alias="papel" type="br.ufc.si.pet.sappe.entidades.Papel"/>
     <typeAlias alias="perfil" type="br.ufc.si.pet.sappe.entidades.Perfil"/>
     <typeAlias alias="tipo" type="br.ufc.si.pet.sappe.entidades.Tipo"/>
+    <typeAlias alias="utility" type="br.ufc.si.pet.sappe.entidades.Utility"/>
 
     <!--configuration-->
     <transactionManager type="JDBC">

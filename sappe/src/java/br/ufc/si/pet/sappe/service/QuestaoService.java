@@ -5,11 +5,10 @@
 package br.ufc.si.pet.sappe.service;
 
 import br.ufc.si.pet.sappe.dao.QuestaoDAO;
-import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.Questao;
+import br.ufc.si.pet.sappe.entidades.Utility;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,9 +27,9 @@ public class QuestaoService {
         questaoDAO = new QuestaoDAO();
     }
 
-    public ArrayList<Questao> getListQuestoes(Long id) {
+    public ArrayList<Questao> getListQuestoes(Utility utility) {
         try {
-            ArrayList<Questao> questaos = questaoDAO.getListQuestoes(id);
+            ArrayList<Questao> questaos = questaoDAO.getListQuestoes(utility);
             return questaos;
         } catch (SQLException ex) {
             Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,10 +51,10 @@ public class QuestaoService {
      *
      * @return
      */
-    public ArrayList<Questao> getListQuestoesByArea(Prova prova) {
+    public ArrayList<Questao> getListQuestoesByArea(Utility utility) {
         try {
-            ArrayList<Questao> questaos = questaoDAO.getListQuestoesByArea(prova);
-            System.out.println("-------"+questaos.size());
+            ArrayList<Questao> questaos = questaoDAO.getListQuestoesByArea(utility);
+            System.out.println("-------"+utility.getQtdq());
             return questaos;
         } catch (SQLException ex) {
             Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);

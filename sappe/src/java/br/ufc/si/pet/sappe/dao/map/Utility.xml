@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Utility.xml
+    Created on : 10 de Agosto de 2012, 13:48
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="utility">
+
+    <resultMap id="utilityResult" class="utility">
+        <result property="id" column="id"/>
+        <result property="ano" column="ano"/>
+        <result property="tpid" column="tpid"/>
+        <result property="qtdq" column="qtdq"/>
+    </resultMap>
+
+    <insert id="addUtility" parameterClass="utility" >
+        INSERT INTO sappe.utility(id, ano, tpid, qtdq)
+        VALUES (#id#, #ano#, #tpid#, #qtdq#);
+    </insert>
+
+</sqlMap>

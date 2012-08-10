@@ -18,7 +18,7 @@
         <result property="nome" column="nome"/>
     </resultMap>
 
-    <select id="getExameById" resultClass="exame" parameterClass="integer" resultMap="exameResult">
+    <select id="getExameById" resultClass="exame" parameterClass="long" resultMap="exameResult">
         SELECT *
         FROM sappe.exame
         WHERE id = #var#;

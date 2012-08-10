@@ -30,7 +30,7 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="/alu/menu.jsp" %>
+            <%@include file="../alu/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
                 <label><h3 class="titulo2"><%=tipo.getNome()%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarPdfProva"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label>
@@ -59,8 +59,7 @@
                         </thead>
                     </table>
                     <br /><br /><br />
-                    <%itemIncr++;
-                                }%>
+                    <%itemIncr++;}%>
                     <br /><br />
                     <table border="0">
                         <thead>
@@ -74,7 +73,7 @@
             </div>
             <div id="direita"></div>
             <div id="footer">
-                <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
+                <center><img alt="LogoArea UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
             </div>
         </div>

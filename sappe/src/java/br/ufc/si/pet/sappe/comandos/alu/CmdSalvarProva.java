@@ -5,7 +5,7 @@
 package br.ufc.si.pet.sappe.comandos.alu;
 
 import br.ufc.si.pet.sappe.entidades.Aluno;
-import br.ufc.si.pet.sappe.entidades.Area;
+import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoProva;
@@ -33,7 +33,7 @@ public class CmdSalvarProva implements Comando {
 
         try {
             List<Questao> questoes = (List<Questao>) hS.getAttribute("subListaDeQuestoes");
-            Area area = (Area) hS.getAttribute("area");
+            Tipo tipo = (Tipo) hS.getAttribute("tipo");
             DateTime hI = (DateTime) hS.getAttribute("hI");
             Integer nQ = (Integer) hS.getAttribute("oP");
             Aluno a = (Aluno) hS.getAttribute("user");
@@ -52,7 +52,7 @@ public class CmdSalvarProva implements Comando {
             }
             DateTime dT = new DateTime();
             Prova prova = new Prova();
-            prova.setArea_id(area.getId());
+            prova.setTipo_id(tipo.getId());
             prova.setUsuario_id(a.getUsuario().getId());
             prova.setNumero_questoes(nQ);
             prova.setRespondidas(resolvidas);

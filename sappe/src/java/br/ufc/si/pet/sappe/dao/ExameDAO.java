@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author gleyson
  */
 public class ExameDAO {
- public Exame getExameById(Integer id) throws SQLException {
+ public Exame getExameById(Long id) throws SQLException {
         return (Exame) PostGresMapConfig.getSqlMapClient().queryForObject("getExameById", id);
     }
 

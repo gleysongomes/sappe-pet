@@ -4,7 +4,6 @@
  */
 package br.ufc.si.pet.sappe.comandos;
 
-import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import java.io.IOException;
 import java.sql.SQLException;

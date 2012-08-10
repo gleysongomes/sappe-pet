@@ -18,15 +18,7 @@ public class Prova extends Bean {
     private Integer numero_questoes;
     private int respondidas;
     private String tempo_prova;
-    private Long area_id;
-
-    public Long getArea_id() {
-        return area_id;
-    }
-
-    public void setArea_id(Long area_id) {
-        this.area_id = area_id;
-    }
+    private Long tipo_id;
     private Long usuario_id;
 
     public int getBrancas() {
@@ -60,7 +52,6 @@ public class Prova extends Bean {
     public void setNome_arquivo(String nome_arquivo) {
         this.nome_arquivo = nome_arquivo;
     }
-
 
     public Integer getErradas() {
         return erradas;
@@ -100,5 +91,13 @@ public class Prova extends Bean {
 
     public void setUsuario_id(Long usuario_id) {
         this.usuario_id = usuario_id;
+    }
+
+    public Long getTipo_id() {
+        return tipo_id;
+    }
+
+    public void setTipo_id(Long tipo_id) {
+        this.tipo_id = tipo_id;
     }
 }

@@ -25,7 +25,7 @@ public class ExameService {
         exameDAO = new ExameDAO();
     }
 
-    public Exame getExameById(Integer id) {
+    public Exame getExameById(Long id) {
         try {
             Exame e = exameDAO.getExameById(id);
             return e;

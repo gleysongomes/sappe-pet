@@ -19,7 +19,7 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="/alu/menu2.jsp" %>
+            <%@include file="../alu/menu2.jsp" %>
             <div id="direita"></div>
             <div id="meio">
                 <label><h2 class="titulo">Realizar Prova</h2></label><br /><br /><br />

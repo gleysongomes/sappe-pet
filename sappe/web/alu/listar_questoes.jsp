@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="br.ufc.si.pet.sappe.util.Util"%>
-<%@page import="br.ufc.si.pet.sappe.entidades.Area"%>
+<%@page import="br.ufc.si.pet.sappe.entidades.Tipo"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.Questao"%>
 <%@page import="java.util.List"%>
 
@@ -13,7 +13,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 tdansitional//EN"
     "http://www.w3.org/td/html4/loose.dtd">
 <%
-            Area area = (Area) session.getAttribute("area");
+            Tipo tipo = (Tipo) session.getAttribute("tipo");
 %>
 
 <html>
@@ -28,10 +28,10 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="/alu/menu.jsp" %>
+            <%@include file="../alu/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
-                <label><h3 class="titulo2"><%=area.getNome()%></h3></label><br /><br /><br />
+                <label><h3 class="titulo2"><%=tipo.getNome()%></h3></label><br /><br /><br />
                 <div id="bh"></div>
                 <form id="lsQ" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSalvarProva" />

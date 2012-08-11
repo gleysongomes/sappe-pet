@@ -7,11 +7,13 @@ package br.ufc.si.pet.sappe.comandos.alu;
 import br.ufc.si.pet.sappe.entidades.Area;
 import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Questao;
+import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.AreaService;
 import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.util.Msg;
 import br.ufc.si.pet.sappe.entidades.Utility;
+import br.ufc.si.pet.sappe.service.TipoService;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
@@ -52,9 +54,9 @@ public class CmdListarQuestoesExamePadrao implements Comando {
         } else {
             hS.setAttribute("subListaDeQuestoes", subListaDeQuestoes);
             hS.setAttribute("hI", hI);
-            AreaService aS = new AreaService();
-            Area a = aS.getAreaById(id);
-            hS.setAttribute("area", a);
+            TipoService aS = new TipoService();
+            Tipo t = aS.getTipoById(id);
+            hS.setAttribute("tipo", t);
             hS.setAttribute("oP", nq);
             return "/alu/listar_questoes.jsp";
         }

@@ -113,7 +113,7 @@ public class CmdGerarRelatorio implements Comando {
                 rs.next();
                 int aid = rs.getInt(1);
                 String item = rs.getString(2);
-                String itemCerto = qP.getItem_marcado().trim();
+                String itemCerto = qP.getItem_marcado();
                 switch (aid) {
                     case 1:
                         if (igual(itemCerto, item)) {
@@ -159,15 +159,15 @@ public class CmdGerarRelatorio implements Comando {
                         + ":\nQuestões Certas: " + pmat
                         + ".\nQuestões Erradas: " + (20 - pmat)
                         + ".\nPercentual de Acerto: " + 100 * pmat / 20 + "%"
-                        + ".\nQuestões de Funamentos da Computação"
+                        + ".\n\nQuestões de Fundamentos da Computação"
                         + ":\nQuestões Certas: " + pfuncomp
                         + ".\nQuestões Erradas: " + (30 - pfuncomp)
                         + ".\nPercentual de Acerto: " + 100 * pmat / 30 + "%"
-                        + ".\nQuestões de Tecnolgia da Computação"
+                        + ".\n\nQuestões de Tecnolgia da Computação"
                         + ":\nQuestões Certas: " + ptecomp
                         + ".\nQuestões Erradas: " + (20 - pfuncomp)
                         + ".\nPercentual de Acerto: " + 100 * pmat / 20 + "%"
-                        + ".\nPercentual de Acerto Geral: " + 100 * (pmat + pfuncomp + ptecomp) / 70 + "%"
+                        + ".\n\nPercentual de Acerto Geral: " + 100 * (pmat + pfuncomp + ptecomp) / 70 + "%"
                         + ".\n", fonteConteudo));
             } else if (tpid.intValue() == 8) {
             }

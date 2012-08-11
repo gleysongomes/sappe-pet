@@ -15,6 +15,7 @@ import br.ufc.si.pet.sappe.comandos.alu.CmdEditarCadastro;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoes;
 import br.ufc.si.pet.sappe.comandos.alu.CmdEditarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdGerarPdfProva;
+import br.ufc.si.pet.sappe.comandos.alu.CmdGerarRelatorio;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarImagesById;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoesExamePadrao;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarCadastroEditado;
@@ -104,6 +105,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdListarImagesById", cmdo);
         cmdo = new CmdRedirecionar();
         comandos.put("CmdRedirecionar", cmdo);
+        cmdo = new CmdGerarRelatorio();
+        comandos.put("CmdGerarRelatorio", cmdo);
 
         //Administrador
         cmdo = new CmdAdminVisualizarProvas();

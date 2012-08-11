@@ -9,10 +9,6 @@
         <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminCorrigirProva</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CmdGerarRelatorio</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdGerarRelatorio</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CmdRealizarPoscompPadrao</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdRealizarPoscompPadrao</servlet-class>
     </servlet>
@@ -76,6 +72,10 @@
         <servlet-name>CmdRedirecionar</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.CmdRedirecionar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdGerarRelatorio</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdGerarRelatorio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -87,10 +87,6 @@
     <servlet-mapping>
         <servlet-name>CmdCorrigirQuestoes</servlet-name>
         <url-pattern>/CmdCorrigirQuestoes</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CmdGerarRelatorio</servlet-name>
-        <url-pattern>/CmdGerarRelatorio</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CmdEditarCadastro</servlet-name>
@@ -147,6 +143,10 @@
     <servlet-mapping>
         <servlet-name>CmdRedirecionar</servlet-name>
         <url-pattern>/CmdRedirecionar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdGerarRelatorio</servlet-name>
+        <url-pattern>/CmdGerarRelatorio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -11,6 +11,7 @@ import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.AlunoService;
+import br.ufc.si.pet.sappe.service.ProvaService;
 import br.ufc.si.pet.sappe.service.QuestaoProvaService;
 import br.ufc.si.pet.sappe.service.TipoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
@@ -24,7 +25,6 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -39,15 +39,15 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author welligton
+ * @author gleyson
  */
-public class CmdGerarPdfProva implements Comando {
+public class CmdGerarRelatorio implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession hS = request.getSession(true);
-        Prova prova = (Prova) hS.getAttribute("prova2");
         try {
+            Long id = Long.parseLong(request.getParameter("id"));
             response.setContentType("application/pdf");
             Document document = new Document();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -79,6 +79,9 @@ public class CmdGerarPdfProva implements Comando {
             es.setWidthPercentage(100);
             es.setWidths(width);
             es.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
+            ProvaService provaService = new ProvaService();
+            Prova prova = provaService.getProvaById(id);
+            Long tpid = prova.getTipo_id();
             Aluno a = (Aluno) hS.getAttribute("user");
             AlunoService aS = new AlunoService();
             Aluno alu = aS.getAlunoByUsuarioId(a.getId());
@@ -88,10 +91,10 @@ public class CmdGerarPdfProva implements Comando {
             String conteudo[] = nome.split(" ");
             TipoService tipoService = new TipoService();
             Tipo tipo = tipoService.getTipoById(prova.getTipo_id());
-            es.addCell(new Phrase(tipo.getNome() + "           "
-                    + "                    " + "Nome: " + conteudo[0]
-                    + "       "
-                    + "Data: " + Util.treatToString(new Date()), fonteDesc));
+            es.addCell(new Phrase("Relatório da " + tipo.getNome()
+                    + ".\nNome: " + conteudo[0]
+                    + ".\nData: " + Util.treatToString(new Date())
+                    + ".\n", fonteDesc));
             document.add(es);
             PdfPTable table = new PdfPTable(1);
             table.setWidthPercentage(100);
@@ -102,31 +105,79 @@ public class CmdGerarPdfProva implements Comando {
             Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
             QuestaoProvaService qpS = new QuestaoProvaService();
             List<QuestaoProva> qPs = qpS.getListQuestaoProvaById(prova.getId());
-            int count = 1;
+            int count = 1, pmat = 0, pfuncomp = 0, ptecomp = 0, esi = 0, ens = 0, ecg = 0;
             for (QuestaoProva qP : qPs) {
-                table.addCell(new Phrase("\nQuestão " + count + ":\n", fonteDesc));
-                PreparedStatement pS = conn.prepareStatement("SELECT arquivo FROM sappe.questao WHERE id=?");
+                PreparedStatement pS = conn.prepareStatement("SELECT area_id, item FROM sappe.questao WHERE id=?");
                 pS.setLong(1, qP.getQuestao_id());
                 ResultSet rs = pS.executeQuery();
                 rs.next();
-                InputStream in = rs.getBinaryStream(1);
-                byte[] arqBytes = new byte[in.available()];
-                in.read(arqBytes, 0, in.available());
-                Image jpg2 = Image.getInstance(arqBytes);
-                table.addCell(jpg2);
-                table.addCell(new Phrase("\na: ( ) b: ( ) c: ( ) d: ( ) e: ( )\n", fonteConteudo));
+                int aid = rs.getInt(1);
+                String item = rs.getString(2);
+                String itemCerto = qP.getItem_marcado().trim();
+                switch (aid) {
+                    case 1:
+                        if (igual(itemCerto, item)) {
+                            pmat++;
+                        }
+                        break;
+                    case 2:
+                        if (igual(itemCerto, item)) {
+                            pfuncomp++;
+                        }
+                        break;
+                    case 3:
+                        if (igual(itemCerto, item)) {
+                            ptecomp++;
+                        }
+                        break;
+                    case 4:
+                        if (igual(itemCerto, item)) {
+                            esi++;
+                        }
+                        break;
+                    case 5:
+                        if (igual(itemCerto, item)) {
+                            ens++;
+                        }
+                        break;
+                    case 6:
+                        if (igual(itemCerto, item)) {
+                            ecg++;
+                        }
+                }
                 count++;
             }
+
+            if (tpid.intValue() <= 6) {
+                table.addCell(new Phrase("Número de Questões: " + prova.getNumero_questoes()
+                        + ".\nQuestões Respondidas: " + prova.getRespondidas()
+                        + ".\nQuestões Certas: " + prova.getCertas()
+                        + ".\nQuestões Brancas: " + prova.getBrancas()
+                        + ".\nQuestões Erradas: " + prova.getErradas(), fonteConteudo));
+            } else if (tpid.intValue() == 7) {
+                table.addCell(new Phrase("Questões de Matemática"
+                        + ":\nQuestões Certas: " + pmat
+                        + ".\nQuestões Erradas: " + (20 - pmat)
+                        + ".\nPercentual de Acerto: " + 100 * pmat / 20 + "%"
+                        + ".\nQuestões de Funamentos da Computação"
+                        + ":\nQuestões Certas: " + pfuncomp
+                        + ".\nQuestões Erradas: " + (30 - pfuncomp)
+                        + ".\nPercentual de Acerto: " + 100 * pmat / 30 + "%"
+                        + ".\nQuestões de Tecnolgia da Computação"
+                        + ":\nQuestões Certas: " + ptecomp
+                        + ".\nQuestões Erradas: " + (20 - pfuncomp)
+                        + ".\nPercentual de Acerto: " + 100 * pmat / 20 + "%"
+                        + ".\nPercentual de Acerto Geral: " + 100 * (pmat + pfuncomp + ptecomp) / 70 + "%"
+                        + ".\n", fonteConteudo));
+            } else if (tpid.intValue() == 8) {
+            }
+
             document.add(table);
             PdfPTable es2 = new PdfPTable(1);
             float[] width2 = {0.85f};
             es2.setWidthPercentage(100);
             es2.setWidths(width2);
             es2.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-            es2.addCell(new Phrase("\n\n"
-                    + "                                                  "
-                    + "                                "
-                    + "Boa Sorte!!", fonteDesc));
             document.add(es2);
             document.close();
             response.setContentLength(baos.size());
@@ -135,8 +186,8 @@ public class CmdGerarPdfProva implements Comando {
                 out = response.getOutputStream();
             } catch (IOException ex) {
                 ex.printStackTrace();
-                hS.setAttribute("men", "Erro " + ex.getMessage());
-                return "/alu/refazer_prova.jsp";
+                hS.setAttribute("erro", "Erro " + ex.getMessage());
+                return "/alu/visualizar_resultado.jsp";
             }
             try {
                 baos.writeTo(out);
@@ -145,14 +196,18 @@ public class CmdGerarPdfProva implements Comando {
                 conn.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                hS.setAttribute("men", "Erro " + ex.getMessage());
-                return "/alu/refazer_prova.jsp";
+                hS.setAttribute("erro", "Erro " + ex.getMessage());
+                return "/alu/visualizar_resultado.jsp";
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            hS.setAttribute("men", "Erro " + ex.getMessage());
-            return "/alu/refazer_prova.jsp";
+            hS.setAttribute("erro", "Erro " + ex.getMessage());
+            return "/alu/visualizar_resultado.jsp";
         }
-        return "/alu/refazer_prova.jsp";
+        return "/alu/visualizar_resultado.jsp";
+    }
+
+    private boolean igual(String a, String b) {
+        return (a == null ? b == null : a.equals(b)) ? true : false;
     }
 }

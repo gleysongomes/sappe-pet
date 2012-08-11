@@ -16,8 +16,10 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-
             String tipoProva2 = (String) session.getAttribute("tipoProva2");
+            Prova p = (Prova) session.getAttribute("prova");
+            TipoService tS = new TipoService();
+            Tipo tipo = tS.getTipoById(p.getTipo_id());
 %>
 
 <html>
@@ -34,14 +36,15 @@
             <%@include file="../alu/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
-                <label><h3 class="titulo2"><%=tipoProva2%></h3></label><br /><br /><br />
+                <label><h3 class="titulo2"><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h3></label><br /><br /><br />
                 <div id="bh"></div>
+                <%@include file="../error.jsp" %>
                 <%
                             int itemIncr = 0;
                             List<QuestaoProva> qPs = (List<QuestaoProva>) session.getAttribute("qPs2");
                             for (QuestaoProva qp : qPs) {
                 %>
-                <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qp.getQuestao_id() %>" alt="images"/>
+                <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qp.getQuestao_id()%>" alt="images"/>
                 </label><br />
                 <table border="0">
                     <thead>
@@ -59,11 +62,6 @@
                 <%itemIncr++;}%>
                 <br />
                 <h3>Relatório da Prova</h3><br>
-                <%
-                            Prova p = (Prova) session.getAttribute("prova");
-                            TipoService tS = new TipoService();
-                            Tipo tipo = tS.getTipoById(p.getTipo_id());
-                %>
                 <div id="content">
                     <table>
                         <thead>
@@ -81,9 +79,9 @@
                             <tr>
                                 <td><%= tipo.getNome()%></td>
                                 <td><%= p.getRespondidas()%></td>
-                                <td><%= p.getCertas() %></td>
+                                <td><%= p.getCertas()%></td>
                                 <td><%= p.getBrancas()%></td>
-                                <td><%= p.getErradas() %></td>
+                                <td><%= p.getErradas()%></td>
                                 <td><%= p.getTempo_prova()%></td>
                                 <td><%= p.getData()%></td>
                             </tr>

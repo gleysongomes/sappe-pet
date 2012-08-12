@@ -27,7 +27,7 @@
                 <form action="../ServletCentral" method="post" class="login">
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
                     <input type="hidden" name="id" value="4" />
-                    <input type="hidden" name="ide" value="8" />
+                    <input type="hidden" name="ide" value="2" />
                     <input type="hidden" name="caminho" value="/alu/enade_sistemas_informacao.jsp" />
                     <%@include file="../error.jsp" %>
                     <label style="font: caption; font-size: 15px;">Selecione o número de Questões:<select name="nQ">

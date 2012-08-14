@@ -36,7 +36,6 @@ public class ServletAdminAdicionarQuestao extends HttpServlet {
         HttpSession hS = request.getSession(true);
         int eid = 0, aid = 0;
         String ano = "", ic = "";
-
         try {
             DiskFileUpload fu = new DiskFileUpload();
             fu.setSizeMax(1000000);
@@ -47,12 +46,28 @@ public class ServletAdminAdicionarQuestao extends HttpServlet {
                 String id = fi.getFieldName();
                 String valor = fi.getString();
                 if (id.equals("aid")) {
+                    if (valor == null || valor.isEmpty()) {
+                        hS.setAttribute("erro", "Preencha todos os campos (*).");
+                        response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                    }
                     aid = Integer.parseInt(valor);
                 } else if (id.equals("eid")) {
+                    if (valor == null || valor.isEmpty()) {
+                        hS.setAttribute("erro", "Preencha todos os campos (*).");
+                        response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                    }
                     eid = Integer.parseInt(valor);
                 } else if (id.equals("ano")) {
+                    if (valor == null || valor.isEmpty()) {
+                        hS.setAttribute("erro", "Preencha todos os campos (*).");
+                        response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                    }
                     ano = valor;
                 } else if (id.equals("ic")) {
+                    if (valor == null || valor.isEmpty()) {
+                        hS.setAttribute("erro", "Preencha todos os campos (*).");
+                        response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                    }
                     ic = valor;
                 } else if (!fi.isFormField()) {
                     try {
@@ -78,6 +93,7 @@ public class ServletAdminAdicionarQuestao extends HttpServlet {
                         response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
                     } catch (Exception ex) {
                         hS.setAttribute("erro", "Erro ao tentar cadastrar.");
+                        response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
                         ex.printStackTrace();
                     }
                 }

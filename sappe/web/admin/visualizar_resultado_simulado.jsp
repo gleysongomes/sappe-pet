@@ -4,6 +4,7 @@
     Author     : gleyson
 --%>
 
+<%@page import="br.ufc.si.pet.sappe.entidades.Simulado"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.Usuario"%>
 <%@page import="java.util.List"%>
 
@@ -43,7 +44,7 @@
                             %>
                             <tr>
                                 <td><center><%= u.getNome()%></center></td>
-                                <td><center><a href="../ServletCentral?comando=CmdAdminVisualizarDesempenhoAluno&id=<%= u.getId()%>">Visualizar Desempenho</a></center></td>
+                                <td><center><a href="../ServletCentral?comando=CmdAdminVisualizarResultadoSimuladoAluno&id=<%= u.getId()%>">Visualizar Desempenho</a></center></td>
                             </tr>
                             <%}%>
                         </tbody>

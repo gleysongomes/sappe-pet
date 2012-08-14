@@ -12,6 +12,7 @@ import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSimulado;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarDesempenhoAluno;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimulado;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimuladoAluno;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSimulados;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta;
@@ -136,6 +137,9 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdAdminVisualizarResultadoSimulado", cmdo);
         cmdo = new CmdAdminVisualizarDesempenhoAluno();
         comandos.put("CmdAdminVisualizarDesempenhoAluno", cmdo);
+        cmdo = new CmdAdminVisualizarResultadoSimuladoAluno();
+        comandos.put("CmdAdminVisualizarResultadoSimuladoAluno", cmdo);
+
 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

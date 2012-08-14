@@ -112,6 +112,10 @@
         <servlet-name>CmdAdminVisualizarDesempenhoByAluno</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarDesempenhoAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdAdminVisualizarResultado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimuladoAluno</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -219,6 +223,10 @@
     <servlet-mapping>
         <servlet-name>CmdAdminVisualizarDesempenhoByAluno</servlet-name>
         <url-pattern>/CmdAdminVisualizarDesempenhoByAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminVisualizarResultado</servlet-name>
+        <url-pattern>/CmdAdminVisualizarResultado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -64,10 +64,11 @@ public class CmdGerarRelatorio implements Comando {
             cabecalho.setWidthPercentage(90); /* Seta a largura da tabela com relação a página. */
             cabecalho.setWidths(widths);
             cabecalho.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-            String men = "" + request.getSession().getServletContext().getRealPath("");
-            String conteudo3[] = men.split("/build/web");
-            Image jpg = Image.getInstance("" + new ImageIcon(
-                    "" + conteudo3[0] + "/web/images/UFC2.png"));
+            //String men = "" + request.getSession().getServletContext().getRealPath("");
+            //String conteudo3[] = men.split("/build/web");
+            //Image jpg = Image.getInstance("" + new ImageIcon(
+                    //"" + conteudo3[0] + "/web/images/UFC2.png"));
+            Image jpg = Image.getInstance("" + new ImageIcon(""+CmdGerarRelatorio.class.getResource("../../images/UFC2.png")));
             cabecalho.addCell(jpg);
             cabecalho.addCell(new Phrase("Universidade Federal do Ceará\n"
                     + "Campus de Quixadá\n" + "Simulador do Ambiente das Provas do\nPoscomp e Enade - SAPPE", fonteCabecalho));

@@ -54,7 +54,18 @@ public class QuestaoService {
     public ArrayList<Questao> getListQuestoesByArea(Utility utility) {
         try {
             ArrayList<Questao> questaos = questaoDAO.getListQuestoesByArea(utility);
-            System.out.println("-------"+utility.getQtdq());
+            System.out.println("-------1"+utility.getQtdq());
+            return questaos;
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public ArrayList<Questao> getListQuestoesByExame(Utility utility) {
+        try {
+            ArrayList<Questao> questaos = questaoDAO.getListQuestoesByExame(utility);
+            System.out.println("-------2>"+utility.getQtdq());
             return questaos;
         } catch (SQLException ex) {
             Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);

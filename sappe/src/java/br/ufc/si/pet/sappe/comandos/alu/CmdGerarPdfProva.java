@@ -5,6 +5,7 @@
 package br.ufc.si.pet.sappe.comandos.alu;
 
 import br.ufc.si.pet.sappe.entidades.Aluno;
+import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.QuestaoProva;
 import br.ufc.si.pet.sappe.entidades.Tipo;
@@ -79,9 +80,9 @@ public class CmdGerarPdfProva implements Comando {
             es.setWidthPercentage(100);
             es.setWidths(width);
             es.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-            Aluno a = (Aluno) hS.getAttribute("user");
+            Perfil p = (Perfil) hS.getAttribute("user");
             AlunoService aS = new AlunoService();
-            Aluno alu = aS.getAlunoByUsuarioId(a.getId());
+            Aluno alu = aS.getAlunoByUsuarioId(p.getUsuario().getId());
             UsuarioService uS = new UsuarioService();
             Usuario u = uS.getUsuarioById(alu.getUsuario().getId());
             String nome = u.getNome();

@@ -54,6 +54,12 @@
         WHERE id = #var# ORDER BY id;
     </select>
 
+    <select id="getProvaByIdUsuario" resultClass="prova" parameterClass="long" resultMap="provaResult">
+        SELECT *
+        FROM sappe.prova
+        WHERE usuario_id = #var#;
+    </select>
+
     <select id="getProvaByTipoId" resultClass="prova" parameterClass="long" resultMap="provaResult">
         SELECT *
         FROM sappe.prova

@@ -5,7 +5,6 @@
 package br.ufc.si.pet.sappe.dao;
 
 import br.ufc.si.pet.sappe.dao.config.PostGresMapConfig;
-import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.Utility;
 import java.sql.SQLException;
@@ -27,5 +26,9 @@ public class QuestaoDAO {
 
     public ArrayList<Questao> getListQuestoesByArea(Utility utility) throws SQLException {
         return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getListQuestoesByArea", utility);
+    }
+
+    public ArrayList<Questao> getListQuestoesByExame(Utility utility) throws SQLException {
+        return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getListQuestoesByExame", utility);
     }
 }

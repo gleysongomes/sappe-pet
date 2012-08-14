@@ -4,12 +4,10 @@
  */
 package br.ufc.si.pet.sappe.comandos.alu;
 
-import br.ufc.si.pet.sappe.entidades.Area;
 import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.interfaces.Comando;
-import br.ufc.si.pet.sappe.service.AreaService;
 import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.util.Msg;
 import br.ufc.si.pet.sappe.entidades.Utility;

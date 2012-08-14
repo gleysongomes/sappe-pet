@@ -76,6 +76,42 @@
         <servlet-name>CmdGerarRelatorio</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdGerarRelatorio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdAdminAdicionarSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSimulado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdVisualizarSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarSimulados</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdRealizarSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdRealizarSimulado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdListarQuestoesSimuladoById</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoesSimuladoById</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdSalvarSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdSalvarSimulado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdVisualizarResultadoSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultadoSimulado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdAdminVisualizarSimulados</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSimulados</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdAdminVisualizarResultadoSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimulado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdAdminVisualizarDesempenhoByAluno</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarDesempenhoAluno</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -147,6 +183,42 @@
     <servlet-mapping>
         <servlet-name>CmdGerarRelatorio</servlet-name>
         <url-pattern>/CmdGerarRelatorio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminAdicionarSimulado</servlet-name>
+        <url-pattern>/CmdAdminAdicionarSimulado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdVisualizarSimulado</servlet-name>
+        <url-pattern>/CmdVisualizarSimulado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdRealizarSimulado</servlet-name>
+        <url-pattern>/CmdRealizarSimulado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdListarQuestoesSimuladoById</servlet-name>
+        <url-pattern>/CmdListarQuestoesSimuladoById</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdSalvarSimulado</servlet-name>
+        <url-pattern>/CmdSalvarSimulado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdVisualizarResultadoSimulado</servlet-name>
+        <url-pattern>/CmdVisualizarResultadoSimulado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminVisualizarSimulados</servlet-name>
+        <url-pattern>/CmdAdminVisualizarSimulados</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminVisualizarResultadoSimulado</servlet-name>
+        <url-pattern>/CmdAdminVisualizarResultadoSimulado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminVisualizarDesempenhoByAluno</servlet-name>
+        <url-pattern>/CmdAdminVisualizarDesempenhoByAluno</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

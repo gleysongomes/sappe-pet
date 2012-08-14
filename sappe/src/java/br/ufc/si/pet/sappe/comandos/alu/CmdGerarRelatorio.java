@@ -5,6 +5,7 @@
 package br.ufc.si.pet.sappe.comandos.alu;
 
 import br.ufc.si.pet.sappe.entidades.Aluno;
+import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Prova;
 import br.ufc.si.pet.sappe.entidades.QuestaoProva;
 import br.ufc.si.pet.sappe.entidades.Tipo;
@@ -82,10 +83,11 @@ public class CmdGerarRelatorio implements Comando {
             ProvaService provaService = new ProvaService();
             Prova prova = provaService.getProvaById(id);
             Long tpid = prova.getTipo_id();
-            Aluno a = (Aluno) hS.getAttribute("user");
+            Perfil p = (Perfil) hS.getAttribute("user");
             AlunoService aS = new AlunoService();
-            Aluno alu = aS.getAlunoByUsuarioId(a.getId());
+            Aluno alu = aS.getAlunoByUsuarioId(p.getUsuario().getId());
             UsuarioService uS = new UsuarioService();
+
             Usuario u = uS.getUsuarioById(alu.getUsuario().getId());
             String nome = u.getNome();
             String conteudo[] = nome.split(" ");

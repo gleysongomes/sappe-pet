@@ -26,6 +26,9 @@
         <li>
             <a href="../ServletCentral?comando=CmdEditarCadastro">Editar Cadastro</a>
         </li>
+         <li>
+            <a href="../ServletCentral?comando=CmdVisualizarSimulados">Visualizar Simulados</a>
+        </li>
         <li>
             <a href="../ServletCentral?comando=CmdLogout">Sair</a>
         </li>

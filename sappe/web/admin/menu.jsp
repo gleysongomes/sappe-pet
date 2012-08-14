@@ -13,6 +13,12 @@
             <a href="../admin/admin_adicionar_questao.jsp">Adiconar Questão</a>
         </li>
         <li>
+            <a href="../admin/admin_adicionar_simulado.jsp">Adiconar Simulado</a>
+        </li>
+        <li>
+            <a href="../ServletCentral?comando=CmdAdminVisualizarSimulados">Visualizar Simulados</a>
+        </li>
+        <li>
             <a href="../ServletCentral?comando=CmdLogout">Sair</a>
         </li>
     </ul>

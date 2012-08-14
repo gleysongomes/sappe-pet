@@ -38,6 +38,7 @@ public class CmdLogin implements Comando {
             if (perfil == null || perfil.getAtivo() == false) {
                 hS.setAttribute("erro", "Usuário, senha e conta não conferem.");
             } else if (perfil instanceof Aluno) {
+                System.out.println("YESSSSSSSSSSSSSSSSSSSSSS!!"+perfil.getUsuario().getNome());
                 hS.setAttribute("user", perfil);
                 //Usuario u = new Usuario();
                 //u = userService.getUsuarioById(perfil.getUsuario().getId());

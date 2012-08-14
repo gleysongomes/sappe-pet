@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : QuestaoSimulado.xml
+    Created on : 12 de Agosto de 2012, 20:49
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="QuestaoSimulado">
+
+    <resultMap id="questaoSimuladoResult" class="questao_simulado">
+        <result property="id" column="id"/>
+        <result property="simulado_id" column="simulado_id"/>
+        <result property="questao_id" column="questao_id"/>
+    </resultMap>
+
+    <insert id="addQuestaoSimulado" parameterClass="questao_simulado">
+        INSERT INTO sappe.questao_simulado(simulado_id, questao_id)
+        VALUES (#simulado_id#, #questao_id#);
+    </insert>
+
+    <select id="getListQuestaoSimuladoByIdSimulado" resultClass="questao_simulado" parameterClass="long" resultMap="questaoSimuladoResult">
+        SELECT *
+        FROM sappe.questao_simulado WHERE simulado_id=#var#;
+    </select>
+
+    <select id="getMaxIdQuestaoSimulado" resultClass="long">
+        SELECT MAX(id)
+        FROM sappe.questao_simulado;
+    </select>
+
+</sqlMap>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : QuestaoquestaoUsuarioSimulado.xml
+    Created on : 13 de Agosto de 2012, 14:48
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="QuestaoUsuarioSimulado">
+
+    <resultMap id="questaoUsuarioSimuladoResult" class="questao_usuario_simulado">
+        <result property="id" column="id"/>
+        <result property="simulado_id" column="simulado_id"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="questao_id" column="questao_id"/>
+        <result property="item_marcado" column="item_marcado"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <insert id="addQuestaoUsuarioSimulado" parameterClass="questao_usuario_simulado">
+        INSERT INTO sappe.questao_usuario_simulado(simulado_id, usuario_id,questao_id,item_marcado,status)
+        VALUES (#simulado_id#, #usuario_id#,#questao_id#,#item_marcado#,#status#);
+    </insert>
+
+    <update id="updateQuestaoUsuarioSimulado" parameterClass="questao_usuario_simulado">
+        UPDATE sappe.questao_usuario_simulado
+        SET item_marcado=#item_marcado#,status=#status#
+        WHERE usuario_id=#usuario_id# AND questao_id=#questao_id#;
+    </update>
+
+
+    <select id="getQuestoesUsuarioSimuladoByIdUsuarioESimulado" resultClass="questao_usuario_simulado"
+            parameterClass="questao_usuario_simulado"
+            resultMap="questaoUsuarioSimuladoResult">
+
+        SELECT *
+        FROM sappe.questao_usuario_simulado
+        WHERE usuario_id = #usuario_id# AND simulado_id=#simulado_id#;
+    </select>
+
+    <select id="getMaxIdQuestaoUsuarioSimulado" resultClass="long">
+        SELECT MAX(id)
+        FROM sappe.questao_usuario_simulado;
+    </select>
+
+</sqlMap>

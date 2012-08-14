@@ -79,15 +79,15 @@ public class CmdSalvarProvaEditada implements Comando {
                 qpS.updateQuestaoProvaByIdProva(qP);
                 count++;
             }
-            hS.setAttribute("sucesso", "Prova salva com sucesso.");
+            hS.setAttribute("sucesso", "Prova atualizada com sucesso.");
         } catch (SqlMapException e) {
             e.printStackTrace();
-            hS.setAttribute("erro", "Erro ao tentar salvar a prova.");
+            hS.setAttribute("erro", "Erro ao tentar atualizada a prova.");
         } catch (NullPointerException npe) {
-            hS.setAttribute("erro", "Erro ao tentar salvar a prova.");
+            hS.setAttribute("erro", "Erro ao tentar atualizada a prova.");
             npe.printStackTrace();
         } catch (Exception e) {
-            hS.setAttribute("erro", "Erro ao tentar salvar a prova.");
+            hS.setAttribute("erro", "Erro ao tentar atualizada a prova.");
             e.printStackTrace();
         }
         return "/alu/refazer_prova.jsp";

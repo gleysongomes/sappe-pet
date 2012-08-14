@@ -26,6 +26,10 @@
     <typeAlias alias="perfil" type="br.ufc.si.pet.sappe.entidades.Perfil"/>
     <typeAlias alias="tipo" type="br.ufc.si.pet.sappe.entidades.Tipo"/>
     <typeAlias alias="utility" type="br.ufc.si.pet.sappe.entidades.Utility"/>
+    <typeAlias alias="questao_simulado" type="br.ufc.si.pet.sappe.entidades.QuestaoSimulado"/>
+    <typeAlias alias="simulado" type="br.ufc.si.pet.sappe.entidades.Simulado"/>
+    <typeAlias alias="usuario_simulado" type="br.ufc.si.pet.sappe.entidades.UsuarioSimulado"/>
+    <typeAlias alias="questao_usuario_simulado" type="br.ufc.si.pet.sappe.entidades.QuestaoUsuarioSimulado"/>
 
     <!--configuration-->
     <transactionManager type="JDBC">
@@ -49,4 +53,8 @@
     <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Papel.xml"/>
     <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Perfil.xml"/>
     <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Tipo.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/QuestaoSimulado.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/Simulado.xml"/>
+    <sqlMap resource="br/ufc/si/pet/sappe/dao/map/UsuarioSimulado.xml"/>
+     <sqlMap resource="br/ufc/si/pet/sappe/dao/map/QuestaoUsuarioSimulado.xml"/>
 </sqlMapConfig>

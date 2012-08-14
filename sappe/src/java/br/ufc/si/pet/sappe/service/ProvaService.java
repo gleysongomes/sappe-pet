@@ -44,7 +44,7 @@ public class ProvaService {
         }
     }
 
-      public boolean updateProvaById(Prova p) {
+    public boolean updateProvaById(Prova p) {
         try {
 
             provaDAO.updateProvaById(p);
@@ -63,6 +63,16 @@ public class ProvaService {
             Logger.getLogger(ExameService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public Prova getProvaByIdUsuario(Long id) {
+        try {
+            Prova p = provaDAO.getProvaByIdUsuario(id);
+            return p;
+        } catch (SQLException ex) {
+            Logger.getLogger(ExameService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new Prova();
     }
 
     public ArrayList<Prova> getProvaByTipoId(Long id) {

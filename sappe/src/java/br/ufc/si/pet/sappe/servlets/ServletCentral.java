@@ -8,7 +8,11 @@ import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
 import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
 import br.ufc.si.pet.sappe.comandos.CmdRedirecionar;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSimulado;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarDesempenhoAluno;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimulado;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSimulados;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta;
 import br.ufc.si.pet.sappe.comandos.alu.CmdEditarCadastro;
@@ -18,11 +22,15 @@ import br.ufc.si.pet.sappe.comandos.alu.CmdGerarPdfProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdGerarRelatorio;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarImagesById;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoesExamePadrao;
+import br.ufc.si.pet.sappe.comandos.alu.CmdRealizarSimulado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarCadastroEditado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProvaEditada;
+import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarSimulado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultado;
+import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultadoSimulado;
+import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarSimulados;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -107,10 +115,28 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdRedirecionar", cmdo);
         cmdo = new CmdGerarRelatorio();
         comandos.put("CmdGerarRelatorio", cmdo);
+        cmdo = new CmdVisualizarSimulados();
+        comandos.put("CmdVisualizarSimulados", cmdo);
+        cmdo = new CmdRealizarSimulado();
+        comandos.put("CmdRealizarSimulado", cmdo);
+        cmdo = new CmdSalvarSimulado();
+        comandos.put("CmdSalvarSimulado", cmdo);
+        cmdo = new CmdVisualizarResultadoSimulado();
+        comandos.put("CmdVisualizarResultadoSimulado", cmdo);
+        
 
         //Administrador
         cmdo = new CmdAdminVisualizarProvas();
         comandos.put("CmdAdminVisualizarProvas", cmdo);
+        cmdo = new CmdAdminAdicionarSimulado();
+        comandos.put("CmdAdminAdicionarSimulado", cmdo);
+        cmdo = new CmdAdminVisualizarSimulados();
+        comandos.put("CmdAdminVisualizarSimulados", cmdo);
+        cmdo = new CmdAdminVisualizarResultadoSimulado();
+        comandos.put("CmdAdminVisualizarResultadoSimulado", cmdo);
+        cmdo = new CmdAdminVisualizarDesempenhoAluno();
+        comandos.put("CmdAdminVisualizarDesempenhoAluno", cmdo);
+
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 

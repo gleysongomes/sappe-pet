@@ -8,11 +8,14 @@ import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.Format;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
+import javax.xml.crypto.Data;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import sun.misc.BASE64Encoder;
@@ -167,8 +170,39 @@ public class Util {
         dir.delete();
     }
 
-    public static void main(String args[]) throws IOException {
-        File dir = new File("/web/temp");
-        dir.mkdir();
+    public static String getTime() {
+        Calendar calendar = Calendar.getInstance();
+        Date data = new Date();
+        calendar.setTime(data);
+        int h = calendar.get(Calendar.HOUR_OF_DAY);
+        int m = calendar.get(Calendar.MINUTE);
+        int s = calendar.get(Calendar.SECOND);
+        return (h > 9 ? "" + h : 0 + "" + h) + ":" + (m > 9 ? "" + m : 0 + "" + m) + ":" + (s > 9 ? "" + s : 0 + "" + s);
+    }
+
+    public static void main(String args[]) throws IOException, ParseException {
+        //File dir = new File("/web/temp");
+        //dir.mkdir();
+
+        //System.out.println("====" + "08:00:00".substring(0, 2));
+        //System.out.println("====" + "08:00:00".substring(3, 5));
+        //System.out.println("====" + "08:00:00".substring(6, 8));
+        //SimpleDateFormat parser = new SimpleDateFormat("HH:mm:ss");
+        //Date ten = parser.parse("10:00");
+
+        //Date h = parser.parse("02:18:00");
+        //Date d = parser.parse("02:16:00");
+        //if (d.before(h)) {
+        //System.out.println("====" + "08:00:00".substring(0, 2));
+        //}
+        //SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+        ///Date dataAtual = sdf2.parse("" + sdf2.format(new Date()));
+        //System.out.println(getTime());
+        //Date data = sdf2.parse(new Date().toString());
+        //String str=sdf2.format(data);
+       
+Format format = new SimpleDateFormat("dd/MM/yyyy");
+        String dataAtual = format.format(new Date());
+        System.out.println("===="+dataAtual);
     }
 }

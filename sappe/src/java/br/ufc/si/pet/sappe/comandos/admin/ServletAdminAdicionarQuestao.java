@@ -36,6 +36,7 @@ public class ServletAdminAdicionarQuestao extends HttpServlet {
         HttpSession hS = request.getSession(true);
         int eid = 0, aid = 0;
         String ano = "", ic = "";
+
         try {
             DiskFileUpload fu = new DiskFileUpload();
             fu.setSizeMax(1000000);
@@ -81,6 +82,18 @@ public class ServletAdminAdicionarQuestao extends HttpServlet {
                     }
                 }
             }
+        } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
+            hS.setAttribute("erro", nfe.getMessage());
+            response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+        } catch (FileUploadException fue) {
+            fue.printStackTrace();
+            hS.setAttribute("erro", fue.getMessage());
+            response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+        } catch (NullPointerException npe) {
+            npe.printStackTrace();
+            hS.setAttribute("erro", npe.getMessage());
+            response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
         } catch (Exception ex) {
             ex.printStackTrace();
             hS.setAttribute("erro", ex.getMessage());

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Simulado.xml
+    Created on : 12 de Agosto de 2012, 21:05
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Simulado">
+
+    <resultMap id="simuladoResult" class="simulado">
+        <result property="id" column="id"/>
+        <result property="exame_id" column="exame_id"/>
+        <result property="nome" column="nome"/>
+        <result property="data" column="data"/>
+        <result property="horaini" column="horaini"/>
+        <result property="horafim" column="horafim"/>
+        <result property="num_questao" column="num_questao"/>
+    </resultMap>
+
+    <insert id="addSimulado" parameterClass="simulado">
+        INSERT INTO sappe.simulado(exame_id, nome,data,horaini,horafim,num_questao)
+        VALUES (#exame_id#, #nome#,#data#,#horaini#,#horafim#,#num_questao#);
+    </insert>
+
+    <select id="getMaxIdSimulado" resultClass="long">
+        SELECT setval('sappe.simulado_id_seq', max(id))
+        FROM sappe.simulado;
+    </select>
+
+     <select id="getSimuladoById" resultClass="simulado"
+            parameterClass="long"
+            resultMap="simuladoResult">
+
+        SELECT *
+        FROM sappe.simulado
+        WHERE id = #var#;
+    </select>
+
+    <select id="getTodosSimulados" resultClass="simulado" resultMap="simuladoResult">
+        SELECT *
+        FROM sappe.simulado;
+    </select>
+
+</sqlMap>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : admin_adicionar_questao
-    Created on : 24/07/2012, 22:16:23
+    Document   : admin_adicionar_simulado
+    Created on : 12/08/2012, 18:51:26
     Author     : gleyson
 --%>
 
@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript"  language="javascript" src="../js/Script.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -22,53 +23,40 @@
             <%@include file="../admin/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
-                <label><h2 class="titulo2">Adicionar Questão</h2></label><br /><br /><br />
+                <label><h2 class="titulo2">Adicionar Simulado</h2></label><br /><br /><br />
                 <div id="bh"></div>
-                <form action="../ServletAdminAdicionarQuestao" method="POST" enctype="multipart/form-data">
+                <form action="../ServletCentral" method="POST">
+                    <input type="hidden" name="comando" value="CmdAdminAdicionarSimulado" />
                     <%@include file="../error.jsp" %>
                     <table border="0">
                         <tbody>
                             <tr>
-                                <td>Área (*): </td>
-                                <td>
-                                    <select name="aid">
-                                        <option value="0">Selecione</option>
-                                        <option value="1">Matemática</option>
-                                        <option value="2">Fundamentos da Computação</option>
-                                        <option value="3">Tecnologia da Computação</option>
-                                    </select>
-                                </td>
+                                <td>Nome (*):</td>
+                                <td><input type="text" name="nome" value="" size="20" maxlength="80"/></td>
                             </tr>
                             <tr>
                                 <td>Exame (*):</td>
-                                <td>
-                                    <select name="eid">
+                                <td><select name="exame">
                                         <option value="0">Selecione</option>
                                         <option value="1">Poscomp</option>
                                         <option value="2">Enade</option>
-                                    </select>
-                                </td>
+                                    </select></td>
                             </tr>
                             <tr>
-                                <td>Ano (*):</td>
-                                <td><input type="text" name="ano" value="" size="20" /></td>
+                                <td>Data (*):</td>
+                                <td><input type="text" name="data" value="" size="20" onkeypress="return formataData(this,event)" maxlength="10"/></td>
                             </tr>
                             <tr>
-                                <td>Item Certo (*):</td>
-                                <td>
-                                    <select name="ic">
-                                        <option value="0">Selecione</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                    </select>
-                                </td>
+                                <td>Horário de Inicio (*):</td>
+                                <td><input type="text" name="hi" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
                             </tr>
                             <tr>
-                                <td> Questão (*):</td>
-                                <td><input type="file" name="questao" value="" /></td>
+                                <td>Horário de Término (*):</td>
+                                <td><input type="text" name="ht" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
+                            </tr>
+                            <tr>
+                                <td>Número de Questões (*):</td>
+                                <td><input type="text" name="nq" value="" size="20" maxlength="2" onkeypress="return validaNumerosSilencioso(event)"/></td>
                             </tr>
                             <tr>
                                 <td><input type="submit" value="Enviar" name="Enviar" /></td>

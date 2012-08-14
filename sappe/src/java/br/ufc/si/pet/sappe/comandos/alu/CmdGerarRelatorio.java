@@ -164,14 +164,28 @@ public class CmdGerarRelatorio implements Comando {
                         + ".\n\nQuestões de Fundamentos da Computação"
                         + ":\nQuestões Certas: " + pfuncomp
                         + ".\nQuestões Erradas: " + (30 - pfuncomp)
-                        + ".\nPercentual de Acerto: " + 100 * pmat / 30 + "%"
+                        + ".\nPercentual de Acerto: " + 100 * pfuncomp / 30 + "%"
                         + ".\n\nQuestões de Tecnolgia da Computação"
                         + ":\nQuestões Certas: " + ptecomp
-                        + ".\nQuestões Erradas: " + (20 - pfuncomp)
-                        + ".\nPercentual de Acerto: " + 100 * pmat / 20 + "%"
+                        + ".\nQuestões Erradas: " + (20 - ptecomp)
+                        + ".\nPercentual de Acerto: " + 100 * ptecomp / 20 + "%"
                         + ".\n\nPercentual de Acerto Geral: " + 100 * (pmat + pfuncomp + ptecomp) / 70 + "%"
                         + ".\n", fonteConteudo));
             } else if (tpid.intValue() == 8) {
+                table.addCell(new Phrase("Questões de Sistemas de Informação"
+                        + ":\nQuestões Certas: " + esi
+                        + ".\nQuestões Erradas: " + (15 - esi)
+                        + ".\nPercentual de Acerto: " + 100 * esi / 15 + "%"
+                        + ".\n\nQuestões de Engenharia de Software"
+                        + ":\nQuestões Certas: " + ens
+                        + ".\nQuestões Erradas: " + (15 - ens)
+                        + ".\nPercentual de Acerto: " + 100 * ens / 15 + "%"
+                        + ".\n\nQuestões de Conhecimentos Gerais"
+                        + ":\nQuestões Certas: " + ecg
+                        + ".\nQuestões Erradas: " + (10 - ecg)
+                        + ".\nPercentual de Acerto: " + 100 * ecg / 10 + "%"
+                        + ".\n\nPercentual de Acerto Geral: " + 100 * (esi + ens + ecg) / 40 + "%"
+                        + ".\n", fonteConteudo));
             }
 
             document.add(table);

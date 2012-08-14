@@ -36,6 +36,9 @@
                                         <option value="1">Matemática</option>
                                         <option value="2">Fundamentos da Computação</option>
                                         <option value="3">Tecnologia da Computação</option>
+                                        <option value="4">Sistemas de Informação</option>
+                                        <option value="5">Engenharia de Software</option>
+                                        <option value="6">Conhecimentos Gerais</option>
                                     </select>
                                 </td>
                             </tr>

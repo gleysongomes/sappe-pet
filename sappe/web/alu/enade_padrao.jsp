@@ -29,7 +29,7 @@
                     <input type="hidden" name="comando" value="CmdListarQuestoesExamePadrao" />
                     <input type="hidden" name="id" value="8" />
                     <input type="hidden" name="ide" value="8" />
-                    <input type="hidden" name="nQ" value="60" />
+                    <input type="hidden" name="nQ" value="40" />
                     <input type="hidden" name="caminho" value="/alu/enade_padrao.jsp" />
                     <%@include file="../error.jsp" %>
                     <label style="font: caption; font-size: 15px;">Selecione o ano da prova:<select name="ano">

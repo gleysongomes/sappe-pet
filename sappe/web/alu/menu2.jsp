@@ -34,13 +34,13 @@
             <a href="" style="width: 200px;">Enade Personalizado</a>
             <ul id="nav">
                 <li>
-                    <a href="" style="width: 200px;">Sistema de Informação</a>
+                    <a href="../alu/enade_sistemas_informacao.jsp" style="width: 200px;">Sistema de Informação</a>
                 </li>
                 <li>
-                    <a href="" style="width: 200px;">Engenharia de Software</a>
+                    <a href="../alu/enade_engenharia_software.jsp" style="width: 200px;">Engenharia de Software</a>
                 </li>
                 <li>
-                    <a href="" style="width: 200px;">Conhecimentos Gerais</a>
+                    <a href="../alu/enade_conhecimentos_gerais.jsp" style="width: 200px;">Conhecimentos Gerais</a>
                 </li>
             </ul>
         </li>

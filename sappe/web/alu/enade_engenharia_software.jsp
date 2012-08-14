@@ -22,7 +22,7 @@
             <%@include file="../alu/menu2.jsp" %>
             <div id="direita"></div>
             <div id="meio">
-                <label><h2 class="titulo2">Engenharia de Software</h2></label><br /><br /><br />
+                <label><h2 class="titulo2">Enade Engenharia de Software</h2></label><br /><br /><br />
                 <div id="bh"></div>
                 <form action="../ServletCentral" method="post" class="login">
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
@@ -35,7 +35,6 @@
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
-                            <option value="20">20</option>
                         </select>
                     </label>
                     <input type="submit" value="Buscar" name="Buscar" class="button3"/>

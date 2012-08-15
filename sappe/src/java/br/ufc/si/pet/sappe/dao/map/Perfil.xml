@@ -28,9 +28,8 @@
     </update>
 
     <insert id="addPerfil" parameterClass="perfil">
-        INSERT INTO sappe.perfil(
-        id,usuario_id,papel_id, data_criacao,ativo)
-        VALUES (#id#, #usuario.id#, #papel.id#, #dataCriacao#,#ativo#);
+        INSERT INTO sappe.perfil(id,usuario_id,papel_id, data_criacao,ativo)
+        VALUES (#id#,#usuario.id#, #papel.id#, #dataCriacao#,#ativo#);
     </insert>
 
 
@@ -54,7 +53,6 @@
     </select>
 
     <select id="getMaxIdPerfil" resultClass="long">
-        SELECT MAX(id)
-        FROM sappe.perfil;
+        SELECT nextval('sappe.perfil_id_seq');
     </select>
 </sqlMap>

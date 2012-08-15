@@ -16,8 +16,6 @@ public class UsuarioDAO {
 
     public void insert(Usuario usuario) throws SQLException {
         usuario.setId(proxId());
-        //System.out.println(usuario.getId());
-
         PostGresMapConfig.getSqlMapClient().insert("addUsuario", usuario);
     }
 
@@ -41,16 +39,21 @@ public class UsuarioDAO {
         return (Usuario) PostGresMapConfig.getSqlMapClient().queryForObject("getUsuarioByEmail", email);
     }
 
-    public ArrayList<Usuario> getAll() throws SQLException{
+    public ArrayList<Usuario> getAll() throws SQLException {
         return (ArrayList<Usuario>) PostGresMapConfig.getSqlMapClient().queryForList("getTodosUsuarios");
     }
 
+    /*
+    private Long proxId() throws SQLException {
+    Long id = (Long) PostGresMapConfig.getSqlMapClient().queryForObject("getMaxIdUsuarioSimulado");
+    if (id == null) {
+    id = 0L;
+    }
+    return id + 1L;
+    }*/
     private Long proxId() throws SQLException {
         Long id = (Long) PostGresMapConfig.getSqlMapClient().queryForObject("getMaxIdUsuario");
-        if (id == null) {
-            id = 0L;
-        }
-        return id + 1L;
+        return id;
     }
 
     public Usuario getByCpf(String cpf) throws SQLException {

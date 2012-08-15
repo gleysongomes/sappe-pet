@@ -33,7 +33,7 @@
             <%@include file="../alu/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
-                <label><h3 class="titulo2"><%=tipo.getNome()%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarPdfProva"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label>
+                <label><h3 class="titulo2"><%=tipo.getNome()%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarPdfProva" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label>
                     </h3></label><br /><br /><br />
                 <div id="bh"></div>
                 <form name="rP" action="../ServletCentral" method="post">

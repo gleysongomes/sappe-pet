@@ -24,7 +24,8 @@
             <div id="meio">
                 <label><h2 class="titulo2">Adicionar Questão</h2></label><br /><br /><br />
                 <div id="bh"></div>
-                <form action="../ServletAdminAdicionarQuestao" method="POST" enctype="multipart/form-data">
+                <form action="../ServletCentral" method="POST">
+                    <input type="hidden" name="comando" value="CmdAdminAdicionarQuestao" />
                     <%@include file="../error.jsp" %>
                     <table border="0">
                         <tbody>

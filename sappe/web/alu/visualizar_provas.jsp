@@ -29,6 +29,7 @@
             <div id="meio">
                 <label><h3 class="titulo">Visualizar Provas</h3></label><br /><br /><br />
                 <div id="bh"></div>
+                <%@include file="../error.jsp" %>
                 <div id="content">
                     <table>
                         <thead>

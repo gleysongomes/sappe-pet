@@ -68,9 +68,11 @@ public class CmdSalvarProva implements Comando {
                 qpS.inserir(qP);
                 count++;
             }
+            List<Prova> provas = pS.getAllListProvas(p.getUsuario().getId());
+            session.setAttribute("provas", provas);
             session.setAttribute("provaSalva", prova);
             session.setAttribute("sucesso", "Prova salva com sucesso.");
-            return "/alu/listar_questoes.jsp";
+            return "/alu/visualizar_provas.jsp";
         } else {
             session.setAttribute("erro", "Esta prova já foi salva. Obs: Para editar e visualizar uma prova acesse o menu Visualizar Provas.");
             return "/alu/listar_questoes.jsp";

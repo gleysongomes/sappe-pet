@@ -36,7 +36,7 @@
             <%@include file="../alu/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
-                <label><h3 class="titulo2"><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h3></label><br /><br /><br />
+                <label><h3 class="titulo2"><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h3></label><br /><br /><br />
                 <div id="bh"></div>
                 <%@include file="../error.jsp" %>
                 <%

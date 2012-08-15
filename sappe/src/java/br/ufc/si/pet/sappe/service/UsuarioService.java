@@ -81,6 +81,7 @@ public class UsuarioService {
     public Usuario getUsuarioByLogin(String login) {
         try {
             Usuario user = usuarioDAO.getByLogin(login);
+            System.out.println("======" + user.getNome());
             return user;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -127,4 +128,6 @@ public class UsuarioService {
         }
         return null;
     }
+
+   
 }

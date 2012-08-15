@@ -116,6 +116,10 @@
         <servlet-name>CmdAdminVisualizarResultado</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimuladoAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdAdminAdicionarQuestao</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarQuestao</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -227,6 +231,10 @@
     <servlet-mapping>
         <servlet-name>CmdAdminVisualizarResultado</servlet-name>
         <url-pattern>/CmdAdminVisualizarResultado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminAdicionarQuestao</servlet-name>
+        <url-pattern>/CmdAdminAdicionarQuestao</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

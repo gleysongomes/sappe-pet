@@ -83,8 +83,7 @@
     </select>
 
     <select id="getMaxIdUsuario" resultClass="long">
-        SELECT MAX(id)
-        FROM sappe.usuario;
+        SELECT nextval('sappe.usuario_id_seq');
     </select>
 
 </sqlMap>

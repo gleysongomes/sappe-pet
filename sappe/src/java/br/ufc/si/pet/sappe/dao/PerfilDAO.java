@@ -15,9 +15,7 @@ import java.sql.SQLException;
 public class PerfilDAO {
 
     public void insert(Perfil perfil) throws SQLException {
-        Long id = getProxId();
-        perfil.setId(id);
-        //System.out.println(perfil.getId());
+        perfil.setId(proxId());
         PostGresMapConfig.getSqlMapClient().insert("addPerfil", perfil);
     }
 
@@ -37,12 +35,9 @@ public class PerfilDAO {
         PostGresMapConfig.getSqlMapClient().update("ativarPerfil", perfil);
     }
 
-    private Long getProxId() throws SQLException {
-        Long id = (Long) PostGresMapConfig.getSqlMapClient().queryForObject("getMaxIdPerfil");
-        if (id == null) {
-            id = 0L;
-        }
-        return id + 1L;
+    private Long proxId() throws SQLException {
+        Long id = (Long) PostGresMapConfig.getSqlMapClient().queryForObject("getMaxIdUsuario");
+        return id;
     }
     /*
     public Long contaPerfisByUsuarioId(Long id) throws SQLException {

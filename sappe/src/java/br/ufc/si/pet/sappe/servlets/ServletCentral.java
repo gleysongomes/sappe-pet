@@ -8,6 +8,7 @@ import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
 import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
 import br.ufc.si.pet.sappe.comandos.CmdRedirecionar;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarQuestao;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSimulado;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarDesempenhoAluno;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
@@ -139,6 +140,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdAdminVisualizarDesempenhoAluno", cmdo);
         cmdo = new CmdAdminVisualizarResultadoSimuladoAluno();
         comandos.put("CmdAdminVisualizarResultadoSimuladoAluno", cmdo);
+        cmdo = new CmdAdminAdicionarQuestao();
+        comandos.put("CmdAdminAdicionarQuestao", cmdo);
 
 
     }

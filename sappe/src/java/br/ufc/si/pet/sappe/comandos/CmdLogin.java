@@ -10,6 +10,7 @@ import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.UsuarioService;
+import br.ufc.si.pet.sappe.util.Util;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -31,8 +32,8 @@ public class CmdLogin implements Comando {
             hS.setAttribute("erro", "Preencha todos os campos.");
         } else {
             Usuario user = new Usuario();
-            user.setLogin(login);
-            user.setSenha(senha);
+            user.setLogin(Util.criptografar(login));
+            user.setSenha(Util.criptografar(senha));
             UsuarioService userService = new UsuarioService();
             Perfil perfil = userService.validarUsuario(user, conta);
             if (perfil == null || perfil.getAtivo() == false) {

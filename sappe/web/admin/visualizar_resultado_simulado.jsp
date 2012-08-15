@@ -44,7 +44,7 @@
                             %>
                             <tr>
                                 <td><center><%= u.getNome()%></center></td>
-                                <td><center><a href="../ServletCentral?comando=CmdAdminVisualizarResultadoSimuladoAluno&id=<%= u.getId()%>">Visualizar Desempenho</a></center></td>
+                                <td><center><a href="../ServletCentral?comando=CmdAdminVisualizarResultadoSimuladoAluno&id=<%= u.getId()%>" target="_blank">Visualizar Desempenho</a></center></td>
                             </tr>
                             <%}%>
                         </tbody>

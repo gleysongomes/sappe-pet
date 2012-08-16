@@ -32,7 +32,7 @@ public class CmdLogin implements Comando {
             hS.setAttribute("erro", "Preencha todos os campos.");
         } else {
             Usuario user = new Usuario();
-            user.setLogin(Util.criptografar(login));
+            user.setLogin(login);
             user.setSenha(Util.criptografar(senha));
             UsuarioService userService = new UsuarioService();
             Perfil perfil = userService.validarUsuario(user, conta);

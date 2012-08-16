@@ -199,9 +199,9 @@ public class Util {
         //System.out.println(getTime());
         //Date data = sdf2.parse(new Date().toString());
         //String str=sdf2.format(data);
-       
-Format format = new SimpleDateFormat("dd/MM/yyyy");
+
+        Format format = new SimpleDateFormat("dd/MM/yyyy");
         String dataAtual = format.format(new Date());
-        System.out.println("===="+criptografar("abcdefghijlmnopqklmn"));
+        System.out.println("====" + criptografar("abcdefghijlmnopqklmn"));
     }
 }

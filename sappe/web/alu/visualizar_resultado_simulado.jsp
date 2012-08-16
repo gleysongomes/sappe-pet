@@ -22,7 +22,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../css/style.css" rel="stylesheet" type="text/css" />
-        <title>Simulador do Ambiente das Provas do Poscomp e Enade</title>
+        <title>Simulador do Ambiente das Provas do POSCOMP e Enade – SAPPE</title>
     </head>
     <body>
         <div id="tudo">

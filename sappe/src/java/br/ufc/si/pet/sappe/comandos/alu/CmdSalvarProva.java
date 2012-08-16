@@ -36,7 +36,7 @@ public class CmdSalvarProva implements Comando {
         Perfil p = (Perfil) session.getAttribute("user");
         ProvaService pS = new ProvaService();
         Prova provaSalva = (Prova) session.getAttribute("provaSalva");
-        Prova prova = pS.getProvaByIdUsuario(util(provaSalva));
+        Prova prova = pS.getProvaById(util(provaSalva));
         if (prova == null) {
             int i, resolvidas = 0, brancas = 0, certas = 0, erradas = 0;
             for (i = 0; i < nQ; i++) {
@@ -74,7 +74,7 @@ public class CmdSalvarProva implements Comando {
             session.setAttribute("sucesso", "Prova salva com sucesso.");
             return "/alu/visualizar_provas.jsp";
         } else {
-            session.setAttribute("erro", "Esta prova já foi salva. Obs: Para editar e visualizar uma prova acesse o menu Visualizar Provas.");
+            session.setAttribute("erro", "Esta prova já foi salva. Para editar e visualizar uma prova acesse o menu Visualizar Provas.");
             return "/alu/listar_questoes.jsp";
         }
     }
@@ -90,6 +90,6 @@ public class CmdSalvarProva implements Comando {
     }
 
     private Long util(Prova p) {
-        return p == null ? 0L : p.getUsuario_id();
+        return p == null ? 0L : p.getId();
     }
 }

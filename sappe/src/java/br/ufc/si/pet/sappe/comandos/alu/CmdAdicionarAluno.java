@@ -55,7 +55,7 @@ public class CmdAdicionarAluno implements Comando {
             return "/cadastro.jsp";
         } else {
             Usuario u = new Usuario();
-            u.setLogin(Util.criptografar(login));
+            u.setLogin(login);
             u.setNome(nome);
             u.setEmail(email);
             u.setSenha(Util.criptografar(senha));

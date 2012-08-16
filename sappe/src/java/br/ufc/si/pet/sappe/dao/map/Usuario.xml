@@ -37,6 +37,11 @@
         SET nome=#nome#, email=#email#, senha=#senha# WHERE  id=#id#;
     </update>
 
+    <select id="getTodosUsuarios" resultClass="usuario" resultMap="usuarioResult">
+        SELECT *
+        FROM sappe.usuario ORDER BY id;
+    </select>
+
     <select id="getUsuarioByEmail" resultClass="usuario"
             parameterClass="java.lang.String"
             resultMap="usuarioResult">

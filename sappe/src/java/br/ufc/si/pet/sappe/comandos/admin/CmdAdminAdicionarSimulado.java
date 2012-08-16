@@ -7,15 +7,23 @@ package br.ufc.si.pet.sappe.comandos.admin;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoSimulado;
 import br.ufc.si.pet.sappe.entidades.Simulado;
+import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.entidades.Utility;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.QuestaoSimuladoService;
 import br.ufc.si.pet.sappe.service.SimuladoService;
+import br.ufc.si.pet.sappe.service.UsuarioService;
+import br.ufc.si.pet.sappe.util.SendMail;
 import com.ibatis.sqlmap.client.SqlMapException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -63,6 +71,19 @@ public class CmdAdminAdicionarSimulado implements Comando {
                         questaoSimulado.setSimulado_id(simuladoService.proxId());
                         questaoSimulado.setQuestao_id(q.getId());
                         questaoSimuladoService.inserir(questaoSimulado);
+                    }
+                    UsuarioService us = new UsuarioService();
+                    List<Usuario> usuarios = us.getAllUsuarios();
+                    for (Usuario u : usuarios) {
+                        try {
+                            SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
+                                    + "um novo simulado foi adicionado ao sistema.<br /><br />"
+                                    + "<a href=" +"http://localhost:8084"+request.getContextPath() +"/index.jsp" + "> Realizar Simulado </a>");
+                        } catch (AddressException ex) {
+                            Logger.getLogger(CmdAdminAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (MessagingException ex) {
+                            Logger.getLogger(CmdAdminAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                     session.setAttribute("sucesso", "Simulado cadastrado como sucesso.");
                 } else {

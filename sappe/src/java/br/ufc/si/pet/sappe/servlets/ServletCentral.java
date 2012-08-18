@@ -8,7 +8,6 @@ import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
 import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
 import br.ufc.si.pet.sappe.comandos.CmdRedirecionar;
-import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarQuestao;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSimulado;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarDesempenhoAluno;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
@@ -52,13 +51,9 @@ public class ServletCentral extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // HttpSession session = request.getSession(true);
+
         request.setCharacterEncoding("UTF-8");
-        //response.setCharacterEncoding("UTF-8");
         String cmd = request.getParameter("comando");
-        //if (debug) {
-        //  System.out.println("Cmd:" + cmd);
-        //}
         Comando comando = (Comando) comandos.get(cmd);
 
         try {
@@ -125,7 +120,7 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdSalvarSimulado", cmdo);
         cmdo = new CmdVisualizarResultadoSimulado();
         comandos.put("CmdVisualizarResultadoSimulado", cmdo);
-        
+
 
         //Administrador
         cmdo = new CmdAdminVisualizarProvas();
@@ -140,9 +135,7 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdAdminVisualizarDesempenhoAluno", cmdo);
         cmdo = new CmdAdminVisualizarResultadoSimuladoAluno();
         comandos.put("CmdAdminVisualizarResultadoSimuladoAluno", cmdo);
-        cmdo = new CmdAdminAdicionarQuestao();
-        comandos.put("CmdAdminAdicionarQuestao", cmdo);
-
+        
 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

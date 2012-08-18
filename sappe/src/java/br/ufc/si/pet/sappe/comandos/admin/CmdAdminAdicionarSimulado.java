@@ -18,7 +18,6 @@ import br.ufc.si.pet.sappe.util.SendMail;
 import com.ibatis.sqlmap.client.SqlMapException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

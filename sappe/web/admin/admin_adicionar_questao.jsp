@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../css/style.css" rel="stylesheet" type="text/css" />
+         <script type="text/javascript"  language="javascript" src="../js/Script.js"></script>
         <title>Simulador do Ambiente das Provas do POSCOMP e Enade – SAPPE</title>
     </head>
     <body>
@@ -54,7 +55,7 @@
                             </tr>
                             <tr>
                                 <td>Ano (*):</td>
-                                <td><input type="text" name="ano" value="" size="20" /></td>
+                                <td><input type="text" name="ano" value="" size="20" onkeypress="return validaNumerosSilencioso(event);" maxlength="4"/></td>
                             </tr>
                             <tr>
                                 <td>Item Certo (*):</td>

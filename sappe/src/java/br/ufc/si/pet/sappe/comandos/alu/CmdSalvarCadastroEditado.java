@@ -8,6 +8,7 @@ import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.UsuarioService;
+import br.ufc.si.pet.sappe.util.Util;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -34,13 +35,13 @@ public class CmdSalvarCadastroEditado implements Comando {
         UsuarioService usuarioService = new UsuarioService();
         Usuario u = new Usuario();
         u = usuarioService.getUsuarioById(perfil.getUsuario().getId());
-        if (!santiga.trim().equals(u.getSenha())) {
+        if (!Util.criptografar(santiga).trim().equals(u.getSenha())) {
             hS.setAttribute("erro", "A senha antiga é inexistente.");
             return "/alu/editar_cadastro.jsp";
         }
         u.setNome(nome);
         u.setEmail(email);
-        u.setSenha(senha);
+        u.setSenha(Util.criptografar(senha));
         if (usuarioService.updateUsuario(u)) {
             hS.setAttribute("sucesso", "Cadastro editado com sucesso.");
         } else {

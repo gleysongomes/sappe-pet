@@ -3,16 +3,24 @@
     Created on : 24/07/2012, 22:16:23
     Author     : gleyson
 --%>
+<%@page import="br.ufc.si.pet.sappe.entidades.Administrador"%>
+<%@page import="br.ufc.si.pet.sappe.entidades.Perfil"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
+<%
+            Perfil perfil = (Perfil) session.getAttribute("user");
+            if (!(perfil instanceof Administrador)) {
+                response.sendRedirect("../index.jsp");
+            }
+%>
 
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../css/style.css" rel="stylesheet" type="text/css" />
-         <script type="text/javascript"  language="javascript" src="../js/Script.js"></script>
+        <script type="text/javascript"  language="javascript" src="../js/Script.js"></script>
         <title>Simulador do Ambiente das Provas do POSCOMP e Enade – SAPPE</title>
     </head>
     <body>

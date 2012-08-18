@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufc.si.pet.sappe.servlets;
+package br.ufc.si.pet.sappe.comandos.admin.servlets;
 
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import java.io.File;

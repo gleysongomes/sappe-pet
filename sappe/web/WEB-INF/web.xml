@@ -62,7 +62,7 @@
     </servlet>
     <servlet>
         <servlet-name>ServletAdminAdicionarQuestao</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.servlets.ServletAdminAdicionarQuestao</servlet-class>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.servlets.ServletAdminAdicionarQuestao</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CmdRecuperarSenha</servlet-name>

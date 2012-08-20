@@ -77,14 +77,14 @@ public class CmdAdminAdicionarSimulado implements Comando {
                         try {
                             SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
                                     + "um novo simulado foi adicionado ao sistema.<br /><br />"
-                                    + "<a href=" +"http://localhost:8084"+request.getContextPath() +"/index.jsp" + "> Realizar Simulado </a>");
+                                    + "<a href=" + request.getLocalName() + request.getContextPath() + "/index.jsp" + "> Realizar Simulado </a>");
                         } catch (AddressException ex) {
                             Logger.getLogger(CmdAdminAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (MessagingException ex) {
                             Logger.getLogger(CmdAdminAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
-                    session.setAttribute("sucesso", "Simulado cadastrado como sucesso.");
+                    session.setAttribute("sucesso", "Simulado cadastrado com sucesso.");
                 } else {
                     session.setAttribute("erro", "No momento temos apenas " + subListaDeQuestoes.size() + " questões disponíveis para este exame.");
                 }

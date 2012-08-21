@@ -53,6 +53,16 @@ public class SimuladoService {
         return null;
     }
 
+    public ArrayList<Simulado> getListSimuladosByUsuario(Long id) {
+        try {
+            ArrayList<Simulado> simulados = simuladoDAO.getListSimuladosByUsuario(id);
+            return simulados;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     public Long proxId() {
         try {
             return simuladoDAO.proxId();

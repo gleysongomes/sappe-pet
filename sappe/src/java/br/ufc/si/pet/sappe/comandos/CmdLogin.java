@@ -7,6 +7,7 @@ package br.ufc.si.pet.sappe.comandos;
 import br.ufc.si.pet.sappe.entidades.Administrador;
 import br.ufc.si.pet.sappe.entidades.Aluno;
 import br.ufc.si.pet.sappe.entidades.Perfil;
+import br.ufc.si.pet.sappe.entidades.Supervisor;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.UsuarioService;
@@ -39,12 +40,12 @@ public class CmdLogin implements Comando {
             if (perfil == null || perfil.getAtivo() == false) {
                 hS.setAttribute("erro", "Usuário, senha e conta não conferem.");
             } else if (perfil instanceof Aluno) {
-                System.out.println("YESSSSSSSSSSSSSSSSSSSSSS!!"+perfil.getUsuario().getNome());
+                System.out.println("YESSSSSSSSSSSSSSSSSSSSSS!!" + perfil.getUsuario().getNome());
                 hS.setAttribute("user", perfil);
-                //Usuario u = new Usuario();
-                //u = userService.getUsuarioById(perfil.getUsuario().getId());
-                //hS.setAttribute("user", u);
                 return "/alu/index.jsp";
+            } else if (perfil instanceof Supervisor) {
+                hS.setAttribute("user", perfil);
+                return "/sup/index.jsp";
             } else if (perfil instanceof Administrador) {
                 hS.setAttribute("user", perfil);
                 //Usuario u = new Usuario();

@@ -4,14 +4,14 @@
     Author     : gleyson
 --%>
 
-<%@page import="br.ufc.si.pet.sappe.entidades.UsuarioSimulado"%>
+<%@page import="br.ufc.si.pet.sappe.entidades.ResultadoUsuarioSimulado"%>
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <%
-            UsuarioSimulado us = (UsuarioSimulado) session.getAttribute("usuarioSimulado");
+            ResultadoUsuarioSimulado us = (ResultadoUsuarioSimulado) session.getAttribute("resultadoUsuarioSimulado");
 
 %>
 <html>
@@ -25,7 +25,7 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="../admin/menu.jsp" %>
+            <%@include file="../sup/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
                 <label><h3 class="titulo">Resultado do Simulado</h3></label><br /><br /><br />
@@ -56,7 +56,7 @@
                 <table border="0">
                     <thead>
                         <tr>
-                            <th><a href="../admin/visualizar_resultado_simulado.jsp" class="button2">Voltar</a></th>
+                            <th><a href="../sup/visualizar_resultado_simulado.jsp" class="button2">Voltar</a></th>
                         </tr>
                     </thead>
                 </table>

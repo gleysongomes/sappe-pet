@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufc.si.pet.sappe.comandos.admin;
+package br.ufc.si.pet.sappe.comandos.sup;
 
 import br.ufc.si.pet.sappe.entidades.Simulado;
 import br.ufc.si.pet.sappe.interfaces.Comando;
@@ -20,14 +20,14 @@ import org.apache.commons.fileupload.FileUploadException;
  *
  * @author gleyson
  */
-public class CmdAdminVisualizarSimulados implements Comando {
+public class CmdSupervisorVisualizarSimulados implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
 
         HttpSession session = request.getSession(true);
         SimuladoService simuladoService = new SimuladoService();
         List<Simulado> simulados = simuladoService.getAllSimulados();
-        session.setAttribute("admin_simulados", simulados);
-        return "/admin/admin_visualizar_simulados.jsp";
+        session.setAttribute("sup_simulados", simulados);
+        return "/sup/sup_visualizar_simulados.jsp";
     }
 }

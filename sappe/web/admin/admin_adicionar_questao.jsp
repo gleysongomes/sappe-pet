@@ -38,6 +38,16 @@
                     <table border="0">
                         <tbody>
                             <tr>
+                                <td>Exame (*):</td>
+                                <td>
+                                    <select name="eid">
+                                        <option value="0">Selecione</option>
+                                        <option value="1">Poscomp</option>
+                                        <option value="2">Enade</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Área (*): </td>
                                 <td>
                                     <select name="aid">
@@ -48,16 +58,6 @@
                                         <option value="4">Sistemas de Informação</option>
                                         <option value="5">Engenharia de Software</option>
                                         <option value="6">Conhecimentos Gerais</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Exame (*):</td>
-                                <td>
-                                    <select name="eid">
-                                        <option value="0">Selecione</option>
-                                        <option value="1">Poscomp</option>
-                                        <option value="2">Enade</option>
                                     </select>
                                 </td>
                             </tr>
@@ -75,6 +75,7 @@
                                         <option value="C">C</option>
                                         <option value="D">D</option>
                                         <option value="E">E</option>
+                                        <option value="NULLA">NULLA</option>
                                     </select>
                                 </td>
                             </tr>

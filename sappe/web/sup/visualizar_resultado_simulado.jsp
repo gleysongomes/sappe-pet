@@ -23,7 +23,7 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="../admin/menu.jsp" %>
+            <%@include file="../sup/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
                 <label><h3 class="titulo">Visualizar Resultado</h3></label><br /><br /><br />
@@ -44,7 +44,7 @@
                             %>
                             <tr>
                                 <td><center><%= u.getNome()%></center></td>
-                                <td><center><a href="../ServletCentral?comando=CmdAdminVisualizarResultadoSimuladoAluno&id=<%= u.getId()%>" target="_blank">Visualizar Desempenho</a></center></td>
+                                <td><center><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimuladoAluno&id=<%= u.getId()%>" target="_blank">Visualizar Desempenho</a></center></td>
                             </tr>
                             <%}%>
                         </tbody>

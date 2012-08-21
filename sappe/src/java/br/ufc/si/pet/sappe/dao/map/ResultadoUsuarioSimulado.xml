@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ResultadoUsuarioSimulado.xml
+    Created on : 13 de Agosto de 2012, 00:05
+    Author     : gleyson
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ResultadoUsuarioSimulado">
+
+    <resultMap id="resultadoUsuarioSimuladoResult" class="resultado_usuario_simulado">
+        <result property="id" column="id"/>
+        <result property="simulado_id" column="simulado_id"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="respondidas" column="respondidas"/>
+        <result property="brancas" column="brancas"/>
+        <result property="tempo_prova" column="tempo_prova"/>
+        <result property="certas" column="certas"/>
+        <result property="erradas" column="erradas"/>
+    </resultMap>
+
+    <insert id="addResultadoUsuarioSimulado" parameterClass="resultado_usuario_simulado">
+        INSERT INTO sappe.resultado_usuario_simulado(simulado_id, usuario_id,respondidas,brancas,tempo_prova,certas,erradas)
+        VALUES (#simulado_id#, #usuario_id#,#respondidas#,#brancas#,#tempo_prova#,#certas#,#erradas#);
+    </insert>
+
+    <update id="updateResultadoUsuarioSimulado" parameterClass="resultado_usuario_simulado">
+        UPDATE sappe.resultado_usuario_simulado
+        SET respondidas=#respondidas#,brancas=#brancas#,tempo_prova=#tempo_prova#,certas=#certas#,erradas=#erradas# WHERE  usuario_id=#usuario_id#;
+    </update>
+    
+    <select id="getMaxIdResultadoUsuarioSimulado" resultClass="long">
+        SELECT MAX(id)
+        FROM sappe.resultado_usuario_simulado;
+    </select>
+
+    <select id="getResultadoUsuarioSimuladoBySimuladoId" resultClass="resultado_usuario_simulado"
+            parameterClass="long"
+            resultMap="resultadoUsuarioSimuladoResult">
+
+        SELECT *
+        FROM sappe.resultado_usuario_simulado
+        WHERE simulado_id = #var#;
+    </select>
+
+    <select id="getResultadoUsuarioSimuladoByUsuarioId" resultClass="resultado_usuario_simulado"
+            parameterClass="resultado_usuario_simulado"
+            resultMap="resultadoUsuarioSimuladoResult">
+
+        SELECT *
+        FROM sappe.resultado_usuario_simulado
+        WHERE usuario_id = #usuario_id# AND simulado_id=#simulado_id#;
+    </select>
+
+    <select id="getTodosResultadosUsuariosSimulados" resultClass="resultado_usuario_simulado" resultMap="resultadoUsuarioSimuladoResult">
+        SELECT *
+        FROM sappe.resultado_usuario_simulado;
+    </select>
+
+    <select id="getResultadosUsuariosSimuladosBySimuladoId" resultClass="resultado_usuario_simulado" resultMap="resultadoUsuarioSimuladoResult" parameterClass="long">
+        SELECT *
+        FROM sappe.resultado_usuario_simulado WHERE simulado_id=#var#;
+    </select>
+
+</sqlMap>

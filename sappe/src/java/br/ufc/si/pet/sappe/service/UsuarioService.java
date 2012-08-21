@@ -30,6 +30,16 @@ public class UsuarioService {
         }
     }
 
+    public boolean updateUsuarioByEmail(Usuario usuario) {
+        try {
+            usuarioDAO.updateByEmail(usuario);
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean deleteUsuario(Usuario usuario) {
         try {
             usuarioDAO.delete(usuario);
@@ -64,6 +74,9 @@ public class UsuarioService {
                 AlunoService service = new AlunoService();
                 System.out.println("====++" + user.getId());
                 perfil = service.getAlunoByUsuarioId(user.getId());
+            } else if (conta.trim().equals("sup")) {
+                SupervisorService supervisorService = new SupervisorService();
+                perfil = supervisorService.getSupervisorByUsuarioId(user.getId());
             } else if (conta.trim().equals("admin")) {
                 AdministradorService service = new AdministradorService();
                 perfil = service.getAdministradorByUsuarioId(user.getId());
@@ -128,6 +141,4 @@ public class UsuarioService {
         }
         return null;
     }
-
-   
 }

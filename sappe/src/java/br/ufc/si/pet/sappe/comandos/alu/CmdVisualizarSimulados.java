@@ -4,6 +4,7 @@
  */
 package br.ufc.si.pet.sappe.comandos.alu;
 
+import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Simulado;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.SimuladoService;
@@ -25,8 +26,9 @@ public class CmdVisualizarSimulados implements Comando {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
 
         HttpSession session=request.getSession(true);
+        Perfil perfil=(Perfil)session.getAttribute("user");
         SimuladoService simuladoService=new SimuladoService();
-        List<Simulado> simulados = simuladoService.getAllSimulados();
+        List<Simulado> simulados = simuladoService.getListSimuladosByUsuario(perfil.getUsuario().getId());
         session.setAttribute("simulados", simulados);
         return "/alu/visualizar_simulados.jsp";
     }

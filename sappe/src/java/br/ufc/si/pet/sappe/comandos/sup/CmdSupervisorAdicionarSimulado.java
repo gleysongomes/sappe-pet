@@ -2,18 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufc.si.pet.sappe.comandos.admin;
+package br.ufc.si.pet.sappe.comandos.sup;
 
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoSimulado;
 import br.ufc.si.pet.sappe.entidades.Simulado;
 import br.ufc.si.pet.sappe.entidades.Usuario;
+import br.ufc.si.pet.sappe.entidades.UsuarioSimulado;
 import br.ufc.si.pet.sappe.entidades.Utility;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.QuestaoSimuladoService;
 import br.ufc.si.pet.sappe.service.SimuladoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
+import br.ufc.si.pet.sappe.service.UsuarioSimuladoService;
 import br.ufc.si.pet.sappe.util.SendMail;
 import com.ibatis.sqlmap.client.SqlMapException;
 import java.io.IOException;
@@ -33,7 +35,7 @@ import org.apache.commons.fileupload.FileUploadException;
  *
  * @author gleyson
  */
-public class CmdAdminAdicionarSimulado implements Comando {
+public class CmdSupervisorAdicionarSimulado implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
         HttpSession session = request.getSession(true);
@@ -47,7 +49,7 @@ public class CmdAdminAdicionarSimulado implements Comando {
             Integer nq = Integer.parseInt(request.getParameter("nq"));
             if (nome == null || nome.isEmpty() || eid == null || eid.equals(0L) || data == null || data.isEmpty() || hi == null || hi.isEmpty() || ht == null || ht.isEmpty()) {
                 session.setAttribute("erro", "Preencha todos os campos (*).");
-                return "/admin/admin_adicionar_simulado.jsp";
+                return "/sup/sup_adicionar_simulado.jsp";
             } else {
                 Utility utility = new Utility();
                 utility.setIde(eid);
@@ -72,16 +74,21 @@ public class CmdAdminAdicionarSimulado implements Comando {
                         questaoSimuladoService.inserir(questaoSimulado);
                     }
                     UsuarioService us = new UsuarioService();
+                    UsuarioSimuladoService uss=new UsuarioSimuladoService();
                     List<Usuario> usuarios = us.getAllUsuarios();
                     for (Usuario u : usuarios) {
                         try {
+                            UsuarioSimulado usuarioSimulado= new UsuarioSimulado();
+                            usuarioSimulado.setSimulado_id(simulado.getId());
+                            usuarioSimulado.setUsuario_id(u.getId());
+                            uss.insertUsuarioSimulado(usuarioSimulado);
                             SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
                                     + "um novo simulado foi adicionado ao sistema.<br /><br />"
                                     + "<a href=" + request.getLocalName() + request.getContextPath() + "/index.jsp" + "> Realizar Simulado </a>");
                         } catch (AddressException ex) {
-                            Logger.getLogger(CmdAdminAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(CmdSupervisorAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (MessagingException ex) {
-                            Logger.getLogger(CmdAdminAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(CmdSupervisorAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                     session.setAttribute("sucesso", "Simulado cadastrado com sucesso.");
@@ -99,6 +106,6 @@ public class CmdAdminAdicionarSimulado implements Comando {
             session.setAttribute("erro", e.getMessage());
             e.printStackTrace();
         }
-        return "/admin/admin_adicionar_simulado.jsp";
+        return "/sup/sup_adicionar_simulado.jsp";
     }
 }

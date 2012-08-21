@@ -42,7 +42,8 @@ public class CmdSalvarProva implements Comando {
             for (i = 0; i < nQ; i++) {
                 String itemEscolhido = (String) request.getParameter("iM" + i);
                 if (itemEscolhido == null) {brancas++;}
-                else if (itemEscolhido.equals(questoes.get(i).getItem())){certas++;resolvidas++;}
+                else if (itemEscolhido.equals(questoes.get(i).getItem()) ||
+                        questoes.get(i).getItem().equals("NULLA")){certas++;resolvidas++;}
                 else {erradas++;resolvidas++;}
             }
             DateTime dT = new DateTime();
@@ -62,7 +63,8 @@ public class CmdSalvarProva implements Comando {
             for (Questao questao : questoes) {
                 String iM = (String) request.getParameter("iM" + count);
                 if (iM == null) {status = 0;}
-                else if (iM.equals(questoes.get(count).getItem())){status = 1;}
+                else if (iM.equals(questoes.get(count).getItem())||
+                        questoes.get(i).getItem().equals("NULLA")){status = 1;}
                 else{status = 2;}
                 QuestaoProva qP = inserir(prova.getId(), questao.getId(), iM, status);
                 qpS.inserir(qP);

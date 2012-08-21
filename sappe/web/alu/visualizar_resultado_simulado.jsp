@@ -5,7 +5,7 @@
 --%>
 <%@page import="br.ufc.si.pet.sappe.util.Util"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.Simulado"%>
-<%@page import="br.ufc.si.pet.sappe.entidades.UsuarioSimulado"%>
+<%@page import="br.ufc.si.pet.sappe.entidades.ResultadoUsuarioSimulado"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.QuestaoSimulado"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.QuestaoUsuarioSimulado"%>
 <%@page import="java.util.List"%>
@@ -16,7 +16,7 @@
 
 <%
             Simulado simulado = (Simulado) session.getAttribute("simulado2");
-            UsuarioSimulado us = (UsuarioSimulado) session.getAttribute("usuarioSimulado");
+            ResultadoUsuarioSimulado us = (ResultadoUsuarioSimulado) session.getAttribute("resultadoUsuarioSimulado");
 %>
 <html>
     <head>

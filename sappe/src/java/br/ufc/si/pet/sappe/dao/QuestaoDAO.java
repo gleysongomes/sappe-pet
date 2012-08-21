@@ -28,6 +28,10 @@ public class QuestaoDAO {
         return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getListQuestoesByArea", utility);
     }
 
+    public ArrayList<Questao> getListQuestoesByAreaSimulado(Utility utility) throws SQLException {
+        return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getListQuestoesByAreaSimulado", utility);
+    }
+
     public ArrayList<Questao> getListQuestoesByExame(Utility utility) throws SQLException {
         return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getListQuestoesByExame", utility);
     }

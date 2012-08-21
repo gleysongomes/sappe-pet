@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufc.si.pet.sappe.comandos.admin;
+package br.ufc.si.pet.sappe.comandos.sup;
 
 import br.ufc.si.pet.sappe.entidades.Aluno;
 import br.ufc.si.pet.sappe.entidades.QuestaoUsuarioSimulado;
@@ -38,7 +38,7 @@ import javax.swing.ImageIcon;
  *
  * @author gleyson
  */
-public class CmdAdminVisualizarResultadoSimuladoAluno implements Comando {
+public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) {
 
@@ -64,7 +64,7 @@ public class CmdAdminVisualizarResultadoSimuladoAluno implements Comando {
             //String conteudo3[] = men.split("/build/web");
             //Image jpg = Image.getInstance("" + new ImageIcon(
                     //"" + conteudo3[0] + "/web/images/UFC2.png"));
-            Image jpg = Image.getInstance("" + new ImageIcon(""+CmdAdminVisualizarResultadoSimuladoAluno.class.getResource("../../images/UFC2.png")));
+            Image jpg = Image.getInstance("" + new ImageIcon(""+CmdSupervisorVisualizarResultadoSimuladoAluno.class.getResource("../../images/UFC2.png")));
             cabecalho.addCell(jpg);
             cabecalho.addCell(new Phrase("Universidade Federal do Ceará\n"
                     + "Campus de Quixadá\n" + "Simulador do Ambiente das Provas do\nPoscomp e Enade - SAPPE", fonteCabecalho));
@@ -84,7 +84,7 @@ public class CmdAdminVisualizarResultadoSimuladoAluno implements Comando {
 
             //SimuladoService simuladoService = new SimuladoService();
             //Simulado simulado = simuladoService.getSimuladoById(idS);
-            Simulado simulado = (Simulado) hS.getAttribute("adimin_simulado2");
+            Simulado simulado = (Simulado) hS.getAttribute("sup_simulado2");
             AlunoService aS = new AlunoService();
             Aluno alu = aS.getAlunoByUsuarioId(id);
             UsuarioService uS = new UsuarioService();
@@ -206,7 +206,7 @@ public class CmdAdminVisualizarResultadoSimuladoAluno implements Comando {
             } catch (IOException ex) {
                 ex.printStackTrace();
                 hS.setAttribute("erro", "Erro " + ex.getMessage());
-                return "/admin/visualizar_resultado_simulado.jsp";
+                return "/sup/visualizar_resultado_simulado.jsp";
             }
             try {
                 baos.writeTo(out);
@@ -216,14 +216,14 @@ public class CmdAdminVisualizarResultadoSimuladoAluno implements Comando {
             } catch (Exception ex) {
                 ex.printStackTrace();
                 hS.setAttribute("erro", "Erro " + ex.getMessage());
-                return "/admin/visualizar_resultado_simulado.jsp";
+                return "/sup/visualizar_resultado_simulado.jsp";
             }
         } catch (Exception ex) {
             ex.printStackTrace();
             hS.setAttribute("erro", "Erro " + ex.getMessage());
-            return "/admin/visualizar_resultado_simulado.jsp";
+            return "/sup/visualizar_resultado_simulado.jsp";
         }
-        return "/admin/visualizar_resultado_simulado.jsp";
+        return "/sup/visualizar_resultado_simulado.jsp";
     }
 
     private boolean igual(String a, String b) {

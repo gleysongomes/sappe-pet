@@ -9,11 +9,11 @@ import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoSimulado;
 import br.ufc.si.pet.sappe.entidades.QuestaoUsuarioSimulado;
 import br.ufc.si.pet.sappe.entidades.Simulado;
-import br.ufc.si.pet.sappe.entidades.UsuarioSimulado;
+import br.ufc.si.pet.sappe.entidades.ResultadoUsuarioSimulado;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.QuestaoUsuarioSimuladoService;
-import br.ufc.si.pet.sappe.service.UsuarioSimuladoService;
+import br.ufc.si.pet.sappe.service.ResultadoSimuladoService;
 import br.ufc.si.pet.sappe.util.Util;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -41,10 +41,10 @@ public class CmdSalvarSimulado implements Comando {
             String itemEscolhido = (String) request.getParameter("iM" + i);
             Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
             if (itemEscolhido == null) {brancas++;}
-            else if (itemEscolhido.equals(q.getItem())) {certas++;resolvidas++;}
+            else if (itemEscolhido.equals(q.getItem()) || q.getItem().equals("NULLA")) {certas++;resolvidas++;}
             else {erradas++;resolvidas++;}
         }
-        UsuarioSimulado us = new UsuarioSimulado();
+        ResultadoUsuarioSimulado us = new ResultadoUsuarioSimulado();
         us.setSimulado_id(simulado.getId());
         us.setUsuario_id(p.getUsuario().getId());
         us.setRespondidas(resolvidas);
@@ -52,17 +52,17 @@ public class CmdSalvarSimulado implements Comando {
         us.setBrancas(brancas);
         us.setErradas(erradas);
         us.setTempo_prova(Util.calcularTempo(hi.toString(), dt.toString()));
-        UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
+        ResultadoUsuarioSimulado usuarioSimulado = new ResultadoUsuarioSimulado();
         usuarioSimulado.setSimulado_id(simulado.getId());
         usuarioSimulado.setUsuario_id(p.getUsuario().getId());
-        UsuarioSimuladoService usuarioSimuladoService = new UsuarioSimuladoService();
-        UsuarioSimulado u = usuarioSimuladoService.getUsuarioSimuladoByUsuarioId(usuarioSimulado);
+        ResultadoSimuladoService usuarioSimuladoService = new ResultadoSimuladoService();
+        ResultadoUsuarioSimulado u = usuarioSimuladoService.getResultadoUsuarioSimuladoByUsuarioId(usuarioSimulado);
         if (u == null || !(u.getUsuario_id().equals(p.getUsuario().getId()))) {
             usuarioSimuladoService.inserir(us);
             inserir(request, questoes, simulado, p, questaoService);
             session.setAttribute("sucesso", "Simulado salvo com sucesso.");
         } else {
-            usuarioSimuladoService.updateUsuarioSimulado(us);
+            usuarioSimuladoService.updateResultadoUsuarioSimulado(us);
             update(request, questoes, simulado, p, questaoService);
             session.setAttribute("sucesso", "Simulado atualizado com sucesso.");
         }
@@ -88,7 +88,7 @@ public class CmdSalvarSimulado implements Comando {
             Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
             if (iM == null) {
                 status = 0;
-            } else if (iM.equals(q.getItem())) {
+            } else if (iM.equals(q.getItem()) || q.getItem().equals("NULLA")) {
                 status = 1;
             } else {
                 status = 2;
@@ -106,7 +106,7 @@ public class CmdSalvarSimulado implements Comando {
             Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
             if (iM == null) {
                 status = 0;
-            } else if (iM.equals(q.getItem())) {
+            } else if (iM.equals(q.getItem()) || q.getItem().equals("NULLA")) {
                 status = 1;
             } else {
                 status = 2;

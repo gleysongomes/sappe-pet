@@ -9,6 +9,7 @@ import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.SendMail;
+import br.ufc.si.pet.sappe.util.Util;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -43,9 +44,13 @@ public class CmdRecuperarSenha implements Comando {
             if (u != null && email.trim().equals(u.getEmail())) {
                 try {
                     System.out.println("===" + u.getEmail());
+                    UsuarioService us = new UsuarioService();
+                    String senha = Util.createRandomString(1);
+                    u.setSenha(Util.criptografar(senha));
+                    us.updateUsuarioByEmail(u);
                     SendMail.sendMail(u.getEmail(), "Recuperar sua senha.", "Oi " + u.getNome() + ", <br />"
-                            + "abaixo seu Login e Senha.<br /><br />"
-                            + "Login: " + u.getLogin() + "<br />" + "Senha: " + u.getSenha());
+                            + "abaixo seu Login e sua nova Senha de acesso.<br /><br />"
+                            + "Login: " + u.getLogin() + "<br />" + "Senha: " + senha);
                     hS.setAttribute("sucesso", "A senha foi enviada para o seu email.");
                 } catch (AddressException ex) {
                     Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);

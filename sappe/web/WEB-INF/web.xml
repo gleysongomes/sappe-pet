@@ -7,7 +7,7 @@
     </servlet>
     <servlet>
         <servlet-name>CmdCorrigirQuestoes</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminCorrigirProva</servlet-class>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.CmdSupervisorCorrigirProva</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CmdRealizarPoscompPadrao</servlet-name>
@@ -30,16 +30,16 @@
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CmdAdminVisualizarProvas</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas</servlet-class>
+        <servlet-name>CmdSupervisorVisualizarProvas</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.CmdSupervisorVisualizarProvas</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CmdAdminSalvarCorrecaoProva</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminSalvarCorrecaoProva</servlet-class>
+        <servlet-name>CmdSupervisorSalvarCorrecaoProva</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.CmdSupervisorSalvarCorrecaoProva</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CmdAdminSelecionarArquivo</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminSelecionarArquivo</servlet-class>
+        <servlet-name>CmdSupervisorSelecionarArquivo</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.CmdSupervisorSelecionarArquivo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CmdEnviarArquivos</servlet-name>
@@ -62,8 +62,8 @@
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarHistorico</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletAdminAdicionarQuestao</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.servlets.admin.ServletAdminAdicionarQuestao</servlet-class>
+        <servlet-name>ServletSupervisorAdicionarQuestao</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.servlets.Supervisor.ServletSupervisorAdicionarQuestao</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CmdRecuperarSenha</servlet-name>
@@ -78,8 +78,8 @@
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdGerarRelatorio</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CmdAdminAdicionarSimulado</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSimulado</servlet-class>
+        <servlet-name>CmdSupervisorAdicionarSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.CmdSupervisorAdicionarSimulado</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CmdVisualizarSimulado</servlet-name>
@@ -102,24 +102,44 @@
         <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultadoSimulado</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CmdAdminVisualizarSimulados</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSimulados</servlet-class>
+        <servlet-name>CmdSupervisorVisualizarSimulados</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.CmdSupervisorVisualizarSimulados</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CmdAdminVisualizarResultadoSimulado</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimulado</servlet-class>
+        <servlet-name>CmdSupervisorVisualizarResultadoSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.CmdSupervisorVisualizarResultadoSimulado</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CmdAdminVisualizarDesempenhoByAluno</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarDesempenhoAluno</servlet-class>
+        <servlet-name>CmdSupervisorVisualizarDesempenhoByAluno</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.CmdSupervisorVisualizarDesempenhoAluno</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CmdAdminVisualizarResultado</servlet-name>
-        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimuladoAluno</servlet-class>
+        <servlet-name>CmdSupervisorVisualizarResultado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.CmdSupervisorVisualizarResultadoSimuladoAluno</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CmdGerenciarSession</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.CmdGerenciarSession</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdVisualizarGabarito</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarGabarito</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdSupervisorAdicionarSimuladoRestrito</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.sup.CmdSupervisorAdicionarSimuladoRestrito</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdSupervisorAdicionarAlunoSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.sup.CmdSupervisorAdicionarAlunoSimulado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdSupervisorBuscarAluno</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorBuscarAluno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdSupervisorVisualizarGabarito</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.sup.CmdSupervisorVisualizarGabarito</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
@@ -154,16 +174,16 @@
         <url-pattern>/CmdAtivarConta</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CmdAdminVisualizarProvas</servlet-name>
-        <url-pattern>/CmdAdminVisualizarProvas</url-pattern>
+        <servlet-name>CmdSupervisorVisualizarProvas</servlet-name>
+        <url-pattern>/CmdSupervisorVisualizarProvas</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CmdAdminSalvarCorrecaoProva</servlet-name>
-        <url-pattern>/CmdAdminSalvarCorrecaoProva</url-pattern>
+        <servlet-name>CmdSupervisorSalvarCorrecaoProva</servlet-name>
+        <url-pattern>/CmdSupervisorSalvarCorrecaoProva</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CmdAdminSelecionarArquivo</servlet-name>
-        <url-pattern>/CmdAdminSelecionarArquivo</url-pattern>
+        <servlet-name>CmdSupervisorSelecionarArquivo</servlet-name>
+        <url-pattern>/CmdSupervisorSelecionarArquivo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CmdListarQuestoesExamePadrao</servlet-name>
@@ -178,8 +198,8 @@
         <url-pattern>/CmdVisualizarHistorico</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletAdminAdicionarQuestao</servlet-name>
-        <url-pattern>/ServletAdminAdicionarQuestao</url-pattern>
+        <servlet-name>ServletSupervisorAdicionarQuestao</servlet-name>
+        <url-pattern>/ServletSupervisorAdicionarQuestao</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CmdRecuperarSenha</servlet-name>
@@ -194,8 +214,8 @@
         <url-pattern>/CmdGerarRelatorio</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CmdAdminAdicionarSimulado</servlet-name>
-        <url-pattern>/CmdAdminAdicionarSimulado</url-pattern>
+        <servlet-name>CmdSupervisorAdicionarSimulado</servlet-name>
+        <url-pattern>/CmdSupervisorAdicionarSimulado</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CmdVisualizarSimulado</servlet-name>
@@ -218,24 +238,44 @@
         <url-pattern>/CmdVisualizarResultadoSimulado</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CmdAdminVisualizarSimulados</servlet-name>
-        <url-pattern>/CmdAdminVisualizarSimulados</url-pattern>
+        <servlet-name>CmdSupervisorVisualizarSimulados</servlet-name>
+        <url-pattern>/CmdSupervisorVisualizarSimulados</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CmdAdminVisualizarResultadoSimulado</servlet-name>
-        <url-pattern>/CmdAdminVisualizarResultadoSimulado</url-pattern>
+        <servlet-name>CmdSupervisorVisualizarResultadoSimulado</servlet-name>
+        <url-pattern>/CmdSupervisorVisualizarResultadoSimulado</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CmdAdminVisualizarDesempenhoByAluno</servlet-name>
-        <url-pattern>/CmdAdminVisualizarDesempenhoByAluno</url-pattern>
+        <servlet-name>CmdSupervisorVisualizarDesempenhoByAluno</servlet-name>
+        <url-pattern>/CmdSupervisorVisualizarDesempenhoByAluno</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CmdAdminVisualizarResultado</servlet-name>
-        <url-pattern>/CmdAdminVisualizarResultado</url-pattern>
+        <servlet-name>CmdSupervisorVisualizarResultado</servlet-name>
+        <url-pattern>/CmdSupervisorVisualizarResultado</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CmdGerenciarSession</servlet-name>
         <url-pattern>/CmdGerenciarSession</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdVisualizarGabarito</servlet-name>
+        <url-pattern>/CmdVisualizarGabarito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdSupervisorAdicionarSimuladoRestrito</servlet-name>
+        <url-pattern>/CmdSupervisorAdicionarSimuladoRestrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdSupervisorAdicionarAlunoSimulado</servlet-name>
+        <url-pattern>/CmdSupervisorAdicionarAlunoSimulado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdSupervisorBuscarAluno</servlet-name>
+        <url-pattern>/CmdSupervisorBuscarAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdSupervisorVisualizarGabarito</servlet-name>
+        <url-pattern>/CmdSupervisorVisualizarGabarito</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

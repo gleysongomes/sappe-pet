@@ -24,16 +24,15 @@
     </resultMap>
 
     <insert id="addSimulado" parameterClass="simulado">
-        INSERT INTO sappe.simulado(exame_id, nome,data,horaini,horafim,num_questao)
-        VALUES (#exame_id#, #nome#,#data#,#horaini#,#horafim#,#num_questao#);
+        INSERT INTO sappe.simulado(id, exame_id, nome,data,horaini,horafim,num_questao)
+        VALUES (#id#, #exame_id#, #nome#,#data#,#horaini#,#horafim#,#num_questao#);
     </insert>
 
     <select id="getMaxIdSimulado" resultClass="long">
-        SELECT setval('sappe.simulado_id_seq', max(id))
-        FROM sappe.simulado;
+         SELECT nextval('sappe.simulado_id_seq');
     </select>
 
-     <select id="getSimuladoById" resultClass="simulado"
+    <select id="getSimuladoById" resultClass="simulado"
             parameterClass="long"
             resultMap="simuladoResult">
 
@@ -45,6 +44,12 @@
     <select id="getTodosSimulados" resultClass="simulado" resultMap="simuladoResult">
         SELECT *
         FROM sappe.simulado;
+    </select>
+
+    <select id="getListSimuladosByUsuario" resultClass="simulado" parameterClass="long" resultMap="simuladoResult">
+        SELECT *
+        FROM sappe.simulado AS s,sappe.usuario_simulado AS us
+        WHERE s.id=us.simulado_id AND usuario_id=#var#;
     </select>
 
 </sqlMap>

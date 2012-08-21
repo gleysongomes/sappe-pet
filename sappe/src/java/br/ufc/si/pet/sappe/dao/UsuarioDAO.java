@@ -24,7 +24,11 @@ public class UsuarioDAO {
     }
 
     public void update(Usuario user) throws SQLException {
-        PostGresMapConfig.getSqlMapClient().delete("updateUsuario", user);
+        PostGresMapConfig.getSqlMapClient().update("updateUsuario", user);
+    }
+
+    public void updateByEmail(Usuario usuario) throws SQLException {
+        PostGresMapConfig.getSqlMapClient().update("updateByEmail", usuario);
     }
 
     public Usuario getById(Long id) throws SQLException {

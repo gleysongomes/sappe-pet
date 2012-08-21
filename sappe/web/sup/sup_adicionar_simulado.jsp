@@ -1,9 +1,9 @@
 <%-- 
-    Document   : admin_adicionar_simulado
+    Document   : sup_adicionar_simulado
     Created on : 12/08/2012, 18:51:26
     Author     : gleyson
 --%>
-<%@page import="br.ufc.si.pet.sappe.entidades.Administrador"%>
+<%@page import="br.ufc.si.pet.sappe.entidades.Supervisor"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.Perfil"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +11,7 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <%
             Perfil perfil = (Perfil) session.getAttribute("user");
-            if (!(perfil instanceof Administrador)) {
+            if (!(perfil instanceof Supervisor)) {
                 response.sendRedirect("../index.jsp");
             }
 %>
@@ -28,13 +28,13 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="../admin/menu.jsp" %>
+            <%@include file="../sup/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
                 <label><h2 class="titulo2">Adicionar Simulado</h2></label><br /><br /><br />
                 <div id="bh"></div>
                 <form action="../ServletCentral" method="POST">
-                    <input type="hidden" name="comando" value="CmdAdminAdicionarSimulado" />
+                    <input type="hidden" name="comando" value="CmdSupervisorAdicionarSimulado" />
                     <%@include file="../error.jsp" %>
                     <table border="0">
                         <tbody>

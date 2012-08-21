@@ -2,7 +2,7 @@
 
 <!--
     Document   : UsuarioSimulado.xml
-    Created on : 13 de Agosto de 2012, 00:05
+    Created on : 21 de Agosto de 2012, 03:24
     Author     : gleyson
     Description:
         Purpose of the document follows.
@@ -17,54 +17,11 @@
         <result property="id" column="id"/>
         <result property="simulado_id" column="simulado_id"/>
         <result property="usuario_id" column="usuario_id"/>
-        <result property="respondidas" column="respondidas"/>
-        <result property="brancas" column="brancas"/>
-        <result property="tempo_prova" column="tempo_prova"/>
-        <result property="certas" column="certas"/>
-        <result property="erradas" column="erradas"/>
     </resultMap>
 
     <insert id="addUsuarioSimulado" parameterClass="usuario_simulado">
-        INSERT INTO sappe.usuario_simulado(simulado_id, usuario_id,respondidas,brancas,tempo_prova,certas,erradas)
-        VALUES (#simulado_id#, #usuario_id#,#respondidas#,#brancas#,#tempo_prova#,#certas#,#erradas#);
+        INSERT INTO sappe.usuario_simulado(simulado_id, usuario_id)
+        VALUES (#simulado_id#, #usuario_id#);
     </insert>
-
-    <update id="updateUsuarioSimulado" parameterClass="usuario_simulado">
-        UPDATE sappe.usuario_simulado
-        SET respondidas=#respondidas#,brancas=#brancas#,tempo_prova=#tempo_prova#,certas=#certas#,erradas=#erradas# WHERE  usuario_id=#usuario_id#;
-    </update>
-    
-    <select id="getMaxIdUsuarioSimulado" resultClass="long">
-        SELECT MAX(id)
-        FROM sappe.usuario_simulado;
-    </select>
-
-    <select id="getUsuarioSimuladoBySimuladoId" resultClass="usuario_simulado"
-            parameterClass="long"
-            resultMap="usuarioSimuladoResult">
-
-        SELECT *
-        FROM sappe.usuario_simulado
-        WHERE simulado_id = #var#;
-    </select>
-
-    <select id="getUsuarioSimuladoByUsuarioId" resultClass="usuario_simulado"
-            parameterClass="usuario_simulado"
-            resultMap="usuarioSimuladoResult">
-
-        SELECT *
-        FROM sappe.usuario_simulado
-        WHERE usuario_id = #usuario_id# AND simulado_id=#simulado_id#;
-    </select>
-
-    <select id="getTodosUsuariosSimulados" resultClass="usuario_simulado" resultMap="usuarioSimuladoResult">
-        SELECT *
-        FROM sappe.usuario_simulado;
-    </select>
-
-    <select id="getUsuariosSimuladosBySimuladoId" resultClass="usuario_simulado" resultMap="usuarioSimuladoResult" parameterClass="long">
-        SELECT *
-        FROM sappe.usuario_simulado WHERE simulado_id=#var#;
-    </select>
 
 </sqlMap>

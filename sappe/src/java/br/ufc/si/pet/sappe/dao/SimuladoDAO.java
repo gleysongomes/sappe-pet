@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class SimuladoDAO {
 
     public void inserir(Simulado s) throws SQLException {
-       // s.setId(proxId());
+        s.setId(proxId());
         PostGresMapConfig.getSqlMapClient().insert("addSimulado", s);
     }
 
@@ -26,6 +26,10 @@ public class SimuladoDAO {
 
     public ArrayList<Simulado> getAll() throws SQLException {
         return (ArrayList<Simulado>) PostGresMapConfig.getSqlMapClient().queryForList("getTodosSimulados");
+    }
+
+    public ArrayList<Simulado> getListSimuladosByUsuario(Long id) throws SQLException {
+        return (ArrayList<Simulado>) PostGresMapConfig.getSqlMapClient().queryForList("getListSimuladosByUsuario",id);
     }
 
     public Long proxId() throws SQLException {

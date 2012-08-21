@@ -1,5 +1,5 @@
 <%-- 
-    Document   : admin_visualizar_simulados
+    Document   : sup_visualizar_simulados
     Created on : 13/08/2012, 04:57:12
     Author     : gleyson
 --%>
@@ -22,7 +22,7 @@
             <div id="topo">
                 <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
             </div>
-            <%@include file="../admin/menu.jsp" %>
+            <%@include file="../sup/menu.jsp" %>
             <div id="direita"></div>
             <div id="meio">
                 <label><h3 class="titulo">Visualizar Simulados</h3></label><br /><br /><br />
@@ -42,7 +42,7 @@
                         </thead>
                         <tbody>
                             <%
-                                        List<Simulado> simulados = (List<Simulado>) session.getAttribute("admin_simulados");
+                                        List<Simulado> simulados = (List<Simulado>) session.getAttribute("sup_simulados");
                                         for (Simulado s : simulados) {
                             %>
                             <tr>
@@ -61,7 +61,7 @@
                                 <td>
                                     <%= s.getHorafim()%>
                                 </td>
-                                <td><a href="../ServletCentral?comando=CmdAdminVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a></td>
+                                <td><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a>/<a href="../ServletCentral?comando=CmdSupervisorVisualizarGabarito&id=<%= s.getId()%>" target="_blank">Visualizar Gabarito</a></td>
                             </tr>
                             <%}%>
                         </tbody>

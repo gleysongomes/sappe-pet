@@ -35,6 +35,7 @@
                                 <select name="conta" style="width: 180px;">
                                     <option value="0">Selecione</option>
                                     <option value="alu">Aluno</option>
+                                    <option value="sup">Supervisor</option>
                                     <option value="admin">Administrador</option>
                                 </select>
                             </div>

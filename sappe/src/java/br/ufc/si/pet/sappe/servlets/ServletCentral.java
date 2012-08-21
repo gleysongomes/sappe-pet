@@ -8,12 +8,7 @@ import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
 import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
 import br.ufc.si.pet.sappe.comandos.CmdRedirecionar;
-import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSimulado;
-import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarDesempenhoAluno;
-import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarProvas;
-import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimulado;
-import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarResultadoSimuladoAluno;
-import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSimulados;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorBuscarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta;
 import br.ufc.si.pet.sappe.comandos.alu.CmdEditarCadastro;
@@ -32,6 +27,14 @@ import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultadoSimulado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarSimulados;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarAlunoSimulado;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarSimulado;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarSimuladoRestrito;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarDesempenhoAluno;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarGabarito;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarResultadoSimulado;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarResultadoSimuladoAluno;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarSimulados;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -121,21 +124,29 @@ public class ServletCentral extends HttpServlet {
         cmdo = new CmdVisualizarResultadoSimulado();
         comandos.put("CmdVisualizarResultadoSimulado", cmdo);
 
+        //Supervisor
+        cmdo = new CmdSupervisorAdicionarSimuladoRestrito();
+        comandos.put("CmdSupervisorAdicionarSimuladoRestrito", cmdo);
+        cmdo = new CmdSupervisorAdicionarAlunoSimulado();
+        comandos.put("CmdSupervisorAdicionarAlunoSimulado", cmdo);
+        cmdo = new CmdSupervisorBuscarAluno();
+        comandos.put("CmdSupervisorBuscarAluno", cmdo);
+        cmdo = new CmdSupervisorAdicionarSimulado();
+        comandos.put("CmdSupervisorAdicionarSimulado", cmdo);
+        cmdo = new CmdSupervisorVisualizarDesempenhoAluno();
+        comandos.put("CmdSupervisorVisualizarDesempenhoAluno", cmdo);
+        cmdo = new CmdSupervisorVisualizarResultadoSimuladoAluno();
+        comandos.put("CmdSupervisorVisualizarResultadoSimuladoAluno", cmdo);
+        cmdo = new CmdSupervisorVisualizarResultadoSimulado();
+        comandos.put("CmdSupervisorVisualizarResultadoSimulado", cmdo);
+        cmdo = new CmdSupervisorVisualizarGabarito();
+        comandos.put("CmdSupervisorVisualizarGabarito", cmdo);
+        cmdo = new CmdSupervisorVisualizarSimulados();
+        comandos.put("CmdSupervisorVisualizarSimulados", cmdo);
 
-        //Administrador
-        cmdo = new CmdAdminVisualizarProvas();
-        comandos.put("CmdAdminVisualizarProvas", cmdo);
-        cmdo = new CmdAdminAdicionarSimulado();
-        comandos.put("CmdAdminAdicionarSimulado", cmdo);
-        cmdo = new CmdAdminVisualizarSimulados();
-        comandos.put("CmdAdminVisualizarSimulados", cmdo);
-        cmdo = new CmdAdminVisualizarResultadoSimulado();
-        comandos.put("CmdAdminVisualizarResultadoSimulado", cmdo);
-        cmdo = new CmdAdminVisualizarDesempenhoAluno();
-        comandos.put("CmdAdminVisualizarDesempenhoAluno", cmdo);
-        cmdo = new CmdAdminVisualizarResultadoSimuladoAluno();
-        comandos.put("CmdAdminVisualizarResultadoSimuladoAluno", cmdo);
         
+        //Administrador
+
 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

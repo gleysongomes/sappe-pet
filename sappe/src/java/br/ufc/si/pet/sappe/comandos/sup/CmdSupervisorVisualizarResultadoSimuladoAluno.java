@@ -165,7 +165,7 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
                 }
                 count++;
             }
-
+            table.addCell(new Phrase("Obs*: As questõs nullas são consideradas certas.\n", fonteConteudo));
             if (simulado.getExame_id() == 1) {
                 table.addCell(new Phrase("Tempo de Simulado: "
                         + rus.getTempo_prova() + ".\n"

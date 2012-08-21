@@ -67,8 +67,8 @@ public class CmdGerarRelatorio implements Comando {
             //String men = "" + request.getSession().getServletContext().getRealPath("");
             //String conteudo3[] = men.split("/build/web");
             //Image jpg = Image.getInstance("" + new ImageIcon(
-                    //"" + conteudo3[0] + "/web/images/UFC2.png"));
-            Image jpg = Image.getInstance("" + new ImageIcon(""+CmdGerarRelatorio.class.getResource("../../images/UFC2.png")));
+            //"" + conteudo3[0] + "/web/images/UFC2.png"));
+            Image jpg = Image.getInstance("" + new ImageIcon("" + CmdGerarRelatorio.class.getResource("../../images/UFC2.png")));
             cabecalho.addCell(jpg);
             cabecalho.addCell(new Phrase("Universidade Federal do Ceará\n"
                     + "Campus de Quixadá\n" + "Simulador do Ambiente das Provas do\nPoscomp e Enade - SAPPE", fonteCabecalho));
@@ -150,7 +150,7 @@ public class CmdGerarRelatorio implements Comando {
                 }
                 count++;
             }
-
+            table.addCell(new Phrase("Obs*: As questõs nullas são consideradas certas.\n", fonteConteudo));
             if (tpid.intValue() <= 6) {
                 table.addCell(new Phrase("Número de Questões: " + prova.getNumero_questoes()
                         + ".\nQuestões Respondidas: " + prova.getRespondidas()
@@ -225,6 +225,6 @@ public class CmdGerarRelatorio implements Comando {
     }
 
     private boolean igual(String a, String b) {
-        return (a == null ? b == null : a.equals(b)) ? true : false;
+        return (a == null ? b == null : a.equals(b)) || b.equals("N") ? true : false;
     }
 }

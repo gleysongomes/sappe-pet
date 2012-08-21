@@ -39,8 +39,12 @@ public class CmdSalvarProvaEditada implements Comando {
                 String itemEscolhido = (String) request.getParameter("iM" + i);
                 Questao q = questaoService.getQuestaoById(qp.get(i).getQuestao_id());
                 if (itemEscolhido == null) {
+                    if (q.getItem().equals("N")) {
+                        certas++;
+                    }
                     brancas++;
-                } else if (itemEscolhido.equals(q.getItem())) {
+                } else if (itemEscolhido.equals(q.getItem())
+                        || q.getItem().equals("N")) {
                     certas++;
                     resolvidas++;
                 } else {
@@ -66,13 +70,14 @@ public class CmdSalvarProvaEditada implements Comando {
             for (QuestaoProva qP : qPs) {
                 String iM = (String) request.getParameter("iM" + count);
                 Questao q = questaoService.getQuestaoById(qp.get(count).getQuestao_id());
-                if (iM == null)
-                    status = 0;
-                else if (iM.equals(q.getItem()))
+                if (iM == null) {
+                    if (q.getItem().equals("N")) {status = 3;}
+                    else {status = 0;}
+                }
+                else if(q.getItem().equals("N")){status = 3;}
+                else if (iM.equals(q.getItem())) {
                     status = 1;
-                else
-                    status = 2;
-
+                }else {status = 2;}
                 qP.setProva_id(prova.getId());
                 qP.setItem_marcado(iM);
                 qP.setStatus(status);

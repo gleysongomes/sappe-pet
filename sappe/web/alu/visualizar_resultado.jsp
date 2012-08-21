@@ -58,7 +58,7 @@
                     </thead>
                 </table>
                 <br />
-                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>Branca</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else {%><label style="color: red;">Errada</label><%}%></label><br /><br />
+                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>Branca</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if (qp.getStatus() == 2) {%><label style="color: red;">Errada</label><%}else {%><label style="color: gray;">Nulla</label><%}%></label><br /><br />
                 <%itemIncr++;}%>
                 <br /><h5>Obs (*) : As questões nullas são consideradas como certas.</h5>
                 <h3>Relatório da Prova</h3><br>

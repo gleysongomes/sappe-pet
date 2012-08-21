@@ -40,8 +40,8 @@ public class CmdSalvarSimulado implements Comando {
         for (i = 0; i < simulado.getNum_questao(); i++) {
             String itemEscolhido = (String) request.getParameter("iM" + i);
             Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
-            if (itemEscolhido == null) {brancas++;}
-            else if (itemEscolhido.equals(q.getItem()) || q.getItem().equals("NULLA")) {certas++;resolvidas++;}
+            if (itemEscolhido == null) {brancas++;if(q.getItem().equals("N")){certas++;}}
+            else if (itemEscolhido.equals(q.getItem()) || q.getItem().equals("N")) {certas++;resolvidas++;}
             else {erradas++;resolvidas++;}
         }
         ResultadoUsuarioSimulado us = new ResultadoUsuarioSimulado();
@@ -87,8 +87,11 @@ public class CmdSalvarSimulado implements Comando {
             String iM = (String) request.getParameter("iM" + i);
             Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
             if (iM == null) {
-                status = 0;
-            } else if (iM.equals(q.getItem()) || q.getItem().equals("NULLA")) {
+                if(q.getItem().equals("N")){status=3;}
+                else {status = 0;}
+            }
+            else if(q.getItem().equals("N")){status=3;}
+            else if (iM.equals(q.getItem())) {
                 status = 1;
             } else {
                 status = 2;
@@ -105,8 +108,11 @@ public class CmdSalvarSimulado implements Comando {
             String iM = (String) request.getParameter("iM" + i);
             Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
             if (iM == null) {
-                status = 0;
-            } else if (iM.equals(q.getItem()) || q.getItem().equals("NULLA")) {
+                if(q.getItem().equals("N")){status=3;}
+                else {status = 0;}
+            }
+            else if(q.getItem().equals("N")){status=3;}
+            else if (iM.equals(q.getItem())) {
                 status = 1;
             } else {
                 status = 2;

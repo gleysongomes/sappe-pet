@@ -28,7 +28,7 @@ public class QuestaoUsuarioSimuladoService {
             questaoUsuarioSimuladoDAO.inserir(qus);
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(ResultadoSimuladoService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ResultadoUsuarioSimuladoService.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }

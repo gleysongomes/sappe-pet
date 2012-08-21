@@ -13,7 +13,7 @@ import br.ufc.si.pet.sappe.entidades.ResultadoUsuarioSimulado;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.QuestaoUsuarioSimuladoService;
-import br.ufc.si.pet.sappe.service.ResultadoSimuladoService;
+import br.ufc.si.pet.sappe.service.ResultadoUsuarioSimuladoService;
 import br.ufc.si.pet.sappe.util.Util;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -55,7 +55,7 @@ public class CmdSalvarSimulado implements Comando {
         ResultadoUsuarioSimulado usuarioSimulado = new ResultadoUsuarioSimulado();
         usuarioSimulado.setSimulado_id(simulado.getId());
         usuarioSimulado.setUsuario_id(p.getUsuario().getId());
-        ResultadoSimuladoService usuarioSimuladoService = new ResultadoSimuladoService();
+        ResultadoUsuarioSimuladoService usuarioSimuladoService = new ResultadoUsuarioSimuladoService();
         ResultadoUsuarioSimulado u = usuarioSimuladoService.getResultadoUsuarioSimuladoByUsuarioId(usuarioSimulado);
         if (u == null || !(u.getUsuario_id().equals(p.getUsuario().getId()))) {
             usuarioSimuladoService.inserir(us);

@@ -10,7 +10,7 @@ import br.ufc.si.pet.sappe.entidades.ResultadoUsuarioSimulado;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.SimuladoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
-import br.ufc.si.pet.sappe.service.ResultadoSimuladoService;
+import br.ufc.si.pet.sappe.service.ResultadoUsuarioSimuladoService;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class CmdSupervisorVisualizarResultadoSimulado implements Comando {
 
         HttpSession session = request.getSession(true);
         Long id = Long.parseLong(request.getParameter("id"));
-        ResultadoSimuladoService uss = new ResultadoSimuladoService();
+        ResultadoUsuarioSimuladoService uss = new ResultadoUsuarioSimuladoService();
         List<ResultadoUsuarioSimulado> usuarioSimulados = uss.getResultadosUsuariosSimuladosBySimuladoId(id);
         UsuarioService us = new UsuarioService();
         List<Usuario> usuarios = new ArrayList<Usuario>();

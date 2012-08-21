@@ -8,6 +8,7 @@ import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
 import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
 import br.ufc.si.pet.sappe.comandos.CmdRedirecionar;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarAlunos;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorBuscarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAtivarConta;
@@ -30,6 +31,7 @@ import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarSimulados;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarAlunoSimulado;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarSimulado;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarSimuladoRestrito;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorExcluirSimulado;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarDesempenhoAluno;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarGabarito;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarResultadoSimulado;
@@ -143,9 +145,12 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdSupervisorVisualizarGabarito", cmdo);
         cmdo = new CmdSupervisorVisualizarSimulados();
         comandos.put("CmdSupervisorVisualizarSimulados", cmdo);
-
+        cmdo = new CmdSupervisorExcluirSimulado();
+        comandos.put("CmdSupervisorExcluirSimulado", cmdo);
         
         //Administrador
+        cmdo = new CmdAdminVisualizarAlunos();
+        comandos.put("CmdAdminVisualizarAlunos", cmdo);
 
 
     }

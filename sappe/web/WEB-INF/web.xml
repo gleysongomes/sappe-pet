@@ -141,6 +141,14 @@
         <servlet-name>CmdSupervisorVisualizarGabarito</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.Supervisor.sup.CmdSupervisorVisualizarGabarito</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdSupervisorExcluirSimulado</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorExcluirSimulado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdAdminVisualizarAlunos</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarAlunos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -276,6 +284,14 @@
     <servlet-mapping>
         <servlet-name>CmdSupervisorVisualizarGabarito</servlet-name>
         <url-pattern>/CmdSupervisorVisualizarGabarito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdSupervisorExcluirSimulado</servlet-name>
+        <url-pattern>/CmdSupervisorExcluirSimulado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminVisualizarAlunos</servlet-name>
+        <url-pattern>/CmdAdminVisualizarAlunos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

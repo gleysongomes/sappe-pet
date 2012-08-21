@@ -15,6 +15,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript"  language="javascript" src="../js/Script.js"></script>
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
@@ -53,7 +54,7 @@
                                     <%= s.getData()%>
                                 </td>
                                 <td>
-                                    <%= s.getNum_questao() %>
+                                    <%= s.getNum_questao()%>
                                 </td>
                                 <td>
                                     <%= s.getHoraini()%>
@@ -61,7 +62,7 @@
                                 <td>
                                     <%= s.getHorafim()%>
                                 </td>
-                                <td><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a>/<a href="../ServletCentral?comando=CmdSupervisorVisualizarGabarito&id=<%= s.getId()%>" target="_blank">Visualizar Gabarito</a></td>
+                                <td><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a>/<a href="../ServletCentral?comando=CmdSupervisorVisualizarGabarito&id=<%= s.getId()%>" target="_blank">Visualizar Gabarito </a>/<a href="../ServletCentral?comando=CmdSupervisorExcluirSimulado&id=<%= s.getId()%>" onclick="return confirmarExclucao();">Excluir</a></td>
                             </tr>
                             <%}%>
                         </tbody>

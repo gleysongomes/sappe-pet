@@ -6,11 +6,13 @@ package br.ufc.si.pet.sappe.comandos.sup;
 
 import br.ufc.si.pet.sappe.entidades.Aluno;
 import br.ufc.si.pet.sappe.entidades.QuestaoUsuarioSimulado;
+import br.ufc.si.pet.sappe.entidades.ResultadoUsuarioSimulado;
 import br.ufc.si.pet.sappe.entidades.Simulado;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.AlunoService;
 import br.ufc.si.pet.sappe.service.QuestaoUsuarioSimuladoService;
+import br.ufc.si.pet.sappe.service.ResultadoUsuarioSimuladoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.Util;
 import com.lowagie.text.Document;
@@ -63,8 +65,8 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
             //String men = "" + request.getSession().getServletContext().getRealPath("");
             //String conteudo3[] = men.split("/build/web");
             //Image jpg = Image.getInstance("" + new ImageIcon(
-                    //"" + conteudo3[0] + "/web/images/UFC2.png"));
-            Image jpg = Image.getInstance("" + new ImageIcon(""+CmdSupervisorVisualizarResultadoSimuladoAluno.class.getResource("../../images/UFC2.png")));
+            //"" + conteudo3[0] + "/web/images/UFC2.png"));
+            Image jpg = Image.getInstance("" + new ImageIcon("" + CmdSupervisorVisualizarResultadoSimuladoAluno.class.getResource("../../images/UFC2.png")));
             cabecalho.addCell(jpg);
             cabecalho.addCell(new Phrase("Universidade Federal do Ceará\n"
                     + "Campus de Quixadá\n" + "Simulador do Ambiente das Provas do\nPoscomp e Enade - SAPPE", fonteCabecalho));
@@ -104,6 +106,11 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
             table.getDefaultCell().setGrayFill(10f);
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
+            ResultadoUsuarioSimuladoService rss = new ResultadoUsuarioSimuladoService();
+            ResultadoUsuarioSimulado resultadoUsuarioSimulado = new ResultadoUsuarioSimulado();
+            resultadoUsuarioSimulado.setSimulado_id(simulado.getId());
+            resultadoUsuarioSimulado.setUsuario_id(id);
+            ResultadoUsuarioSimulado rus = rss.getResultadoUsuarioSimuladoByUsuarioId(resultadoUsuarioSimulado);
             QuestaoUsuarioSimulado questaoUsuarioSimulado = new QuestaoUsuarioSimulado();
             questaoUsuarioSimulado.setSimulado_id(simulado.getId());
             questaoUsuarioSimulado.setUsuario_id(id);
@@ -160,7 +167,9 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
             }
 
             if (simulado.getExame_id() == 1) {
-                table.addCell(new Phrase("Questões de Matemática"
+                table.addCell(new Phrase("Tempo de Simulado: "
+                        + rus.getTempo_prova() + ".\n"
+                        + "\nQuestões de Matemática"
                         + ":\nQuestões Certas: " + pmat
                         + ".\nQuestões Erradas: " + (pmat2 - pmat)
                         + ".\nPercentual de Acerto: " + 100 * pmat / util(pmat2) + "%"
@@ -175,7 +184,9 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
                         + ".\n\nPercentual de Acerto Geral: " + 100 * (pmat + pfuncomp + ptecomp) / util((pmat2 + pfuncomp2 + ptecomp2)) + "%"
                         + ".\n", fonteConteudo));
             } else {
-                table.addCell(new Phrase("Questões de Sistemas de Informação"
+                table.addCell(new Phrase("Tempo de Simulado: "
+                        + rus.getTempo_prova() + ".\n"
+                        + "Questões de Sistemas de Informação"
                         + ":\nQuestões Certas: " + esi
                         + ".\nQuestões Erradas: " + (esi2 - esi)
                         + ".\nPercentual de Acerto: " + 100 * esi / util(esi2) + "%"

@@ -11,7 +11,7 @@ import br.ufc.si.pet.sappe.entidades.ResultadoUsuarioSimulado;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoUsuarioSimuladoService;
 import br.ufc.si.pet.sappe.service.SimuladoService;
-import br.ufc.si.pet.sappe.service.ResultadoSimuladoService;
+import br.ufc.si.pet.sappe.service.ResultadoUsuarioSimuladoService;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -32,7 +32,7 @@ public class CmdVisualizarResultadoSimulado implements Comando {
         HttpSession session = request.getSession(true);
         Long id = Long.parseLong(request.getParameter("id"));
         Perfil p = (Perfil) session.getAttribute("user");
-        ResultadoSimuladoService uss = new ResultadoSimuladoService();
+        ResultadoUsuarioSimuladoService uss = new ResultadoUsuarioSimuladoService();
         ResultadoUsuarioSimulado u = new ResultadoUsuarioSimulado();
         u.setSimulado_id(id);
         u.setUsuario_id(p.getUsuario().getId());
@@ -44,7 +44,7 @@ public class CmdVisualizarResultadoSimulado implements Comando {
             SimuladoService simuladoService = new SimuladoService();
             Simulado simulado = simuladoService.getSimuladoById(id);
             session.setAttribute("simulado2", simulado);
-            ResultadoSimuladoService usuarioSimuladoService = new ResultadoSimuladoService();
+            ResultadoUsuarioSimuladoService usuarioSimuladoService = new ResultadoUsuarioSimuladoService();
             ResultadoUsuarioSimulado usuarioSimulado = usuarioSimuladoService.getResultadoUsuarioSimuladoByUsuarioId(us);
             session.setAttribute("resultadoUsuarioSimulado", usuarioSimulado);
             QuestaoUsuarioSimuladoService quss = new QuestaoUsuarioSimuladoService();

@@ -15,11 +15,11 @@ import java.util.logging.Logger;
  *
  * @author gleyson
  */
-public class ResultadoSimuladoService {
+public class ResultadoUsuarioSimuladoService {
 
     private ResultadoUsuarioSimuladoDAO resultadoUsuarioSimuladoDAO;
 
-    public ResultadoSimuladoService() {
+    public ResultadoUsuarioSimuladoService() {
         resultadoUsuarioSimuladoDAO = new ResultadoUsuarioSimuladoDAO();
     }
 
@@ -28,7 +28,7 @@ public class ResultadoSimuladoService {
             resultadoUsuarioSimuladoDAO.inserir(us);
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(ResultadoSimuladoService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ResultadoUsuarioSimuladoService.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }

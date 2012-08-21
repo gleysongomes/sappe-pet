@@ -33,6 +33,16 @@ public class SimuladoService {
         }
     }
 
+    public boolean deleteSimulado(Long id) {
+        try {
+            simuladoDAO.excluir(id);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(SimuladoService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
     public Simulado getSimuladoById(Long id) {
         try {
             Simulado s = simuladoDAO.getById(id);

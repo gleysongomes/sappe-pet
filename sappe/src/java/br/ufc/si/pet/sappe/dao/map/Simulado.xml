@@ -29,7 +29,7 @@
     </insert>
 
     <select id="getMaxIdSimulado" resultClass="long">
-         SELECT nextval('sappe.simulado_id_seq');
+        SELECT nextval('sappe.simulado_id_seq');
     </select>
 
     <select id="getSimuladoById" resultClass="simulado"
@@ -52,4 +52,12 @@
         WHERE s.id=us.simulado_id AND usuario_id=#var#;
     </select>
 
+    <delete id="deleteSimulado" parameterClass="long">
+        DELETE FROM sappe.questao_simulado WHERE simulado_id=#var#;
+        DELETE FROM sappe.questao_usuario_simulado WHERE simulado_id=#var#;
+        DELETE FROM sappe.resultado_usuario_simulado WHERE simulado_id=#var#;
+        DELETE FROM sappe.usuario_simulado WHERE simulado_id=#var#;
+        DELETE FROM sappe.simulado WHERE id=#var#;
+    </delete>
+    
 </sqlMap>

@@ -67,7 +67,7 @@
                                 <td><input type="text" name="nq" value="" size="20" maxlength="2" onkeypress="return validaNumerosSilencioso(event)"/></td>
                             </tr>
                             <tr>
-                                <td><input type="submit" value="Enviar" name="Enviar" /></td>
+                                <td><input type="submit" value="Salvar" name="Salvar" /></td>
                                 <td><input type="reset" value="Limpar" name="Limpar" /></td>
                             </tr>
                         </tbody>

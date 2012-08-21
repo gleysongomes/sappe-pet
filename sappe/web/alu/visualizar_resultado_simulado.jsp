@@ -52,10 +52,10 @@
                         </tr>
                     </thead>
                 </table><br />
-                <label>Status:  <%if (quses.get(itemIncr).getStatus() == 0) {%> <label>Branca</label><%} else if (quses.get(itemIncr).getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if(quses.get(itemIncr).getStatus() == 2){%><label style="color: red;">Errada</label><%}else {%><label style="color: gray;">Nulla</label><%}%></label><br /><br />
+                <label>Status:  <%if (quses.get(itemIncr).getStatus() == 0) {%> <label>Branca</label><%} else if (quses.get(itemIncr).getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if(quses.get(itemIncr).getStatus() == 2){%><label style="color: red;">Errada</label><%}else {%><label style="color: blue;">Nulla</label><%}%></label><br /><br />
                 <br />
                 <%itemIncr++;}%>
-                <br />
+                <br /><h5>Obs (*) : As questões nullas são consideradas certas.</h5>
                 <h3>Relatório do Simulado</h3><br>
                 <div id="content">
                     <table>

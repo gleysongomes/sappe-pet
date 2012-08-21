@@ -64,8 +64,8 @@
                     <table border="0">
                         <thead>
                             <tr>
-                                <th><input type="submit" value="Enviar" name="Enviar" class="button"/></th>
-                                <th width="100px"><a href=""><input type="button" value="Voltar" name="Voltar" class="button"/></a></th>
+                                <th><input type="submit" value="Atualizar" name="Atualizar" class="button"/></th>
+                                <th width="100px"><a href="../alu/visualizar_provas.jsp"><input type="button" value="Voltar" name="Voltar" class="button"/></a></th>
                             </tr>
                         </thead>
                     </table>

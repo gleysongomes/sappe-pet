@@ -60,7 +60,7 @@
                     <table border="0">
                         <thead>
                             <tr>
-                                <th><input type="submit" value="Enviar" name="Enviar" class="button"/></th>
+                                <th><input type="submit" value="Salvar" name="Salvar" class="button"/></th>
                                 <th width="100px"><input type="reset" value="Cancelar" name="Cancelar" class="button"/></th>
                             </tr>
                         </thead>

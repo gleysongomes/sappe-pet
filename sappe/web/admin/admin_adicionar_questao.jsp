@@ -84,7 +84,7 @@
                                 <td><input type="file" name="questao" value="" /></td>
                             </tr>
                             <tr>
-                                <td><input type="submit" value="Enviar" name="Enviar" /></td>
+                                <td><input type="submit" value="Salvar" name="Salvar" /></td>
                                 <td><input type="reset" value="Limpar" name="Limpar" /></td>
                             </tr>
                         </tbody>

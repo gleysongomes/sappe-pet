@@ -150,7 +150,7 @@ public class CmdGerarRelatorio implements Comando {
                 }
                 count++;
             }
-            table.addCell(new Phrase("Obs*: As questõs nullas são consideradas certas.\n", fonteConteudo));
+            table.addCell(new Phrase("Obs*: As questões nullas são consideradas certas.\n", fonteConteudo));
             if (tpid.intValue() <= 6) {
                 table.addCell(new Phrase("Número de Questões: " + prova.getNumero_questoes()
                         + ".\nQuestões Respondidas: " + prova.getRespondidas()

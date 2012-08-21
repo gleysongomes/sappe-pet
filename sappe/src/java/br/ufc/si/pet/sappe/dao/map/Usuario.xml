@@ -89,7 +89,7 @@
 
         SELECT *
         FROM sappe.usuario
-        WHERE nome LIKE #var#;
+        WHERE nome LIKE %var%;
     </select>
 
     <select id="getMaxIdUsuario" resultClass="long">

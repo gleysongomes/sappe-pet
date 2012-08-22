@@ -15,6 +15,10 @@ import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.QuestaoUsuarioSimuladoService;
 import br.ufc.si.pet.sappe.service.ResultadoUsuarioSimuladoService;
 import br.ufc.si.pet.sappe.util.Util;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,46 +31,68 @@ import org.joda.time.DateTime;
  */
 public class CmdSalvarSimulado implements Comando {
 
-    public String executa(HttpServletRequest request, HttpServletResponse response) {
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws ParseException {
 
         HttpSession session = request.getSession(true);
-        List<QuestaoSimulado> questoes = (List<QuestaoSimulado>) session.getAttribute("questaoSimulados");
-        DateTime hi = (DateTime) session.getAttribute("hi");
-        DateTime dt = new DateTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+        Format format = new SimpleDateFormat("dd/MM/yyyy");
         Simulado simulado = (Simulado) session.getAttribute("simulado");
-        Perfil p = (Perfil) session.getAttribute("user");
-        QuestaoService questaoService = new QuestaoService();
-        int i, resolvidas = 0, brancas = 0, certas = 0, erradas = 0;
-        for (i = 0; i < simulado.getNum_questao(); i++) {
-            String itemEscolhido = (String) request.getParameter("iM" + i);
-            Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
-            if (itemEscolhido == null) {brancas++;if(q.getItem().equals("N")){certas++;}}
-            else if (itemEscolhido.equals(q.getItem()) || q.getItem().equals("N")) {certas++;resolvidas++;}
-            else {erradas++;resolvidas++;}
-        }
-        ResultadoUsuarioSimulado us = new ResultadoUsuarioSimulado();
-        us.setSimulado_id(simulado.getId());
-        us.setUsuario_id(p.getUsuario().getId());
-        us.setRespondidas(resolvidas);
-        us.setCertas(certas);
-        us.setBrancas(brancas);
-        us.setErradas(erradas);
-        us.setTempo_prova(Util.calcularTempo(hi.toString(), dt.toString()));
-        ResultadoUsuarioSimulado usuarioSimulado = new ResultadoUsuarioSimulado();
-        usuarioSimulado.setSimulado_id(simulado.getId());
-        usuarioSimulado.setUsuario_id(p.getUsuario().getId());
-        ResultadoUsuarioSimuladoService usuarioSimuladoService = new ResultadoUsuarioSimuladoService();
-        ResultadoUsuarioSimulado u = usuarioSimuladoService.getResultadoUsuarioSimuladoByUsuarioId(usuarioSimulado);
-        if (u == null || !(u.getUsuario_id().equals(p.getUsuario().getId()))) {
-            usuarioSimuladoService.inserir(us);
-            inserir(request, questoes, simulado, p, questaoService);
-            session.setAttribute("sucesso", "Simulado salvo com sucesso.");
+        String data = simulado.getData();
+        String dataAtual = format.format(new Date());
+        System.out.println(data + "====" + dataAtual);
+        Date horaini = sdf.parse(simulado.getHoraini());
+        Date horafim = sdf.parse(simulado.getHorafim());
+        Date horaAtual = sdf.parse(Util.getTime());
+        if (dataAtual.equals(data) && horaAtual.after(horaini) && horaAtual.before(horafim)) {
+            List<QuestaoSimulado> questoes = (List<QuestaoSimulado>) session.getAttribute("questaoSimulados");
+            DateTime hi = (DateTime) session.getAttribute("hi");
+            DateTime dt = new DateTime();
+            Perfil p = (Perfil) session.getAttribute("user");
+            QuestaoService questaoService = new QuestaoService();
+            int i, resolvidas = 0, brancas = 0, certas = 0, erradas = 0;
+            for (i = 0; i < simulado.getNum_questao(); i++) {
+                String itemEscolhido = (String) request.getParameter("iM" + i);
+                Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
+                if (itemEscolhido == null) {
+                    brancas++;
+                    if (q.getItem().equals("N")) {
+                        certas++;
+                    }
+                } else if (itemEscolhido.equals(q.getItem()) || q.getItem().equals("N")) {
+                    certas++;
+                    resolvidas++;
+                } else {
+                    erradas++;
+                    resolvidas++;
+                }
+            }
+            ResultadoUsuarioSimulado us = new ResultadoUsuarioSimulado();
+            us.setSimulado_id(simulado.getId());
+            us.setUsuario_id(p.getUsuario().getId());
+            us.setRespondidas(resolvidas);
+            us.setCertas(certas);
+            us.setBrancas(brancas);
+            us.setErradas(erradas);
+            us.setTempo_prova(Util.calcularTempo(hi.toString(), dt.toString()));
+            ResultadoUsuarioSimulado usuarioSimulado = new ResultadoUsuarioSimulado();
+            usuarioSimulado.setSimulado_id(simulado.getId());
+            usuarioSimulado.setUsuario_id(p.getUsuario().getId());
+            ResultadoUsuarioSimuladoService usuarioSimuladoService = new ResultadoUsuarioSimuladoService();
+            ResultadoUsuarioSimulado u = usuarioSimuladoService.getResultadoUsuarioSimuladoByUsuarioId(usuarioSimulado);
+            if (u == null || !(u.getUsuario_id().equals(p.getUsuario().getId()))) {
+                usuarioSimuladoService.inserir(us);
+                inserir(request, questoes, simulado, p, questaoService);
+                session.setAttribute("sucesso", "Simulado salvo com sucesso.");
+            } else {
+                usuarioSimuladoService.updateResultadoUsuarioSimulado(us);
+                update(request, questoes, simulado, p, questaoService);
+                session.setAttribute("sucesso", "Simulado atualizado com sucesso.");
+            }
+            return "/alu/visualizar_simulados.jsp";
         } else {
-            usuarioSimuladoService.updateResultadoUsuarioSimulado(us);
-            update(request, questoes, simulado, p, questaoService);
-            session.setAttribute("sucesso", "Simulado atualizado com sucesso.");
+            session.setAttribute("erro", "O tempo destinado a este simulado terminou.");
+            return "/alu/visualizar_simulados.jsp";
         }
-        return "/alu/visualizar_simulados.jsp";
     }
 
     public QuestaoUsuarioSimulado criar(Long simulado_id, Long questao_id, Long usuario_id, String item_marcado, int status) {
@@ -87,11 +113,14 @@ public class CmdSalvarSimulado implements Comando {
             String iM = (String) request.getParameter("iM" + i);
             Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
             if (iM == null) {
-                if(q.getItem().equals("N")){status=3;}
-                else {status = 0;}
-            }
-            else if(q.getItem().equals("N")){status=3;}
-            else if (iM.equals(q.getItem())) {
+                if (q.getItem().equals("N")) {
+                    status = 3;
+                } else {
+                    status = 0;
+                }
+            } else if (q.getItem().equals("N")) {
+                status = 3;
+            } else if (iM.equals(q.getItem())) {
                 status = 1;
             } else {
                 status = 2;
@@ -108,11 +137,14 @@ public class CmdSalvarSimulado implements Comando {
             String iM = (String) request.getParameter("iM" + i);
             Questao q = questaoService.getQuestaoById(questoes.get(i).getQuestao_id());
             if (iM == null) {
-                if(q.getItem().equals("N")){status=3;}
-                else {status = 0;}
-            }
-            else if(q.getItem().equals("N")){status=3;}
-            else if (iM.equals(q.getItem())) {
+                if (q.getItem().equals("N")) {
+                    status = 3;
+                } else {
+                    status = 0;
+                }
+            } else if (q.getItem().equals("N")) {
+                status = 3;
+            } else if (iM.equals(q.getItem())) {
                 status = 1;
             } else {
                 status = 2;

@@ -141,4 +141,14 @@ public class UsuarioService {
         }
         return null;
     }
+
+    public Long getProxId() {
+        try {
+            Long id = usuarioDAO.proxId();
+            return id;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 0L;
+    }
 }

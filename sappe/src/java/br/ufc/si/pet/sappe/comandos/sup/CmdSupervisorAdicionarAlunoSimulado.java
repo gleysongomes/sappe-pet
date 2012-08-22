@@ -42,7 +42,7 @@ public class CmdSupervisorAdicionarAlunoSimulado implements Comando {
             Usuario u = us.getUsuarioById(id);
             SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
                     + "um simulado foi adicionado ao sistema.<br /><br />"
-                    + "<a href=" + request.getLocalName() + request.getContextPath() + "/index.jsp" + "> Realizar Simulado </a>");
+                    + "<a href=\"/sappe/index.jsp\"> Realizar Simulado </a>");
             session.setAttribute("mSucesso", "Aluno adicionado com sucesso.");
         } catch (NumberFormatException nfe) {
             session.setAttribute("mErro", nfe.getMessage());

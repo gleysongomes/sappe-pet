@@ -11,35 +11,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="css/styleIndex.css" rel="stylesheet" type="text/css" />
+        <link href="css/styleIndex1.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="Script.js"> </script>
-        <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
+        <title>SAPPE</title>
     </head>
     <body>
-        <div id="tudo">
-            <div id="topo"><img src="images/sappe2.gif" width="959" height="76" alt="sappe2"/></div>
-                <%@include file="/menu.jsp" %>
-            <br />
-            <div id="esquerda">
-                <div id="loginSenha">
-                    <div align="center">
-                        <form action="ServletCentral" method="POST">
-                            <input type="hidden" name="comando" value="CmdLogin" />
-                            <%@include file="error.jsp" %>
-                            <div id="">
-                                <label>Login:</label><br/>
-                                <input type="text" name="login" value="" size="20"/><br/>
-                                <label>Senha:</label><br/>
-                                <input type="password" name="senha" value="" size="20"/><br/>
-                                <label>Conta:</label><br/>
-                                <select name="conta" style="width: 180px;">
-                                    <option value="0">Selecione</option>
-                                    <option value="alu">Aluno</option>
-                                    <option value="sup">Supervisor</option>
-                                    <option value="admin">Administrador</option>
-                                </select>
-                            </div>
-                            <br /><br />
+        <div id="content">
+            <div id="top"><img src="images/sappe2.gif" width="910" height="76" alt="sappe2"/></div>
+            <div id="content_left">
+                <h1 class="titulo">Login</h1>
+                <center>
+                    <form action="ServletCentral" method="POST" class="login">
+                        <input type="hidden" name="comando" value="CmdLogin" />
+                        <%@include file="error.jsp" %>
+                        <fieldset>
+                            <label>Login:</label><br/>
+                            <input type="text" name="login" value="" size="20"/><br/>
+                            <label>Senha:</label><br/>
+                            <input type="password" name="senha" value="" size="20"/><br/>
+                            <label>Conta:</label><br/>
+                            <select name="conta" >
+                                <option value="0">Selecione</option>
+                                <option value="alu">Aluno</option>
+                                <option value="admin">Administrador</option>
+                            </select>
                             <table border="0">
                                 <thead>
                                     <tr>
@@ -51,17 +46,23 @@
                                         </th>
                                 </thead>
                             </table>
-                        </form>
-                        <p><a style="font-size: small" href="recuperar_senha.jsp">Esqueceu a senha?</a></p>
-                    </div>
-                </div>
+                        </fieldset>
+                        <div id="gambis">
+                            <a  href="recuperar_senha.jsp">Esqueceu a senha?</a><br>
+                            <a  href="cadastro.jsp">Criar um Conta?</a>
+                        </div>
+                    </form>
+                </center>
             </div>
-            <div id="meio">
+            <div id="content_right">
+                <h1 class="titulo">Simulador de Provas</h1>
+                <p>O SAPPE tem como objetivo oferecer um suporte para os alunos que estudam para as provas do Poscomp e/ou Enade a fim de preparar-lo para a realizaÃ§Ã£o da mesma. Neste ambiente podem-se simular as provas ou personalizar-las de acordo com os seus objetivos de estudo. </p>
+
             </div>
-            <div id="direita"></div>
             <div id="footer">
-                <center><img alt="Logotipo UFC"  class="imagemUFC" src="images/UFC2.png"/></center>
-                <h6>Versão 1.12 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
+                <center><img alt="Logotipo UFC"  class="imagemUFC" src="images/UFC2.png" style=""/>
+                    <h6>VersÃ£o 1.12 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
+                </center>
             </div>
         </div>
     </body>

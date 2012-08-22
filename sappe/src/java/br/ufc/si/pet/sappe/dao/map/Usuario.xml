@@ -23,8 +23,8 @@
     </resultMap>
 
     <insert id="addUsuario" parameterClass="usuario" >
-        INSERT INTO sappe.usuario(id, login, nome, email, senha, codigo)
-        VALUES (#id#, #login#, #nome#, #email#, #senha#, #codigo#);
+        INSERT INTO sappe.usuario(login, nome, email, senha, codigo)
+        VALUES (#login#, #nome#, #email#, #senha#, #codigo#);
     </insert>
 
     <delete id="deleteUsuario" parameterClass="long">
@@ -89,11 +89,12 @@
 
         SELECT *
         FROM sappe.usuario
-        WHERE nome LIKE '%$value$%';
+        WHERE nome LIKE '%' || #var# || '%';
     </select>
 
     <select id="getMaxIdUsuario" resultClass="long">
-        SELECT nextval('sappe.usuario_id_seq');
+        SELECT MAX(id)
+        FROM sappe.usuario;
     </select>
 
 </sqlMap>

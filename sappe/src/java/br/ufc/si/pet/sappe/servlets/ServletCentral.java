@@ -56,9 +56,13 @@ public class ServletCentral extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        // HttpSession session = request.getSession(true);
         request.setCharacterEncoding("UTF-8");
+        //response.setCharacterEncoding("UTF-8");
         String cmd = request.getParameter("comando");
+        //if (debug) {
+        //  System.out.println("Cmd:" + cmd);
+        //}
         Comando comando = (Comando) comandos.get(cmd);
 
         try {
@@ -147,7 +151,7 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdSupervisorVisualizarSimulados", cmdo);
         cmdo = new CmdSupervisorExcluirSimulado();
         comandos.put("CmdSupervisorExcluirSimulado", cmdo);
-        
+
         //Administrador
         cmdo = new CmdAdminVisualizarAlunos();
         comandos.put("CmdAdminVisualizarAlunos", cmdo);

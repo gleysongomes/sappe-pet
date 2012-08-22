@@ -62,21 +62,19 @@ public class CmdAdicionarAluno implements Comando {
             u.setCodigo(Util.createRandomString(9));
             UsuarioService uS = new UsuarioService();
             uS.insertUsuario(u);
+            usuario = uS.getUsuarioById(uS.getProxId());
             Perfil perfil = new Perfil();
-            perfil.setUsuario(u);
+            perfil.setUsuario(usuario);
             perfil.setPapel(new PapelService().getPapelById(1L));
             perfil.setDataCriacao(data);
             perfil.setAtivo(false);
             PerfilService pS = new PerfilService();
             if (pS.insertPerfil(perfil)) {
                 try {
-                    //Usuario user = new Usuario();
-                    //user = uS.getUsuarioById(perfil.getUsuario().getId());
-                    //hS.setAttribute("user", perfil);
                     System.out.println("===" + perfil.getUsuario().getEmail());
                     SendMail.sendMail(perfil.getUsuario().getEmail(), "Ativar sua conta.", "Oi " + perfil.getUsuario().getNome() + ", <br />"
                             + "para ter seu cadastro aceito, ative sua conta.<br /><br />"
-                            + "<a href=" + "http://localhost:8084/sappe/ServletCentral?comando=CmdAtivarConta&id=" + perfil.getId() + "&cod=" + perfil.getUsuario().getCodigo() + "> Ativa minha conta </a>");
+                            + "<a href=" + "/sappe/ServletCentral?comando=CmdAtivarConta&id=" + perfil.getId() + "&cod=" + perfil.getUsuario().getCodigo() + "> Ativa minha conta </a>");
                 } catch (AddressException ex) {
                     Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (MessagingException ex) {

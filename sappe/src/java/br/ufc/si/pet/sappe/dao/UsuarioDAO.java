@@ -15,7 +15,6 @@ public class UsuarioDAO {
     }
 
     public void insert(Usuario usuario) throws SQLException {
-        usuario.setId(proxId());
         PostGresMapConfig.getSqlMapClient().insert("addUsuario", usuario);
     }
 
@@ -55,7 +54,7 @@ public class UsuarioDAO {
     }
     return id + 1L;
     }*/
-    private Long proxId() throws SQLException {
+    public Long proxId() throws SQLException {
         Long id = (Long) PostGresMapConfig.getSqlMapClient().queryForObject("getMaxIdUsuario");
         return id;
     }

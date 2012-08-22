@@ -24,12 +24,13 @@
     </resultMap>
 
     <insert id="addSimulado" parameterClass="simulado">
-        INSERT INTO sappe.simulado(id, exame_id, nome,data,horaini,horafim,num_questao)
-        VALUES (#id#, #exame_id#, #nome#,#data#,#horaini#,#horafim#,#num_questao#);
+        INSERT INTO sappe.simulado(exame_id, nome,data,horaini,horafim,num_questao)
+        VALUES (#exame_id#, #nome#,#data#,#horaini#,#horafim#,#num_questao#);
     </insert>
 
     <select id="getMaxIdSimulado" resultClass="long">
-        SELECT nextval('sappe.simulado_id_seq');
+        SELECT MAX(id)
+        FROM sappe.simulado;
     </select>
 
     <select id="getSimuladoById" resultClass="simulado"

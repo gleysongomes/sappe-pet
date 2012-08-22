@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class SimuladoDAO {
 
     public void inserir(Simulado s) throws SQLException {
-        s.setId(proxId());
         PostGresMapConfig.getSqlMapClient().insert("addSimulado", s);
     }
 

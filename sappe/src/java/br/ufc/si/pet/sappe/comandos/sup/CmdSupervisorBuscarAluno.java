@@ -27,8 +27,13 @@ public class CmdSupervisorBuscarAluno implements Comando {
         HttpSession session = request.getSession(true);
         session.removeAttribute("mSucesso");
         session.removeAttribute("mErro");
+        session.removeAttribute("uS");
         try {
             String nome = request.getParameter("nome");
+            if (nome == null || nome.isEmpty()) {
+                session.setAttribute("mErro", "Preencha todos os campos obrigatórios (*).");
+                return "/sup/sup_adicionar_simulado_restrito.jsp";
+            }
             UsuarioService us = new UsuarioService();
             List<Usuario> usuarios = us.getUsuariosByNome(nome);
             System.out.println("====" + usuarios.size());

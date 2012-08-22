@@ -74,17 +74,17 @@ public class CmdSupervisorAdicionarSimulado implements Comando {
                         questaoSimuladoService.inserir(questaoSimulado);
                     }
                     UsuarioService us = new UsuarioService();
-                    UsuarioSimuladoService uss=new UsuarioSimuladoService();
+                    UsuarioSimuladoService uss = new UsuarioSimuladoService();
                     List<Usuario> usuarios = us.getAllUsuarios();
                     for (Usuario u : usuarios) {
                         try {
-                            UsuarioSimulado usuarioSimulado= new UsuarioSimulado();
+                            UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
                             usuarioSimulado.setSimulado_id(simulado.getId());
                             usuarioSimulado.setUsuario_id(u.getId());
                             uss.insertUsuarioSimulado(usuarioSimulado);
                             SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
-                                    + "um novo simulado foi adicionado ao sistema.<br /><br />"
-                                    + "<a href=" + request.getLocalName() + request.getContextPath() + "/index.jsp" + "> Realizar Simulado </a>");
+                                    + "um simulado foi adicionado ao sistema.<br /><br />"
+                                    + "<a href=\" /sappe/index.jsp \"> Realizar Simulado </a>");
                         } catch (AddressException ex) {
                             Logger.getLogger(CmdSupervisorAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (MessagingException ex) {

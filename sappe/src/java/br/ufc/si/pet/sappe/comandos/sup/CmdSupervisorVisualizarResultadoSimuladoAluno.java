@@ -238,7 +238,7 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
     }
 
     private boolean igual(String a, String b) {
-        return (a == null ? b == null : a.equals(b)) ? true : false;
+        return ((a == null ? b == null : a.equals(b))) || (b.equals("N"))? true : false;
     }
 
     private int util(int n) {

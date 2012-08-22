@@ -225,6 +225,6 @@ public class CmdGerarRelatorio implements Comando {
     }
 
     private boolean igual(String a, String b) {
-        return (a == null ? b == null : a.equals(b)) || b.equals("N") ? true : false;
+        return ((a == null ? b == null : a.equals(b))) || (b.equals("N")) ? true : false;
     }
 }

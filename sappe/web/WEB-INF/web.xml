@@ -149,6 +149,10 @@
         <servlet-name>CmdAdminVisualizarAlunos</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarAlunos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAdminAdicionarQuestao</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.servlets.admin.ServletAdminAdicionarQuestao</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -292,6 +296,10 @@
     <servlet-mapping>
         <servlet-name>CmdAdminVisualizarAlunos</servlet-name>
         <url-pattern>/CmdAdminVisualizarAlunos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdminAdicionarQuestao</servlet-name>
+        <url-pattern>/ServletAdminAdicionarQuestao</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

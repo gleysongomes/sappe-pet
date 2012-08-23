@@ -45,13 +45,13 @@ public class CmdAdicionarAluno implements Comando {
         Usuario usuario = usuarioService.getUsuarioByEmail(email);
         if (nome == null || nome.trim().isEmpty() || email == null || email.trim().isEmpty()
                 || senha == null || senha.trim().isEmpty() || rSenha == null || rSenha.trim().isEmpty()) {
-            hS.setAttribute("erro", "Preencha todos os campos obrigatÃ³rios (*).");
+            hS.setAttribute("erro", "Preencha todos os campos obrigatórios (*).");
             return "/cadastro.jsp";
         } else if (!senha.trim().equals(rSenha)) {
-            hS.setAttribute("erro", "A senha nÃ£o confere com a sua confirmaÃ§Ã£o.");
+            hS.setAttribute("erro", "A senha não confere com a sua confirmação.");
             return "/cadastro.jsp";
         } else if (usuario != null) {
-            hS.setAttribute("erro", "Este email jÃ¡ estÃ¡ cadastrado.");
+            hS.setAttribute("erro", "Este email já estão cadastrado.");
             return "/cadastro.jsp";
         } else {
             Usuario u = new Usuario();

@@ -33,6 +33,7 @@ public class CmdSupervisorAdicionarAlunoSimulado implements Comando {
         try {
             Long id = Long.parseLong(request.getParameter("id"));
             Long idS = (Long) session.getAttribute("idSimulado");
+            System.out.println("======================="+idS);
             UsuarioSimuladoService uss = new UsuarioSimuladoService();
             UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
             usuarioSimulado.setSimulado_id(idS);

@@ -17,7 +17,7 @@
             <a href="../sup/sup_adicionar_simulado.jsp">Adiconar Simulado</a>
         </li>
          <li>
-             <a href="../sup/sup_adicionar_simulado_restrito.jsp">Adiconar Simulado Restrito</a>
+             <a href="../sup/sup_adicionar_simulado_restrito.jsp" style="width: 250px;">Adiconar Simulado Restrito</a>
         </li>
         <li>
             <a href="../ServletCentral?comando=CmdSupervisorVisualizarSimulados">Visualizar Simulados</a>

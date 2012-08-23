@@ -202,6 +202,6 @@ public class Util {
 
         Format format = new SimpleDateFormat("dd/MM/yyyy");
         String dataAtual = format.format(new Date());
-        System.out.println(criptografar("123"));
+        System.out.println(criptografar("a"));
     }
 }

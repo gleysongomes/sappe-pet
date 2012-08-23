@@ -19,28 +19,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../css/style1.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript"  language="javascript" src="../js/Script.js"></script>
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
-        <div id="tudo">
-            <div id="topo">
-                <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
+        <div id="content">
+            <div id="top">
+                <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../admin/menu.jsp" %>
-            <div id="direita"></div>
-            <div id="meio">
-                <label><h2 class="titulo2">Adicionar Questão</h2></label><br /><br /><br />
-                <div id="bh"></div>
+            <div id="content_left">
+                <h1 class="titulo">Adicionar Questão</h1><br />
+               
                 <form action="../ServletAdminAdicionarQuestao" method="POST" enctype="multipart/form-data">
                     <%@include file="../error.jsp" %>
                     <table border="0">
                         <tbody>
                             <tr>
                                 <td>Exame (*):</td>
-                                <td>
-                                    <select name="eid">
+                                <td >
+                                    <select name="eid" style="width: 250px;">
                                         <option value="0">Selecione</option>
                                         <option value="1">Poscomp</option>
                                         <option value="2">Enade</option>
@@ -50,7 +49,7 @@
                             <tr>
                                 <td>Área (*): </td>
                                 <td>
-                                    <select name="aid">
+                                    <select name="aid" style="width: 250px;">
                                         <option value="0">Selecione</option>
                                         <option value="1">Matemática</option>
                                         <option value="2">Fundamentos da Computação</option>
@@ -63,12 +62,12 @@
                             </tr>
                             <tr>
                                 <td>Ano (*):</td>
-                                <td><input type="text" name="ano" value="" size="20" onkeypress="return validaNumerosSilencioso(event);" maxlength="4"/></td>
+                                <td><input type="text" name="ano" value="" style="width: 245px;" onkeypress="return validaNumerosSilencioso(event);" maxlength="4"/></td>
                             </tr>
                             <tr>
                                 <td>Item Certo (*):</td>
                                 <td>
-                                    <select name="ic">
+                                    <select name="ic" style="width: 250px;">
                                         <option value="0">Selecione</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -84,14 +83,14 @@
                                 <td><input type="file" name="questao" value="" /></td>
                             </tr>
                             <tr>
-                                <td><input type="submit" value="Salvar" name="Salvar" /></td>
-                                <td><input type="reset" value="Limpar" name="Limpar" /></td>
+                                <td></td>
+                                <td><input type="submit" value="Salvar" name="Salvar" class="button"/> <input type="reset" value="Limpar" name="Limpar" class="button"/></td>
                             </tr>
                         </tbody>
                     </table>
                 </form>
             </div>
-            <div id="direita"></div>
+            <div id="content_right"></div>
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

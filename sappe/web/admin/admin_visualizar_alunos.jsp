@@ -14,27 +14,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../css/style1.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript"  language="javascript" src="../js/Script.js"></script>
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
-        <div id="tudo">
-            <div id="topo">
-                <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
+        <div id="content">
+            <div id="top">
+                <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../admin/menu.jsp" %>
-            <div id="direita"></div>
-            <div id="meio">
-                <label><h2 class="titulo2">Visualizar Alunos</h2></label><br /><br /><br />
-                <div id="bh"></div>
+            <div id="content_left">
+                <h1 class="titulo">Visualizar Alunos</h1><br />
+               
                 <%@include file="../error.jsp" %>
-                <div id="content">
-                    <table>
+                <div id="">
+                    <table class="tabela">
                         <thead>
-                            <tr>
+                            <tr >
                                 <th class="tabela">ID</th>
-                                <th class="tabela">Nome</th>
+                                <th class="tabela" >Nome</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +42,7 @@
                                         for (Usuario u : usuarios) {
                             %>
                             <tr>
-                                <td><center><%= u.getId()%></center></td>
+                                <td ><center><%= u.getId()%></center></td>
                                 <td><center><%= u.getNome()%></center></td>
                             </tr>
                             <%}%>
@@ -51,7 +50,7 @@
                     </table>
                 </div>
             </div>
-            <div id="direita"></div>
+            <div id="content_right"></div>
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

@@ -11,19 +11,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../css/style1.css" rel="stylesheet" type="text/css" />
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
-        <div id="tudo">
-            <div id="topo">
-                <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
+        <div id="content">
+            <div id="top">
+                <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu2.jsp" %>
-            <div id="direita"></div>
-            <div id="meio">
-                <label><h2 class="titulo2">Tecnologia da Computação</h2></label><br /><br /><br />
-                <div id="bh"></div>
+            <div id="content_left">
+                <h1 class="titulo">Tecnologia da Computação</h1><br />
+                
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
                     <input type="hidden" name="id" value="3" />
@@ -38,10 +37,10 @@
                             <option value="20">20</option>
                         </select>
                     </label>
-                    <input type="submit" value="Buscar" name="Buscar" class="button3"/>
+                    <input type="submit" value="Buscar" name="Buscar" class="button"/>
                 </form>
             </div>
-            <div id="direita"></div>
+            <div id="content_right"></div>
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

@@ -53,14 +53,15 @@ public class CmdSupervisorAdicionarSimuladoRestrito implements Comando {
                 simulado.setExame_id(eid);
                 SimuladoService simuladoService = new SimuladoService();
                 simuladoService.inserir(simulado);
-                session.setAttribute("idSimulado", simulado.getId());
-                if (!inserir(1L,simulado.getId(), nm)) {
+                Long idS = simuladoService.proxId();
+                session.setAttribute("idSimulado", idS);
+                if (!inserir(1L, idS, nm)) {
                     session.setAttribute("erro", "Temos menos de " + nm + " questões de Matemática disponíveis.");
                     return "/sup/sup_adicionar_simulado_restrito.jsp";
-                } else if (!inserir(2L,simulado.getId(), nfc)) {
+                } else if (!inserir(2L, idS, nfc)) {
                     session.setAttribute("erro", "Temos menos de " + nfc + " questões de Fundamentos da Computação disponíveis.");
                     return "/sup/sup_adicionar_simulado_restrito.jsp";
-                } else if (!inserir(3L,simulado.getId(), ntc)) {
+                } else if (!inserir(3L, idS, ntc)) {
                     session.setAttribute("erro", "Temos menos de " + ntc + " questões de Tecnologia da Computação disponíveis.");
                     return "/sup/sup_adicionar_simulado_restrito.jsp";
                 }
@@ -77,14 +78,15 @@ public class CmdSupervisorAdicionarSimuladoRestrito implements Comando {
                 simulado.setExame_id(eid);
                 SimuladoService simuladoService = new SimuladoService();
                 simuladoService.inserir(simulado);
-                session.setAttribute("idSimulado", simuladoService.proxId());
-                if (!inserir(4L, simulado.getId(),nsi)) {
+                Long idS = simuladoService.proxId();
+                session.setAttribute("idSimulado", idS);
+                if (!inserir(4L, idS, nsi)) {
                     session.setAttribute("erro", "Temos menos de " + nsi + " questões de Sistemas de Informação disponíveis.");
                     return "/sup/sup_adicionar_simulado_restrito.jsp";
-                } else if (!inserir(5L,simulado.getId(), nes)) {
+                } else if (!inserir(5L, idS, nes)) {
                     session.setAttribute("erro", "Temos menos de " + nes + " questões de Engenharia de Software disponíveis.");
                     return "/sup/sup_adicionar_simulado_restrito.jsp";
-                } else if (!inserir(6L,simulado.getId(), ncg)) {
+                } else if (!inserir(6L, idS, ncg)) {
                     session.setAttribute("erro", "Temos menos de " + ncg + " questões de Conhecimentos Gerais disponíveis.");
                     return "/sup/sup_adicionar_simulado_restrito.jsp";
                 }

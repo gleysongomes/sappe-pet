@@ -25,19 +25,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../css/style1.css" rel="stylesheet" type="text/css" />
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
-        <div id="tudo">
-            <div id="topo">
-                <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
+        <div id="content">
+            <div id="top">
+                <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="direita"></div>
-            <div id="meio">
-                <label><h3 class="titulo2"><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h3></label><br /><br /><br />
-                <div id="bh"></div>
+            <div id="content_left">
+                <h1 class="titulo1"><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h1><br /><br /><br />
+              
                 <%@include file="../error.jsp" %>
                 <%
                             int itemIncr = 0;
@@ -62,7 +61,7 @@
                 <%itemIncr++;}%>
                 <br /><h5>Obs (*) : As questões nullas são consideradas como certas.</h5>
                 <h3>Relatório da Prova</h3><br>
-                <div id="content">
+                <div id="">
                     <table>
                         <thead>
                             <tr>
@@ -92,12 +91,12 @@
                 <table border="0">
                     <thead>
                         <tr>
-                            <th><a href="visualizar_provas.jsp" class="button2">Voltar</a></th>
+                            <th><a href="visualizar_provas.jsp" class="button">Voltar</a></th>
                         </tr>
                     </thead>
                 </table>
             </div>
-            <div id="direita"></div>
+            <div id="content_right"></div>
             <div id="footer">
                 <center><img alt="Logoarea UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

@@ -20,17 +20,19 @@
         <li>
             <a href="../ServletCentral?comando=CmdVisualizarProvas&id=<%= a.getUsuario().getId()%>">Visualizar Provas</a>
         </li>
-        <li>
-            <a href="../ServletCentral?comando=CmdRedirecionar&url=/cadastro.jsp">Novo Cadastro</a>
+        
+       <li>
+            <a href="../ServletCentral?comando=CmdVisualizarSimulados">Simulados</a>
         </li>
         <li>
             <a href="../ServletCentral?comando=CmdEditarCadastro">Editar Cadastro</a>
         </li>
-         <li>
-            <a href="../ServletCentral?comando=CmdVisualizarSimulados">Visualizar Simulados</a>
-        </li>
+         
         <li>
             <a href="../ServletCentral?comando=CmdLogout">Sair</a>
         </li>
     </ul>
 </div>
+
+
+        

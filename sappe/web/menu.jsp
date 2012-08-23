@@ -10,9 +10,6 @@
             <li>
                 <a href="ServletCentral?comando=CmdRedirecionar&url=/index.jsp">Home</a>
             </li>
-            <li>
-                <a href="ServletCentral?comando=CmdRedirecionar&url=/cadastro.jsp">Cadastro</a>
-            </li>
         </ul>
     </div>
 </div>

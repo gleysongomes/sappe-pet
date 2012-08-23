@@ -16,26 +16,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../css/style1.css" rel="stylesheet" type="text/css" />
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
-        <div id="tudo">
-            <div id="topo">
-                <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
+        <div id="content">
+            <div id="top">
+                <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="direita"></div>
-            <div id="meio">
-                <label><h3 class="titulo">Visualizar Provas</h3></label><br /><br /><br />
-                <div id="bh"></div>
+            <div id="content_left">
+                <h1 class="titulo">Visualizar Provas</h1><br /><br /><br />
+                
                 <%@include file="../error.jsp" %>
-                <div id="content">
-                    <table>
+               
+                <table class="tabela">
                         <thead>
                             <tr>
-                                <th class="tabela">Prova</th>
-                                <th class="tabela">Ações</th>
+                                <th >Prova</th>
+                                <th >Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,9 +53,9 @@
                             <%}%>
                         </tbody>
                     </table>
-                </div>
+                
             </div>
-            <div id="direita"></div>
+            <div id="content_right"></div>
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

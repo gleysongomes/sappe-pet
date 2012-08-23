@@ -16,23 +16,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../css/style1.css" rel="stylesheet" type="text/css" />
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
-        <div id="tudo">
-            <div id="topo">
-                <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
+        <div id="content">
+            <div id="top">
+                <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="direita"></div>
-            <div id="meio">
-                <label><h2 class="titulo2">Editar Cadastro</h2></label><br /><br /><br />
-                <div id="bh"></div>
+            <div id="content_left">
+                <h1 class="titulo">Editar Cadastro</h1><br /><br /><br />
+               
                 <form name="editarCadastro" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSalvarCadastroEditado" />
                     <%@include file="../error.jsp" %>
-                    <div id="cadastro">
+                   
                         <table border="0">
                             <tbody>
                                 <tr>
@@ -60,15 +59,15 @@
                                     <td><input type="password" name="rsenha" value="" size="40" /></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="submit" value="Enviar" name="Enviar" class="button3"/></td>
-                                    <td><input type="reset" value="Limpar" name="Limpar" class="button3"/></td>
+                                    <td></td>
+                                    <td><input type="submit" value="Enviar" name="Enviar" class="button"/> <input type="reset" value="Limpar" name="Limpar" class="button"/> </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                   
                 </form>
             </div>
-            <div id="direita"></div>
+            <div id="content_right"></div>
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

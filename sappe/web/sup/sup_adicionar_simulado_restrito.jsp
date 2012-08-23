@@ -20,7 +20,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../css/style1.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript"  language="javascript" src="../js/Script.js"></script>
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
         <script type="text/javascript"  language="javascript">
@@ -37,29 +37,41 @@
         </script>
     </head>
     <body>
-        <div id="tudo">
-            <div id="topo">
-                <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
+        <div id="content">
+            <div id="top">
+                <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../sup/menu.jsp" %>
-            <div id="direita"></div>
-            <div id="meio">
-                <label><h2 class="titulo2">Adicionar Simulado Restrito</h2></label><br /><br /><br />
-                <div id="bh"></div>
+            <div id="content_left">
+                 <h2 class="titulo">Adicionar Simulado Restrito</h2><br/>
+               
                 <form name="asr" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSupervisorAdicionarSimuladoRestrito" />
                     <%@include file="../error.jsp" %>
-                    <table border="0">
-                        <table border="0">
+                   
+                    <table border="0" style="width: 400px;">
                             <tbody>
                                 <tr>
-                                    <td>Nome (*):</td>
+                                    <td>Nome :</td>
                                     <td width="10px;"><input type="text" name="nome" value="" size="20" maxlength="80"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Exame (*):</td>
+                                    <td>Data :</td>
+                                    <td><input type="text" name="data" value="" size="20" onkeypress="return formataData(this,event)" maxlength="10"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Horário de Inicio :</td>
+                                    <td><input type="text" name="hi" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Horário de Término :</td>
+                                    <td><input type="text" name="ht" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
+                                </tr>
+                                <tr>
+
+                                    <td>Exame :</td>
                                     <td>
-                                        <select name="exame" onchange="formulario(this,'1','2');">
+                                        <select name="exame" onchange="formulario(this,'1','2');" style="width: 155px;">
                                             <option value="0">Selecione</option>
                                             <option value="1">Poscomp</option>
                                             <option value="2">Enade</option>
@@ -69,62 +81,65 @@
                                 <tr>
                             </tbody>
                         </table>
-                        <table border="0">
+
+
+                        <table border="0" style="width: 400px;">
                             <tbody id="1" style="display: none;">
-                                <tr>
-                                    <td>Número de Questões<br />de Matemática (*):</td>
-                                    <td><input type="text" name="nm" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/><br /><br /></td>
+                                 <tr>
+                                    <td>Número de Questões</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td>Número de Questões<br />de Fundamentos da Computação (*):</td>
-                                    <td><input type="text" name="nfc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/><br /><br /></td>
+                                    <td>Matemática :</td>
+                                    <td><input type="text" name="nm" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Número de Questões<br />de Tecnologia da Computação (*):</td>
-                                    <td><input type="text" name="ntc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/><br /><br /></td>
+                                    <td>Fundamentos da Computação :</td>
+                                    <td><input type="text" name="nfc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Tecnologia da Computação :</td>
+                                    <td><input type="text" name="ntc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <table border="0">
+                        <table border="0" style="width: 400px;">
                             <tbody id="2" style="display: none;">
                                 <tr>
-                                    <td>Número de Questões<br />de Sitemas de Informação (*):</td>
-                                    <td><input type="text" name="nsi" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/><br /><br /></td>
+                                    <td style="width: 200px;">Número de Questões:</td>
+                                    <td><br /></td>
                                 </tr>
                                 <tr>
-                                    <td>Número de Questões<br />de Engenharia de Software (*):</td>
-                                    <td><input type="text" name="nes" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/><br /><br /></td>
+                                    <td>Sitemas de Informação:</td>
+                                    <td><input type="text" name="nsi" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Número de Questões<br />de Conhecimentos Gerais (*):</td>
-                                    <td><input type="text" name="ncg" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/><br /><br /></td>
+                                    <td>Engenharia de Software:            </td>
+                                    <td><input type="text" name="nes" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Conhecimentos Gerais:</td>
+                                    <td><input type="text" name="ncg" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <table border="0">
+                        <table border="0" style="width: 400px;">
                             <tbody>
                                 <tr>
-                                    <td>Data (*):</td>
-                                    <td><input type="text" name="data" value="" size="20" onkeypress="return formataData(this,event)" maxlength="10"/></td>
-                                </tr>
-                                <tr>
-                                    <td>Horário de Inicio (*):</td>
-                                    <td><input type="text" name="hi" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
-                                </tr>
-                                <tr>
-                                    <td>Horário de Término (*):</td>
-                                    <td><input type="text" name="ht" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="submit" value="Salvar" name="Salvar" /></td>
-                                    <td><input type="reset" value="Limpar" name="Limpar" /></td>
+                                    <td></td>
+                                    <td><input type="submit" value="Salvar" name="Salvar" class="button"/> <input type="reset" value="Limpar" name="Limpar" class="button"/></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </table>
+                   
                 </form>
                 <br />
-                <label><h2 class="titulo2">Adicionar Alunos Participantes</h2></label><br /><br /><br />
+               
+            </div>
+            <div id="content_right">
+                
+                
+                <h2 class="titulo">Adicionar Alunos Participantes</h2><br />
                 <div id="bh"></div>
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSupervisorBuscarAluno" />
@@ -132,7 +147,7 @@
                     <table border="0">
                         <tbody>
                             <tr>
-                                <td>Busca Por Nome (*):</td>
+                                <td>Busca Por Nome:</td>
                                 <td><input type="text" name="nome" value="" size="20"/><input type="submit" value="Buscar" name="Buscar" /></td>
                             </tr>
                             <%
@@ -150,7 +165,6 @@
                     </table>
                 </form>
             </div>
-            <div id="direita"></div>
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

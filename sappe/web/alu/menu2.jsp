@@ -8,27 +8,27 @@
 <div id="menu">
     <ul id="nav">
         <li>
-            <a href="../alu/index.jsp">Home</a>
+            <a href="../alu/index.jsp" style="width: 100px;">Home</a>
         </li>
         <li>
             <a href="../alu/poscomp_padrao.jsp">Poscomp Padrão</a>
         </li>
         <li>
-            <a href="" style="width: 200px;">Poscomp Personalizado</a>
+            <a href="" style="width: 215px;">Poscomp Personalizado</a>
             <ul id="nav">
                 <li>
-                    <a href="../alu/poscomp_matematica.jsp" style="width: 200px;">Matemática</a>
+                    <a href="../alu/poscomp_matematica.jsp" style="width: 215px;">Matemática</a>
                 </li>
                 <li>
-                    <a href="../alu/poscomp_funcomp.jsp" style="width: 200px;">Fundamentos da Computação</a>
+                    <a href="../alu/poscomp_funcomp.jsp" style="width: 215px;">Fundamentos da Computação</a>
                 </li>
                 <li>
-                    <a href="../alu/poscomp_tecomp.jsp" style="width: 200px;">Tecnologia da Computação</a>
+                    <a href="../alu/poscomp_tecomp.jsp" style="width: 215px;">Tecnologia da Computação</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="">Enade Padrão</a>
+            <a href="../alu/enade_padrao.jsp">Enade Padrão</a>
         </li>
         <li>
             <a href="" style="width: 200px;">Enade Personalizado</a>
@@ -44,6 +44,8 @@
                 </li>
             </ul>
         </li>
-        <li><a href="../ServletCentral?comando=CmdLogout">Sair</a></li>
+        <li><a href="../ServletCentral?comando=CmdLogout" style="width: 100px;">Sair</a></li>
     </ul>
 </div>
+
+

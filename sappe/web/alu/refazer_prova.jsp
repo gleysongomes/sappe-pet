@@ -31,8 +31,8 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left">
-                <h1 class="titulo1"><%=tipo.getNome()%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarPdfProva" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label>
+            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
+                <h1 class="titulo" style="width: 875px;"><%=tipo.getNome()%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarPdfProva" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label>
                     </h1><br /><br /><br />
                
                 <form name="rP" action="../ServletCentral" method="post">
@@ -60,14 +60,7 @@
                     <br /><br /><br />
                     <%itemIncr++;}%>
                     <br /><br />
-                    <table border="0">
-                        <thead>
-                            <tr>
-                                <th><input type="submit" value="Atualizar" name="Atualizar" class="button"/></th>
-                                <th width="100px"><a href="../alu/visualizar_provas.jsp"><input type="button" value="Voltar" name="Voltar" class="button"/></a></th>
-                            </tr>
-                        </thead>
-                    </table>
+                    <input type="submit" value="Atualizar" name="Atualizar" class="button" style="margin-left: 350px; width: 80px;"/> <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" style=" width: 80px;" />
                 </form>
             </div>
             <div id="content_right"></div>

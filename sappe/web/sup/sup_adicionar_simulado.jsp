@@ -35,34 +35,34 @@
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSupervisorAdicionarSimulado" />
                     <%@include file="../error.jsp" %>
-                    <table border="0">
+                    <table border="0" >
                         <tbody>
                             <tr>
-                                <td>Nome (*):</td>
+                                <td><label>Nome:</label></td>
                                 <td><input type="text" name="nome" value="" size="35" maxlength="80"/></td>
                             </tr>
                             <tr>
-                                <td>Exame (*):</td>
-                                <td><select name="exame" style="width: 245px;">
+                                <td><label>Exame:</label></td>
+                                <td><select name="exame" style="width: 233px;">
                                         <option value="0">Selecione</option>
                                         <option value="1">Poscomp</option>
                                         <option value="2">Enade</option>
                                     </select></td>
                             </tr>
                             <tr>
-                                <td>Data (*):</td>
+                                <td><label>Data:</label></td>
                                 <td><input type="text" name="data" value="" size="35" onkeypress="return formataData(this,event)" maxlength="10"/></td>
                             </tr>
                             <tr>
-                                <td>Horário de Inicio (*):</td>
+                                <td><label>Horário de Inicio:</label></td>
                                 <td><input type="text" name="hi" value="" size="35" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
                             </tr>
                             <tr>
-                                <td>Horário de Término (*):</td>
+                                <td><label>Horário de Término:</label></td>
                                 <td><input type="text" name="ht" value="" size="35" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
                             </tr>
                             <tr>
-                                <td>Número de Questões (*):</td>
+                                <td><label>Número de Questões:</label></td>
                                 <td><input type="text" name="nq" value="" size="35" maxlength="2" onkeypress="return validaNumerosSilencioso(event)"/></td>
                             </tr>
                             <tr>

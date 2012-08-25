@@ -32,30 +32,30 @@
                     <input type="hidden" name="comando" value="CmdSalvarCadastroEditado" />
                     <%@include file="../error.jsp" %>
                    
-                        <table border="0">
+                    <table border="0" style="margin-left: 0px;" >
                             <tbody>
                                 <tr>
-                                    <td>Login (*):</td>
+                                    <td ><label>Login:</label></td>
                                     <td><input type="text" name="login" value="<%= usuario.getLogin()%>" size="40" readonly="false"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Nome (*):</td>
+                                    <td><label>Nome:</label></td>
                                     <td><input type="text" name="nome" value="<%= usuario.getNome()%>" size="40" /></td>
                                 </tr>
                                 <tr>
-                                    <td>Email (*):</td>
+                                    <td ><label>Email:</label></td>
                                     <td><input type="text" name="email" value="<%= usuario.getEmail()%>" size="40" /></td>
                                 </tr>
                                 <tr>
-                                    <td>Senha Antiga (*):</td>
+                                    <td ><label>Senha Antiga:</label></td>
                                     <td><input type="password" name="santiga" value="" size="40" /></td>
                                 </tr>
                                 <tr>
-                                    <td>Nova Senha (*):</td>
+                                    <td ><label>Nova Senha:</label></td>
                                     <td><input type="password" name="nsenha" value="" size="40" /></td>
                                 </tr>
                                 <tr>
-                                    <td>Repita Senha (*):</td>
+                                    <td><label>Repita Senha:</label></td>
                                     <td><input type="password" name="rsenha" value="" size="40" /></td>
                                 </tr>
                                 <tr>

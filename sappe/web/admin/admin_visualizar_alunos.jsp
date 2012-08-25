@@ -29,7 +29,7 @@
                
                 <%@include file="../error.jsp" %>
                 <div id="">
-                    <table class="tabela">
+                    <table border="1px" style="margin-left: 170px;">
                         <thead>
                             <tr >
                                 <th class="tabela">ID</th>

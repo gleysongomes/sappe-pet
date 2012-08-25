@@ -24,15 +24,15 @@
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
-        <div id="content">
-            <div id="top">
+        <div id="content" >
+            <div id="top" >
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left">
-               <h1 class="titulo1"><%=tipo.getNome()%></h1><br /><br /><br />
+            <div id="content_left" style="width: 900px; overflow:auto;height:440px;" >
+                <h1 class="titulo"style="width: 875px;" ><%=tipo.getNome()%></h1><br />
                
-                <form id="lsQ" action="../ServletCentral" method="POST">
+                <form id="lsQ" action="../ServletCentral" method="POST" >
                     <input type="hidden" name="comando" value="CmdSalvarProva" />
                     <%@include file="../error.jsp" %>
                     <%
@@ -40,7 +40,7 @@
                                 List<Questao> questoes = (List<Questao>) session.getAttribute("subListaDeQuestoes");
                                 for (Questao q : questoes) {
                     %>
-                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" alt="images"/>
+                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" alt="images" />
                     </label><br />
                     <table border="0">
                         <thead>
@@ -56,17 +56,11 @@
                     <br />
                     <%itemIncr++;}%>
                     <br /><br />
-                    <table border="0">
-                        <thead>
-                            <tr>
-                                <th><input type="submit" value="Salvar" name="Salvar" class="button"/></th>
-                                <th width="100px"><input type="reset" value="Cancelar" name="Cancelar" class="button"/></th>
-                            </tr>
-                        </thead>
-                    </table>
+                    <input type="submit" value="Salvar" name="Salvar" class="button" style="margin-left: 200px; width: 80px;"/>
+                               <input type="reset" value="Cancelar" name="Cancelar" class="button"/>
                 </form>
             </div>
-            <div id="content_right"></div>
+          
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.12 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

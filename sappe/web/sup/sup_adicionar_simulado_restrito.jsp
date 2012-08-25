@@ -47,31 +47,32 @@
                
                 <form name="asr" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSupervisorAdicionarSimuladoRestrito" />
+                    
                     <%@include file="../error.jsp" %>
                    
-                    <table border="0" style="width: 400px;">
+                    <table border="0" style="width: 400px; color:#0E464E; " >
                             <tbody>
                                 <tr>
-                                    <td>Nome :</td>
+                                    <td><label>Nome</label>:</td>
                                     <td width="10px;"><input type="text" name="nome" value="" size="20" maxlength="80"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Data :</td>
+                                    <td><label>Data:</label></td>
                                     <td><input type="text" name="data" value="" size="20" onkeypress="return formataData(this,event)" maxlength="10"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Horário de Inicio :</td>
+                                    <td><label>Horário de Inicio:</label></td>
                                     <td><input type="text" name="hi" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Horário de Término :</td>
+                                    <td><label>Horário de Término:</label></td>
                                     <td><input type="text" name="ht" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
                                 </tr>
                                 <tr>
 
-                                    <td>Exame :</td>
+                                    <td><label>Exame:</label></td>
                                     <td>
-                                        <select name="exame" onchange="formulario(this,'1','2');" style="width: 155px;">
+                                        <select name="exame" onchange="formulario(this,'1','2');" style="width: 143px;">
                                             <option value="0">Selecione</option>
                                             <option value="1">Poscomp</option>
                                             <option value="2">Enade</option>
@@ -86,19 +87,19 @@
                         <table border="0" style="width: 400px;">
                             <tbody id="1" style="display: none;">
                                  <tr>
-                                    <td>Número de Questões</td>
+                                    <td><label>Número de Questões</label></td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td>Matemática :</td>
+                                    <td><label>Matemática:</label></td>
                                     <td><input type="text" name="nm" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Fundamentos da Computação :</td>
+                                    <td><label>Fundamentos da Computação:</label></td>
                                     <td><input type="text" name="nfc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Tecnologia da Computação :</td>
+                                    <td><label>Tecnologia da Computação:</label></td>
                                     <td><input type="text" name="ntc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                             </tbody>
@@ -106,19 +107,19 @@
                         <table border="0" style="width: 400px;">
                             <tbody id="2" style="display: none;">
                                 <tr>
-                                    <td style="width: 200px;">Número de Questões:</td>
+                                    <td style="width: 300px;"><label>Número de Questões:</label></td>
                                     <td><br /></td>
                                 </tr>
                                 <tr>
-                                    <td>Sitemas de Informação:</td>
+                                    <td><label>Sitemas de Informação:</label></td>
                                     <td><input type="text" name="nsi" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Engenharia de Software:            </td>
+                                    <td><label>Engenharia de Software:</label></td>
                                     <td><input type="text" name="nes" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Conhecimentos Gerais:</td>
+                                    <td><label>Conhecimentos Gerais:</label></td>
                                     <td><input type="text" name="ncg" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                             </tbody>
@@ -144,11 +145,11 @@
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSupervisorBuscarAluno" />
                     <%if (mSucesso != null) {%><label style="color: blue;"><%=mSucesso%></label><%} else if(mErro!=null){%><label style="color: red;"><%=mErro %></label><%}%><br />
-                    <table border="0">
+                    <table border="0" >
                         <tbody>
                             <tr>
-                                <td>Busca Por Nome:</td>
-                                <td><input type="text" name="nome" value="" size="20"/><input type="submit" value="Buscar" name="Buscar" /></td>
+                                <td><label>Busca Por Nome:</label></td>
+                                <td><input type="text" name="nome" value="" size="20"/> <input type="submit" value="Buscar" name="Buscar" class="button" /></td>
                             </tr>
                             <%
                                         List<Usuario> usuarios = (List<Usuario>) session.getAttribute("uS");

@@ -37,7 +37,7 @@
                     <table border="0">
                         <tbody>
                             <tr>
-                                <td>Exame (*):</td>
+                                <td><label>Exame:</label></td>
                                 <td >
                                     <select name="eid" style="width: 250px;">
                                         <option value="0">Selecione</option>
@@ -47,7 +47,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Área (*): </td>
+                                <td><label>Área: </label></td>
                                 <td>
                                     <select name="aid" style="width: 250px;">
                                         <option value="0">Selecione</option>
@@ -61,11 +61,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Ano (*):</td>
+                                <td><label>Ano:</label></td>
                                 <td><input type="text" name="ano" value="" style="width: 245px;" onkeypress="return validaNumerosSilencioso(event);" maxlength="4"/></td>
                             </tr>
                             <tr>
-                                <td>Item Certo (*):</td>
+                                <td><label>Item Certo:</label></td>
                                 <td>
                                     <select name="ic" style="width: 250px;">
                                         <option value="0">Selecione</option>
@@ -79,8 +79,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td> Questão (*):</td>
-                                <td><input type="file" name="questao" value="" /></td>
+                                <td><label>Questão:</label></td>
+                                <td><input type="file" name="questao" value="Arquivo" size="14" /></td>
                             </tr>
                             <tr>
                                 <td></td>

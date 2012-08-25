@@ -34,9 +34,8 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left">
-                <h1 class="titulo1"><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h1><br /><br /><br />
-              
+            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
+                <h1 class="titulo" style="width: 875px;" ><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h1><br /><br /><br />
                 <%@include file="../error.jsp" %>
                 <%
                             int itemIncr = 0;
@@ -57,15 +56,15 @@
                     </thead>
                 </table>
                 <br />
-                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>Branca</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if (qp.getStatus() == 2) {%><label style="color: red;">Errada</label><%}else {%><label style="color: blue;">Nulla</label><%}%></label><br /><br />
+                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>Branca</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if (qp.getStatus() == 2) {%><label style="color: red;">Errada</label><%} else {%><label style="color: blue;">Nulla</label><%}%></label><br /><br />
                 <%itemIncr++;}%>
-                <br /><h5>Obs (*) : As questões nullas são consideradas como certas.</h5>
-                <h3>Relatório da Prova</h3><br>
+                <br /><label>Obs (*) : As questões nullas são consideradas como certas.</label>
+                <h4 class="titulo">Relatório da Prova</h4><br>
                 <div id="">
-                    <table>
+                    <table  style="margin-left: 100px;" border="1px">
                         <thead>
                             <tr>
-                                <th width="200px">Tipo da Prova</th>
+                                <th style="width:400px" >Tipo da Prova</th>
                                 <th>Questões Respondidas</th>
                                 <th>Questões Certas</th>
                                 <th>Questões Brancas</th>
@@ -88,13 +87,7 @@
                     </table>
                 </div>
                 <br /><br />
-                <table border="0">
-                    <thead>
-                        <tr>
-                            <th><a href="visualizar_provas.jsp" class="button">Voltar</a></th>
-                        </tr>
-                    </thead>
-                </table>
+                <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" style="margin-left: 400px ; width: 80px;" />
             </div>
             <div id="content_right"></div>
             <div id="footer">

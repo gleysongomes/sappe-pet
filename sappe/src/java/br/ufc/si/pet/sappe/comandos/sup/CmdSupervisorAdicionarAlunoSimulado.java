@@ -33,18 +33,25 @@ public class CmdSupervisorAdicionarAlunoSimulado implements Comando {
         try {
             Long id = Long.parseLong(request.getParameter("id"));
             Long idS = (Long) session.getAttribute("idSimulado");
-            System.out.println("======================="+idS);
-            UsuarioSimuladoService uss = new UsuarioSimuladoService();
-            UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
-            usuarioSimulado.setSimulado_id(idS);
-            usuarioSimulado.setUsuario_id(id);
-            uss.insertUsuarioSimulado(usuarioSimulado);
-            UsuarioService us = new UsuarioService();
-            Usuario u = us.getUsuarioById(id);
-            SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
-                    + "um simulado foi adicionado ao sistema.<br /><br />"
-                    + "<a href=\"/sappe/index.jsp\"> Realizar Simulado </a>");
-            session.setAttribute("mSucesso", "Aluno adicionado com sucesso.");
+            if (id != null && idS != null) {
+                System.out.println("=======================" + idS);
+                UsuarioSimuladoService uss = new UsuarioSimuladoService();
+                UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
+                usuarioSimulado.setSimulado_id(idS);
+                usuarioSimulado.setUsuario_id(id);
+                uss.insertUsuarioSimulado(usuarioSimulado);
+                UsuarioService us = new UsuarioService();
+                Usuario u = us.getUsuarioById(id);
+                SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
+                        + "um simulado foi adicionado ao sistema.<br /><br />"
+                        + "<a href=\"/sappe/index.jsp\"> Realizar Simulado </a>");
+                session.setAttribute("mSucesso", "Aluno adicionado com sucesso.");
+                return "/sup/sup_adicionar_simulado_restrito.jsp";
+            } else {
+                session.setAttribute("mErro", "Cadastre um simulado primeiro, depois adicione os alunos participantes.");
+                return "/sup/sup_adicionar_simulado_restrito.jsp";
+            }
+
         } catch (NumberFormatException nfe) {
             session.setAttribute("mErro", nfe.getMessage());
             nfe.printStackTrace();
@@ -54,14 +61,13 @@ public class CmdSupervisorAdicionarAlunoSimulado implements Comando {
             e.printStackTrace();
             return "/sup/sup_adicionar_simulado_restrito.jsp";
         } catch (NullPointerException npe) {
-            session.setAttribute("mErro", npe.getMessage());
-            npe.printStackTrace();
+            session.setAttribute("mErro", "add simulado!!");
+            //npe.printStackTrace();
             return "/sup/sup_adicionar_simulado_restrito.jsp";
         } catch (Exception e) {
             session.setAttribute("mErro", e.getMessage());
             e.printStackTrace();
             return "/sup/sup_adicionar_simulado_restrito.jsp";
         }
-        return "/sup/sup_adicionar_simulado_restrito.jsp";
     }
 }

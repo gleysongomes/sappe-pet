@@ -91,13 +91,12 @@ body {
     margin: 10px auto;
     padding: 10px;
     border: #CCC solid 1px;
-    
 }
 
  #content_left form.login fieldset {
     border: none;
     border-bottom: #666 dotted 1px;
-  
+    
 }
 
 #content_left form.login fieldset label {

@@ -38,6 +38,7 @@ public class CmdListarQuestoes implements Comando {
         Perfil perfil = (Perfil) hS.getAttribute("user");
         Long u = perfil.getUsuario().getId();
         Utility utility = new Utility();
+        System.out.println("==="+id);
         utility.setTpid(id);
         utility.setId(u);
         utility.setQtdq(nq);

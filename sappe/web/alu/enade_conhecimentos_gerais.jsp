@@ -25,7 +25,7 @@
 
                 <form action="../ServletCentral" method="post" >
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
-                    <input type="hidden" name="id" value="10" />
+                    <input type="hidden" name="id" value="8" />
                     <input type="hidden" name="ide" value="2" />
                     <input type="hidden" name="caminho" value="/alu/enade_conhecimentos_gerais.jsp" />
                     <%@include file="../error.jsp" %>

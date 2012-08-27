@@ -29,7 +29,7 @@
 
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdListarQuestoesExamePadrao" />
-                    <input type="hidden" name="id" value="1" />
+                    <input type="hidden" name="id" value="9" />
                     <input type="hidden" name="ide" value="1" />
                     <input type="hidden" name="nQ" value="70" />
                     <input type="hidden" name="caminho" value="/alu/poscomp_padrao.jsp" />

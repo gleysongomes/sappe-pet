@@ -24,7 +24,7 @@
                 <h1 class="titulo">Enade Licenciatura</h1><br />
                 <form action="../ServletCentral" method="post" >
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
-                    <input type="hidden" name="id" value="9" />
+                    <input type="hidden" name="id" value="7" />
                     <input type="hidden" name="ide" value="2" />
                     <input type="hidden" name="caminho" value="/alu/enade_sistemas_informacao.jsp" />
                     <%@include file="../error.jsp" %>

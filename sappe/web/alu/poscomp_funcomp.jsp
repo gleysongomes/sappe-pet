@@ -26,7 +26,7 @@
 
                 <form action="../ServletCentral" method="post" >
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
-                    <input type="hidden" name="id" value="4" />
+                    <input type="hidden" name="id" value="2" />
                     <input type="hidden" name="ide" value="1" />
                     <input type="hidden" name="caminho" value="/alu/poscomp_funcomp.jsp" />
                     <%@include file="../error.jsp" %>

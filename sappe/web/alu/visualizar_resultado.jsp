@@ -35,6 +35,7 @@
             </div>
             <%@include file="../alu/menu.jsp" %>
             <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
+                <form>
                 <h1 class="titulo" style="width: 875px;" ><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h1><br /><br /><br />
                             <%@include file="../error.jsp" %>
                 <%
@@ -88,6 +89,8 @@
                 </div>
                 <br /><br />
                 <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" style="margin-left: 400px ; width: 80px;" />
+
+            </form>
             </div>
             <div id="content_right"></div>
             <div id="footer">

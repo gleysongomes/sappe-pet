@@ -31,7 +31,7 @@
             </div>
             <%@include file="../alu/menu.jsp" %>
             <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
-                <h1 class="titulo2"><%=simulado.getNome()%></h1><br /><br /><br />
+                <h1 class="titulo"><%=simulado.getNome()%></h1><br />
                 <form id="lsQ" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSalvarSimulado" />
                     <%@include file="../error.jsp" %>
@@ -66,14 +66,10 @@
                     </table><br />
                     <%itemIncr++;}%>
                     <br /><br />
-                    <table border="0">
-                        <thead>
-                            <tr>
-                                <th><input type="submit" value="Salvar" name="Salvar" class="button"/></th>
-                                <th width="100px"><input type="reset" value="Cancelar" name="Cancelar" class="button"/></th>
-                            </tr>
-                        </thead>
-                    </table>
+                   
+                    <input type="submit" value="Salvar" name="Salvar" class="button" style="margin-left: 370px;" />
+                                <input type="reset" value="Cancelar" name="Cancelar" class="button"/>
+                            
                 </form>
             </div>
             <div id="content_right"></div>

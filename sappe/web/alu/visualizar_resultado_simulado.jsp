@@ -31,8 +31,10 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left">
-                <h1 class="titulo1">Questões do Simulado</h1><br /><br /><br />
+           
+            <div id="content_left" style="width: 900px; overflow:-moz-scrollbars-vertical;height:440px;">
+                <form>
+                <h1 class="titulo">Questões do Simulado</h1><br /><br /><br />
 
                 <%
                             int itemIncr = 0;
@@ -55,10 +57,10 @@
                 <label>Status:  <%if (quses.get(itemIncr).getStatus() == 0) {%> <label>Branca</label><%} else if (quses.get(itemIncr).getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if(quses.get(itemIncr).getStatus() == 2){%><label style="color: red;">Errada</label><%}else {%><label style="color: blue;">Nulla</label><%}%></label><br /><br />
                 <br />
                 <%itemIncr++;}%>
-                <br /><h5>Obs (*) : As questões nullas são consideradas certas.</h5>
-                <h3>Relatório do Simulado</h3><br>
+                <br /><label>Obs (*) : As questões nullas são consideradas certas.</label>
+                <h4 class="titulo">Relatório do Simulado</h4><br>
                 <div id="">
-                    <table>
+                    <table border="1px" style="margin-left: 100px;">
                         <thead>
                             <tr>
                                 <th width="200px">Nome</th>
@@ -84,15 +86,12 @@
                     </table>
                 </div>
                 <br /><br />
-                <table border="0">
-                    <thead>
-                        <tr>
-                            <th><a href="visualizar_simulados.jsp" class="button">Voltar</a></th>
-                        </tr>
-                    </thead>
-                </table>
+               
+                            <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" style="margin-left: 400px ; width: 80px;" />
+          </form>
             </div>
             <div id="content_right"></div>
+            
             <div id="footer">
                 <center><img alt="Logoarea UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : 28/12/2011, 18:29:52
     Author     : gleyson
@@ -30,13 +30,13 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            
+
             <div id="content_left">
                 <h1 class="titulo">Bem-vindo: <%= alu.getUsuario().getNome()%></h1><br /><br /><br />
                 <div id="bh"></div>
             </div>
                 <div id="content_right"></div>
-            
+
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

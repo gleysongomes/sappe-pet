@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : listar_questoes_simulado
     Created on : 12/08/2012, 23:19:05
     Author     : gleyson
@@ -30,8 +30,9 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
-                 <h1 class="titulo"style="width: 875px;" ><%=simulado.getNome()%></h1><br /><br /><br />
+            <div id="content_left">
+                <h1 class="titulo2"><%=simulado.getNome()%></h1><br /><br /><br />
+
                 <form id="lsQ" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSalvarSimulado" />
                     <%@include file="../error.jsp" %>
@@ -66,13 +67,20 @@
                     </table><br />
                     <%itemIncr++;}%>
                     <br /><br />
-                    <input type="submit" value="Salvar" name="Salvar" class="button" style="margin-left: 350px; width: 80px;"/> <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" style=" width: 80px;" />
+                    <table border="0">
+                        <thead>
+                            <tr>
+                                <th><input type="submit" value="Salvar" name="Salvar" class="button"/></th>
+                                <th width="100px"><input type="reset" value="Cancelar" name="Cancelar" class="button"/></th>
+                            </tr>
+                        </thead>
+                    </table>
                 </form>
             </div>
             <div id="content_right"></div>
             <div id="footer">
-                <center><img alt="LogoArea UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
-                <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
+                <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
+                <h6>Versão 1.12 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
             </div>
         </div>
     </body>

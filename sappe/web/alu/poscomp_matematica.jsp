@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : poscomp_matematica
     Created on : 06/01/2012, 20:38:28
     Author     : gleyson
@@ -22,12 +22,14 @@
             <%@include file="../alu/menu2.jsp" %>
             <div id="content_left">
                 <h1 class="titulo">Poscomp Matemática</h1><br />
+
                 <form action="../ServletCentral" method="post" >
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
                     <input type="hidden" name="id" value="1" />
                     <input type="hidden" name="ide" value="1" />
                     <input type="hidden" name="caminho" value="/alu/poscomp_matematica.jsp" />
                     <%@include file="../error.jsp" %>
+
                     <label style="font: caption; font-size: 15px;">Selecione o número de Questões:<select name="nQ">
                             <option value="0">Selecione</option>
                             <option value="5">5</option>

@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : visualizar_provas
     Created on : 29/12/2011, 02:57:31
     Author     : gleyson
@@ -25,32 +25,35 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
+            <div id="content_left">
                 <h1 class="titulo">Visualizar Provas</h1><br /><br /><br />
+
                 <%@include file="../error.jsp" %>
+
                 <table border="1px" style="margin-left: 170px;">
-                    <thead>
-                        <tr>
-                            <th >Prova</th>
-                            <th >Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-                                    List<Prova> provas = (List<Prova>) session.getAttribute("provas");
-                                    for (Prova p : provas) {
-                                        TipoService tS = new TipoService();
-                                        Tipo tipo = tS.getTipoById(p.getTipo_id());
-                        %>
-                        <tr>
-                            <td>
-                                <%= tipo.getNome()%> - <%= p.getData()%>
-                            </td>
-                            <td><a href="../ServletCentral?comando=CmdEditarProva&id=<%= p.getId()%>">Refazer Prova</a>/<a href="../ServletCentral?comando=CmdVisualizarResultado&id=<%= p.getId()%>">Visualizar Resultado</a></td>
-                        </tr>
-                        <%}%>
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th >Prova</th>
+                                <th >Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                        List<Prova> provas = (List<Prova>) session.getAttribute("provas");
+                                        for (Prova p : provas) {
+                                            TipoService tS = new TipoService();
+                                            Tipo tipo = tS.getTipoById(p.getTipo_id());
+                            %>
+                            <tr>
+                                <td>
+                                    <%= tipo.getNome()%> - <%= p.getData()%>
+                                </td>
+                                <td><a href="../ServletCentral?comando=CmdEditarProva&id=<%= p.getId()%>">Refazer Prova</a>/<a href="../ServletCentral?comando=CmdVisualizarResultado&id=<%= p.getId()%>">Visualizar Resultado</a></td>
+                            </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+
             </div>
             <div id="content_right"></div>
             <div id="footer">

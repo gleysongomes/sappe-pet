@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : enade_conhecimentos_gerais
     Created on : 10/08/2012, 15:35:13
     Author     : gleyson
@@ -22,9 +22,10 @@
             <%@include file="../alu/menu2.jsp" %>
             <div id="content_left">
                 <h1 class="titulo">Enade Conhecimentos Gerais</h1><br />
+
                 <form action="../ServletCentral" method="post" >
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
-                    <input type="hidden" name="id" value="8" />
+                    <input type="hidden" name="id" value="6" />
                     <input type="hidden" name="ide" value="2" />
                     <input type="hidden" name="caminho" value="/alu/enade_conhecimentos_gerais.jsp" />
                     <%@include file="../error.jsp" %>

@@ -1,12 +1,8 @@
-<%-- 
+<%--
     Document   : enade_padrao
     Created on : 10/08/2012, 15:34:08
     Author     : gleyson
 --%>
-
-<%@page import="br.ufc.si.pet.sappe.entidades.Questao"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.*"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -27,21 +23,18 @@
             <%@include file="../alu/menu2.jsp" %>
             <div id="content_left">
                 <h1 class="titulo">Enade Padrão</h1><br />
+
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdListarQuestoesExamePadrao" />
-                    <input type="hidden" name="id" value="2" />
-                    <input type="hidden" name="ide" value="2" />
+                    <input type="hidden" name="id" value="8" />
+                    <input type="hidden" name="ide" value="8" />
                     <input type="hidden" name="nQ" value="40" />
                     <input type="hidden" name="caminho" value="/alu/enade_padrao.jsp" />
                     <%@include file="../error.jsp" %>
                     <label style="font: caption; font-size: 15px;">Selecione o ano da prova:<select name="ano">
                             <option value="0">Selecione</option>
-                            <%
-                                        List<Questao> questoes = (ArrayList<Questao>) session.getAttribute("ae");
-                                        for (Questao q : questoes) {
-                            %>
-                            <option value="<%= q.getAno()%>"><%= q.getAno()%></option>
-                            <%}%>
+                            <option value="2002">2002</option>
+                            <option value="2008">2008</option>
                         </select>
                     </label>
                     <input type="submit" value="Buscar" name="Buscar" class="button"/>

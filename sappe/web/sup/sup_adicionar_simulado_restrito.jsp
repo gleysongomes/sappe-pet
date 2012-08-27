@@ -43,106 +43,113 @@
             </div>
             <%@include file="../sup/menu.jsp" %>
             <div id="content_left">
-                <h2 class="titulo">Adicionar Simulado Restrito</h2><br/>
+                 <h2 class="titulo">Adicionar Simulado Restrito</h2><br/>
+
                 <form name="asr" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSupervisorAdicionarSimuladoRestrito" />
-                    <%@include file="../error.jsp" %>
-                    <table border="0" style="width: 400px;">
-                        <tbody>
-                            <tr>
-                                <td>Nome :</td>
-                                <td width="10px;"><input type="text" name="nome" value="" size="20" maxlength="80"/></td>
-                            </tr>
-                            <tr>
-                                <td>Data :</td>
-                                <td><input type="text" name="data" value="" size="20" onkeypress="return formataData(this,event)" maxlength="10"/></td>
-                            </tr>
-                            <tr>
-                                <td>Horário de Início :</td>
-                                <td><input type="text" name="hi" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
-                            </tr>
-                            <tr>
-                                <td>Horário de Término :</td>
-                                <td><input type="text" name="ht" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
-                            </tr>
-                            <tr>
 
-                                <td>Exame :</td>
-                                <td>
-                                    <select name="exame" onchange="formulario(this,'1','2');" style="width: 155px;">
-                                        <option value="0">Selecione</option>
-                                        <option value="1">Poscomp</option>
-                                        <option value="2">Enade</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                        </tbody>
-                    </table>
-                    <table border="0" style="width: 400px;">
-                        <tbody id="1" style="display: none;">
-                            <tr>
-                                <td>Número de Questões</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Matemática :</td>
-                                <td><input type="text" name="nm" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos da Computação :</td>
-                                <td><input type="text" name="nfc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
-                            </tr>
-                            <tr>
-                                <td>Tecnologia da Computação :</td>
-                                <td><input type="text" name="ntc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table border="0" style="width: 400px;">
-                        <tbody id="2" style="display: none;">
-                            <tr>
-                                <td style="width: 200px;">Número de Questões:</td>
-                                <td><br /></td>
-                            </tr>
-                            <tr>
-                                <td>Sitemas de Informação:</td>
-                                <td><input type="text" name="nsi" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
-                            </tr>
-                            <tr>
-                                <td>Engenharia de Software:            </td>
-                                <td><input type="text" name="nes" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
-                            </tr>
-                            <tr>
-                                <td>Conhecimentos Gerais:</td>
-                                <td><input type="text" name="ncg" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table border="0" style="width: 400px;">
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td><input type="submit" value="Salvar" name="Salvar" class="button"/> <input type="reset" value="Limpar" name="Limpar" class="button"/></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <%@include file="../error.jsp" %>
+
+                    <table border="0" style="width: 400px; color:#0E464E; " >
+                            <tbody>
+                                <tr>
+                                    <td><label>Nome</label>:</td>
+                                    <td width="10px;"><input type="text" name="nome" value="" size="20" maxlength="80"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Data:</label></td>
+                                    <td><input type="text" name="data" value="" size="20" onkeypress="return formataData(this,event)" maxlength="10"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Horário de Inicio:</label></td>
+                                    <td><input type="text" name="hi" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Horário de Término:</label></td>
+                                    <td><input type="text" name="ht" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
+                                </tr>
+                                <tr>
+
+                                    <td><label>Exame:</label></td>
+                                    <td>
+                                        <select name="exame" onchange="formulario(this,'1','2');" style="width: 143px;">
+                                            <option value="0">Selecione</option>
+                                            <option value="1">Poscomp</option>
+                                            <option value="2">Enade</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                            </tbody>
+                        </table>
+
+
+                        <table border="0" style="width: 400px;">
+                            <tbody id="1" style="display: none;">
+                                 <tr>
+                                    <td><label>Número de Questões</label></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Matemática:</label></td>
+                                    <td><input type="text" name="nm" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Fundamentos da Computação:</label></td>
+                                    <td><input type="text" name="nfc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Tecnologia da Computação:</label></td>
+                                    <td><input type="text" name="ntc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table border="0" style="width: 400px;">
+                            <tbody id="2" style="display: none;">
+                                <tr>
+                                    <td style="width: 300px;"><label>Número de Questões:</label></td>
+                                    <td><br /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Sitemas de Informação:</label></td>
+                                    <td><input type="text" name="nsi" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Engenharia de Software:</label></td>
+                                    <td><input type="text" name="nes" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Conhecimentos Gerais:</label></td>
+                                    <td><input type="text" name="ncg" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table border="0" style="width: 400px;">
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="submit" value="Salvar" name="Salvar" class="button"/> <input type="reset" value="Limpar" name="Limpar" class="button"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                 </form>
                 <br />
 
             </div>
             <div id="content_right">
+
+
                 <h2 class="titulo">Adicionar Alunos Participantes</h2><br />
                 <div id="bh"></div>
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSupervisorBuscarAluno" />
-                    <%if (mSucesso != null) {%><label style="color: blue;"><%=mSucesso%></label><%} else if (mErro != null) {%><label style="color: red;"><%=mErro%></label><%}%><br />
-                    <table border="0">
+                    <%if (mSucesso != null) {%><label style="color: blue;"><%=mSucesso%></label><%} else if(mErro!=null){%><label style="color: red;"><%=mErro %></label><%}%><br />
+                    <table border="0" >
                         <tbody>
                             <tr>
-                                <td>Busca Por Nome:</td>
-                                <td><input type="text" name="nome" value="" size="20"/><input type="submit" value="Buscar" name="Buscar" /></td>
+                                <td><label>Busca Por Nome:</label></td>
+                                <td><input type="text" name="nome" value="" size="20"/> <input type="submit" value="Buscar" name="Buscar" class="button" /></td>
                             </tr>
                             <%
                                         List<Usuario> usuarios = (List<Usuario>) session.getAttribute("uS");

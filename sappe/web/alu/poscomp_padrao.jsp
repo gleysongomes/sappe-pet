@@ -1,12 +1,8 @@
-<%-- 
+<%--
     Document   : poscomp_padrao
     Created on : 23/01/2012, 01:40:22
     Author     : gleyson
 --%>
-
-<%@page import="br.ufc.si.pet.sappe.entidades.Questao"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.*"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -29,19 +25,15 @@
 
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdListarQuestoesExamePadrao" />
-                    <input type="hidden" name="id" value="1" />
-                    <input type="hidden" name="ide" value="1" />
+                    <input type="hidden" name="id" value="7" />
+                    <input type="hidden" name="ide" value="7" />
                     <input type="hidden" name="nQ" value="70" />
                     <input type="hidden" name="caminho" value="/alu/poscomp_padrao.jsp" />
                     <%@include file="../error.jsp" %>
                     <label style="font: caption; font-size: 15px;">Selecione o ano da prova:<select name="ano">
                             <option value="0">Selecione</option>
-                            <%
-                                        List<Questao> questoes = (ArrayList<Questao>) session.getAttribute("ap");
-                                        for (Questao q : questoes) {
-                            %>
-                            <option value="<%= q.getAno()%>"><%= q.getAno()%></option>
-                            <%}%>
+                            <option value="2002">2002</option>
+                            <option value="2008">2008</option>
                         </select>
                     </label>
                     <input type="submit" value="Buscar" name="Buscar" class="button"/>

@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : visualizar_resultado_simulado
     Created on : 13/08/2012, 05:18:45
     Author     : gleyson
@@ -25,27 +25,30 @@
             </div>
             <%@include file="../sup/menu.jsp" %>
             <div id="content_left">
-                <h1 class="titulo">Visualizar Resultado</h1><br /><br /><br />
+                <h1 class="titulo">Visualizar Resultado</h1><br />
+
                 <%@include file="../error.jsp" %>
+
                 <table border="1px" style="margin-left: 170px;">
-                    <thead>
-                        <tr>
-                            <th class="tabela">Nome</th>
-                            <th class="tabela">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-                                    List<Usuario> usuarios = (List<Usuario>) session.getAttribute("usuarios");
-                                    for (Usuario u : usuarios) {
-                        %>
-                        <tr>
-                            <td><center><%= u.getNome()%></center></td>
-                            <td><center><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimuladoAluno&id=<%= u.getId()%>" target="_blank">Visualizar Desempenho</a></center></td>
-                        </tr>
-                        <%}%>
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th class="tabela">Nome</th>
+                                <th class="tabela">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                        List<Usuario> usuarios = (List<Usuario>) session.getAttribute("usuarios");
+                                        for (Usuario u : usuarios) {
+                            %>
+                            <tr>
+                                <td><center><%= u.getNome()%></center></td>
+                                <td><center><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimuladoAluno&id=<%= u.getId()%>" target="_blank">Visualizar Desempenho</a></center></td>
+                            </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+
             </div>
             <div id="content_right"></div>
             <div id="footer">

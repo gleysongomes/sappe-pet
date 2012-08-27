@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : visualizar_resultado
     Created on : 29/12/2011, 02:42:17
     Author     : gleyson
@@ -34,9 +34,11 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
+            <div id="content_left" style="width: 900px; overflow:-moz-scrollbars-vertical;height:440px;">
                 <h1 class="titulo" style="width: 875px;" ><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h1><br /><br /><br />
+
                 <%@include file="../error.jsp" %>
+                <form>
                 <%
                             int itemIncr = 0;
                             List<QuestaoProva> qPs = (List<QuestaoProva>) session.getAttribute("qPs2");
@@ -56,7 +58,7 @@
                     </thead>
                 </table>
                 <br />
-                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>Branca</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if (qp.getStatus() == 2) {%><label style="color: red;">Errada</label><%} else {%><label style="color: blue;">Nulla</label><%}%></label><br /><br />
+                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>Branca</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if (qp.getStatus() == 2) {%><label style="color: red;">Errada</label><%}else {%><label style="color: blue;">Nulla</label><%}%></label><br /><br />
                 <%itemIncr++;}%>
                 <br /><label>Obs (*) : As questões nullas são consideradas como certas.</label>
                 <h4 class="titulo">Relatório da Prova</h4><br>
@@ -87,7 +89,9 @@
                     </table>
                 </div>
                 <br /><br />
-                <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" style="margin-left: 400px ; width: 80px;" />
+
+      <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" style="margin-left: 400px ; width: 80px;" />
+                   </form>
             </div>
             <div id="content_right"></div>
             <div id="footer">

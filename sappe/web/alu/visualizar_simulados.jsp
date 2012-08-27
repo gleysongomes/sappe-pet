@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : visualizar_simulados
     Created on : 12/08/2012, 22:34:42
     Author     : gleyson
@@ -18,49 +18,50 @@
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
-
-
         <div id="content">
             <div id="top">
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
-            <%@include file="../alu/menu.jsp" %>
-            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
-                <h1 class="titulo">Visualizar Provas</h1><br /><br /><br />
+            <%@include file="../alu/menu2.jsp" %>
+            <div id="content_left">
+                <h1 class="titulo">Visualizar Simulados</h1><br /><br /><br />
+
                 <%@include file="../error.jsp" %>
-                <table border="1px" style="margin-left: 170px;">
-                    <thead>
-                        <tr>
-                            <th >Nome</th>
-                            <th >Data</th>
-                            <th >Horário Início</th>
-                            <th >Horário Término</th>
-                            <th >Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-                                    List<Simulado> simulados = (List<Simulado>) session.getAttribute("simulados");
-                                    for (Simulado s : simulados) {
-                        %>
-                        <tr>
-                            <td>
-                                <%= s.getNome()%>
-                            </td>
-                            <td>
-                                <%= s.getData()%>
-                            </td>
-                            <td>
-                                <%= s.getHoraini()%>
-                            </td>
-                            <td>
-                                <%= s.getHorafim()%>
-                            </td>
-                            <td><a href="../ServletCentral?comando=CmdRealizarSimulado&id=<%= s.getId()%>">Realizar Simulado</a>/<a href="../ServletCentral?comando=CmdVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a></td>
-                        </tr>
-                        <%}%>
-                    </tbody>
-                </table>
+
+                <table class="tabela" style="margin-left: 170px;">
+                        <thead>
+                            <tr>
+                                <th >Nome</th>
+                                <th >Data</th>
+                                <th >Horário Início</th>
+                                <th >Horário Término</th>
+                                <th >Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                        List<Simulado> simulados = (List<Simulado>) session.getAttribute("simulados");
+                                        for (Simulado s : simulados) {
+                            %>
+                            <tr>
+                                <td>
+                                    <%= s.getNome()%>
+                                </td>
+                                <td>
+                                    <%= s.getData()%>
+                                </td>
+                                <td>
+                                    <%= s.getHoraini()%>
+                                </td>
+                                <td>
+                                    <%= s.getHorafim()%>
+                                </td>
+                                <td><a href="../ServletCentral?comando=CmdRealizarSimulado&id=<%= s.getId()%>">Realizar Simulado</a>/<a href="../ServletCentral?comando=CmdVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a></td>
+                            </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+
             </div>
             <div id="content_right"></div>
             <div id="footer">

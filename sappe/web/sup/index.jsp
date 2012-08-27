@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : 21/08/2012, 06:12:55
     Author     : gleyson
@@ -28,7 +28,7 @@
             <%@include file="../sup/menu.jsp" %>
             <div id="content_left">
                 <h1 class="titulo">Bem-vindo: <%= sup.getUsuario().getNome()%></h1><br />
-               
+
             </div>
             <div id="content_right"></div>
             <div id="footer">

@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : cadastro
     Created on : 28/12/2011, 21:15:12
     Author     : gleyson
@@ -19,40 +19,44 @@
             <div id="top">
                 <img src="images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
+
             <div id="content_left">
+
                 <h1 class="titulo">Cadastro</h1><br /><br /><br />
+
                 <form name="addAluno" action="ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdAdicionarAluno" />
                     <%@include file="error.jsp" %>
-                    <table border="0">
-                        <tbody>
-                            <tr>
-                                <td>Login (*):</td>
-                                <td><input type="text" name="login" value="" size="40" /></td>
-                            </tr>
-                            <tr>
-                                <td>Nome (*):</td>
-                                <td><input type="text" name="nome" value="" size="40" /></td>
-                            </tr>
-                            <tr>
-                                <td>Email (*):</td>
-                                <td><input type="text" name="email" value="" size="40" /></td>
-                            </tr>
-                            <tr>
-                                <td>Senha (*):</td>
-                                <td><input type="password" name="senha" value="" size="40" /></td>
-                            </tr>
-                            <tr>
-                                <td>Repita Senha (*):</td>
-                                <td><input type="password" name="rsenha" value="" size="40" /></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                </td>
-                                <td><input type="submit" value="Enviar" name="Enviar" class="button"/><input type="button" value="Voltar" onclick="history.back(); return false;" class="button" /></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <table border="0" >
+                            <tbody>
+                                <tr>
+                                    <td><label>Login:</label></td>
+                                    <td><input type="text" name="login" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nome:</label></td>
+                                    <td><input type="text" name="nome" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Email:</label></td>
+                                    <td><input type="text" name="email" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Senha:</label></td>
+                                    <td><input type="password" name="senha" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Repita Senha:</label></td>
+                                    <td><input type="password" name="rsenha" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td><input type="submit" value="Enviar" name="Enviar" class="button"/><input type="button" value="Voltar" onclick="history.back(); return false;" class="button" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                 </form>
             </div>
             <div id="content_right"></div>

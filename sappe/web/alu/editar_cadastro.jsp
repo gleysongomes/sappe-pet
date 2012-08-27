@@ -27,11 +27,11 @@
             <%@include file="../alu/menu.jsp" %>
             <div id="content_left">
                 <h1 class="titulo">Editar Cadastro</h1><br /><br /><br />
-               
+
                 <form name="editarCadastro" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSalvarCadastroEditado" />
                     <%@include file="../error.jsp" %>
-                   
+
                     <table border="0" style="margin-left: 0px;" >
                             <tbody>
                                 <tr>
@@ -64,7 +64,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                   
+
                 </form>
             </div>
             <div id="content_right"></div>

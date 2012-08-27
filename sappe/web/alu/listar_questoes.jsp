@@ -29,8 +29,9 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left" style="width: 900px; overflow:auto;height:440px;" >
+            <div id="content_left" style="width: 900px; overflow:-moz-scrollbars-vertical;height:440px;" >
                 <h1 class="titulo"style="width: 875px;" ><%=tipo.getNome()%></h1><br />
+
                 <form id="lsQ" action="../ServletCentral" method="POST" >
                     <input type="hidden" name="comando" value="CmdSalvarProva" />
                     <%@include file="../error.jsp" %>
@@ -59,7 +60,7 @@
                                <input type="reset" value="Cancelar" name="Cancelar" class="button"/>
                 </form>
             </div>
-          
+
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.12 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

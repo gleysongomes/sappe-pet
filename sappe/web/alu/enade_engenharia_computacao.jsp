@@ -1,12 +1,12 @@
-<%-- 
-    Document   : enade_engenharia_computacao
-    Created on : 26/08/2012, 23:21:15
+<%--
+    Document   : enade_engenharia_software
+    Created on : 10/08/2012, 15:34:54
     Author     : gleyson
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
@@ -21,12 +21,13 @@
             </div>
             <%@include file="../alu/menu2.jsp" %>
             <div id="content_left">
-                <h1 class="titulo">Enade Engenharia de Computação</h1><br />
-                <form action="../ServletCentral" method="post" >
+                <h1 class="titulo">Enade Engenharia de Software</h1><br/>
+
+                <form action="../ServletCentral" method="post">
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
-                    <input type="hidden" name="id" value="6" />
+                    <input type="hidden" name="id" value="5" />
                     <input type="hidden" name="ide" value="2" />
-                    <input type="hidden" name="caminho" value="/alu/enade_sistemas_informacao.jsp" />
+                    <input type="hidden" name="caminho" value="/alu/enade_engenharia_software.jsp" />
                     <%@include file="../error.jsp" %>
                     <label style="font: caption; font-size: 15px;">Selecione o número de Questões:<select name="nQ">
                             <option value="0">Selecione</option>

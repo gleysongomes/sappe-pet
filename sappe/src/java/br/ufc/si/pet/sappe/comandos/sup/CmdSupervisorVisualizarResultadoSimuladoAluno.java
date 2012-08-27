@@ -5,12 +5,16 @@
 package br.ufc.si.pet.sappe.comandos.sup;
 
 import br.ufc.si.pet.sappe.entidades.Aluno;
+import br.ufc.si.pet.sappe.entidades.Area;
+import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoUsuarioSimulado;
 import br.ufc.si.pet.sappe.entidades.ResultadoUsuarioSimulado;
 import br.ufc.si.pet.sappe.entidades.Simulado;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.AlunoService;
+import br.ufc.si.pet.sappe.service.AreaService;
+import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.QuestaoUsuarioSimuladoService;
 import br.ufc.si.pet.sappe.service.ResultadoUsuarioSimuladoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
@@ -24,10 +28,6 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
@@ -44,7 +44,7 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) {
 
-        HttpSession hS = request.getSession(true);
+        HttpSession session = request.getSession(true);
         try {
             Long id = Long.parseLong(request.getParameter("id"));
             response.setContentType("application/pdf");
@@ -62,31 +62,17 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
             cabecalho.setWidthPercentage(90); /* Seta a largura da tabela com relação a página. */
             cabecalho.setWidths(widths);
             cabecalho.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-            //String men = "" + request.getSession().getServletContext().getRealPath("");
-            //String conteudo3[] = men.split("/build/web");
-            //Image jpg = Image.getInstance("" + new ImageIcon(
-            //"" + conteudo3[0] + "/web/images/UFC2.png"));
             Image jpg = Image.getInstance("" + new ImageIcon("" + CmdSupervisorVisualizarResultadoSimuladoAluno.class.getResource("../../images/UFC2.png")));
             cabecalho.addCell(jpg);
             cabecalho.addCell(new Phrase("Universidade Federal do Ceará\n"
                     + "Campus de Quixadá\n" + "Simulador do Ambiente das Provas do\nPoscomp e Enade - SAPPE", fonteCabecalho));
             document.add(cabecalho);
-
-            //Font fonteDesc = new Font(Font.HELVETICA, 10, Font.BOLD);
-            //float[] widths = {0.15f, 0.85f};
             PdfPTable es = new PdfPTable(1);
             float[] width = {0.85f};
             es.setWidthPercentage(100);
             es.setWidths(width);
             es.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-            //ProvaService provaService = new ProvaService();
-            //Prova prova = provaService.getProvaById(id);
-            //Long tpid = prova.getTipo_id();
-            //Perfil p = (Perfil) hS.getAttribute("user");
-
-            //SimuladoService simuladoService = new SimuladoService();
-            //Simulado simulado = simuladoService.getSimuladoById(idS);
-            Simulado simulado = (Simulado) hS.getAttribute("sup_simulado2");
+            Simulado simulado = (Simulado) session.getAttribute("sup_simulado2");
             AlunoService aS = new AlunoService();
             Aluno alu = aS.getAlunoByUsuarioId(id);
             UsuarioService uS = new UsuarioService();
@@ -94,114 +80,57 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
             Usuario u = uS.getUsuarioById(alu.getUsuario().getId());
             String nome = u.getNome();
             String conteudo[] = nome.split(" ");
-            es.addCell(new Phrase("Relatório " + simulado.getNome()
-                    + ".\nNome: " + conteudo[0]
-                    + ".\nData: " + Util.treatToString(new Date())
-                    + ".\n", fonteDesc));
-            document.add(es);
             PdfPTable table = new PdfPTable(1);
             table.setWidthPercentage(100);
             widths = new float[]{0.25f};
             table.setWidths(widths);
             table.getDefaultCell().setGrayFill(10f);
-            Class.forName("org.postgresql.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
             ResultadoUsuarioSimuladoService rss = new ResultadoUsuarioSimuladoService();
             ResultadoUsuarioSimulado resultadoUsuarioSimulado = new ResultadoUsuarioSimulado();
             resultadoUsuarioSimulado.setSimulado_id(simulado.getId());
             resultadoUsuarioSimulado.setUsuario_id(id);
             ResultadoUsuarioSimulado rus = rss.getResultadoUsuarioSimuladoByUsuarioId(resultadoUsuarioSimulado);
+            es.addCell(new Phrase("Relatório " + simulado.getNome()
+                    + ".\nNome: " + conteudo[0]
+                    + ".\nData: " + Util.treatToString(new Date())
+                    + ".\nTempo de Prova: " + rus.getTempo_prova()
+                    + ".\n", fonteDesc));
+            document.add(es);
+            table.addCell(new Phrase("Obs: As questões nullas são consideradas como certas.", fonteConteudo));
             QuestaoUsuarioSimulado questaoUsuarioSimulado = new QuestaoUsuarioSimulado();
             questaoUsuarioSimulado.setSimulado_id(simulado.getId());
             questaoUsuarioSimulado.setUsuario_id(id);
             QuestaoUsuarioSimuladoService quss = new QuestaoUsuarioSimuladoService();
-            List<QuestaoUsuarioSimulado> quses = quss.getQuestoesUsuarioSimuladoByIdUsuarioESimulado(questaoUsuarioSimulado);
-            int count = 1, pmat = 0, pfuncomp = 0, ptecomp = 0, esi = 0, ens = 0, ecg = 0;
-            int pmat2 = 0, pfuncomp2 = 0, ptecomp2 = 0, esi2 = 0, ens2 = 0, ecg2 = 0;
-            for (QuestaoUsuarioSimulado qus : quses) {
-                PreparedStatement pS = conn.prepareStatement("SELECT area_id, item FROM sappe.questao WHERE id=?");
-                pS.setLong(1, qus.getQuestao_id());
-                ResultSet rs = pS.executeQuery();
-                rs.next();
-                int aid = rs.getInt(1);
-                String item = rs.getString(2);
-                String itemCerto = qus.getItem_marcado();
-                switch (aid) {
-                    case 1:
-                        if (igual(itemCerto, item)) {
-                            pmat++;
+            AreaService areaService = new AreaService();
+            List<Area> areas = areaService.getAllAreasByExameId(simulado.getExame_id());
+            QuestaoService questaoService = new QuestaoService();
+            int soma = 0, soma2 = 0;
+            for (Area a : areas) {
+                List<QuestaoUsuarioSimulado> quses = quss.getQuestoesUsuarioSimuladoByIdUsuarioESimulado(questaoUsuarioSimulado);
+                int nq = 0, nqc = 0, aid;
+                String item, itemCerto;
+                for (QuestaoUsuarioSimulado qus : quses) {
+                    Questao q = questaoService.getQuestaoById(qus.getQuestao_id());
+                    aid = q.getArea_id();
+                    item = q.getItem();
+                    itemCerto = qus.getItem_marcado();
+                    if (aid == a.getId()) {
+                        if (Igual(itemCerto, item)) {
+                            nqc++;
                         }
-                        pmat2++;
-                        break;
-                    case 2:
-                        if (igual(itemCerto, item)) {
-                            pfuncomp++;
-                        }
-                        pfuncomp2++;
-                        break;
-                    case 3:
-                        if (igual(itemCerto, item)) {
-                            ptecomp++;
-                        }
-                        ptecomp2++;
-                        break;
-                    case 4:
-                        if (igual(itemCerto, item)) {
-                            esi++;
-                        }
-                        esi2++;
-                        break;
-                    case 5:
-                        if (igual(itemCerto, item)) {
-                            ens++;
-                        }
-                        ens2++;
-                        break;
-                    case 6:
-                        if (igual(itemCerto, item)) {
-                            ecg++;
-                        }
-                        ecg2++;
+                        nq++;
+                    }
                 }
-                count++;
-            }
-            table.addCell(new Phrase("Obs*: As questões nullas são consideradas certas.\n", fonteConteudo));
-            if (simulado.getExame_id() == 1) {
-                table.addCell(new Phrase("Tempo de Simulado: "
-                        + rus.getTempo_prova() + ".\n"
-                        + "\nQuestões de Matemática"
-                        + ":\nQuestões Certas: " + pmat
-                        + ".\nQuestões Erradas: " + (pmat2 - pmat)
-                        + ".\nPercentual de Acerto: " + 100 * pmat / util(pmat2) + "%"
-                        + ".\n\nQuestões de Fundamentos da Computação"
-                        + ":\nQuestões Certas: " + pfuncomp
-                        + ".\nQuestões Erradas: " + (pfuncomp2 - pfuncomp)
-                        + ".\nPercentual de Acerto: " + 100 * pfuncomp / util(pfuncomp2) + "%"
-                        + ".\n\nQuestões de Tecnolgia da Computação"
-                        + ":\nQuestões Certas: " + ptecomp
-                        + ".\nQuestões Erradas: " + (ptecomp2 - ptecomp)
-                        + ".\nPercentual de Acerto: " + 100 * ptecomp / util(ptecomp2) + "%"
-                        + ".\n\nPercentual de Acerto Geral: " + 100 * (pmat + pfuncomp + ptecomp) / util((pmat2 + pfuncomp2 + ptecomp2)) + "%"
+                table.addCell(new Phrase("Questões de " + a.getNome()
+                        + ":\nQuestões Certas: " + nqc
+                        + ".\nQuestões Erradas: " + (nq - nqc)
+                        + ".\nPercentual de Acerto: " + 100 * nqc / util(nq) + "%"
                         + ".\n", fonteConteudo));
-            } else {
-                table.addCell(new Phrase("Tempo de Simulado: "
-                        + rus.getTempo_prova() + ".\n"
-                        + "Questões de Sistemas de Informação"
-                        + ":\nQuestões Certas: " + esi
-                        + ".\nQuestões Erradas: " + (esi2 - esi)
-                        + ".\nPercentual de Acerto: " + 100 * esi / util(esi2) + "%"
-                        + ".\n\nQuestões de Engenharia de Software"
-                        + ":\nQuestões Certas: " + ens
-                        + ".\nQuestões Erradas: " + (ens2 - ens)
-                        + ".\nPercentual de Acerto: " + 100 * ens / util(ens2) + "%"
-                        + ".\n\nQuestões de Conhecimentos Gerais"
-                        + ":\nQuestões Certas: " + ecg
-                        + ".\nQuestões Erradas: " + (ecg2 - ecg)
-                        + ".\nPercentual de Acerto: " + 100 * ecg / util(ecg2) + "%"
-                        + ".\n\nPercentual de Acerto Geral: " + 100 * (esi + ens + ecg) / util((esi2 + ens2 + ecg2)) + "%"
-                        + ".\n", fonteConteudo));
+                soma += nqc;
+                soma2 += nq;
             }
 
+            table.addCell(new Phrase("Percentual de Acerto Geral: " + 100 * soma / util(soma2) + "%.", fonteConteudo));
             document.add(table);
             PdfPTable es2 = new PdfPTable(1);
             float[] width2 = {0.85f};
@@ -216,29 +145,28 @@ public class CmdSupervisorVisualizarResultadoSimuladoAluno implements Comando {
                 out = response.getOutputStream();
             } catch (IOException ex) {
                 ex.printStackTrace();
-                hS.setAttribute("erro", "Erro " + ex.getMessage());
+                session.setAttribute("erro", "Erro " + ex.getMessage());
                 return "/sup/visualizar_resultado_simulado.jsp";
             }
             try {
                 baos.writeTo(out);
                 out.flush();
                 out.close();
-                conn.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                hS.setAttribute("erro", "Erro " + ex.getMessage());
+                session.setAttribute("erro", "Erro " + ex.getMessage());
                 return "/sup/visualizar_resultado_simulado.jsp";
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            hS.setAttribute("erro", "Erro " + ex.getMessage());
+            session.setAttribute("erro", "Erro " + ex.getMessage());
             return "/sup/visualizar_resultado_simulado.jsp";
         }
         return "/sup/visualizar_resultado_simulado.jsp";
     }
 
-    private boolean igual(String a, String b) {
-        return ((a == null ? b == null : a.equals(b))) || (b.equals("N"))? true : false;
+    private boolean Igual(String a, String b) {
+        return ((a == null ? b == null : a.equals(b))) || (b.equals("N")) ? true : false;
     }
 
     private int util(int n) {

@@ -5,15 +5,19 @@
 package br.ufc.si.pet.sappe.comandos.alu;
 
 import br.ufc.si.pet.sappe.entidades.Aluno;
+import br.ufc.si.pet.sappe.entidades.Area;
 import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Prova;
+import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoProva;
 import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.AlunoService;
+import br.ufc.si.pet.sappe.service.AreaService;
 import br.ufc.si.pet.sappe.service.ProvaService;
 import br.ufc.si.pet.sappe.service.QuestaoProvaService;
+import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.TipoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.Util;
@@ -26,10 +30,6 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
@@ -61,21 +61,15 @@ public class CmdGerarRelatorio implements Comando {
             /* Tabela para o cabeçalho. */
             PdfPTable cabecalho = new PdfPTable(2);
             float[] widths = {0.15f, 0.85f};
-            cabecalho.setWidthPercentage(90); /* Seta a largura da tabela com relação a página. */
+            cabecalho.setWidthPercentage(90);
             cabecalho.setWidths(widths);
             cabecalho.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-            //String men = "" + request.getSession().getServletContext().getRealPath("");
-            //String conteudo3[] = men.split("/build/web");
-            //Image jpg = Image.getInstance("" + new ImageIcon(
-            //"" + conteudo3[0] + "/web/images/UFC2.png"));
             Image jpg = Image.getInstance("" + new ImageIcon("" + CmdGerarRelatorio.class.getResource("../../images/UFC2.png")));
             cabecalho.addCell(jpg);
             cabecalho.addCell(new Phrase("Universidade Federal do Ceará\n"
                     + "Campus de Quixadá\n" + "Simulador do Ambiente das Provas do\nPoscomp e Enade - SAPPE", fonteCabecalho));
             document.add(cabecalho);
 
-            //Font fonteDesc = new Font(Font.HELVETICA, 10, Font.BOLD);
-            //float[] widths = {0.15f, 0.85f};
             PdfPTable es = new PdfPTable(1);
             float[] width = {0.85f};
             es.setWidthPercentage(100);
@@ -104,89 +98,40 @@ public class CmdGerarRelatorio implements Comando {
             widths = new float[]{0.25f};
             table.setWidths(widths);
             table.getDefaultCell().setGrayFill(10f);
-            Class.forName("org.postgresql.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
-            QuestaoProvaService qpS = new QuestaoProvaService();
-            List<QuestaoProva> qPs = qpS.getListQuestaoProvaById(prova.getId());
-            int count = 1, pmat = 0, pfuncomp = 0, ptecomp = 0, esi = 0, ens = 0, ecg = 0;
-            for (QuestaoProva qP : qPs) {
-                PreparedStatement pS = conn.prepareStatement("SELECT area_id, item FROM sappe.questao WHERE id=?");
-                pS.setLong(1, qP.getQuestao_id());
-                ResultSet rs = pS.executeQuery();
-                rs.next();
-                int aid = rs.getInt(1);
-                String item = rs.getString(2);
-                String itemCerto = qP.getItem_marcado();
-                switch (aid) {
-                    case 1:
-                        if (igual(itemCerto, item)) {
-                            pmat++;
+            table.addCell(new Phrase("Obs: As questões nullas são consideradas como certas.", fonteConteudo));
+            if (tpid == 9L || tpid == 10L) {
+                AreaService areaService = new AreaService();
+                List<Area> areas = areaService.getAllAreasByExameId(tpid);
+                QuestaoProvaService qpS = new QuestaoProvaService();
+                QuestaoService questaoService = new QuestaoService();
+                for (Area a : areas) {
+                    List<QuestaoProva> qps = qpS.getListQuestaoProvaById(prova.getId());
+                    int nq = 0, nqc = 0, aid;
+                    String item, itemCerto;
+                    for (QuestaoProva qp : qps) {
+                        Questao q = questaoService.getQuestaoById(qp.getQuestao_id());
+                        aid = q.getArea_id();
+                        item = q.getItem();
+                        itemCerto = qp.getItem_marcado();
+                        if (aid == a.getId()) {
+                            if (Igual(itemCerto, item)) {
+                                nqc++;
+                            }
+                            nq++;
                         }
-                        break;
-                    case 2:
-                        if (igual(itemCerto, item)) {
-                            pfuncomp++;
-                        }
-                        break;
-                    case 3:
-                        if (igual(itemCerto, item)) {
-                            ptecomp++;
-                        }
-                        break;
-                    case 4:
-                        if (igual(itemCerto, item)) {
-                            esi++;
-                        }
-                        break;
-                    case 5:
-                        if (igual(itemCerto, item)) {
-                            ens++;
-                        }
-                        break;
-                    case 6:
-                        if (igual(itemCerto, item)) {
-                            ecg++;
-                        }
+                    }
+                    table.addCell(new Phrase("Questões de " + a.getNome()
+                            + ":\nQuestões Certas: " + nqc
+                            + ".\nQuestões Erradas: " + (nq - nqc)
+                            + ".\nPercentual de Acerto: " + 100 * nqc / util(nq) + "%"
+                            + ".\n", fonteConteudo));
                 }
-                count++;
-            }
-            table.addCell(new Phrase("Obs*: As questões nullas são consideradas certas.\n", fonteConteudo));
-            if (tpid.intValue() <= 6) {
+            } else {
                 table.addCell(new Phrase("Número de Questões: " + prova.getNumero_questoes()
                         + ".\nQuestões Respondidas: " + prova.getRespondidas()
                         + ".\nQuestões Certas: " + prova.getCertas()
                         + ".\nQuestões Brancas: " + prova.getBrancas()
                         + ".\nQuestões Erradas: " + prova.getErradas(), fonteConteudo));
-            } else if (tpid.intValue() == 7) {
-                table.addCell(new Phrase("Questões de Matemática"
-                        + ":\nQuestões Certas: " + pmat
-                        + ".\nQuestões Erradas: " + (20 - pmat)
-                        + ".\nPercentual de Acerto: " + 100 * pmat / 20 + "%"
-                        + ".\n\nQuestões de Fundamentos da Computação"
-                        + ":\nQuestões Certas: " + pfuncomp
-                        + ".\nQuestões Erradas: " + (30 - pfuncomp)
-                        + ".\nPercentual de Acerto: " + 100 * pfuncomp / 30 + "%"
-                        + ".\n\nQuestões de Tecnolgia da Computação"
-                        + ":\nQuestões Certas: " + ptecomp
-                        + ".\nQuestões Erradas: " + (20 - ptecomp)
-                        + ".\nPercentual de Acerto: " + 100 * ptecomp / 20 + "%"
-                        + ".\n\nPercentual de Acerto Geral: " + 100 * (pmat + pfuncomp + ptecomp) / 70 + "%"
-                        + ".\n", fonteConteudo));
-            } else if (tpid.intValue() == 8) {
-                table.addCell(new Phrase("Questões de Sistemas de Informação"
-                        + ":\nQuestões Certas: " + esi
-                        + ".\nQuestões Erradas: " + (15 - esi)
-                        + ".\nPercentual de Acerto: " + 100 * esi / 15 + "%"
-                        + ".\n\nQuestões de Engenharia de Software"
-                        + ":\nQuestões Certas: " + ens
-                        + ".\nQuestões Erradas: " + (15 - ens)
-                        + ".\nPercentual de Acerto: " + 100 * ens / 15 + "%"
-                        + ".\n\nQuestões de Conhecimentos Gerais"
-                        + ":\nQuestões Certas: " + ecg
-                        + ".\nQuestões Erradas: " + (10 - ecg)
-                        + ".\nPercentual de Acerto: " + 100 * ecg / 10 + "%"
-                        + ".\n\nPercentual de Acerto Geral: " + 100 * (esi + ens + ecg) / 40 + "%"
-                        + ".\n", fonteConteudo));
             }
 
             document.add(table);
@@ -210,7 +155,6 @@ public class CmdGerarRelatorio implements Comando {
                 baos.writeTo(out);
                 out.flush();
                 out.close();
-                conn.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 hS.setAttribute("erro", "Erro " + ex.getMessage());
@@ -224,7 +168,11 @@ public class CmdGerarRelatorio implements Comando {
         return "/alu/visualizar_resultado.jsp";
     }
 
-    private boolean igual(String a, String b) {
+    private boolean Igual(String a, String b) {
         return ((a == null ? b == null : a.equals(b))) || (b.equals("N")) ? true : false;
+    }
+
+    private int util(int n) {
+        return n == 0 ? 1 : n;
     }
 }

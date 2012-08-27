@@ -67,8 +67,8 @@ public class CmdGerarPdfProva implements Comando {
             //String men = "" + request.getSession().getServletContext().getRealPath("");
             //String conteudo3[] = men.split("/build/web");
             //Image jpg = Image.getInstance("" + new ImageIcon(
-                    //"" + conteudo3[0] + "/web/images/UFC2.png"));
-            Image jpg = Image.getInstance("" + new ImageIcon(""+CmdGerarPdfProva.class.getResource("../../images/UFC2.png")));
+            //"" + conteudo3[0] + "/web/images/UFC2.png"));
+            Image jpg = Image.getInstance("" + new ImageIcon("" + CmdGerarPdfProva.class.getResource("../../images/UFC2.png")));
             cabecalho.addCell(jpg);
             cabecalho.addCell(new Phrase("Universidade Federal do Ceará\n"
                     + "Campus de Quixadá\n" + "Simulador do Ambiente das Provas do\nPoscomp e Enade - SAPPE", fonteCabecalho));
@@ -116,7 +116,7 @@ public class CmdGerarPdfProva implements Comando {
                 in.read(arqBytes, 0, in.available());
                 Image jpg2 = Image.getInstance(arqBytes);
                 table.addCell(jpg2);
-                table.addCell(new Phrase("\na: ( ) b: ( ) c: ( ) d: ( ) e: ( )\n", fonteConteudo));
+                //table.addCell(new Phrase("\na: ( ) b: ( ) c: ( ) d: ( ) e: ( )\n", fonteConteudo));
                 count++;
             }
             document.add(table);
@@ -125,10 +125,9 @@ public class CmdGerarPdfProva implements Comando {
             es2.setWidthPercentage(100);
             es2.setWidths(width2);
             es2.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-            es2.addCell(new Phrase("\n\n"
-                    + "                                                  "
-                    + "                                "
-                    + "Boa Sorte!!", fonteDesc));
+            es2.addCell(new Phrase("\n\n            "
+                    + "               "
+                    + "     Boa Sorte!!", fonteConteudo));
             document.add(es2);
             document.close();
             response.setContentLength(baos.size());

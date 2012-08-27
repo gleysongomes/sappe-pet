@@ -1,6 +1,6 @@
-<%--
-    Document   : enade_sistemas_informacao
-    Created on : 10/08/2012, 15:34:31
+<%-- 
+    Document   : enade_licenciatura
+    Created on : 26/08/2012, 23:21:31
     Author     : gleyson
 --%>
 
@@ -21,16 +21,13 @@
             </div>
             <%@include file="../alu/menu2.jsp" %>
             <div id="content_left">
-                <h1 class="titulo">Enade Sistemas de Informação</h1><br />
-
+                <h1 class="titulo">Enade Licenciatura</h1><br />
                 <form action="../ServletCentral" method="post" >
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
-                    <input type="hidden" name="id" value="4" />
+                    <input type="hidden" name="id" value="7" />
                     <input type="hidden" name="ide" value="2" />
                     <input type="hidden" name="caminho" value="/alu/enade_sistemas_informacao.jsp" />
-
                     <%@include file="../error.jsp" %>
-
                     <label style="font: caption; font-size: 15px;">Selecione o número de Questões:<select name="nQ">
                             <option value="0">Selecione</option>
                             <option value="5">5</option>

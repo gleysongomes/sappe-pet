@@ -20,14 +20,14 @@
         <li>
             <a href="../ServletCentral?comando=CmdVisualizarProvas&id=<%= a.getUsuario().getId()%>">Visualizar Provas</a>
         </li>
-        
-       <li>
+
+        <li>
             <a href="../ServletCentral?comando=CmdVisualizarSimulados">Simulados</a>
         </li>
         <li>
             <a href="../ServletCentral?comando=CmdEditarCadastro">Editar Cadastro</a>
         </li>
-         
+
         <li>
             <a href="../ServletCentral?comando=CmdLogout">Sair</a>
         </li>
@@ -35,4 +35,4 @@
 </div>
 
 
-        
+

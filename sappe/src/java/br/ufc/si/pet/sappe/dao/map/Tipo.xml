@@ -17,6 +17,10 @@
         <result property="nome" column="nome"/>
     </resultMap>
 
+    <insert id="addTipo" parameterClass="area">
+        INSERT INTO sappe.tipo(nome)
+        VALUES (#nome#);
+    </insert>
     <select id="getTipoById" resultClass="tipo"
             parameterClass="long"
             resultMap="tipoResult">

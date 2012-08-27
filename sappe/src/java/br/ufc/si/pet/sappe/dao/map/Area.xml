@@ -19,10 +19,22 @@
         <result property="nome" column="nome"/>
     </resultMap>
 
+    <insert id="addArea" parameterClass="area">
+        INSERT INTO sappe.area(exame_id, nome)
+        VALUES (#exame_id#, #nome#);
+    </insert>
+
     <select id="getAreaById" resultClass="area" parameterClass="long" resultMap="areaResult">
         SELECT *
         FROM sappe.area
         WHERE id = #var#;
     </select>
+
+    <select id="getAllAreasByExameId" resultClass="area" parameterClass="long" resultMap="areaResult">
+        SELECT *
+        FROM sappe.area
+        WHERE exame_id=#var#;
+    </select>
+
 
 </sqlMap>

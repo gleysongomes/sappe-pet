@@ -73,6 +73,17 @@ public class QuestaoService {
         }
     }
 
+    public ArrayList<Questao> getAllAnosQuestoesByExame(Long id) {
+        try {
+            ArrayList<Questao> questaos = questaoDAO.getAllAnosQuestoesByExame(id);
+            return questaos;
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+
     public ArrayList<Questao> getListQuestoesByAreaSimulado(Utility utility) {
         try {
             ArrayList<Questao> questaos = questaoDAO.getListQuestoesByAreaSimulado(utility);

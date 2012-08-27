@@ -15,43 +15,39 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../css/style1.css" rel="stylesheet" type="text/css" />
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
-        <div id="tudo">
-            <div id="topo">
-                <img src="../images/sappe2.gif" width="959" height="76" alt="sappe2"/>
+        <div id="content">
+            <div id="top">
+                <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../sup/menu.jsp" %>
-            <div id="direita"></div>
-            <div id="meio">
-                <label><h3 class="titulo">Visualizar Resultado</h3></label><br /><br /><br />
-                <div id="bh"></div>
+            <div id="content_left">
+                <h1 class="titulo">Visualizar Resultado</h1><br /><br /><br />
                 <%@include file="../error.jsp" %>
-                <div id="content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="tabela">Nome</th>
-                                <th class="tabela">Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
-                                        List<Usuario> usuarios = (List<Usuario>) session.getAttribute("usuarios");
-                                        for (Usuario u : usuarios) {
-                            %>
-                            <tr>
-                                <td><center><%= u.getNome()%></center></td>
-                                <td><center><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimuladoAluno&id=<%= u.getId()%>" target="_blank">Visualizar Desempenho</a></center></td>
-                            </tr>
-                            <%}%>
-                        </tbody>
-                    </table>
-                </div>
+                <table border="1px" style="margin-left: 170px;">
+                    <thead>
+                        <tr>
+                            <th class="tabela">Nome</th>
+                            <th class="tabela">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                                    List<Usuario> usuarios = (List<Usuario>) session.getAttribute("usuarios");
+                                    for (Usuario u : usuarios) {
+                        %>
+                        <tr>
+                            <td><center><%= u.getNome()%></center></td>
+                            <td><center><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimuladoAluno&id=<%= u.getId()%>" target="_blank">Visualizar Desempenho</a></center></td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
             </div>
-            <div id="direita"></div>
+            <div id="content_right"></div>
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

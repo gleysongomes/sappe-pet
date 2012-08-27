@@ -53,7 +53,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    
                 </form>
             </div>
             <div id="content_right"></div>

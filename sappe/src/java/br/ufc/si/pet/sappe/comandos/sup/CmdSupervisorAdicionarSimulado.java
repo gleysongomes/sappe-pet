@@ -79,7 +79,7 @@ public class CmdSupervisorAdicionarSimulado implements Comando {
                     for (Usuario u : usuarios) {
                         try {
                             UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
-                            usuarioSimulado.setSimulado_id(simulado.getId());
+                            usuarioSimulado.setSimulado_id(simuladoService.proxId());
                             usuarioSimulado.setUsuario_id(u.getId());
                             uss.insertUsuarioSimulado(usuarioSimulado);
                             SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"

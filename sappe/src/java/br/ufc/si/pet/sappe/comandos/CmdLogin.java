@@ -12,7 +12,6 @@ import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.Util;
-import ch.qos.logback.core.db.dialect.SybaseSqlAnywhereDialect;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;

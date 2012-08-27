@@ -48,6 +48,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
@@ -61,7 +62,7 @@ public class ServletCentral extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession(true);
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String cmd = request.getParameter("comando");
@@ -92,10 +93,12 @@ public class ServletCentral extends HttpServlet {
                 LoggerFactory.getLogger(this.getClass()).error("Comando executado: " + comando.getClass().getName());
             }
         } catch (Exception e) {
+            System.out.println("====:(");
+            session.setAttribute("erro", "Usuário, senha e conta não conferem.");
             response.sendRedirect(request.getContextPath() + "/index.jsp");
             MDC.put("IP", request.getRemoteAddr());
             MDC.put("Data e Horário", new Date().toString());
-            MDC.put("Id do Perfil", perfil.getId().toString());
+            MDC.put("Id do Perfil", statusConexao);
             MDC.put("Comando obitido da página", cmd);
             MDC.put("Comando executado", comando.getClass().getName());
             LoggerFactory.getLogger(this.getClass()).error("error {}", this.getClass().getSimpleName(), e);

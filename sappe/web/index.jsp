@@ -24,11 +24,11 @@
                     <form action="ServletCentral" method="POST" class="login">
                         <input type="hidden" name="comando" value="CmdLogin" />
                         <%@include file="error.jsp" %>
-                        <fieldset>
+                        <fieldset >
                             <label>Login:</label><br/>
-                            <input type="text" name="login" value="" size="30"/><br/>
+                            <input type="text" name="login" value="" style="width: 190px;"/><br/>
                             <label>Senha:</label><br/>
-                            <input type="password" name="senha" value="" size="30"/><br/>
+                            <input type="password" name="senha" value="" style="width: 190px;"/><br/>
                             <label>Conta:</label><br/>
                             <select name="conta" >
                                 <option value="0">Selecione</option>

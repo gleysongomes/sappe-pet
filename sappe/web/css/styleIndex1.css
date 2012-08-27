@@ -88,15 +88,18 @@ body {
 
  #content_left form.login {
     width: 230px;
-    margin: 10px auto;
+    margin: auto;
     padding: 10px;
     border: #CCC solid 1px;
+
 }
 
  #content_left form.login fieldset {
     border: none;
     border-bottom: #666 dotted 1px;
-    
+    width: 200px;
+    height: auto;
+    padding:10px;
 }
 
 #content_left form.login fieldset label {
@@ -104,14 +107,14 @@ body {
     color: #666;
 }
 
-#content_left form.login fieldset input {
+#content_left form.login fieldset input  {
     border: #666 solid 1px;
     margin-bottom:   10px;
     margin-top: 2px;
 }
 
 #content_left form.login fieldset select {
-    width: 200px;
+    width: 190px;
     border: #666 solid 1px;
 }
 

@@ -12,6 +12,7 @@ import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.Util;
+import ch.qos.logback.core.db.dialect.SybaseSqlAnywhereDialect;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -31,6 +32,7 @@ public class CmdLogin implements Comando {
         if (senha == null || login == null || conta == null || senha.trim().isEmpty()
                 || login.trim().isEmpty() || conta.trim().isEmpty()) {
             hS.setAttribute("erro", "Preencha todos os campos.");
+            return "/index.jsp";
         } else {
             Usuario user = new Usuario();
             user.setLogin(login);
@@ -47,12 +49,9 @@ public class CmdLogin implements Comando {
                 return "/sup/index.jsp";
             } else if (perfil instanceof Administrador) {
                 hS.setAttribute("user", perfil);
-                //Usuario u = new Usuario();
-                //u = userService.getUsuarioById(perfil.getUsuario().getId());
-                //hS.setAttribute("user", u);
                 return "/admin/index.jsp";
             }
+            return "/index.jsp";
         }
-        return "/index.jsp";
     }
 }

@@ -31,7 +31,6 @@
             <%@include file="../alu/menu.jsp" %>
             <div id="content_left" style="width: 900px; overflow:-moz-scrollbars-vertical;height:440px;" >
                 <h1 class="titulo"style="width: 875px;" ><%=tipo.getNome()%></h1><br />
-
                 <form id="lsQ" action="../ServletCentral" method="POST" >
                     <input type="hidden" name="comando" value="CmdSalvarProva" />
                     <%@include file="../error.jsp" %>

@@ -28,8 +28,6 @@
             <%@include file="../sup/menu.jsp" %>
             <div id="content_left">
                 <h1 class="titulo">Resultado do Simulado</h1><br />
-
-
                 <table border="1px" style="margin-left: 170px;" >
                         <thead>
                             <tr>

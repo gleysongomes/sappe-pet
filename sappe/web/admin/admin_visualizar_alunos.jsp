@@ -24,7 +24,7 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../admin/menu.jsp" %>
-            <div id="content_left">
+            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Alunos</h1><br />
                
                 <%@include file="../error.jsp" %>

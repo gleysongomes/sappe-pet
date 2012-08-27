@@ -14,7 +14,6 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-
             Tipo tipo = (Tipo) session.getAttribute("tipo2");
 %>
 
@@ -31,14 +30,12 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left" style="width: 900px; overflow:-moz-scrollbars-vertical;height:440px;">
+            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo" style="width: 875px;"><%=tipo.getNome()%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarPdfProva" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label>
-                    </h1><br /><br /><br />
-
+                </h1><br /><br /><br />
                 <form name="rP" action="../ServletCentral" method="post">
                     <input type="hidden" name="comando" value="CmdSalvarProvaEditada" />
                     <%@include file="../error.jsp" %>
-
                     <%
                                 int itemIncr = 0;
                                 List<QuestaoProva> qPs = (List<QuestaoProva>) session.getAttribute("qPs");

@@ -30,9 +30,8 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left">
+            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo2"><%=simulado.getNome()%></h1><br /><br /><br />
-
                 <form id="lsQ" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSalvarSimulado" />
                     <%@include file="../error.jsp" %>

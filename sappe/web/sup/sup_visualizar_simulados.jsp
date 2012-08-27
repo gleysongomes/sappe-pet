@@ -24,49 +24,46 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../sup/menu.jsp" %>
-            <div id="content_left">
+            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Simulados</h1><br/>
-
                 <%@include file="../error.jsp" %>
-
                 <table style="margin-left: 170px;" border="1px">
-                        <thead>
-                            <tr>
-                                <th class="tabela">Nome</th>
-                                <th class="tabela">Data</th>
-                                <th class="tabela">Número de Questões</th>
-                                <th class="tabela">Horário Início</th>
-                                <th class="tabela">Horário Término</th>
-                                <th class="tabela">Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
-                                        List<Simulado> simulados = (List<Simulado>) session.getAttribute("sup_simulados");
-                                        for (Simulado s : simulados) {
-                            %>
-                            <tr>
-                                <td>
-                                    <%= s.getNome()%>
-                                </td>
-                                <td>
-                                    <%= s.getData()%>
-                                </td>
-                                <td>
-                                    <%= s.getNum_questao()%>
-                                </td>
-                                <td>
-                                    <%= s.getHoraini()%>
-                                </td>
-                                <td>
-                                    <%= s.getHorafim()%>
-                                </td>
-                                <td><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a>/<a href="../ServletCentral?comando=CmdSupervisorVisualizarGabarito&id=<%= s.getId()%>" target="_blank">Visualizar Gabarito </a>/<a href="../ServletCentral?comando=CmdSupervisorExcluirSimulado&id=<%= s.getId()%>" onclick="return confirmarExclucao();">Excluir</a></td>
-                            </tr>
-                            <%}%>
-                        </tbody>
-                    </table>
-
+                    <thead>
+                        <tr>
+                            <th class="tabela">Nome</th>
+                            <th class="tabela">Data</th>
+                            <th class="tabela">Número de Questões</th>
+                            <th class="tabela">Horário Início</th>
+                            <th class="tabela">Horário Término</th>
+                            <th class="tabela">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                                    List<Simulado> simulados = (List<Simulado>) session.getAttribute("sup_simulados");
+                                    for (Simulado s : simulados) {
+                        %>
+                        <tr>
+                            <td>
+                                <%= s.getNome()%>
+                            </td>
+                            <td>
+                                <%= s.getData()%>
+                            </td>
+                            <td>
+                                <%= s.getNum_questao()%>
+                            </td>
+                            <td>
+                                <%= s.getHoraini()%>
+                            </td>
+                            <td>
+                                <%= s.getHorafim()%>
+                            </td>
+                            <td><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a>/<a href="../ServletCentral?comando=CmdSupervisorVisualizarGabarito&id=<%= s.getId()%>" target="_blank">Visualizar Gabarito </a>/<a href="../ServletCentral?comando=CmdSupervisorExcluirSimulado&id=<%= s.getId()%>" onclick="return confirmarExclucao();">Excluir</a></td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
             </div>
             <div id="content_right"></div>
             <div id="footer">

@@ -25,7 +25,7 @@
 
                 <form action="../ServletCentral" method="post" >
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
-                    <input type="hidden" name="id" value="1" />
+                    <input type="hidden" name="id" value="3" />
                     <input type="hidden" name="ide" value="1" />
                     <input type="hidden" name="caminho" value="/alu/poscomp_matematica.jsp" />
                     <%@include file="../error.jsp" %>

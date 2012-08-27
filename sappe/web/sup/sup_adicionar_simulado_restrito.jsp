@@ -54,25 +54,25 @@
                             <tbody>
                                 <tr>
                                     <td><label>Nome</label>:</td>
-                                    <td width="10px;"><input type="text" name="nome" value="" size="20" maxlength="80"/></td>
+                                    <td width="10px;"><input type="text" name="nome" value="" style="width: 140px;" maxlength="80"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Data:</label></td>
-                                    <td><input type="text" name="data" value="" size="20" onkeypress="return formataData(this,event)" maxlength="10"/></td>
+                                    <td><input type="text" name="data" value="" style="width: 140px;" onkeypress="return formataData(this,event)" maxlength="10"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Horário de Inicio:</label></td>
-                                    <td><input type="text" name="hi" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
+                                    <td><input type="text" name="hi" value="" style="width: 140px;" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Horário de Término:</label></td>
-                                    <td><input type="text" name="ht" value="" size="20" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
+                                    <td><input type="text" name="ht" value="" style="width: 140px;" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
                                 </tr>
                                 <tr>
 
                                     <td><label>Exame:</label></td>
                                     <td>
-                                        <select name="exame" onchange="formulario(this,'1','2');" style="width: 143px;">
+                                        <select name="exame" onchange="formulario(this,'1','2');" style="width: 145px;">
                                             <option value="0">Selecione</option>
                                             <option value="1">Poscomp</option>
                                             <option value="2">Enade</option>
@@ -92,15 +92,15 @@
                                 </tr>
                                 <tr>
                                     <td><label>Matemática:</label></td>
-                                    <td><input type="text" name="nm" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                    <td><input type="text" name="nm" value="" style="width: 140px;" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Fundamentos da Computação:</label></td>
-                                    <td><input type="text" name="nfc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                    <td><input type="text" name="nfc" value="" style="width: 140px;" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Tecnologia da Computação:</label></td>
-                                    <td><input type="text" name="ntc" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                    <td><input type="text" name="ntc" value="" style="width: 140px;" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -112,15 +112,15 @@
                                 </tr>
                                 <tr>
                                     <td><label>Sitemas de Informação:</label></td>
-                                    <td><input type="text" name="nsi" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                    <td><input type="text" name="nsi" value="" style="width: 140px;" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Engenharia de Software:</label></td>
-                                    <td><input type="text" name="nes" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                    <td><input type="text" name="nes" value="" style="width: 140px;" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Conhecimentos Gerais:</label></td>
-                                    <td><input type="text" name="ncg" value="" size="20" onkeypress="return validaNumerosSilencioso(event);"/></td>
+                                    <td><input type="text" name="ncg" value="" style="width: 140px;" onkeypress="return validaNumerosSilencioso(event);"/></td>
                                 </tr>
                             </tbody>
                         </table>

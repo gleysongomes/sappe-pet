@@ -58,7 +58,7 @@
                     </thead>
                 </table>
             </div>
-            <div id="content_left"></div>
+            <div id="content_right"></div>
             <div id="footer">
                 <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
                 <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>

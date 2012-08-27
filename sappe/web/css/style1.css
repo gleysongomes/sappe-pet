@@ -389,6 +389,22 @@ body {
 }
 
 
+#content_right form input.button {
+    margin-top: 10px;
+    color: #000;
+    border: #CCC solid 1px;
+    margin-right: 20px;
+}
+
+
+
+#content_right form input.button:hover {
+    color: #fff;
+    background: #0E464E;
+}
+
+
+
 
 #footer {
   background-color: #8BB3AB;

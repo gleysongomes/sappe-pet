@@ -39,7 +39,7 @@
                         <tbody>
                             <tr>
                                 <td><label>Nome:</label></td>
-                                <td><input type="text" name="nome" value="" size="35" maxlength="80"/></td>
+                                <td><input type="text" name="nome" value="" style="width: 228px;" maxlength="80"/></td>
                             </tr>
                             <tr>
                                 <td><label>Exame:</label></td>
@@ -51,19 +51,19 @@
                             </tr>
                             <tr>
                                 <td><label>Data:</label></td>
-                                <td><input type="text" name="data" value="" size="35" onkeypress="return formataData(this,event)" maxlength="10"/></td>
+                                <td><input type="text" name="data" value="" style="width: 228px;" onkeypress="return formataData(this,event)" maxlength="10"/></td>
                             </tr>
                             <tr>
                                 <td><label>Horário de Inicio:</label></td>
-                                <td><input type="text" name="hi" value="" size="35" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
+                                <td><input type="text" name="hi" value="" style="width: 228px;" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
                             </tr>
                             <tr>
                                 <td><label>Horário de Término:</label></td>
-                                <td><input type="text" name="ht" value="" size="35" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
+                                <td><input type="text" name="ht" value="" style="width: 228px;" onkeypress="return formataHorario(this,event)" maxlength="8"/></td>
                             </tr>
                             <tr>
                                 <td><label>Número de Questões:</label></td>
-                                <td><input type="text" name="nq" value="" size="35" maxlength="2" onkeypress="return validaNumerosSilencioso(event)"/></td>
+                                <td><input type="text" name="nq" value="" style="width: 228px;" maxlength="2" onkeypress="return validaNumerosSilencioso(event)"/></td>
                             </tr>
                             <tr>
                                 <td></td>

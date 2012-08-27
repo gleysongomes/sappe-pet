@@ -8,6 +8,7 @@ import br.ufc.si.pet.sappe.comandos.CmdLogin;
 import br.ufc.si.pet.sappe.comandos.CmdLogout;
 import br.ufc.si.pet.sappe.comandos.CmdRecuperarSenha;
 import br.ufc.si.pet.sappe.comandos.CmdRedirecionar;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarArea;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarAlunos;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorBuscarAluno;
 import br.ufc.si.pet.sappe.comandos.alu.CmdAdicionarAluno;
@@ -24,6 +25,7 @@ import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarCadastroEditado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProvaEditada;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarSimulado;
+import br.ufc.si.pet.sappe.comandos.alu.CmdSelecionarAnosProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultadoSimulado;
@@ -37,13 +39,17 @@ import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarGabarito;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarResultadoSimulado;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarResultadoSimuladoAluno;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorVisualizarSimulados;
+import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import java.io.IOException;
-import java.util.Hashtable;
+import java.util.Date;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 /**
  *
@@ -51,38 +57,55 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletCentral extends HttpServlet {
 
-    private Hashtable comandos;
-    private boolean debug = true;
+    private HashMap<String, Comando> comandos;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // HttpSession session = request.getSession(true);
         request.setCharacterEncoding("UTF-8");
-        //response.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String cmd = request.getParameter("comando");
-        //if (debug) {
-        //  System.out.println("Cmd:" + cmd);
-        //}
+        System.out.println("Cmd:" + cmd);
         Comando comando = (Comando) comandos.get(cmd);
-
+        Perfil perfil = (Perfil) request.getSession().getAttribute("user");
+        String statusConexao = (perfil == null || perfil.getId() == null)
+                ? ("Não logado.") : ("" + perfil.getId());
         try {
             String tela = comando.executa(request, response);
             if (tela != null && !tela.trim().equals("")) {
-                if (debug) {
-                    System.out.println("Tela:" + tela);
-                }
                 response.sendRedirect(request.getContextPath() + tela);
+                MDC.put("IP", request.getRemoteAddr());
+                LoggerFactory.getLogger(this.getClass()).info("IP: " + request.getRemoteAddr());
+                LoggerFactory.getLogger(this.getClass()).info("Id do Perfil: " + statusConexao);
+                LoggerFactory.getLogger(this.getClass()).info("Data e Horário: " + new Date().toString());
+                LoggerFactory.getLogger(this.getClass()).info("Página: " + tela);
+                LoggerFactory.getLogger(this.getClass()).info("Comando obitido da página: " + cmd);
+                LoggerFactory.getLogger(this.getClass()).info("Comando executado: " + comando.getClass().getName());
+            } else {
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                MDC.put("IP", request.getRemoteAddr());
+                LoggerFactory.getLogger(this.getClass()).error("IP: " + request.getRemoteAddr());
+                LoggerFactory.getLogger(this.getClass()).error("Id do Perfil: " + statusConexao);
+                LoggerFactory.getLogger(this.getClass()).error("Data e Horário: " + new Date().toString());
+                LoggerFactory.getLogger(this.getClass()).error("Página: " + tela);
+                LoggerFactory.getLogger(this.getClass()).error("Comando obitido da página: " + cmd);
+                LoggerFactory.getLogger(this.getClass()).error("Comando executado: " + comando.getClass().getName());
             }
         } catch (Exception e) {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
-            e.printStackTrace();
+            MDC.put("IP", request.getRemoteAddr());
+            MDC.put("Data e Horário", new Date().toString());
+            MDC.put("Id do Perfil", perfil.getId().toString());
+            MDC.put("Comando obitido da página", cmd);
+            MDC.put("Comando executado", comando.getClass().getName());
+            LoggerFactory.getLogger(this.getClass()).error("error {}", this.getClass().getSimpleName(), e);
         }
     }
 
     @Override
     public void init() {
         Comando cmdo;
-        comandos = new Hashtable();
+        comandos = new HashMap<String, Comando>();
         cmdo = new CmdLogin();
         comandos.put("CmdLogin", cmdo);
         cmdo = new CmdLogout();
@@ -129,6 +152,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdSalvarSimulado", cmdo);
         cmdo = new CmdVisualizarResultadoSimulado();
         comandos.put("CmdVisualizarResultadoSimulado", cmdo);
+        cmdo = new CmdSelecionarAnosProvas();
+        comandos.put("CmdSelecionarAnosProvas", cmdo);
 
         //Supervisor
         cmdo = new CmdSupervisorAdicionarSimuladoRestrito();
@@ -155,6 +180,8 @@ public class ServletCentral extends HttpServlet {
         //Administrador
         cmdo = new CmdAdminVisualizarAlunos();
         comandos.put("CmdAdminVisualizarAlunos", cmdo);
+        cmdo = new CmdAdminAdicionarArea();
+        comandos.put("CmdAdminAdicionarArea", cmdo);
 
 
     }

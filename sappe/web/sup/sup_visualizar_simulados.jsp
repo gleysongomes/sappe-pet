@@ -24,7 +24,7 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../sup/menu.jsp" %>
-            <div id="content_left">
+            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Simulados</h1><br /><br /><br />
                 <table border="1px" style="margin-left: 170px;">
                     <thead>

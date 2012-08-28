@@ -22,7 +22,7 @@
 
             <div id="content_left">
 
-                <h1 class="titulo">Cadastro</h1><br /><br /><br />
+                <h1 class="titulo">Cadastro</h1><br />
 
                 <form name="addAluno" action="ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdAdicionarAluno" />

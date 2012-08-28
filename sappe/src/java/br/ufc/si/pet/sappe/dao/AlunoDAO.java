@@ -13,7 +13,6 @@ import java.sql.SQLException;
  * @author gleyson
  */
 public class AlunoDAO {
-
     public Aluno getByUsuarioId(Long id) throws SQLException {
         return (Aluno) PostGresMapConfig.getSqlMapClient().queryForObject("getAlunoByUsuarioId", id);
     }

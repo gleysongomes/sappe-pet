@@ -25,17 +25,19 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../sup/menu.jsp" %>
-            <div id="content_left">
+            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Adicionar Alunos</h1><br />
                 <%@include file="../error.jsp" %>
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSupervisorBuscarAluno" />
                     <input type="text" name="nome" value="" size="20" />
-                    <input type="submit" name="Buscar" value="Bucar"/>
+                    <input type="submit" name="Buscar" value="Buscar" class="button"/>
+                    <br/>
                 </form>
+                <br/>
                 <form action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSupervisorAdicionarAlunoSimulado" />
-                    <table>
+                    <table border="1px" style="margin-left: 0px;">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -60,10 +62,12 @@
                             <%}%>
                         </tbody>
                         <tr>
-                            <td><input type="hidden" value="<%= usuarios.size()%>" name="na" /></td>
-                            <td><input type="submit" value="Salvar" name="Salvar" /></td>
+                            
+                            
                         </tr>
                     </table>
+                        <input type="hidden" value="<%= usuarios.size()%>" name="na" />
+                            <input type="submit" value="Salvar" name="Salvar" class="button" />
                 </form>
             </div>
             <div id="content_right"></div>

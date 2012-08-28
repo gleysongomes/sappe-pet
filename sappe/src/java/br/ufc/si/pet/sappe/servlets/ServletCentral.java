@@ -30,6 +30,7 @@ import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultadoSimulado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarSimulados;
+import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarAluno;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarAlunoSimulado;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarSimulado;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarSimuladoRestrito;
@@ -63,6 +64,8 @@ public class ServletCentral extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
+        session.removeAttribute("sucesso");
+        session.removeAttribute("erro");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String cmd = request.getParameter("comando");
@@ -179,6 +182,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdSupervisorVisualizarSimulados", cmdo);
         cmdo = new CmdSupervisorExcluirSimulado();
         comandos.put("CmdSupervisorExcluirSimulado", cmdo);
+        cmdo = new CmdSupervisorAdicionarAluno();
+        comandos.put("CmdSupervisorAdicionarAluno", cmdo);
 
         //Administrador
         cmdo = new CmdAdminVisualizarAlunos();

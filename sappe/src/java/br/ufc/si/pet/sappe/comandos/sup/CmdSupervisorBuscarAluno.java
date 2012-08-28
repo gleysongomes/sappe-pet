@@ -25,36 +25,34 @@ public class CmdSupervisorBuscarAluno implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
         HttpSession session = request.getSession(true);
-        session.removeAttribute("mSucesso");
-        session.removeAttribute("mErro");
         session.removeAttribute("uS");
         try {
             String nome = request.getParameter("nome");
             if (nome == null || nome.isEmpty()) {
-                session.setAttribute("mErro", "Preencha todos os campos obrigatórios (*).");
-                return "/sup/sup_adicionar_simulado_restrito.jsp";
+                session.setAttribute("erro", "Preencha todos os campos obrigatórios (*).");
+                return "/sup/sup_adicionar_aluno_simulado.jsp";
             }
             UsuarioService us = new UsuarioService();
             List<Usuario> usuarios = us.getUsuariosByNome(nome);
             System.out.println("====" + usuarios.size());
             session.setAttribute("uS", usuarios);
         } catch (NumberFormatException nfe) {
-            session.setAttribute("mErro", nfe.getMessage());
+            session.setAttribute("erro", nfe.getMessage());
             nfe.printStackTrace();
-            return "/sup/sup_adicionar_simulado_restrito.jsp";
+            return "/sup/sup_adicionar_aluno_simulado.jsp";
         } catch (SqlMapException e) {
-            session.setAttribute("mErro", e.getMessage());
+            session.setAttribute("erro", e.getMessage());
             e.printStackTrace();
-            return "/sup/sup_adicionar_simulado_restrito.jsp";
+            return "/sup/sup_adicionar_aluno_simulado.jsp";
         } catch (NullPointerException npe) {
-            session.setAttribute("mErro", npe.getMessage());
+            session.setAttribute("erro", npe.getMessage());
             npe.printStackTrace();
-            return "/sup/sup_adicionar_simulado_restrito.jsp";
+            return "/sup/sup_adicionar_aluno_simulado.jsp";
         } catch (Exception e) {
-            session.setAttribute("mErro", e.getMessage());
+            session.setAttribute("erro", e.getMessage());
             e.printStackTrace();
-            return "/sup/sup_adicionar_simulado_restrito.jsp";
+            return "/sup/sup_adicionar_aluno_simulado.jsp";
         }
-        return "/sup/sup_adicionar_simulado_restrito.jsp";
+        return "/sup/sup_adicionar_aluno_simulado.jsp";
     }
 }

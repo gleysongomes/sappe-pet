@@ -16,6 +16,15 @@ public class Simulado extends Bean {
     private String data;
     private Long exame_id;
     private Integer num_questao;
+    private boolean status;
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public Integer getNum_questao() {
         return num_questao;

@@ -59,7 +59,7 @@
                             <td>
                                 <%= s.getHorafim()%>
                             </td>
-                            <td><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a>/<a href="../ServletCentral?comando=CmdSupervisorVisualizarGabarito&id=<%= s.getId()%>" target="_blank">Visualizar Gabarito </a>/<a href="../ServletCentral?comando=CmdSupervisorExcluirSimulado&id=<%= s.getId()%>" onclick="return confirmarExclucao();">Excluir</a></td>
+                            <td><a href="../ServletCentral?comando=CmdSupervisorVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a>/<%if (s.getStatus() == true) {%><a href="../ServletCentral?comando=CmdSupervisorAdicionarAluno&id=<%= s.getId()%>">Adicionar Alunos</a>/<%}%><a href="../ServletCentral?comando=CmdSupervisorVisualizarGabarito&id=<%= s.getId()%>" target="_blank">Visualizar Gabarito </a>/<a href="../ServletCentral?comando=CmdSupervisorExcluirSimulado&id=<%= s.getId()%>" onclick="return confirmarExclucao();">Excluir</a></td>
                         </tr>
                         <%}%>
                     </tbody>

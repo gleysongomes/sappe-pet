@@ -51,10 +51,11 @@ public class CmdSupervisorAdicionarSimuladoRestrito implements Comando {
                 simulado.setHorafim(ht);
                 simulado.setNum_questao(nm + nfc + ntc);
                 simulado.setExame_id(eid);
+                simulado.setStatus(true);
                 SimuladoService simuladoService = new SimuladoService();
                 simuladoService.inserir(simulado);
                 Long idS = simuladoService.proxId();
-                session.setAttribute("idSimulado", idS);
+                //session.setAttribute("idSimulado", idS);
                 if (!inserir(1L, idS, nm)) {
                     session.setAttribute("erro", "Temos menos de " + nm + " questões de Matemática disponíveis.");
                     return "/sup/sup_adicionar_simulado_restrito.jsp";
@@ -76,10 +77,11 @@ public class CmdSupervisorAdicionarSimuladoRestrito implements Comando {
                 simulado.setHorafim(ht);
                 simulado.setNum_questao(nsi + nes + ncg);
                 simulado.setExame_id(eid);
+                simulado.setStatus(true);
                 SimuladoService simuladoService = new SimuladoService();
                 simuladoService.inserir(simulado);
                 Long idS = simuladoService.proxId();
-                session.setAttribute("idSimulado", idS);
+                //session.setAttribute("idSimulado", idS);
                 if (!inserir(4L, idS, nsi)) {
                     session.setAttribute("erro", "Temos menos de " + nsi + " questões de Sistemas de Informação disponíveis.");
                     return "/sup/sup_adicionar_simulado_restrito.jsp";
@@ -112,7 +114,7 @@ public class CmdSupervisorAdicionarSimuladoRestrito implements Comando {
         }
     }
 
-    private boolean inserir(Long id,Long idS, int nq) {
+    private boolean inserir(Long id, Long idS, int nq) {
         QuestaoSimuladoService questaoSimuladoService = new QuestaoSimuladoService();
         QuestaoService questaoService = new QuestaoService();
         Utility utility = new Utility();

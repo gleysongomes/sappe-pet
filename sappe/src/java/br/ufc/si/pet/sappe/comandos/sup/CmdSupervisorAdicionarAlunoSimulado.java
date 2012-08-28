@@ -28,46 +28,47 @@ public class CmdSupervisorAdicionarAlunoSimulado implements Comando {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
 
         HttpSession session = request.getSession(true);
-        session.removeAttribute("mSucesso");
-        session.removeAttribute("mErro");
         try {
-            Long id = Long.parseLong(request.getParameter("id"));
+            int na = Integer.parseInt(request.getParameter("na"));
             Long idS = (Long) session.getAttribute("idSimulado");
-            if (id != null && idS != null) {
-                System.out.println("=======================" + idS);
-                UsuarioSimuladoService uss = new UsuarioSimuladoService();
-                UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
-                usuarioSimulado.setSimulado_id(idS);
-                usuarioSimulado.setUsuario_id(id);
-                uss.insertUsuarioSimulado(usuarioSimulado);
-                UsuarioService us = new UsuarioService();
-                Usuario u = us.getUsuarioById(id);
-                SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
-                        + "um simulado foi adicionado ao sistema.<br /><br />"
-                        + "<a href=\"/sappe/index.jsp\"> Realizar Simulado </a>");
-                session.setAttribute("mSucesso", "Aluno adicionado com sucesso.");
-                return "/sup/sup_adicionar_simulado_restrito.jsp";
+            if (idS != null) {
+                for (int i = 0; i < na; i++) {
+                    Long id = Long.parseLong(request.getParameter("id" + i));
+                    UsuarioSimuladoService uss = new UsuarioSimuladoService();
+                    UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
+                    usuarioSimulado.setSimulado_id(idS);
+                    usuarioSimulado.setUsuario_id(id);
+                    uss.insertUsuarioSimulado(usuarioSimulado);
+                    UsuarioService us = new UsuarioService();
+                    Usuario u = us.getUsuarioById(id);
+                    //{Se der erro e aqui :)}
+                    SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
+                            + "um simulado foi adicionado ao sistema.<br /><br />"
+                            + "<a href=\"/sappe/index.jsp\"> Realizar Simulado </a>");
+                }
+                session.setAttribute("sucesso", "Alunos adicionados com sucesso.");
+                return "/sup/sup_adicionar_aluno_simulado.jsp";
             } else {
-                session.setAttribute("mErro", "Cadastre um simulado primeiro, depois adicione os alunos participantes.");
-                return "/sup/sup_adicionar_simulado_restrito.jsp";
+                session.setAttribute("erro", "Cadastre um simulado primeiro, depois adicione os alunos participantes.");
+                return "/sup/sup_adicionar_aluno_simulado.jsp";
             }
 
         } catch (NumberFormatException nfe) {
-            session.setAttribute("mErro", nfe.getMessage());
+            session.setAttribute("erro", nfe.getMessage());
             nfe.printStackTrace();
-            return "/sup/sup_adicionar_simulado_restrito.jsp";
+            return "/sup/sup_adicionar_aluno_simulado.jsp";
         } catch (SqlMapException e) {
-            session.setAttribute("mErro", e.getMessage());
+            session.setAttribute("erro", e.getMessage());
             e.printStackTrace();
-            return "/sup/sup_adicionar_simulado_restrito.jsp";
+            return "/sup/sup_adicionar_aluno_simulado.jsp";
         } catch (NullPointerException npe) {
-            session.setAttribute("mErro", "add simulado!!");
+            session.setAttribute("erro", npe.getMessage());
             //npe.printStackTrace();
-            return "/sup/sup_adicionar_simulado_restrito.jsp";
+            return "/sup/sup_adicionar_aluno_simulado.jsp";
         } catch (Exception e) {
-            session.setAttribute("mErro", e.getMessage());
+            session.setAttribute("erro", e.getMessage());
             e.printStackTrace();
-            return "/sup/sup_adicionar_simulado_restrito.jsp";
+            return "/sup/sup_adicionar_aluno_simulado.jsp";
         }
     }
 }

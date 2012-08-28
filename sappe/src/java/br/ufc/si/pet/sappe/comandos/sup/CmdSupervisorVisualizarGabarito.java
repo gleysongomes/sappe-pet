@@ -4,9 +4,11 @@
  */
 package br.ufc.si.pet.sappe.comandos.sup;
 
+import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoSimulado;
 import br.ufc.si.pet.sappe.entidades.Simulado;
 import br.ufc.si.pet.sappe.interfaces.Comando;
+import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.QuestaoSimuladoService;
 import br.ufc.si.pet.sappe.service.SimuladoService;
 import br.ufc.si.pet.sappe.util.Util;
@@ -19,10 +21,6 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
@@ -79,18 +77,13 @@ public class CmdSupervisorVisualizarGabarito implements Comando {
             widths = new float[]{0.25f};
             table.setWidths(widths);
             table.getDefaultCell().setGrayFill(10f);
-            Class.forName("org.postgresql.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
+            QuestaoService questaoService = new QuestaoService();
             QuestaoSimuladoService quss = new QuestaoSimuladoService();
             List<QuestaoSimulado> quses = quss.getListQuestaoSimuladoByIdSimulado(id);
             int count = 1;
             for (QuestaoSimulado qus : quses) {
-                PreparedStatement pS = conn.prepareStatement("SELECT item FROM sappe.questao WHERE id=?");
-                pS.setLong(1, qus.getQuestao_id());
-                ResultSet rs = pS.executeQuery();
-                rs.next();
-                String item = rs.getString(1);
-                table.addCell(new Phrase((count++) + ") " + item + "\n", fonteConteudo));
+                Questao q = questaoService.getQuestaoById(qus.getQuestao_id());
+                table.addCell(new Phrase((count++) + ") " + q.getItem() + "\n", fonteConteudo));
             }
             document.add(table);
             PdfPTable es2 = new PdfPTable(1);
@@ -113,7 +106,6 @@ public class CmdSupervisorVisualizarGabarito implements Comando {
                 baos.writeTo(out);
                 out.flush();
                 out.close();
-                conn.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 hS.setAttribute("erro", "Erro " + ex.getMessage());

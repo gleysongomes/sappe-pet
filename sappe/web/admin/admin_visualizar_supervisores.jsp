@@ -48,7 +48,7 @@
                         <tr>
                             <td><center><%= s.getUsuario().getNome()%></center></td>
                             <td><center><%= s.getUsuario().getEmail()%></center></td>
-                            <td><center><a href="../ServletCentral?comando=CmdAdminExcluirSupervisor&id=<%=s.getUsuario().getId()%>">Excluir</a></center></td>
+                            <td><center><a href="../ServletCentral?comando=CmdAdminExcluirSupervisor&id=<%=s.getId()%>">Excluir</a></center></td>
                         </tr>
                         <%}%>
                     </tbody>

@@ -20,6 +20,9 @@
             <a href="../ServletCentral?comando=CmdAdminVisualizarAlunos">Visualizar Alunos</a>
         </li>
         <li>
+            <a href="../ServletCentral?comando=CmdAdminVisualizarSupervisores">Visualizar Supervisores</a>
+        </li>
+        <li>
             <a href="../ServletCentral?comando=CmdLogout">Sair</a>
         </li>
     </ul>

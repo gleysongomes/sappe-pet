@@ -173,6 +173,10 @@
         <servlet-name>CmdAdminBuscarUsuarios</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminBuscarAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdAdminVisualizarSupervisores</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSupervisores</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -340,6 +344,10 @@
     <servlet-mapping>
         <servlet-name>CmdAdminBuscarUsuarios</servlet-name>
         <url-pattern>/CmdAdminBuscarUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminVisualizarSupervisores</servlet-name>
+        <url-pattern>/CmdAdminVisualizarSupervisores</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

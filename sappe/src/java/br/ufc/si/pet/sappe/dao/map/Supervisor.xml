@@ -56,6 +56,15 @@
         papel.id = 2;
     </select>
 
+    <select id="getListAllSupervisores" resultClass="supervisor"
+            resultMap="supervisorResult">
+        SELECT *
+        FROM sappe.perfil, sappe.papel
+        WHERE perfil.papel_id = papel.id AND
+        perfil.ativo= TRUE AND
+        papel.id = 2;
+    </select>
+
     <select id="getSupervisorByUsuarioIdToAtivaConta" resultClass="supervisor"
             parameterClass="long"
             resultMap="supervisorResult">

@@ -157,6 +157,22 @@
         <servlet-name>CmdSupervisorAdicionarAluno</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorAdicionarAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdTeste</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.CmdTeste</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdAdminAdicionarSupervisor</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSupervisor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdAdminEditarSupervisor</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirSupervisor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdAdminBuscarUsuarios</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminBuscarAluno</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -308,6 +324,22 @@
     <servlet-mapping>
         <servlet-name>CmdSupervisorAdicionarAluno</servlet-name>
         <url-pattern>/CmdSupervisorAdicionarAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdTeste</servlet-name>
+        <url-pattern>/CmdTeste</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminAdicionarSupervisor</servlet-name>
+        <url-pattern>/CmdAdminAdicionarSupervisor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminEditarSupervisor</servlet-name>
+        <url-pattern>/CmdAdminEditarSupervisor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminBuscarUsuarios</servlet-name>
+        <url-pattern>/CmdAdminBuscarUsuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

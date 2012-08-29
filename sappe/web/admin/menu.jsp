@@ -13,6 +13,9 @@
         <li>
             <a href="../admin/admin_adicionar_questao.jsp">Adiconar Questão</a>
         </li>
+         <li>
+             <a href="../admin/admin_adicionar_supervisor.jsp">Adiconar Supervisor</a>
+        </li>
         <li>
             <a href="../ServletCentral?comando=CmdAdminVisualizarAlunos">Visualizar Alunos</a>
         </li>

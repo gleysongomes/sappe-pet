@@ -14,6 +14,11 @@ import java.sql.SQLException;
  */
 public class SupervisorDAO {
 
+    public void insert(Supervisor s) throws SQLException {
+        PostGresMapConfig.getSqlMapClient().insert("addSupervisor", s);
+    }
+
+
     public Supervisor getByUsuarioId(Long id) throws SQLException {
         return (Supervisor) PostGresMapConfig.getSqlMapClient().queryForObject("getSupervisorByUsuarioId", id);
     }

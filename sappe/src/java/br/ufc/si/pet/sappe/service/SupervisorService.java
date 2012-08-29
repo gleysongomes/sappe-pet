@@ -20,6 +20,17 @@ public class SupervisorService {
         supervisorDAO = new SupervisorDAO();
     }
 
+
+    public boolean insertSupervisor(Supervisor supervisor) {
+        try {
+            supervisorDAO.insert(supervisor);
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
     public Supervisor getSupervisorByUsuarioId(Long id) {
         try {
             Supervisor supervisor = supervisorDAO.getByUsuarioId(id);

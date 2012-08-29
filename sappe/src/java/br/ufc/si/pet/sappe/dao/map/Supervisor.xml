@@ -17,12 +17,12 @@
         <result property="dataCriacao" column="data_criacao"/>
         <result property="ativo" column="ativo"/>
         <result property="usuario" column="usuario_id" select="getUsuarioById"/>
+        <result property="papel" column="papel_id" select="getPapelById"/>
     </resultMap>
 
     <insert id="addSupervisor" parameterClass="supervisor">
-        INSERT INTO sappe.perfil(
-        id, usuario_id, papel_id, data_criacao, ativo)
-        VALUES (#id#, #usuario.id#, 1, #dataCriacao#, #ativo#);
+        INSERT INTO sappe.perfil(usuario_id, papel_id, data_criacao, ativo)
+        VALUES (#usuario.id#, #papel.id#, #dataCriacao#, #ativo#);
     </insert>
 
     <update id="updateSupervisor" parameterClass="supervisor">

@@ -39,6 +39,7 @@ public class CmdAdminAdicionarSupervisor implements Comando {
             PapelService ps = new PapelService();
             UsuarioService us = new UsuarioService();
             Usuario u = us.getUsuarioById(id);
+            
             SupervisorService supervisorService = new SupervisorService();
             Supervisor supervisor = new Supervisor();
             supervisor.setUsuario(u);

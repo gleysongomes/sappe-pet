@@ -8,7 +8,7 @@
 <div id="menu">
     <ul id="nav">
         <li>
-            <a href="../admin/index.jsp">Home</a>
+            <a href="../admin/index.jsp" style="width: 140px;">Home</a>
         </li>
         <li>
             <a href="../admin/admin_adicionar_questao.jsp">Adiconar Questão</a>
@@ -20,10 +20,10 @@
             <a href="../ServletCentral?comando=CmdAdminVisualizarAlunos">Visualizar Alunos</a>
         </li>
         <li>
-            <a href="../ServletCentral?comando=CmdAdminVisualizarSupervisores">Visualizar Supervisores</a>
+            <a href="../ServletCentral?comando=CmdAdminVisualizarSupervisores" style="width: 200px;">Visualizar Supervisores</a>
         </li>
         <li>
-            <a href="../ServletCentral?comando=CmdLogout">Sair</a>
+            <a href="../ServletCentral?comando=CmdLogout" style="width: 135px;">Sair</a>
         </li>
     </ul>
 </div>

@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
+import javax.servlet.http.HttpServletRequest;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import sun.misc.BASE64Encoder;
@@ -204,4 +205,17 @@ public class Util {
         String dataAtual = format.format(new Date());
         System.out.println(criptografar("a"));
     }
+
+
+    public static String getUrl(HttpServletRequest req) {
+     String scheme = req.getScheme();             // http
+     String serverName = req.getServerName();     // hostname
+     int serverPort = req.getServerPort();        // 80
+            String url = scheme+"://"+serverName+":"+serverPort;
+    return url;
 }
+
+
+}//fim da classe
+
+

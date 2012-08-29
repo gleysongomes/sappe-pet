@@ -74,7 +74,7 @@ public class CmdAdicionarAluno implements Comando {
                     System.out.println("===" + perfil.getUsuario().getEmail());
                     SendMail.sendMail(perfil.getUsuario().getEmail(), "Ativar sua conta.", "Oi " + perfil.getUsuario().getNome() + ", <br />"
                             + "para ter seu cadastro aceito, ative sua conta acessando o endereço abaixo.<br /><br />"
-                            + "<a href=http://" + request.getServerName() + ":" +  request.getServerPort()+ "/sappe/ServletCentral?comando=CmdAtivarConta&id=" + perfil.getId() + "&cod=" + perfil.getUsuario().getCodigo()+ ">ativar minha conta</a>");
+                            + "<a href=" + Util.getUrl(request) + "/sappe/ServletCentral?comando=CmdAtivarConta&id=" + perfil.getId() + "&cod=" + perfil.getUsuario().getCodigo()+ ">ativar minha conta</a>");
                 } catch (AddressException ex) {
                     Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (MessagingException ex) {

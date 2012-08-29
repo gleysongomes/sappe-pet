@@ -29,39 +29,38 @@
                 <h1 class="titulo">Adicionar Supervisor</h1><br />
                 <%@include file="../error.jsp" %>
                 <form action="../ServletCentral" method="POST">
-                    <input type="hidden" name="comando" value="CmdAdminBuscarAluno" />
-                    <input type="text" name="nome" value="" size="20" />
-                    <input type="submit" name="Buscar" value="Buscar" class="button"/>
-                    <br/>
+                    <input type="hidden" name="comando" value="CmdAdminAdicionarSupervisor" />
+                   <table border="0" >
+                            <tbody>
+                                <tr>
+                                    <td><label>Login:</label></td>
+                                    <td><input type="text" name="login" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nome:</label></td>
+                                    <td><input type="text" name="nome" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Email:</label></td>
+                                    <td><input type="text" name="email" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Senha:</label></td>
+                                    <td><input type="password" name="senha" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Repita Senha:</label></td>
+                                    <td><input type="password" name="rsenha" value="" size="40" /></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td><input type="submit" value="Enviar" name="Enviar" class="button"/><input type="button" value="Voltar" onclick="history.back(); return false;" class="button" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
                 </form>
                 <br/>
-                <table border="1px" style="margin-left: 0px;">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-                                    int i = 0;
-                                    List<Usuario> usuarios = (List<Usuario>) session.getAttribute("uS2");
-                                    if (usuarios == null) {
-                                        usuarios = new ArrayList<Usuario>();
-                                    }
-                                    for (Usuario u : usuarios) {
-                        %>
-                        <tr>
-                            <td><center><%= u.getNome()%></center></td>
-                            <td><center><%= u.getEmail()%></center></td>
-                            <td><center><a href="../ServletCentral?comando=CmdAdminAdicionarSupervisor&id=<%=u.getId()%>">Adicionar</a></center></td>
-                        </tr>
-                        <%}%>
-                    </tbody>
-                    <tr>
-                    </tr>
-                </table>
             </div>
             <div id="content_right"></div>
             <div id="footer">

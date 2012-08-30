@@ -5,6 +5,7 @@
 package br.ufc.si.pet.sappe.servlets.admin;
 
 import br.ufc.si.pet.sappe.interfaces.Comando;
+import br.ufc.si.pet.sappe.util.Util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -75,8 +76,10 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
                         File fNew = new File("/tmp/", fi.getName());
                         System.out.println(fNew.getAbsolutePath());
                         fi.write(fNew);
-                        Class.forName("org.postgresql.Driver");
-                        Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
+                       // Class.forName("org.postgresql.Driver");
+                        
+                        Connection conn = Util.getConexao();
+                        
                         File arquivo = new File("/tmp/" + fi.getName());
                         FileInputStream fiS = new FileInputStream(arquivo);
                         PreparedStatement pS = conn.prepareStatement("INSERT INTO sappe.questao(exame_id, area_id, ano, arquivo, nome, item) VALUES(?,?,?,?,?,?)");

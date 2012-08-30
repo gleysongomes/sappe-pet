@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +18,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
@@ -213,7 +218,22 @@ public class Util {
      int serverPort = req.getServerPort();        // 80
             String url = scheme+"://"+serverName+":"+serverPort;
     return url;
-}
+}//fim do método
+
+    public static Connection getConexao(){
+        try {
+            Class.forName("org.postgresql.Driver");
+        Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/Sappe", "postgres", "postgres");
+         return  conn;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return  null;
+
+    }//fim do método
 
 
 }//fim da classe

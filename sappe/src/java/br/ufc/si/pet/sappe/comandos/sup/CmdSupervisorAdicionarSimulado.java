@@ -17,6 +17,7 @@ import br.ufc.si.pet.sappe.service.SimuladoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.service.UsuarioSimuladoService;
 import br.ufc.si.pet.sappe.util.SendMail;
+import br.ufc.si.pet.sappe.util.Util;
 import com.ibatis.sqlmap.client.SqlMapException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -75,7 +76,7 @@ public class CmdSupervisorAdicionarSimulado implements Comando {
                     }
                     UsuarioService us = new UsuarioService();
                     UsuarioSimuladoService uss = new UsuarioSimuladoService();
-                    List<Usuario> usuarios = us.getAllUsuarios();
+                    List<Usuario> usuarios = us.getAllUsuariosAlunos();
                     for (Usuario u : usuarios) {
                         try {
                             UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
@@ -84,7 +85,7 @@ public class CmdSupervisorAdicionarSimulado implements Comando {
                             uss.insertUsuarioSimulado(usuarioSimulado);
                             SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
                                     + "um simulado foi adicionado ao sistema.<br /><br />"
-                                    + "<a href=\" /sappe/index.jsp \"> Realizar Simulado </a>");
+                                    + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp" + ">ativar minha conta</a>");
                         } catch (AddressException ex) {
                             Logger.getLogger(CmdSupervisorAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (MessagingException ex) {

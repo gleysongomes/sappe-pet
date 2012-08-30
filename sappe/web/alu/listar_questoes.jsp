@@ -29,9 +29,9 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left" style="width: 900px; overflow:auto;height:440px;" >
+            <div id="content_left" style="width: 900px; overflow:auto;height:430px; margin-top: 10px;" >
                 <h1 class="titulo"style="width: 875px;" ><%=tipo.getNome()%></h1><br />
-                <form id="lsQ" action="../ServletCentral" method="POST" >
+                <form id="lsQ" action="../ServletCentral" method="POST"  style="margin-top: 0px;">
                     <input type="hidden" name="comando" value="CmdSalvarProva" />
                     <%@include file="../error.jsp" %>
                     <%

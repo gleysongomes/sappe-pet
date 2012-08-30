@@ -43,6 +43,7 @@ public class CmdListarQuestoes implements Comando {
         utility.setId(u);
         utility.setQtdq(nq);
         utility.setIde(ide);
+        System.out.println("" + ide);
         List<Questao> subListaDeQuestoes = qS.getListQuestoesByArea(utility);
         System.out.println("====++" + subListaDeQuestoes.size());
         if (nq == 0) {

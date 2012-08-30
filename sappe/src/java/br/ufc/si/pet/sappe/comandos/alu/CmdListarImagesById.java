@@ -5,6 +5,7 @@
 package br.ufc.si.pet.sappe.comandos.alu;
 
 import br.ufc.si.pet.sappe.interfaces.Comando;
+import br.ufc.si.pet.sappe.util.Util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -26,8 +27,9 @@ public class CmdListarImagesById implements Comando {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
         response.setContentType("image/png");
         Long id = Long.parseLong(request.getParameter("id"));
-        Class.forName("org.postgresql.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
+
+        //Class.forName("org.postgresql.Driver");
+        Connection conn = Util.getConexao();
         PreparedStatement pS = conn.prepareStatement("SELECT arquivo FROM sappe.questao WHERE id=?");
         pS.setLong(1, id);
         ResultSet rs = pS.executeQuery();

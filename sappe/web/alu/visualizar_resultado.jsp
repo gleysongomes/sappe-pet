@@ -34,7 +34,7 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
+            <div id="content_left" style="width: 900px; overflow:auto;height:430px; margin-top: 10px; ">
                 <form>
                 <h1 class="titulo" style="width: 875px;" ><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h1><br />
                             <%@include file="../error.jsp" %>

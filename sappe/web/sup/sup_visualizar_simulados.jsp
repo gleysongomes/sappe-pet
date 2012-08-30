@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="br.ufc.si.pet.sappe.entidades.Simulado"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -41,7 +41,11 @@
                     <tbody>
                         <%
                                     List<Simulado> simulados = (List<Simulado>) session.getAttribute("sup_simulados");
-                                    for (Simulado s : simulados) {
+                                    if(simulados == null){
+                                      simulados = new ArrayList<Simulado>();    
+                                    }
+
+                                                                       for (Simulado s : simulados) {
                         %>
                         <tr>
                             <td>

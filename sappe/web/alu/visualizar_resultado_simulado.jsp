@@ -32,7 +32,7 @@
             </div>
             <%@include file="../alu/menu.jsp" %>
            
-            <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
+            <div id="content_left" style="width: 900px; overflow:auto;height:430px; margin-top: 10px;">
                 <form>
                 <h1 class="titulo" style="width: 875px;">Questões do Simulado</h1><br /><br /><br />
 

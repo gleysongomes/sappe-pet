@@ -10,6 +10,7 @@ import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.service.UsuarioSimuladoService;
 import br.ufc.si.pet.sappe.util.SendMail;
+import br.ufc.si.pet.sappe.util.Util;
 import com.ibatis.sqlmap.client.SqlMapException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -44,7 +45,7 @@ public class CmdSupervisorAdicionarAlunoSimulado implements Comando {
                     //{Se der erro e aqui :)}
                     SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
                             + "um simulado foi adicionado ao sistema.<br /><br />"
-                            + "<a href=\"/sappe/index.jsp\"> Realizar Simulado </a>");
+                            + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp> Realizar Simulado </a>");
                 }
                 session.setAttribute("sucesso", "Alunos adicionados com sucesso.");
                 return "/sup/sup_adicionar_aluno_simulado.jsp";

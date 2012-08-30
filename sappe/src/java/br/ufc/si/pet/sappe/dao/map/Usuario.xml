@@ -51,9 +51,10 @@
 
 <select id="getAllListAlunos" resultClass="usuario" resultMap="usuarioResult">
         SELECT *
-        FROM sappe.perfil, sappe.papel
-        WHERE perfil.papel_id = papel.id AND
-        perfil.ativo= TRUE 
+        FROM sappe.perfil,sappe.usuario
+        WHERE perfil.usuario_id = usuario.id AND
+        perfil.ativo= TRUE AND
+        perfil.papel_id = 1 ;
     </select>
 
 

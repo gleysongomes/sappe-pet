@@ -32,8 +32,8 @@
                     <table border="1px" style="margin-left: 170px;">
                         <thead>
                             <tr >
-                                <th class="tabela">ID</th>
-                                <th class="tabela" >Nome</th>
+                                <th class="tabela">Nome</th>
+                                <th class="tabela" >Email</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,8 +42,8 @@
                                         for (Usuario u : usuarios) {
                             %>
                             <tr>
-                                <td ><center><%= u.getId()%></center></td>
-                                <td><center><%= u.getNome()%></center></td>
+                                <td ><center><%= u.getNome()%></center></td>
+                                <td><center><%= u.getEmail()%></center></td>
                             </tr>
                             <%}%>
                         </tbody>

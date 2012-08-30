@@ -85,7 +85,7 @@ public class CmdSupervisorAdicionarSimulado implements Comando {
                             uss.insertUsuarioSimulado(usuarioSimulado);
                             SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
                                     + "um simulado foi adicionado ao sistema.<br /><br />"
-                                    + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp" + ">ativar minha conta</a>");
+                                    + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp" + ">Realizar Simulado</a>");
                         } catch (AddressException ex) {
                             Logger.getLogger(CmdSupervisorAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (MessagingException ex) {

@@ -28,8 +28,7 @@
             <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Supervisores</h1><br />
                 <%@include file="../error.jsp" %>
-                <a href="../admin/admin_adicionar_supervisor.jsp">Adiconar Novo</a>
-                <table border="1px" style="margin-left: 0px;">
+                <table border="1px" style="margin-left: 170px;">
                     <thead>
                         <tr>
                             <th>Nome</th>

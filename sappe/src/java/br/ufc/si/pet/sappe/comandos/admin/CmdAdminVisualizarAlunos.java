@@ -26,7 +26,7 @@ public class CmdAdminVisualizarAlunos implements Comando {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
         HttpSession session = request.getSession(true);
         UsuarioService us = new UsuarioService();
-        List<Usuario> usuarios = us.getAllUsuarios();
+        List<Usuario> usuarios = us.getAllUsuariosAlunos();
         if (usuarios == null)
             usuarios = new ArrayList<Usuario>();
         session.setAttribute("usuarios2", usuarios);

@@ -47,6 +47,16 @@
         FROM sappe.usuario ORDER BY id;
     </select>
 
+
+
+<select id="getAllListAlunos" resultClass="usuario" resultMap="usuarioResult">
+        SELECT *
+        FROM sappe.perfil, sappe.papel
+        WHERE perfil.papel_id = papel.id AND
+        perfil.ativo= TRUE 
+    </select>
+
+
     <select id="getUsuarioByEmail" resultClass="usuario"
             parameterClass="java.lang.String"
             resultMap="usuarioResult">

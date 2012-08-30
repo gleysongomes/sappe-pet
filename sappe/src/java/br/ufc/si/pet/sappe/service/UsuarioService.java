@@ -142,6 +142,16 @@ public class UsuarioService {
         return null;
     }
 
+     public ArrayList<Usuario> getAllUsuariosAlunos() {
+        try {
+            ArrayList<Usuario> users = usuarioDAO.getAllAlunos();
+            return users;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     public Long getProxId() {
         try {
             Long id = usuarioDAO.proxId();

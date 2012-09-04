@@ -35,7 +35,10 @@
                 <h1 class="titulo"style="width: 875px;" >Visualizar Questões</h1><br />
 
                     <%@include file="../error.jsp" %>
-                
+                    <form action="../ServletCentral?comando=CmdAdminVisualizarQuestoes">
+                        <label>Digite o ano:</label>
+                    </form>
+
                     <table border="1px;">
                         <thead>
                             <tr >

@@ -27,12 +27,16 @@ public class cmdAdminVisualizarQuestoes implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) {
          HttpSession session = request.getSession(true);
+
+         String ano = request.getParameter("ano");
         QuestaoService qs = new QuestaoService();
-        List<Questao> questoes = qs.visualizarTodasQuestoes();
-        if (questoes == null)
-            questoes = new ArrayList<Questao>();
+        List<Questao> questoes = qs.visualizarQuestoesAnoExame(ano);
+        if (questoes == null){
+            return "/admin/admin_buscar_questao_ano.jsp";
+        }else{
         session.setAttribute("visualiza_Questoes", questoes);
         return "/admin/admin_visualizar_questoes.jsp";
+        }
     }//fim do método
 
 }

@@ -13,13 +13,7 @@
             <a href="../admin/admin_adicionar_questao.jsp">Adiconar Questão</a>
         </li>
          <li>
-             <a href="../ServletCentral?comando=CmdAdminVisualizarQuestoes">Visualizar Questões</a>
-        </li>
-        <li>
-            <a href="../admin/admin_editar_questao.jsp">Editar Questão</a>
-        </li>
-        <li>
-            <a href="../admin/admin_remover_questao.jsp">Remover Questão</a>
+             <a href="../admin/admin_buscar_questao_ano.jsp" style="width: 200px;">Buscar Questões por Ano</a>
         </li>
         <li>
             <a href="../ServletCentral?comando=CmdLogout" style="width: 135px;">Sair</a>

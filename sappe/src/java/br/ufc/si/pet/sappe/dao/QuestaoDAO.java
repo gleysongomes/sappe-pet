@@ -39,4 +39,16 @@ public class QuestaoDAO {
     public ArrayList<Questao> getListQuestoesByExame(Utility utility) throws SQLException {
         return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getListQuestoesByExame", utility);
     }
+
+
+
+     public ArrayList<Questao> getListQuestoesByAnoExame(String ano) throws SQLException {
+        return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getQuestoesByAnoExame", ano);
+    }//fim do método
+
+    public ArrayList<Questao> getAllListQuestoes() throws SQLException {
+        return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getAllQuestoes");
+    }//fim do método
+
+
 }

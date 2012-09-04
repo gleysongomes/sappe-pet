@@ -22,7 +22,7 @@
             <div id="top">
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
-            <%@include file="../admin/menu.jsp" %>
+            <%@include file="../admin/menu2.jsp" %>
             <div id="content_left">
                 <h1 class="titulo">Adicionar Questão</h1><br />
                

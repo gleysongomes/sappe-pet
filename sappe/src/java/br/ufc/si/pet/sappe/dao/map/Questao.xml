@@ -58,4 +58,17 @@
         FROM sappe.questao WHERE id IN (SELECT id FROM sappe.questao WHERE exame_id=#ide#) ORDER BY random() LIMIT #qtdq#;
     </select>
 
+
+
+      <select id="getQuestoesByAnoExame" resultClass="questao" parameterClass="String" resultMap="questaoResult">
+        SELECT *
+        FROM sappe.questao
+        WHERE ano = #var# ORDER BY id;
+    </select>
+
+    <select id="getAllQuestoes" resultClass="questao"  resultMap="questaoResult">
+        SELECT *
+        FROM sappe.questao ORDER BY id;
+    </select>
+
 </sqlMap>

@@ -47,6 +47,28 @@ public class QuestaoService {
         return null;
     }
 
+
+    public ArrayList<Questao> visualizarQuestoesAnoExame(String ano) {
+        try {
+            ArrayList<Questao> questaos = questaoDAO.getListQuestoesByAnoExame(ano);
+            return questaos;
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }//fim do método
+
+
+    public ArrayList<Questao> visualizarTodasQuestoes() {
+        try {
+            ArrayList<Questao> questaos = questaoDAO.getAllListQuestoes();
+            return questaos;
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }//fim do método
+
     /**
      *
      * @return

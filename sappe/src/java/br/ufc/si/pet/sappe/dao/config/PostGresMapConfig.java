@@ -30,5 +30,8 @@ public class PostGresMapConfig {
     public static SqlMapClient getSqlMapClient() {
         return sqlMapClient;
     }
+
+
+
 }
 

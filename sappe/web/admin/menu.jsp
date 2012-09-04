@@ -11,7 +11,7 @@
             <a href="../admin/index.jsp" style="width: 140px;">Home</a>
         </li>
         <li>
-            <a href="../admin/admin_adicionar_questao.jsp">Adiconar Questão</a>
+            <a href="../admin/admin_adicionar_questao.jsp">Questões</a>
         </li>
          <li>
              <a href="../admin/admin_adicionar_supervisor.jsp">Adiconar Supervisor</a>

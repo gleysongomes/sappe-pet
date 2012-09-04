@@ -73,7 +73,7 @@
                                 <td><%= exame.getNome() %></td>
                                 <td><%=area.getNome() %></td>
                                 <td><%=q.getAno() %></td>
-                                <td><a href="../ServletCentral?comando=CmdAdminExcluirQuestao&id=<%= q.getId()%>">Excluir</a>/<a href="#">Atualizar</a></td>
+                                <td><a href="../ServletCentral?comando=CmdAdminExcluirQuestao&id=<%= q.getId()%>">Excluir</a>/<a href="../admin/admin_atualizar_questao.jsp?id=<%= q.getId()%>">Atualizar</a></td>
                             </tr>
                    <%}%>
                    </tbody>

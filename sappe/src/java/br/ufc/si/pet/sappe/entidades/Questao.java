@@ -4,6 +4,8 @@
  */
 package br.ufc.si.pet.sappe.entidades;
 
+import java.io.InputStream;
+
 /**
  *
  * @author Gleyson
@@ -15,6 +17,17 @@ public class Questao extends Bean {
     private Integer exame_id;
     private String nome;
     private String ano;
+    private InputStream  arquivo;
+
+    public InputStream getArquivo() {
+        return arquivo;
+    }
+
+    public void setArquivo(InputStream arquivo) {
+        this.arquivo = arquivo;
+    }
+    
+
 
     public String getItem() {
         return item;

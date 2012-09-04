@@ -76,4 +76,11 @@
         WHERE id=#var#;
     </delete>
 
+
+    <update id="updateQuestao" parameterClass="questao">
+       UPDATE sappe.questao
+       SET exame_id=#exame_id#, area_id=#area_id#, ano=#ano#, arquivo=#arquivo#, nome=#nome#, item=#item#
+       WHERE id=#id#;
+    </update>
+
 </sqlMap>

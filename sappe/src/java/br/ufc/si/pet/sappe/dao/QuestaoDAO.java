@@ -61,4 +61,15 @@ public class QuestaoDAO {
     }//fim do método
 
 
-}
+    public boolean update(Questao questao){
+        try{
+            PostGresMapConfig.getSqlMapClient().update("updateQuestao", questao);
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
+    }//fim do método
+
+}//fim da classe

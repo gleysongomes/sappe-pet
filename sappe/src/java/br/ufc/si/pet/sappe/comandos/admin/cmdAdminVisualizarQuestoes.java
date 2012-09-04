@@ -32,6 +32,7 @@ public class cmdAdminVisualizarQuestoes implements Comando {
         QuestaoService qs = new QuestaoService();
         List<Questao> questoes = qs.visualizarQuestoesAnoExame(ano);
         if (questoes == null){
+            session.setAttribute("erro", "nenhuma questão encontrada");
             return "/admin/admin_buscar_questao_ano.jsp";
         }else{
         session.setAttribute("visualiza_Questoes", questoes);

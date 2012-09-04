@@ -120,4 +120,9 @@ public class QuestaoService {
         return questaoDAO.deleteQuestao(id);
     }//fim do método
 
-}
+
+    public void updateQuestao(Questao questao){
+         questaoDAO.update(questao);
+    }//fim do método
+
+}//fim da classe

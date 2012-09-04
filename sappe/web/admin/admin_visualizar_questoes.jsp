@@ -36,10 +36,10 @@
 
                     <%@include file="../error.jsp" %>
                     <form action="../ServletCentral?comando=CmdAdminVisualizarQuestoes">
-                        <label>Digite o ano:</label>
+                        
                     </form>
 
-                    <table border="1px;">
+                    <table border="1px;" style="margin-left: 170px;">
                         <thead>
                             <tr >
                                 <th class="tabela" style="width: 50px;">Nome</th>
@@ -47,6 +47,7 @@
                                 <th class="tabela" style="width: 100px;">Exame</th>
                                 <th class="tabela"style="width: 200px;">Area</th>
                                 <th class="tabela" style="width: 50px;">Ano</th>
+                                <th class="tabela" style="width: 50px;">Ação</th>
                               </tr>
                         </thead>
                    <tbody>
@@ -67,7 +68,12 @@
                                    %>
                    
                             <tr>
-                                <td><%=q.getNome() %></td><td><%=q.getItem() %></td><td><%= exame.getNome() %></td><td><%=area.getNome() %></td><td><%=q.getAno() %></td>
+                                <td><%=q.getNome() %></td>
+                                <td><%=q.getItem() %></td>
+                                <td><%= exame.getNome() %></td>
+                                <td><%=area.getNome() %></td>
+                                <td><%=q.getAno() %></td>
+                                <td><a href="../ServletCentral?comando=CmdAdminExcluirQuestao&id=<%= q.getId()%>">Excluir</a>/<a href="#">Atualizar</a></td>
                             </tr>
                    <%}%>
                    </tbody>

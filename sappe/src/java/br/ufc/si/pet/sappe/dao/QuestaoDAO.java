@@ -50,5 +50,15 @@ public class QuestaoDAO {
         return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getAllQuestoes");
     }//fim do método
 
+    public boolean deleteQuestao(long id){
+        try{
+            PostGresMapConfig.getSqlMapClient().delete("deleteQuestao",id);
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }//fim do método
+
 
 }

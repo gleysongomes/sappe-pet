@@ -39,7 +39,7 @@
                     <form action="../ServletCentral">
                         <input type="hidden" name="comando" value="CmdAdminVisualizarQuestoes" />
                         <label>Digite o ano:</label><input type="text" name="ano"  />
-                        <br> <input type="submit" value="buscar" name="buscar" class="button" />
+                         <input type="submit" value="buscar" name="buscar" class="button" />
                     </form>
 
 

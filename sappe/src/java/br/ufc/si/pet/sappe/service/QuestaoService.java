@@ -114,5 +114,10 @@ public class QuestaoService {
             Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    }
+    }//fim do método
+
+    public boolean deleteQuestaoById(long id){
+        return questaoDAO.deleteQuestao(id);
+    }//fim do método
+
 }

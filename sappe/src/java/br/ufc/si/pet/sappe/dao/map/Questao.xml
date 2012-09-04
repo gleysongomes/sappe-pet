@@ -71,4 +71,9 @@
         FROM sappe.questao ORDER BY id;
     </select>
 
+    <delete id="deleteQuestao" parameterClass="long">
+        DELETE FROM sappe.questao
+        WHERE id=#var#;
+    </delete>
+
 </sqlMap>

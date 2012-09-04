@@ -73,14 +73,14 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
                     ic = valor;
                 } else if (!fi.isFormField()) {
                     try {
-                        File fNew = new File("/tmp/", fi.getName());
+                        File fNew = new File("/temp/", fi.getName());
                         System.out.println(fNew.getAbsolutePath());
                         fi.write(fNew);
                        // Class.forName("org.postgresql.Driver");
                         
                         Connection conn = Util.getConexao();
                         
-                        File arquivo = new File("/tmp/" + fi.getName());
+                        File arquivo = new File("/temp/" + fi.getName());
                         FileInputStream fiS = new FileInputStream(arquivo);
                         PreparedStatement pS = conn.prepareStatement("INSERT INTO sappe.questao(exame_id, area_id, ano, arquivo, nome, item) VALUES(?,?,?,?,?,?)");
                         pS.setInt(1, eid);

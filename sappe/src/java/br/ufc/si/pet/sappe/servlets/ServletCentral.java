@@ -11,6 +11,7 @@ import br.ufc.si.pet.sappe.comandos.CmdRedirecionar;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarArea;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSupervisor;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminBuscarAluno;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirQuestao;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirSupervisor;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarAlunos;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSupervisores;
@@ -205,6 +206,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdAdminExcluirSupervisor", cmdo);
         cmdo = new cmdAdminVisualizarQuestoes();
         comandos.put("CmdAdminVisualizarQuestoes", cmdo);
+        cmdo = new CmdAdminExcluirQuestao();
+        comandos.put("CmdAdminExcluirQuestao", cmdo);
 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

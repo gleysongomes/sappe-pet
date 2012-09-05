@@ -17,17 +17,15 @@ public class Questao extends Bean {
     private Integer exame_id;
     private String nome;
     private String ano;
-    private InputStream  arquivo;
+    private byte[] arquivo;
 
-    public InputStream getArquivo() {
+    public byte[] getArquivo() {
         return arquivo;
     }
 
-    public void setArquivo(InputStream arquivo) {
+    public void setArquivo(byte[] arquivo) {
         this.arquivo = arquivo;
     }
-    
-
 
     public String getItem() {
         return item;

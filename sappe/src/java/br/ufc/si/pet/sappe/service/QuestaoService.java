@@ -27,6 +27,16 @@ public class QuestaoService {
         questaoDAO = new QuestaoDAO();
     }
 
+    public boolean inserir(Questao q) {
+        try {
+            questaoDAO.inserir(q);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
     public ArrayList<Questao> getListQuestoes(Utility utility) {
         try {
             ArrayList<Questao> questaos = questaoDAO.getListQuestoes(utility);
@@ -47,7 +57,6 @@ public class QuestaoService {
         return null;
     }
 
-
     public ArrayList<Questao> visualizarQuestoesAnoExame(String ano) {
         try {
             ArrayList<Questao> questaos = questaoDAO.getListQuestoesByAnoExame(ano);
@@ -57,7 +66,6 @@ public class QuestaoService {
             return null;
         }
     }//fim do método
-
 
     public ArrayList<Questao> visualizarTodasQuestoes() {
         try {
@@ -105,7 +113,6 @@ public class QuestaoService {
         }
     }
 
-
     public ArrayList<Questao> getListQuestoesByAreaSimulado(Utility utility) {
         try {
             ArrayList<Questao> questaos = questaoDAO.getListQuestoesByAreaSimulado(utility);
@@ -116,13 +123,12 @@ public class QuestaoService {
         }
     }//fim do método
 
-    public boolean deleteQuestaoById(long id){
+    public boolean deleteQuestaoById(long id) {
         return questaoDAO.deleteQuestao(id);
     }//fim do método
 
-
-    public void updateQuestao(Questao questao){
-         questaoDAO.update(questao);
+    public void updateQuestao(Questao questao) {
+        questaoDAO.update(questao);
     }//fim do método
-
 }//fim da classe
+

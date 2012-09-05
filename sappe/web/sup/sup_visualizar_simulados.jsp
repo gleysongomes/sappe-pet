@@ -41,11 +41,10 @@
                     <tbody>
                         <%
                                     List<Simulado> simulados = (List<Simulado>) session.getAttribute("sup_simulados");
-                                    if(simulados == null){
-                                      simulados = new ArrayList<Simulado>();    
+                                    if (simulados == null) {
+                                        simulados = new ArrayList<Simulado>();
                                     }
-
-                                                                       for (Simulado s : simulados) {
+                                    for (Simulado s : simulados) {
                         %>
                         <tr>
                             <td>

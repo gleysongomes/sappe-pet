@@ -4,14 +4,10 @@
  */
 package br.ufc.si.pet.sappe.servlets.admin;
 
+import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.interfaces.Comando;
-import br.ufc.si.pet.sappe.util.Util;
-import java.io.File;
-import java.io.FileInputStream;
+import br.ufc.si.pet.sappe.service.QuestaoService;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
@@ -50,83 +46,62 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
                 if (id.equals("aid")) {
                     if (valor == null || valor.isEmpty()) {
                         session.setAttribute("erro", "Preencha todos os campos (*).");
-                        return "/admin/admin_adicionar_questao.jsp";//response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                        return "/admin/admin_adicionar_questao.jsp";
                     }
                     aid = Integer.parseInt(valor);
                 } else if (id.equals("eid")) {
                     if (valor == null || valor.isEmpty()) {
                         session.setAttribute("erro", "Preencha todos os campos (*).");
-                        return "/admin/admin_adicionar_questao.jsp";//response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                        return "/admin/admin_adicionar_questao.jsp";
                     }
                     eid = Integer.parseInt(valor);
                 } else if (id.equals("ano")) {
                     if (valor == null || valor.isEmpty()) {
                         session.setAttribute("erro", "Preencha todos os campos (*).");
-                        return "/admin/admin_adicionar_questao.jsp";//response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                        return "/admin/admin_adicionar_questao.jsp";
                     }
                     ano = valor;
                 } else if (id.equals("ic")) {
                     if (valor == null || valor.isEmpty()) {
                         session.setAttribute("erro", "Preencha todos os campos (*).");
-                        return "/admin/admin_adicionar_questao.jsp";//response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+                        return "/admin/admin_adicionar_questao.jsp";
                     }
                     ic = valor;
                 } else if (!fi.isFormField()) {
                     try {
-                        File fNew = new File("/temp/", fi.getName());
-                        System.out.println(fNew.getAbsolutePath());
-                        fi.write(fNew);
-                       // Class.forName("org.postgresql.Driver");
-                        
-                        Connection conn = Util.getConexao();
-                        
-                        File arquivo = new File("/temp/" + fi.getName());
-                        FileInputStream fiS = new FileInputStream(arquivo);
-                        PreparedStatement pS = conn.prepareStatement("INSERT INTO sappe.questao(exame_id, area_id, ano, arquivo, nome, item) VALUES(?,?,?,?,?,?)");
-                        pS.setInt(1, eid);
-                        pS.setInt(2, aid);
-                        pS.setString(3, ano);
-                        pS.setBinaryStream(4, fiS, (int) arquivo.length());
-                        pS.setString(5, fi.getName());
-                        pS.setString(6, ic);
-                        pS.execute();
-                        pS.close();
-                        conn.close();
+                        QuestaoService questaoService = new QuestaoService();
+                        Questao questao = new Questao();
+                        questao.setExame_id(eid);
+                        questao.setArea_id(aid);
+                        questao.setAno(ano);
+                        questao.setItem(ic);
+                        questao.setNome(fi.getName());
+                        questao.setArquivo(fi.get());
+                        questaoService.inserir(questao);
                         fileItems.clear();
                         session.setAttribute("sucesso", "Cadastro realizado com sucesso.");
-                        response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
-                    } catch (IOException ioe) {
-                        session.setAttribute("erro", ioe.getMessage());
-                        ioe.printStackTrace();
-                    } catch (SQLException e) {
-                        session.setAttribute("erro", e.getMessage());
-                        e.printStackTrace();
+                        return "/admin/admin_adicionar_questao.jsp";
                     } catch (Exception ex) {
                         session.setAttribute("erro", ex.getMessage());
-                        response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
-                        ex.printStackTrace();
+                        return "/admin/admin_adicionar_questao.jsp";
                     }
-                    return "/admin/admin_adicionar_questao.jsp";
                 }
             }
+            session.setAttribute("erro", "Erro ao tentar cadastrar a questão.");
+            return "/admin/admin_adicionar_questao.jsp";
         } catch (NumberFormatException nfe) {
-            nfe.printStackTrace();
             session.setAttribute("erro", nfe.getMessage());
-            response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+            return "/admin/admin_adicionar_questao.jsp";
         } catch (FileUploadException fue) {
-            fue.printStackTrace();
             session.setAttribute("erro", fue.getMessage());
-            response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+            return "/admin/admin_adicionar_questao.jsp";
         } catch (NullPointerException npe) {
-            npe.printStackTrace();
             session.setAttribute("erro", npe.getMessage());
-            response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+            return "/admin/admin_adicionar_questao.jsp";
         } catch (Exception ex) {
-            ex.printStackTrace();
             session.setAttribute("erro", ex.getMessage());
-            response.sendRedirect(request.getContextPath() + "/admin/admin_adicionar_questao.jsp");
+            return "/admin/admin_adicionar_questao.jsp";
         }
-        return "/admin/admin_adicionar_questao.jsp";
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

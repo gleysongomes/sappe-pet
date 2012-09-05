@@ -22,6 +22,11 @@
         <result property="item" column="item"/>
     </resultMap>
 
+    <insert id="addQuestao" parameterClass="questao">
+        INSERT INTO sappe.questao(exame_id,area_id,ano,item,nome,arquivo)
+        VALUES (#exame_id#, #area_id#, #ano#, #item#, #nome#, #arquivo#);
+    </insert>
+
     <select id="getListQuestoes" resultClass="questao" parameterClass="utility" resultMap="questaoResult">
         SELECT *
         FROM sappe.questao WHERE id IN ((SELECT id FROM sappe.questao WHERE ano=#ano#)

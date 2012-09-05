@@ -68,7 +68,7 @@
                                         <option value="C">C</option>
                                         <option value="D">D</option>
                                         <option value="E">E</option>
-                                        <option value="N">NULLA</option>
+                                        <option value="N">NULA</option>
                                     </select>
                                 </td>
                             </tr>

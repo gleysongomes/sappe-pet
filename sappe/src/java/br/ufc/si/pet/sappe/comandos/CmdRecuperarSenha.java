@@ -46,6 +46,7 @@ public class CmdRecuperarSenha implements Comando {
                     System.out.println("===" + u.getEmail());
                     UsuarioService us = new UsuarioService();
                     String senha = Util.createRandomString(1);
+                    u.setEmail(email);
                     u.setSenha(Util.criptografar(senha));
                     us.updateUsuarioByEmail(u);
                     SendMail.sendMail(u.getEmail(), "Recuperar sua senha.", "Oi " + u.getNome() + ", <br />"

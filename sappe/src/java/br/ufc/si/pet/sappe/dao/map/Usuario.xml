@@ -39,7 +39,7 @@
 
     <update id="updateByEmail" parameterClass="usuario">
         UPDATE sappe.usuario
-        SET senha=#senha# WHERE  email=#email#;
+        SET senha=#senha# WHERE email=#email#;
     </update>
 
     <select id="getTodosUsuarios" resultClass="usuario" resultMap="usuarioResult">

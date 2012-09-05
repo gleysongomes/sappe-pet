@@ -20,6 +20,7 @@
         <result property="ano" column="ano"/>
         <result property="nome" column="nome"/>
         <result property="item" column="item"/>
+        <result property="arquivo" column="arquivo"/>
     </resultMap>
 
     <insert id="addQuestao" parameterClass="questao">
@@ -82,7 +83,7 @@
 
     <update id="updateQuestao" parameterClass="questao">
        UPDATE sappe.questao
-       SET exame_id=#exame_id#, area_id=#area_id#, ano=#ano#, arquivo=#arquivo#, nome=#nome#, item=#item#
+       SET exame_id=#exame_id#, area_id=#area_id#, ano=#ano#,  nome=#nome#, item=#item#
        WHERE id=#id#;
     </update>
 

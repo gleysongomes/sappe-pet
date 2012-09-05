@@ -177,6 +177,14 @@
         <servlet-name>CmdAdminVisualizarSupervisores</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSupervisores</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdAdminEditarQuestao</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminEditarQuestao</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdAdminAtualizarQuestao</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminAtualizarQuestao</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -349,6 +357,14 @@
         <servlet-name>CmdAdminVisualizarSupervisores</servlet-name>
         <url-pattern>/CmdAdminVisualizarSupervisores</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminEditarQuestao</servlet-name>
+        <url-pattern>/CmdAdminEditarQuestao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminAtualizarQuestao</servlet-name>
+        <url-pattern>/CmdAdminAtualizarQuestao</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -357,5 +373,4 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
 </web-app>

@@ -4,8 +4,6 @@
  */
 package br.ufc.si.pet.sappe.entidades;
 
-import java.io.InputStream;
-
 /**
  *
  * @author Gleyson
@@ -57,14 +55,6 @@ public class Questao extends Bean {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Integer getexame_id() {
-        return exame_id;
-    }
-
-    public void setexame_id(Integer exame_id) {
-        this.exame_id = exame_id;
     }
 
     public Integer getExame_id() {

@@ -52,7 +52,11 @@
         WHERE usuario_id=#var#;
     </select>
 
+    <select id="getListAllContasInativas" resultClass="perfil" resultMap="perfilResult">
+        select* from sappe.usuario as u,sappe.perfil as p where p.usuario_id = u.id and ((CURRENT_DATE - p.data_criacao) > 7) and p.ativo = false;   </select>
+
     <select id="getMaxIdPerfil" resultClass="long">
         SELECT nextval('sappe.perfil_id_seq');
     </select>
+    
 </sqlMap>

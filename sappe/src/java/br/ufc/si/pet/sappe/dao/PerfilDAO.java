@@ -7,6 +7,7 @@ package br.ufc.si.pet.sappe.dao;
 import br.ufc.si.pet.sappe.dao.config.PostGresMapConfig;
 import br.ufc.si.pet.sappe.entidades.Perfil;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,6 +34,10 @@ public class PerfilDAO {
 
     public void ativarConta(Perfil perfil) throws SQLException {
         PostGresMapConfig.getSqlMapClient().update("ativarPerfil", perfil);
+    }
+
+    public ArrayList<Perfil> getListAllContasInativas() throws SQLException {
+        return (ArrayList<Perfil>) PostGresMapConfig.getSqlMapClient().queryForList("getListAllContasInativas");
     }
 
     private Long proxId() throws SQLException {

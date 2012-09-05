@@ -8,22 +8,26 @@
 <div id="menu">
     <ul id="nav">
         <li>
-            <a href="../admin/index.jsp" style="width: 140px;">Home</a>
+            <a href="../admin/index.jsp" style="width: 100px;">Home</a>
         </li>
         <li>
-            <a href="../admin/admin_adicionar_questao.jsp">Questões</a>
-        </li>
-         <li>
-             <a href="../admin/admin_adicionar_supervisor.jsp">Adiconar Supervisor</a>
+            <a href="../admin/admin_adicionar_questao.jsp" style="width: 110px;">Questões</a>
         </li>
         <li>
-            <a href="../ServletCentral?comando=CmdAdminVisualizarAlunos">Visualizar Alunos</a>
+            <a href="../admin/admin_adicionar_supervisor.jsp" style="width: 140px;">Adiconar Supervisor</a>
         </li>
         <li>
-            <a href="../ServletCentral?comando=CmdAdminVisualizarSupervisores" style="width: 200px;">Visualizar Supervisores</a>
+            <a href="../ServletCentral?comando=CmdAdminVisualizarAlunos" style="width: 140px;">Visualizar Alunos</a>
         </li>
         <li>
-            <a href="../ServletCentral?comando=CmdLogout" style="width: 135px;">Sair</a>
+            <a href="../ServletCentral?comando=CmdAdminVisualizarSupervisores" style="width: 150px;">Visualizar Supervisores</a>
+        </li>
+        <li>
+            <a href="../ServletCentral?comando=CmdAdminVisualizarContasInativas" style="width: 150px;">Visualizar Contas Inativas</a>
+        </li>
+
+        <li>
+            <a href="../ServletCentral?comando=CmdLogout" style="width: 100px;">Sair</a>
         </li>
     </ul>
 </div>

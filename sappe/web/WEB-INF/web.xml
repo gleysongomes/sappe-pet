@@ -185,6 +185,14 @@
         <servlet-name>CmdAdminAtualizarQuestao</servlet-name>
         <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminAtualizarQuestao</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CmdAdminVisualizarContasInativas</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarContasInativas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CmdAdminExcluirTodasContasInativas</servlet-name>
+        <servlet-class>br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirTodasContasInativas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCentral</servlet-name>
         <url-pattern>/ServletCentral</url-pattern>
@@ -364,6 +372,14 @@
     <servlet-mapping>
         <servlet-name>CmdAdminAtualizarQuestao</servlet-name>
         <url-pattern>/CmdAdminAtualizarQuestao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminVisualizarContasInativas</servlet-name>
+        <url-pattern>/CmdAdminVisualizarContasInativas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CmdAdminExcluirTodasContasInativas</servlet-name>
+        <url-pattern>/CmdAdminExcluirTodasContasInativas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

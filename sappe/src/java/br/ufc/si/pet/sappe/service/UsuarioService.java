@@ -40,9 +40,9 @@ public class UsuarioService {
         }
     }
 
-    public boolean deleteUsuario(Usuario usuario) {
+    public boolean deleteUsuario(Long id) {
         try {
-            usuarioDAO.delete(usuario);
+            usuarioDAO.delete(id);
             return true;
         } catch (SQLException ex) {
             ex.printStackTrace();

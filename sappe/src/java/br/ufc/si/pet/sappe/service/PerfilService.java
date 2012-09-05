@@ -7,6 +7,7 @@ package br.ufc.si.pet.sappe.service;
 import br.ufc.si.pet.sappe.dao.PerfilDAO;
 import br.ufc.si.pet.sappe.entidades.Perfil;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -68,6 +69,17 @@ public class PerfilService {
             return false;
         }
     }
+
+    public ArrayList<Perfil> getListAllContasInativas() {
+        try {
+            ArrayList<Perfil> perfils = dao.getListAllContasInativas();
+            return perfils;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     /*
     public Long contaPerfisByUsuarioId(Long id){
     Long numero = 0L;

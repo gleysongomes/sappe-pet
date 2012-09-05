@@ -15,7 +15,9 @@ import br.ufc.si.pet.sappe.comandos.admin.CmdAdminBuscarAluno;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminEditarQuestao;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirQuestao;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirSupervisor;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirTodasContasInativas;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarAlunos;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarContasInativas;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSupervisores;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarQuestoes;
 import br.ufc.si.pet.sappe.comandos.sup.CmdSupervisorBuscarAluno;
@@ -214,6 +216,11 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdAdminAtualizarQuestao", cmdo);
         cmdo = new CmdAdminEditarQuestao();
         comandos.put("CmdAdminEditarQuestao", cmdo);
+        cmdo = new CmdAdminVisualizarContasInativas();
+        comandos.put("CmdAdminVisualizarContasInativas", cmdo);
+        cmdo = new CmdAdminExcluirTodasContasInativas();
+        comandos.put("CmdAdminExcluirTodasContasInativas", cmdo);
+
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 

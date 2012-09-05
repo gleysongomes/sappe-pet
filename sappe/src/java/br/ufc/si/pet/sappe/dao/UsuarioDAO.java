@@ -18,8 +18,8 @@ public class UsuarioDAO {
         PostGresMapConfig.getSqlMapClient().insert("addUsuario", usuario);
     }
 
-    public void delete(Usuario usuario) throws SQLException {
-        PostGresMapConfig.getSqlMapClient().delete("deleteUsuario", usuario);
+    public void delete(Long id) throws SQLException {
+        PostGresMapConfig.getSqlMapClient().delete("deleteUsuario", id);
     }
 
     public void update(Usuario user) throws SQLException {

@@ -60,7 +60,7 @@ public class ProvaService {
             Prova p = provaDAO.getProvaById(id);
             return p;
         } catch (SQLException ex) {
-            Logger.getLogger(ExameService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProvaService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -70,37 +70,37 @@ public class ProvaService {
             Prova p = provaDAO.getProvaByIdUsuario(id);
             return p;
         } catch (SQLException ex) {
-            Logger.getLogger(ExameService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProvaService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new Prova();
     }
 
-    public ArrayList<Prova> getProvaByTipoId(Long id) {
+    public ArrayList<Prova> getProvasByTipoId(Long id) {
         try {
-            ArrayList<Prova> provas = provaDAO.getProvaByTipoId(id);
+            ArrayList<Prova> provas = provaDAO.getProvasByTipoId(id);
             return provas;
         } catch (SQLException ex) {
-            Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProvaService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
 
-    public ArrayList<Prova> getAllListProvas(Long id) {
+    public ArrayList<Prova> getListAllProvasByIdUsuario(Long id) {
         try {
-            ArrayList<Prova> provas = provaDAO.getAllListProvas(id);
+            ArrayList<Prova> provas = provaDAO.getListAllProvasByIdUsuario(id);
             return provas;
         } catch (SQLException ex) {
-            Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProvaService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
 
-    public ArrayList<Prova> getListProva() {
+    public ArrayList<Prova> getListProvas() {
         try {
-            ArrayList<Prova> provas = provaDAO.getListProva();
+            ArrayList<Prova> provas = provaDAO.getListProvas();
             return provas;
         } catch (SQLException ex) {
-            Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProvaService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

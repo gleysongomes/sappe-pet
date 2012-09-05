@@ -36,16 +36,16 @@ public class ProvaDAO {
         return (Prova) PostGresMapConfig.getSqlMapClient().queryForObject("getProvaByIdUsuario", id);
     }
 
-    public ArrayList<Prova> getListProva() throws SQLException {
-        return (ArrayList<Prova>) PostGresMapConfig.getSqlMapClient().queryForList("getListProva");
+    public ArrayList<Prova> getListProvas() throws SQLException {
+        return (ArrayList<Prova>) PostGresMapConfig.getSqlMapClient().queryForList("getListProvas");
     }
 
-    public ArrayList<Prova> getProvaByTipoId(Long id) throws SQLException {
-        return (ArrayList<Prova>) PostGresMapConfig.getSqlMapClient().queryForList("getProvaByTipoId", id);
+    public ArrayList<Prova> getProvasByTipoId(Long id) throws SQLException {
+        return (ArrayList<Prova>) PostGresMapConfig.getSqlMapClient().queryForList("getProvasByTipoId", id);
     }
 
-    public ArrayList<Prova> getAllListProvas(Long id) throws SQLException {
-        return (ArrayList<Prova>) PostGresMapConfig.getSqlMapClient().queryForList("getAllListProvas", id);
+    public ArrayList<Prova> getListAllProvasByIdUsuario(Long id) throws SQLException {
+        return (ArrayList<Prova>) PostGresMapConfig.getSqlMapClient().queryForList("getListAllProvasByIdUsuario", id);
     }
 
     private Long proxId() throws SQLException {

@@ -23,7 +23,7 @@ public class CmdVisualizarProvas implements Comando {
         HttpSession hS = request.getSession(true);
         Long id = Long.parseLong(request.getParameter("id"));
         ProvaService pS = new ProvaService();
-        List<Prova> provas = pS.getAllListProvas(id);
+        List<Prova> provas = pS.getListAllProvasByIdUsuario(id);
         hS.setAttribute("provas", provas);
         return "/alu/visualizar_provas.jsp";
     }

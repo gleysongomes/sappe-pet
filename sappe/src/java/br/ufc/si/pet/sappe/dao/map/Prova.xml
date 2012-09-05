@@ -42,7 +42,7 @@
         WHERE id=#id#;
     </update>
 
-    <select id="getListProva" resultClass="prova" resultMap="provaResult">
+    <select id="getListProvas" resultClass="prova" resultMap="provaResult">
         SELECT *
         FROM sappe.prova ORDER BY id;
     </select>
@@ -51,7 +51,7 @@
     <select id="getProvaById" resultClass="prova" parameterClass="long" resultMap="provaResult">
         SELECT *
         FROM sappe.prova
-        WHERE id = #var# ORDER BY id;
+        WHERE id = #var#;
     </select>
 
     <select id="getProvaByIdUsuario" resultClass="prova" parameterClass="long" resultMap="provaResult">
@@ -60,16 +60,16 @@
         WHERE usuario_id = #var#;
     </select>
 
-    <select id="getProvaByTipoId" resultClass="prova" parameterClass="long" resultMap="provaResult">
+    <select id="getProvasByTipoId" resultClass="prova" parameterClass="long" resultMap="provaResult">
         SELECT *
         FROM sappe.prova
         WHERE tipo_id = #var# ORDER BY id;
     </select>
 
-    <select id="getAllListProvas" resultClass="prova" parameterClass="long" resultMap="provaResult">
+    <select id="getListAllProvasByIdUsuario" resultClass="prova" parameterClass="long" resultMap="provaResult">
         SELECT *
         FROM sappe.prova
-        WHERE usuario_id = #var# ORDER BY id;
+        WHERE usuario_id = #var# ORDER BY id DESC;
     </select>
 
     <select id="getMaxIdProva" resultClass="long">

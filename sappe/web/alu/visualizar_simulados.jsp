@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="br.ufc.si.pet.sappe.entidades.Simulado"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -22,7 +22,7 @@
             <div id="top">
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
-            <%@include file="../alu/menu2.jsp" %>
+            <%@include file="../alu/menu.jsp" %>
             <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Simulados</h1><br /><br /><br />
                 <%@include file="../error.jsp" %>
@@ -39,6 +39,9 @@
                     <tbody>
                         <%
                                     List<Simulado> simulados = (List<Simulado>) session.getAttribute("simulados");
+                                    if (simulados == null) {
+                                        simulados = new ArrayList<Simulado>();
+                                    }
                                     for (Simulado s : simulados) {
                         %>
                         <tr>

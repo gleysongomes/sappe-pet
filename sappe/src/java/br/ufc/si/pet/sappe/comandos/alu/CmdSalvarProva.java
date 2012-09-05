@@ -75,7 +75,7 @@ public class CmdSalvarProva implements Comando {
                 qpS.inserir(qP);
                 count++;
             }
-            List<Prova> provas = pS.getAllListProvas(p.getUsuario().getId());
+            List<Prova> provas = pS.getListAllProvasByIdUsuario(p.getUsuario().getId());
             session.setAttribute("provas", provas);
             session.setAttribute("provaSalva", prova);
             session.setAttribute("sucesso", "Prova salva com sucesso.");

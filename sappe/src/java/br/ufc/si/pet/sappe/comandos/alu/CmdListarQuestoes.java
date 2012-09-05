@@ -32,26 +32,16 @@ public class CmdListarQuestoes implements Comando {
         Long ide = Long.parseLong(request.getParameter("ide"));
         Integer nq = Integer.parseInt(request.getParameter("nQ"));
         String caminho = request.getParameter("caminho");
-
         DateTime hI = new DateTime();
         QuestaoService qS = new QuestaoService();
         Perfil perfil = (Perfil) hS.getAttribute("user");
         Long u = perfil.getUsuario().getId();
         Utility utility = new Utility();
-
-        System.out.println("==="+id);
-
         utility.setTpid(id);
         utility.setId(u);
         utility.setQtdq(nq);
         utility.setIde(ide);
-
-        System.out.println("" + ide);
-
         List<Questao> subListaDeQuestoes = qS.getListQuestoesByArea(utility);
-
-        System.out.println("====++" + subListaDeQuestoes.size());
-
         if (nq == 0) {
             return Mensagens(request, caminho, "Selecione uma opção.");
         } else if (subListaDeQuestoes.size() == 0) {
@@ -59,6 +49,7 @@ public class CmdListarQuestoes implements Comando {
         } else if (subListaDeQuestoes.size() < nq) {
             return Mensagens(request, caminho, Msg.msg2);
         } else {
+            hS.removeAttribute("provaSalva");
             hS.setAttribute("subListaDeQuestoes", subListaDeQuestoes);
             hS.setAttribute("hI", hI);
             TipoService aS = new TipoService();

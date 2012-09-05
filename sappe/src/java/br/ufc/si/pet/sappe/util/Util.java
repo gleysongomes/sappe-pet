@@ -185,6 +185,10 @@ public class Util {
         return (h > 9 ? "" + h : 0 + "" + h) + ":" + (m > 9 ? "" + m : 0 + "" + m) + ":" + (s > 9 ? "" + s : 0 + "" + s);
     }
 
+    public static String verificar(String str) {
+        return (str == null || str.isEmpty()) ? ("0") : (str);
+    }
+
     public static void main(String args[]) throws IOException, ParseException {
         //File dir = new File("/web/temp");
         //dir.mkdir();
@@ -211,31 +215,28 @@ public class Util {
         System.out.println(criptografar("a"));
     }
 
-
     public static String getUrl(HttpServletRequest req) {
-     String scheme = req.getScheme();             // http
-     String serverName = req.getServerName();     // hostname
-     int serverPort = req.getServerPort();        // 80
-            String url = scheme+"://"+serverName+":"+serverPort;
-    return url;
-}//fim do método
+        String scheme = req.getScheme();             // http
+        String serverName = req.getServerName();     // hostname
+        int serverPort = req.getServerPort();        // 80
+        String url = scheme + "://" + serverName + ":" + serverPort;
+        return url;
+    }//fim do método
 
-    public static Connection getConexao(){
+    public static Connection getConexao() {
         try {
             Class.forName("org.postgresql.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
-         return  conn;
+            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
+            return conn;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return  null;
+        return null;
 
     }//fim do método
-
-
 }//fim da classe
 
 

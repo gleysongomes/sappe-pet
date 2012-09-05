@@ -34,18 +34,20 @@ public class CmdSupervisorAdicionarAlunoSimulado implements Comando {
             Long idS = (Long) session.getAttribute("idSimulado");
             if (idS != null) {
                 for (int i = 0; i < na; i++) {
-                    Long id = Long.parseLong(request.getParameter("id" + i));
-                    UsuarioSimuladoService uss = new UsuarioSimuladoService();
-                    UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
-                    usuarioSimulado.setSimulado_id(idS);
-                    usuarioSimulado.setUsuario_id(id);
-                    uss.insertUsuarioSimulado(usuarioSimulado);
-                    UsuarioService us = new UsuarioService();
-                    Usuario u = us.getUsuarioById(id);
-                    //{Se der erro e aqui :)}
-                    SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
-                            + "um simulado foi adicionado ao sistema.<br /><br />"
-                            + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp" + ">Realizar Simulado</a>");
+                    Long id = Long.parseLong(Util.verificar(request.getParameter("id" + i)));
+                    if (id != 0) {
+                        UsuarioSimuladoService uss = new UsuarioSimuladoService();
+                        UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
+                        usuarioSimulado.setSimulado_id(idS);
+                        usuarioSimulado.setUsuario_id(id);
+                        uss.insertUsuarioSimulado(usuarioSimulado);
+                        UsuarioService us = new UsuarioService();
+                        Usuario u = us.getUsuarioById(id);
+                        //{Se der erro e aqui :)}
+                        SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
+                                + "um simulado foi adicionado ao sistema.<br /><br />"
+                                + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp" + ">Realizar Simulado</a>");
+                    }
                 }
                 session.setAttribute("sucesso", "Alunos adicionados com sucesso.");
                 return "/sup/sup_adicionar_aluno_simulado.jsp";

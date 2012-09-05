@@ -48,19 +48,17 @@
 
     <select id="getListQuestoesByArea" resultClass="questao" parameterClass="utility" resultMap="questaoResult">
         SELECT *
-        FROM sappe.questao WHERE id IN ((SELECT id FROM sappe.questao WHERE area_id=#tpid# AND exame_id=#ide#)
-        EXCEPT
-        (SELECT questao_id FROM sappe.questao_prova as qp WHERE EXISTS(SELECT id FROM sappe.prova as p WHERE qp.prova_id=id AND p.usuario_id=#id#))) ORDER BY random() LIMIT #qtdq#;
+        FROM sappe.questao WHERE area_id=#tpid# AND exame_id=#ide# ORDER BY random() LIMIT #qtdq#;
     </select>
 
     <select id="getListQuestoesByAreaSimulado" resultClass="questao" parameterClass="utility" resultMap="questaoResult">
         SELECT *
-        FROM sappe.questao WHERE id IN (SELECT id FROM sappe.questao WHERE area_id=#id#) ORDER BY random() LIMIT #qtdq#;
+        FROM sappe.questao WHERE area_id=#id# ORDER BY random() LIMIT #qtdq#;
     </select>
 
     <select id="getListQuestoesByExame" resultClass="questao" parameterClass="utility" resultMap="questaoResult">
         SELECT *
-        FROM sappe.questao WHERE id IN (SELECT id FROM sappe.questao WHERE exame_id=#ide#) ORDER BY random() LIMIT #qtdq#;
+        FROM sappe.questao WHERE exame_id=#ide# ORDER BY random() LIMIT #qtdq#;
     </select>
 
 

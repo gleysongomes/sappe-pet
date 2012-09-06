@@ -226,7 +226,7 @@ public class Util {
     public static Connection getConexao() {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
+            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/sappe", "postgres", "postgres");
             return conn;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);

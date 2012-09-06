@@ -27,11 +27,6 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
@@ -59,25 +54,16 @@ public class CmdGerarPdfProva implements Comando {
             Font fonteCabecalho = new Font(Font.NORMAL, 12, Font.BOLD); /* Será usada no cabeçalho. */
             Font fonteDesc = new Font(Font.NORMAL, 11, Font.BOLD); /* Será usada na descrição. */
             Font fonteConteudo = new Font(Font.NORMAL, 12, Font.NORMAL); /* Será usada no corpo de relatório. */
-
-            /* Tabela para o cabeçalho. */
             PdfPTable cabecalho = new PdfPTable(2);
             float[] widths = {0.15f, 0.85f};
             cabecalho.setWidthPercentage(90); /* Seta a largura da tabela com relação a página. */
             cabecalho.setWidths(widths);
             cabecalho.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-            //String men = "" + request.getSession().getServletContext().getRealPath("");
-            //String conteudo3[] = men.split("/build/web");
-            //Image jpg = Image.getInstance("" + new ImageIcon(
-            //"" + conteudo3[0] + "/web/images/UFC2.png"));
             Image jpg = Image.getInstance("" + new ImageIcon("" + CmdGerarPdfProva.class.getResource("../../images/UFC2.png")));
             cabecalho.addCell(jpg);
             cabecalho.addCell(new Phrase("Universidade Federal do Ceará\n"
                     + "Campus de Quixadá\n" + "Simulador do Ambiente das Provas do\nPoscomp e Enade - SAPPE", fonteCabecalho));
             document.add(cabecalho);
-
-            //Font fonteDesc = new Font(Font.HELVETICA, 10, Font.BOLD);
-            //float[] widths = {0.15f, 0.85f};
             PdfPTable es = new PdfPTable(1);
             float[] width = {0.85f};
             es.setWidthPercentage(100);

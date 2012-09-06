@@ -46,7 +46,7 @@ public class UsuarioDAO {
         return (ArrayList<Usuario>) PostGresMapConfig.getSqlMapClient().queryForList("getTodosUsuarios");
     }
 
-     public ArrayList<Usuario> getAllAlunos() throws SQLException {
+    public ArrayList<Usuario> getAllAlunos() throws SQLException {
         return (ArrayList<Usuario>) PostGresMapConfig.getSqlMapClient().queryForList("getAllListAlunos");
     }
 
@@ -60,6 +60,9 @@ public class UsuarioDAO {
     }*/
     public Long proxId() throws SQLException {
         Long id = (Long) PostGresMapConfig.getSqlMapClient().queryForObject("getMaxIdUsuario");
+        if (id == null) {
+            id = 1L;
+        }
         return id;
     }
 

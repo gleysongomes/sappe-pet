@@ -7,12 +7,14 @@ package br.ufc.si.pet.sappe.comandos.alu;
 import br.ufc.si.pet.sappe.entidades.Aluno;
 import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Prova;
+import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoProva;
 import br.ufc.si.pet.sappe.entidades.Tipo;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.AlunoService;
 import br.ufc.si.pet.sappe.service.QuestaoProvaService;
+import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.TipoService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.Util;
@@ -82,6 +84,7 @@ public class CmdGerarPdfProva implements Comando {
             es.setWidths(width);
             es.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
             Perfil p = (Perfil) hS.getAttribute("user");
+            QuestaoService questaoService = new QuestaoService();
             AlunoService aS = new AlunoService();
             Aluno alu = aS.getAlunoByUsuarioId(p.getUsuario().getId());
             UsuarioService uS = new UsuarioService();
@@ -100,23 +103,14 @@ public class CmdGerarPdfProva implements Comando {
             widths = new float[]{0.25f};
             table.setWidths(widths);
             table.getDefaultCell().setGrayFill(10f);
-            Class.forName("org.postgresql.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "postgres");
             QuestaoProvaService qpS = new QuestaoProvaService();
             List<QuestaoProva> qPs = qpS.getListQuestaoProvaById(prova.getId());
             int count = 1;
             for (QuestaoProva qP : qPs) {
                 table.addCell(new Phrase("\nQuestão " + count + ":\n", fonteDesc));
-                PreparedStatement pS = conn.prepareStatement("SELECT arquivo FROM sappe.questao WHERE id=?");
-                pS.setLong(1, qP.getQuestao_id());
-                ResultSet rs = pS.executeQuery();
-                rs.next();
-                InputStream in = rs.getBinaryStream(1);
-                byte[] arqBytes = new byte[in.available()];
-                in.read(arqBytes, 0, in.available());
-                Image jpg2 = Image.getInstance(arqBytes);
+                Questao q = questaoService.getQuestaoById(qP.getQuestao_id());
+                Image jpg2 = Image.getInstance(q.getArquivo());
                 table.addCell(jpg2);
-                //table.addCell(new Phrase("\na: ( ) b: ( ) c: ( ) d: ( ) e: ( )\n", fonteConteudo));
                 count++;
             }
             document.add(table);
@@ -143,7 +137,6 @@ public class CmdGerarPdfProva implements Comando {
                 baos.writeTo(out);
                 out.flush();
                 out.close();
-                conn.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 hS.setAttribute("men", "Erro " + ex.getMessage());

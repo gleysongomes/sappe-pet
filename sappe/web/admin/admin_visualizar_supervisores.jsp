@@ -28,12 +28,15 @@
             <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Supervisores</h1><br />
                 <%@include file="../error.jsp" %>
-                <table border="1px" style="margin-left: 170px;">
+                <table border="1px" style="margin-left: 0px; width: 99%">
                     <thead>
                         <tr>
                             <th>Nome</th>
                             <th>Email</th>
+                            <th>Login</th>
+                            <th>Data de Criação</th>
                             <th>Ação</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -43,10 +46,13 @@
                                         supervisores = new ArrayList<Supervisor>();
                                     }
                                     for (Supervisor s : supervisores) {
+
                         %>
                         <tr>
                             <td><center><%= s.getUsuario().getNome()%></center></td>
                             <td><center><%= s.getUsuario().getEmail()%></center></td>
+                            <td><center><%= s.getUsuario().getLogin()%></center></td>
+                            <td><center><%= s.getDataCriacao()%></center></td>
                             <td><center><a href="../ServletCentral?comando=CmdAdminExcluirSupervisor&id=<%=s.getId()%>">Excluir</a></center></td>
                         </tr>
                         <%}%>

@@ -30,7 +30,7 @@
                     <input type="hidden" name="comando" value="CmdAdminExcluirTodasContasInativas" />
                     <%@include file="../error.jsp" %>
                     <div id="">
-                        <table border="1px" style="margin-left: 170px;">
+                        <table border="1px" style="margin-left: 0px; width: 99%">
                             <thead>
                                 <tr >
                                     <th class="tabela">Nome</th>

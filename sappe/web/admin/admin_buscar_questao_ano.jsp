@@ -31,7 +31,7 @@
             <div id="top" >
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
-            <%@include file="../admin/menu2.jsp" %>
+            <%@include file="../admin/menu.jsp" %>
             <div id="content_left" style="width: 900px; overflow:auto;height:430px; margin-top: 10px;" >
                 <h1 class="titulo"style="width: 875px;" >Buscar Questões por Ano</h1><br />
 

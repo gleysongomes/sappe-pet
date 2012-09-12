@@ -29,11 +29,12 @@
                
                 <%@include file="../error.jsp" %>
                 <div id="">
-                    <table border="1px" style="margin-left: 170px;">
+                    <table border="1px" style="margin-left:0px; width:99%">
                         <thead>
                             <tr >
                                 <th class="tabela">Nome</th>
                                 <th class="tabela" >Email</th>
+                                <th class="tabela" >Login</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,6 +45,7 @@
                             <tr>
                                 <td ><center><%= u.getNome()%></center></td>
                                 <td><center><%= u.getEmail()%></center></td>
+                                <td><center><%= u.getLogin()%></center></td>
                             </tr>
                             <%}%>
                         </tbody>

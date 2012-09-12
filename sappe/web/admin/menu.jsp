@@ -8,26 +8,50 @@
 <div id="menu">
     <ul id="nav">
         <li>
-            <a href="../admin/index.jsp" style="width: 90px;">Home</a>
-        </li>
-        <li>
-            <a href="../admin/admin_adicionar_questao.jsp" style="width: 100px;">Questões</a>
-        </li>
-        <li>
-            <a href="../admin/admin_adicionar_supervisor.jsp" style="width: 140px;">Adiconar Supervisor</a>
-        </li>
-        <li>
-            <a href="../ServletCentral?comando=CmdAdminVisualizarAlunos" style="width: 140px;">Visualizar Alunos</a>
-        </li>
-        <li>
-            <a href="../ServletCentral?comando=CmdAdminVisualizarSupervisores" style="width: 170px;">Visualizar Supervisores</a>
-        </li>
-        <li>
-            <a href="../ServletCentral?comando=CmdAdminVisualizarContasInativas" style="width: 190px;">Visualizar Contas Inativas</a>
+            <a href="../admin/index.jsp" style="width: 110px;">Home</a>
         </li>
 
         <li>
-            <a href="../ServletCentral?comando=CmdLogout" style="width: 80px;">Sair</a>
+            <a href="#" style="width: 170px;">Questões</a>
+            <ul>
+                <li>
+            <a href="../admin/admin_adicionar_questao.jsp" style="width: 170px;">Adiconar Questão</a>
+        </li>
+         <li>
+             <a href="../admin/admin_buscar_questao_ano.jsp" style="width: 170px;">Buscar Questões por Ano</a>
+        </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" style="width: 170px;">Supervisores</a>
+            <ul>
+                <li>
+                    <a href="../admin/admin_adicionar_supervisor.jsp" style="width: 170px;">Adiconar </a>
+                </li>
+                <li>
+                <a href="../ServletCentral?comando=CmdAdminVisualizarSupervisores" style="width: 170px;">Visualizar </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+
+            <a href="#" style="width: 170px;">Alunos</a>
+            <ul>
+                <li>
+                    <a href="../ServletCentral?comando=CmdAdminVisualizarAlunos" style="width: 170px;">Visualizar</a>
+                </li>
+                <li>
+                    <a href="../ServletCentral?comando=CmdAdminVisualizarContasInativas" style="width: 170px;">Alunos Inativos</a>
+                </li>
+            </ul>
+        </li>
+        
+        
+
+        <li>
+            <a href="../ServletCentral?comando=CmdLogout" style="width: 110px;">Sair</a>
         </li>
     </ul>
 </div>

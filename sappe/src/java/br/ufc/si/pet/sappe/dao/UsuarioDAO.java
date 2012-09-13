@@ -69,4 +69,9 @@ public class UsuarioDAO {
     public Usuario getByCpf(String cpf) throws SQLException {
         return (Usuario) PostGresMapConfig.getSqlMapClient().queryForObject("getUsuarioByCpf", cpf);
     }
-}
+
+    public Usuario getUsuarioByLoginSenha(Usuario usuario) throws SQLException {
+        return (Usuario) PostGresMapConfig.getSqlMapClient().queryForObject("getUsuarioByLoginSenha", usuario);
+    }
+
+}//fim da classe usuariodao

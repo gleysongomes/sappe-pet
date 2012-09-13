@@ -28,8 +28,8 @@
     </update>
 
     <insert id="addPerfil" parameterClass="perfil">
-        INSERT INTO sappe.perfil(id,usuario_id,papel_id, data_criacao,ativo)
-        VALUES (#id#,#usuario.id#, #papel.id#, #dataCriacao#,#ativo#);
+        INSERT INTO sappe.perfil(usuario_id,papel_id, data_criacao,ativo)
+        VALUES (#usuario.id#, #papel.id#, #dataCriacao#,#ativo#);
     </insert>
 
 

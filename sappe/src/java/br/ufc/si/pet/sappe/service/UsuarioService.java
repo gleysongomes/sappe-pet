@@ -5,6 +5,8 @@ import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UsuarioService {
 
@@ -161,4 +163,13 @@ public class UsuarioService {
         }
         return 0L;
     }
+
+    public Usuario getUsuarioByLoginSenha(Usuario usuario){
+        try {
+            return usuarioDAO.getUsuarioByLoginSenha(usuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }//fim do método
 }

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class PerfilDAO {
 
     public void insert(Perfil perfil) throws SQLException {
-        perfil.setId(proxId());
+        //perfil.setId(proxId());
         PostGresMapConfig.getSqlMapClient().insert("addPerfil", perfil);
     }
 

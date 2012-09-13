@@ -107,4 +107,14 @@
         SELECT CURRVAL ('sappe.usuario_id_seq');
     </select>
 
+    <select id="getUsuarioByLoginSenha" resultClass="usuario"
+            parameterClass="usuario"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM sappe.usuario
+        WHERE login=#login# and senha=#senha#;
+    </select>
+
+
 </sqlMap>

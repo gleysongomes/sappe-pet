@@ -36,28 +36,8 @@
                 <form>
                 <h1 class="titulo" style="width: 875px;">Questões do Simulado</h1><br /><br /><br />
 
-                <%
-                            int itemIncr = 0;
-                            List<QuestaoUsuarioSimulado> quses = (List<QuestaoUsuarioSimulado>) session.getAttribute("quses2");
-                            for (QuestaoUsuarioSimulado qs : quses) {
-                %>
-                <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qs.getQuestao_id()%>" alt="images"/>
-                </label><br />
-                <table border="0">
-                    <thead>
-                        <tr>
-                            <td width="80px">(a)<input type="checkbox" name="iM<%= itemIncr%>" value="A" <%= Util.marcarRadio("A", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
-                            <td width="80px">(b)<input type="checkbox" name="iM<%= itemIncr%>" value="B" <%= Util.marcarRadio("B", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
-                            <td width="80px">(c)<input type="checkbox" name="iM<%= itemIncr%>" value="C" <%= Util.marcarRadio("C", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
-                            <td width="80px">(d)<input type="checkbox" name="iM<%= itemIncr%>" value="D" <%= Util.marcarRadio("D", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
-                            <td width="80px">(e)<input type="checkbox" name="iM<%= itemIncr%>" value="E" <%= Util.marcarRadio("E", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
-                        </tr>
-                    </thead>
-                </table><br />
-                <label>Status:  <%if (quses.get(itemIncr).getStatus() == 0) {%> <label>Branca</label><%} else if (quses.get(itemIncr).getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if(quses.get(itemIncr).getStatus() == 2){%><label style="color: red;">Errada</label><%}else {%><label style="color: blue;">Nulla</label><%}%></label><br /><br />
-                <br />
-                <%itemIncr++;}%>
-                <br /><label>Obs (*) : As questões nullas são consideradas certas.</label>
+
+                <label>Obs (*) : As questões nulas são consideradas certas.</label>
                 <h4 class="titulo">Relatório do Simulado</h4><br>
                 <div id="">
                     <table border="1px" style="margin-left: 100px;">
@@ -86,6 +66,32 @@
                     </table>
                 </div>
                 <br /><br />
+                
+
+                <%
+                            int itemIncr = 0;
+                            List<QuestaoUsuarioSimulado> quses = (List<QuestaoUsuarioSimulado>) session.getAttribute("quses2");
+                            for (QuestaoUsuarioSimulado qs : quses) {
+                %>
+                <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qs.getQuestao_id()%>" alt="images"/>
+                </label><br />
+                <table border="0">
+                    <thead>
+                        <tr>
+                            <td width="80px">(a)<input type="checkbox" name="iM<%= itemIncr%>" value="A" <%= Util.marcarRadio("A", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
+                            <td width="80px">(b)<input type="checkbox" name="iM<%= itemIncr%>" value="B" <%= Util.marcarRadio("B", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
+                            <td width="80px">(c)<input type="checkbox" name="iM<%= itemIncr%>" value="C" <%= Util.marcarRadio("C", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
+                            <td width="80px">(d)<input type="checkbox" name="iM<%= itemIncr%>" value="D" <%= Util.marcarRadio("D", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
+                            <td width="80px">(e)<input type="checkbox" name="iM<%= itemIncr%>" value="E" <%= Util.marcarRadio("E", quses.get(itemIncr).getItem_marcado())%> onclick="Checkbox(this, 'iM<%= itemIncr%>');"/></td>
+                        </tr>
+                    </thead>
+                </table><br />
+                <label>Status:  <%if (quses.get(itemIncr).getStatus() == 0) {%> <label>Branca</label><%} else if (quses.get(itemIncr).getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if(quses.get(itemIncr).getStatus() == 2){%><label style="color: red;">Errada</label><%}else {%><label style="color: blue;">Nula</label><%}%></label><br /><br />
+                <br />
+                <%itemIncr++;}%>
+                <br />
+
+
                
                             <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" style="margin-left: 400px ; width: 80px;" />
           </form>

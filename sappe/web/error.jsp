@@ -11,9 +11,9 @@
                 session.removeAttribute("sucesso");
                 session.removeAttribute("erro");
                 if (erro != null) {%>
-    <p class="mensagemErro"><%=erro%></p>
+                <p class="mensagemErro" style="color: red"><%=erro%></p>
     <%}
                 if (sucesso != null) {%>
-    <p class="mensagemSucesso"><%=sucesso%></p>
+                <p class="mensagemSucesso" style="color: blue"><%=sucesso%></p>
     <%}%>
 </div>

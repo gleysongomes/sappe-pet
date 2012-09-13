@@ -28,7 +28,7 @@
             <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Provas</h1><br /><br /><br />
                 <%@include file="../error.jsp" %>
-                <table border="1px" style="margin-left: 170px;">
+                <table border="1px" style="margin-left: 0px; width: 99%">
                     <thead>
                         <tr>
                             <th >Prova</th>

@@ -1,4 +1,20 @@
 
+
+#content_left form #erro_msg p #mensagemErro{
+    color: red;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#content_left form #erro_msg p #mensagemSucesso{
+    color: blue;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+
 .tabela{
     text-align: center;
     background: #8BB3AB;
@@ -92,10 +108,7 @@ th.tabela{
 
 
 
-#content .errorMessage{
-    color: red;
-    font-size: 12px;
-}
+
 
 
 
@@ -115,19 +128,7 @@ th.tabela{
 
 }
 
-.mensagemErro{
-    color: red;
-    font-size: 15px;
-    margin-bottom: 10px;
-    text-align: left;
-}
 
-.mensagemSucesso{
-    color: blue;
-    font-size: 15px;
-    margin-bottom: 10px;
-    text-align: left;
-}
 
 #nav, #nav ul {
     width: 80em;
@@ -194,10 +195,7 @@ th.tabela{
     display: block;
 }
 
-.sucessoMessage{
-    color: blue;
-    font-size: 12px;
-}
+
 
 body {
     margin: 0;

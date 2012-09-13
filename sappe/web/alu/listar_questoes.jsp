@@ -39,7 +39,7 @@
                                 List<Questao> questoes = (List<Questao>) session.getAttribute("subListaDeQuestoes");
                                 for (Questao q : questoes) {
                     %>
-                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" alt="images" style="width: 85%;height:70%" />
+                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" alt="images" style="width: 85%;height:50%" />
                     </label><br />
                     <table border="0">
                         <thead>

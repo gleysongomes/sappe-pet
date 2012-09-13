@@ -38,31 +38,12 @@
                 <form>
                 <h1 class="titulo" style="width: 875px;" ><%=tipoProva2%><label class="imagemPdf"><a href="../ServletCentral?comando=CmdGerarRelatorio&id=<%=p.getId()%>" target="_blank"><img src="../images/pdf.jpeg" width="30" height="30" alt="pdf"/></a></label></h1><br />
                             <%@include file="../error.jsp" %>
-                <%
-                            int itemIncr = 0;
-                            List<QuestaoProva> qPs = (List<QuestaoProva>) session.getAttribute("qPs2");
-                            for (QuestaoProva qp : qPs) {
-                %>
-                <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qp.getQuestao_id()%>" alt="images"/>
-                </label><br />
-                <table border="0">
-                    <thead>
-                        <tr>
-                            <td width="80px">(a)<input type="checkbox" name="iM<%= itemIncr%>" value="A" <%= Util.marcarRadio("A", qp.getItem_marcado())%>/></td>
-                            <td width="80px">(b)<input type="checkbox" name="iM<%= itemIncr%>" value="B" <%= Util.marcarRadio("B", qp.getItem_marcado())%>/></td>
-                            <td width="80px">(c)<input type="checkbox" name="iM<%= itemIncr%>" value="C" <%= Util.marcarRadio("C", qp.getItem_marcado())%>/></td>
-                            <td width="80px">(d)<input type="checkbox" name="iM<%= itemIncr%>" value="D" <%= Util.marcarRadio("D", qp.getItem_marcado())%>/></td>
-                            <td width="80px">(e)<input type="checkbox" name="iM<%= itemIncr%>" value="E" <%= Util.marcarRadio("E", qp.getItem_marcado())%>/></td>
-                        </tr>
-                    </thead>
-                </table>
-                <br />
-                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>Branca</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if (qp.getStatus() == 2) {%><label style="color: red;">Errada</label><%} else {%><label style="color: blue;">Nulla</label><%}%></label><br /><br />
-                <%itemIncr++;}%>
-                <br /><label>Obs (*) : As questões nullas são consideradas como certas.</label>
+
+
+                <label>Obs (*) : As questões nulas são consideradas como certas.</label>
                 <h4 class="titulo">Relatório da Prova</h4><br>
                 <div id="">
-                    <table  style="margin-left: 100px;" border="1px">
+                    <table  style="margin-left: 0px; width: 99%" border="1px">
                         <thead>
                             <tr>
                                 <th style="width:400px" >Tipo da Prova</th>
@@ -88,6 +69,33 @@
                     </table>
                 </div>
                 <br /><br />
+
+
+                
+
+                <%
+                            int itemIncr = 0;
+                            List<QuestaoProva> qPs = (List<QuestaoProva>) session.getAttribute("qPs2");
+                            for (QuestaoProva qp : qPs) {
+                %>
+                <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qp.getQuestao_id()%>" alt="images"/>
+                </label><br />
+                <table border="0">
+                    <thead>
+                        <tr>
+                            <td width="80px">(a)<input type="checkbox" name="iM<%= itemIncr%>" value="A" <%= Util.marcarRadio("A", qp.getItem_marcado())%>/></td>
+                            <td width="80px">(b)<input type="checkbox" name="iM<%= itemIncr%>" value="B" <%= Util.marcarRadio("B", qp.getItem_marcado())%>/></td>
+                            <td width="80px">(c)<input type="checkbox" name="iM<%= itemIncr%>" value="C" <%= Util.marcarRadio("C", qp.getItem_marcado())%>/></td>
+                            <td width="80px">(d)<input type="checkbox" name="iM<%= itemIncr%>" value="D" <%= Util.marcarRadio("D", qp.getItem_marcado())%>/></td>
+                            <td width="80px">(e)<input type="checkbox" name="iM<%= itemIncr%>" value="E" <%= Util.marcarRadio("E", qp.getItem_marcado())%>/></td>
+                        </tr>
+                    </thead>
+                </table>
+                <br />
+                <label>Status:  <%if (qp.getStatus() == 0) {%> <label>Branca</label><%} else if (qp.getStatus() == 1) {%> <label style="color: green;">Aceita</label><%} else if (qp.getStatus() == 2) {%><label style="color: red;">Errada</label><%} else {%><label style="color: blue;">Nula</label><%}%></label><br /><br />
+                <%itemIncr++;}%>
+                <br />
+                
                 <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" style="margin-left: 400px ; width: 80px;" />
 
             </form>

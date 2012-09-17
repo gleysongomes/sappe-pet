@@ -56,6 +56,7 @@ public class SendMail {
     public static void sendMail(String to, String subject, String Mensagem)
             throws AddressException, MessagingException {
         SendMail.sendMail("smtp.gmail.com", "petufc.quixada@gmail.com", to, subject, Mensagem);
+        
     }
 
     public static void main(String args[]) throws AddressException, MessagingException {

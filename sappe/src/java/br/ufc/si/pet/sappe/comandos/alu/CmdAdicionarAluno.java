@@ -42,7 +42,9 @@ public class CmdAdicionarAluno implements Comando {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         Date data = Util.treatToDate(dateFormat.format(date));
+
         UsuarioService usuarioService = new UsuarioService();
+        //verifica se o email fornecido ja está cadastrado no sistema
         Usuario usuario = usuarioService.getUsuarioByEmail(email);
 
         if (nome == null || nome.trim().isEmpty() || email == null || email.trim().isEmpty()
@@ -63,16 +65,16 @@ public class CmdAdicionarAluno implements Comando {
             u.setSenha(Util.criptografar(senha));
             u.setCodigo(Util.createRandomString(9));
             
-            //insere o usário
-            usuarioService.insertUsuario(u);
+            try{
+                //insere o usário
+                usuarioService.insertUsuario(u);
 
-           
-            //busca o usuário inserido pelo login e a senha
+             //busca o usuário inserido pelo login e a senha
 
             u = usuarioService.getUsuarioByLoginSenha(u);
 
-            System.out.println(u.getId());
-            
+
+            //cria o perfil do usuário
             Perfil perfil = new Perfil();
             perfil.setUsuario(u);
             perfil.setPapel(new PapelService().getPapelById(1L));
@@ -80,16 +82,11 @@ public class CmdAdicionarAluno implements Comando {
             perfil.setAtivo(true);
 
             PerfilService pS = new PerfilService();
-            
-            
-            if (pS.insertPerfil(perfil)) {
+             //insere o perfil do usuário
+                pS.insertPerfil(perfil);
+
                 try {
-                    System.out.println("===" + perfil.getUsuario().getEmail());
-                    /*
-                    SendMail.sendMail(perfil.getUsuario().getEmail(), "Ativar sua conta.", "Oi " + perfil.getUsuario().getNome() + ", <br />"
-                            + "para ter seu cadastro aceito, ative sua conta acessando o endereço abaixo. Obs: Você terá sete dias para ativar sua conta.<br /><br />"
-                            + "<a href=" + Util.getUrl(request) + "/sappe/ServletCentral?comando=CmdAtivarConta&id=" + perfil.getId() + "&cod=" + perfil.getUsuario().getCodigo()+ ">ativar minha conta</a>");
-                    */
+                    //envia o email
                     SendMail.sendMail(perfil.getUsuario().getEmail(), "Conta Criada Com Sucesso.", "Oi " + perfil.getUsuario().getNome() + ", <br />"
                             + "Sua conta foi criada com sucesso,bem vindo ao sappe.<br /><br />" + "Para acessar sua conta click no Link abaixo.<br /><br />"
                             + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp/>");
@@ -100,14 +97,25 @@ public class CmdAdicionarAluno implements Comando {
                 } catch (MessagingException ex) {
                     Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
                 hS.setAttribute("sucesso", "Seu cadastro foi aceito,uma mensagem de confirmação foi enviado para o seu e-mail.");
                 return "/cadastro.jsp";
-            } else {
+
+
+            }catch(Exception e){
+                e.printStackTrace();
+                hS.setAttribute("erro", "Erro ao tentar cadastrar.");
+
+            }
+           
+           
+            
+        }//fim do else
+
+
                 hS.setAttribute("erro", "Erro ao tentar cadastrar.Não foi possível enviar o email");
                 return "/cadastro.jsp";
-            }
-            
-        }
-    }
+    }//fim do método
 }

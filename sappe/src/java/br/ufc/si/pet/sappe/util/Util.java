@@ -53,7 +53,9 @@ public class Util {
             ns.printStackTrace();
             return senha;
         }
-    }
+    }//fim do método
+
+    
 
     public static String treatToString(Date param) {
         if (param != null) {
@@ -210,9 +212,10 @@ public class Util {
         //Date data = sdf2.parse(new Date().toString());
         //String str=sdf2.format(data);
 
-        Format format = new SimpleDateFormat("dd/MM/yyyy");
-        String dataAtual = format.format(new Date());
+      //  Format format = new SimpleDateFormat("dd/MM/yyyy");
+        //String dataAtual = format.format(new Date());
         System.out.println(criptografar("a"));
+        System.out.println(criptografar("DMF1ucDxtqgxw5niaXcmYQ=="));
     }
 
     public static String getUrl(HttpServletRequest req) {

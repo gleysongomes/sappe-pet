@@ -40,10 +40,13 @@ public class CmdRecuperarSenha implements Comando {
         } else {
             Usuario u = new Usuario();
             UsuarioService userService = new UsuarioService();
+
+            //verifica se existe alguem com aquele email
             u = userService.getUsuarioByEmail(email);
 
            
             if (u != null && email.trim().equals(u.getEmail())) {
+            
                 System.out.println("===" + u.getEmail() + "====" + u.getId());
 
                 try {
@@ -54,18 +57,26 @@ public class CmdRecuperarSenha implements Comando {
                     u.setEmail(email);
                     u.setSenha(Util.criptografar(senha));
                     us.updateUsuarioByEmail(u);
-                    SendMail.sendMail(u.getEmail(), "Recuperar sua senha.", "Oi " + u.getNome() + ", <br />"
+
+                    SendMail.sendMail(u.getEmail(), "Recuperar sua senha.", "<html> <head></head> <body> Oi " + u.getNome() + ", <br />"
                             + "abaixo seu Login e sua nova Senha de acesso.<br /><br />"
-                            + "Login: " + u.getLogin() + "<br />" + "Senha: " + senha);
+                            + "Login: " + u.getLogin() + "<br />" + "Senha: " + senha + "</body> </html>");
                     hS.setAttribute("sucesso", "A senha foi enviada para o seu email.");
                 } catch (AddressException ex) {
                     Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 } catch (MessagingException ex) {
                     Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
+                hS.setAttribute("erro", "não foi possivel enviar o email.");
+
                 return "/recuperar_senha.jsp";
             } else {
                 System.out.println("não encontrado");
+
                 hS.setAttribute("erro", "Endereço de email não encontrado.");
                 return "/recuperar_senha.jsp";
             }

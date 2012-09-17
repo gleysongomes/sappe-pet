@@ -22,12 +22,12 @@
 
             <div id="content_left">
                 <h1 class="titulo">Recuperar Senha</h1><br /><br /><br />
-                <div id="bh"></div>
+                
                 <form action="ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdRecuperarSenha" />
                     <%@include file="error.jsp" %>
                     <label>Digite aqui o email que você cadastrou:</label><br><br>
-                    <input type="text" name="email" class="buscar" style="width: 270px"/><br><br>
+                    <input type="text" name="emailrec"  style="width: 270px"/><br><br>
                     <input type="submit" value="Enviar"  class="button">
                     <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" />
                 </form>

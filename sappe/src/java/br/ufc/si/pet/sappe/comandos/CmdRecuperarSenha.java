@@ -30,7 +30,9 @@ public class CmdRecuperarSenha implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
         HttpSession hS = request.getSession(true);
-        String email = request.getParameter("email");
+        String email = request.getParameter("emailrec");
+
+        System.out.println(email);
 
         if (email == null || email.trim().isEmpty()) {
             hS.setAttribute("erro", "Preencha todos os campos.");
@@ -39,11 +41,14 @@ public class CmdRecuperarSenha implements Comando {
             Usuario u = new Usuario();
             UsuarioService userService = new UsuarioService();
             u = userService.getUsuarioByEmail(email);
-            System.out.println("===" + u.getEmail() + "====" + u.getId());
 
+           
             if (u != null && email.trim().equals(u.getEmail())) {
+                System.out.println("===" + u.getEmail() + "====" + u.getId());
+
                 try {
                     System.out.println("===" + u.getEmail());
+
                     UsuarioService us = new UsuarioService();
                     String senha = Util.createRandomString(1);
                     u.setEmail(email);
@@ -60,6 +65,7 @@ public class CmdRecuperarSenha implements Comando {
                 }
                 return "/recuperar_senha.jsp";
             } else {
+                System.out.println("não encontrado");
                 hS.setAttribute("erro", "Endereço de email não encontrado.");
                 return "/recuperar_senha.jsp";
             }

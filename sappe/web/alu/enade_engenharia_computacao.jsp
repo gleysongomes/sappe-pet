@@ -27,7 +27,7 @@
                     <input type="hidden" name="comando" value="CmdListarQuestoes" />
                     <input type="hidden" name="id" value="6" />
                     <input type="hidden" name="ide" value="2" />
-                    <input type="hidden" name="caminho" value="/alu/enade_engenharia_software.jsp" />
+                    <input type="hidden" name="caminho" value="/alu/enade_engenharia_computacao.jsp" />
                     <%@include file="../error.jsp" %>
                     <label style="font: caption; font-size: 15px;">Selecione o número de Questões:<select name="nQ">
                             <option value="0">Selecione</option>

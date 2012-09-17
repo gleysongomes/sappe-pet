@@ -27,10 +27,15 @@ public class CmdSalvarCadastroEditado implements Comando {
         String santiga = request.getParameter("santiga");
         String senha = request.getParameter("nsenha");
         String rSenha = request.getParameter("rsenha");
-        if (!senha.trim().equals(rSenha)) {
+        if (nome == null || nome.trim().isEmpty() || email == null || email.trim().isEmpty()
+                || senha == null || senha.trim().isEmpty() || rSenha == null || rSenha.trim().isEmpty()) {
+            hS.setAttribute("erro", "Preencha todos os campos.");
+            return "/alu/editar_cadastro.jsp";
+        } else if (!senha.trim().equals(rSenha)) {
             hS.setAttribute("erro", "A senha não confere com a sua confirmação.");
             return "/alu/editar_cadastro.jsp";
         }
+
         Perfil perfil = (Perfil) hS.getAttribute("user");
         UsuarioService usuarioService = new UsuarioService();
         Usuario u = new Usuario();

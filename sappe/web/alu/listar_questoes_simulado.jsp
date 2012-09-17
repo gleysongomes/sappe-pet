@@ -73,10 +73,7 @@
                 </form>
             </div>
             <div id="content_right"></div>
-            <div id="footer">
-                <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
-                <h6>Versão 1.12 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
-            </div>
+            <%@include file="../footer2.jsp" %>
         </div>
     </body>
 </html>

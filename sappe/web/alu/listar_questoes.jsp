@@ -29,7 +29,7 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left" style="width: 900px; overflow:auto;height:430px; margin-top: 10px;" >
+            <div id="content_left">
                 <h1 class="titulo"style="width: 875px;" ><%=tipo.getNome()%></h1><br />
                 <form id="lsQ" action="../ServletCentral" method="POST"  style="margin-top: 0px;">
                     <input type="hidden" name="comando" value="CmdSalvarProva" />
@@ -39,7 +39,7 @@
                                 List<Questao> questoes = (List<Questao>) session.getAttribute("subListaDeQuestoes");
                                 for (Questao q : questoes) {
                     %>
-                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" alt="images" style="width: 85%;height:50%" />
+                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" alt="images" />
                     </label><br />
                     <table border="0">
                         <thead>
@@ -59,11 +59,7 @@
                                <input type="reset" value="Cancelar" name="Cancelar" class="button"/>
                 </form>
             </div>
-
-            <div id="footer">
-                <center><img alt="Logotipo UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
-                <h6>Versão 1.12 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
-            </div>
+                    <%@include file="../footer2.jsp" %>
         </div>
     </body>
 </html>

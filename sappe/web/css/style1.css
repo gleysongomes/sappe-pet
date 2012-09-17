@@ -405,17 +405,31 @@ body {
 
 
 #footer {
-  background-color: #8BB3AB;
+    background-color: #8BB3AB;
     margin-top: 444px;
     padding-top: 5px;
-
     width: auto;
     height: 90px;
     color: #000066;
-
 }
 
 #footer h6{
+    font-size: 12px;
+    text-align: center;
+    padding-bottom: -5px;
+    padding-top: -10px;
+    margin-top: 10px;
+}
+
+#footer2 {
+    background-color: #8BB3AB;
+    padding-top: 5px;
+    width: auto;
+    height: 90px;
+    color: #000066;
+}
+
+#footer2 h6{
     font-size: 12px;
     text-align: center;
     padding-bottom: -5px;

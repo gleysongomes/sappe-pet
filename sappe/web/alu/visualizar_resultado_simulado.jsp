@@ -32,7 +32,7 @@
             </div>
             <%@include file="../alu/menu.jsp" %>
            
-            <div id="content_left" style="width: 900px; overflow:auto;height:430px; margin-top: 10px;">
+            <div id="content_left">
                 <form>
                 <h1 class="titulo" style="width: 875px;">Questões do Simulado</h1><br /><br /><br />
 
@@ -98,10 +98,7 @@
             </div>
             <div id="content_right"></div>
             
-            <div id="footer">
-                <center><img alt="Logoarea UFC"  class="imagemUFC" src="../images/UFC2.png"/></center>
-                <h6>Versão 1.0 Beta - Universidade Federal do Ceará - Campus Quixadá</h6>
-            </div>
+            <%@include file="../footer2.jsp" %>
         </div>
     </body>
 </html>

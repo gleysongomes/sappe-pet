@@ -32,7 +32,7 @@
             </div>
             <%@include file="../alu/menu.jsp" %>
            
-            <div id="content_left">
+            <div id="content_left" style="width: auto;">
                 <form>
                 <h1 class="titulo" style="width: 875px;">Questões do Simulado</h1><br /><br /><br />
 
@@ -73,7 +73,7 @@
                             List<QuestaoUsuarioSimulado> quses = (List<QuestaoUsuarioSimulado>) session.getAttribute("quses2");
                             for (QuestaoUsuarioSimulado qs : quses) {
                 %>
-                <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qs.getQuestao_id()%>" alt="images"/>
+                <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qs.getQuestao_id()%>" style="width: 80%; height: 70%" alt="images"/>
                 </label><br />
                 <table border="0">
                     <thead>

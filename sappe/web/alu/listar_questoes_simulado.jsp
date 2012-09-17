@@ -30,7 +30,7 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left">
+            <div id="content_left" style="width: auto;">
                 <h1 class="titulo"><%=simulado.getNome()%></h1><br />
                 <form id="lsQ" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSalvarSimulado" />
@@ -41,7 +41,7 @@
                                 List<QuestaoUsuarioSimulado> quses = (List<QuestaoUsuarioSimulado>) session.getAttribute("quses");
                                 for (QuestaoSimulado qs : questoes) {
                     %>
-                    <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qs.getQuestao_id()%>" alt="images"/>
+                    <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qs.getQuestao_id()%>" style="width: 80%; height: 70%" alt="images"/>
                     </label><br />
                     <table border="0">
                         <thead>

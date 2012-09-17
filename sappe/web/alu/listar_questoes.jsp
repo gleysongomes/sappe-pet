@@ -29,7 +29,7 @@
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>
             </div>
             <%@include file="../alu/menu.jsp" %>
-            <div id="content_left">
+            <div id="content_left" style="width: auto;">
                 <h1 class="titulo"style="width: 875px;" ><%=tipo.getNome()%></h1><br />
                 <form id="lsQ" action="../ServletCentral" method="POST"  style="margin-top: 0px;">
                     <input type="hidden" name="comando" value="CmdSalvarProva" />
@@ -39,7 +39,7 @@
                                 List<Questao> questoes = (List<Questao>) session.getAttribute("subListaDeQuestoes");
                                 for (Questao q : questoes) {
                     %>
-                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" alt="images" />
+                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" style="width: 80%; height: 70%" alt="images" />
                     </label><br />
                     <table border="0">
                         <thead>
@@ -55,7 +55,7 @@
                     <br />
                     <%itemIncr++;}%>
                     <br /><br />
-                    <input type="submit" value="Salvar" name="Salvar" class="button" style="margin-left: 200px; width: 80px;"/>
+                    <input type="submit" value="Salvar" name="Salvar" class="button" style="margin-left: 350px; width: 80px;"/>
                                <input type="reset" value="Cancelar" name="Cancelar" class="button"/>
                 </form>
             </div>

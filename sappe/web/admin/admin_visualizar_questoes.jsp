@@ -9,6 +9,7 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@page import="br.ufc.si.pet.sappe.entidades.*"%>
+<%@page import="br.ufc.si.pet.sappe.service.*"%>
 <%@page import="java.util.*"%>
 
 <html>
@@ -32,25 +33,35 @@
                         <tr >
                             <th class="tabela" style="width: 50px;">Nome</th>
                             <th class="tabela" style="width: 50px;">Item Correto</th>
-                            <th class="tabela" style="width: 150px;">Id Exame</th>
-                            <th class="tabela"style="width: 200px;">Id Area</th>
+                            <th class="tabela" style="width: 150px;">Exame</th>
+                            <th class="tabela"style="width: 200px;">Area</th>
                             <th class="tabela" style="width: 50px;">Ano</th>
                             <th class="tabela" style="width: 50px;">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         <%
+                        AreaService as = new AreaService();
+                        ExameService es = new ExameService();
+                        Area a = new Area();
+                        Exame e = new Exame();
                                     List<Questao> questoes = (List<Questao>) session.getAttribute("visualiza_Questoes");
                                     if (questoes == null) {
                                         questoes = new ArrayList<Questao>();
                                     }
                                     for (Questao q : questoes) {
+                                        long id = q.getArea_id();
+                                        a = as.getAreaById(id);
+
+                                        id = q.getExame_id();
+                                        e =es.getExameById(id);
+
                         %>
                         <tr>
                             <td><%= q.getNome()%></td>
                             <td><%= q.getItem()%></td>
-                            <td><%= q.getExame_id()%></td>
-                            <td><%= q.getArea_id()%></td>
+                            <td><%= e.getNome()%></td>
+                            <td><%= a.getNome()%></td>
                             <td><%= q.getAno()%></td>
                             <td><a href="../ServletCentral?comando=CmdAdminExcluirQuestao&id=<%= q.getId()%>">Excluir</a>/<a href="../ServletCentral?comando=CmdAdminEditarQuestao&id=<%= q.getId()%>">Atualizar</a></td>
                         </tr>

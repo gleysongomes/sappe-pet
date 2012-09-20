@@ -47,10 +47,10 @@ public class CmdRecuperarSenha implements Comando {
            
             if (u != null && email.trim().equals(u.getEmail())) {
             
-                System.out.println("===" + u.getEmail() + "====" + u.getId());
+               
 
                 try {
-                    System.out.println("===" + u.getEmail());
+                   
 
                     UsuarioService us = new UsuarioService();
                     String senha = Util.createRandomString(1);
@@ -75,7 +75,7 @@ public class CmdRecuperarSenha implements Comando {
 
                 return "/recuperar_senha.jsp";
             } else {
-                System.out.println("não encontrado");
+               // System.out.println("não encontrado");
 
                 hS.setAttribute("erro", "Endereço de email não encontrado.");
                 return "/recuperar_senha.jsp";

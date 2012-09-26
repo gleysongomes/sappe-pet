@@ -13,6 +13,8 @@ import br.ufc.si.pet.sappe.service.PerfilService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import br.ufc.si.pet.sappe.util.SendMail;
 import br.ufc.si.pet.sappe.util.Util;
+import java.net.MalformedURLException;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,6 +25,7 @@ import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.mail.EmailException;
 
 /**
  *
@@ -30,7 +33,7 @@ import javax.servlet.http.HttpSession;
  */
 public class CmdAdicionarAluno implements Comando {
 
-    public String executa(HttpServletRequest request, HttpServletResponse response) {
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws EmailException, MalformedURLException, SQLException {
 
         //recebe os dados da requisição
         HttpSession hS = request.getSession(true);
@@ -75,10 +78,17 @@ public class CmdAdicionarAluno implements Comando {
             perfil.setPapel(new PapelService().getPapelById(1L));
             perfil.setDataCriacao(data);
             perfil.setAtivo(false);
+
+            System.out.println(usuario.getId());
+
             PerfilService pS = new PerfilService();
             if (pS.insertPerfil(perfil)) {
                 try {
                     System.out.println("===" + perfil.getUsuario().getEmail());
+                    
+                   // perfil = pS.getPerfilByUsuarioId(uS.getProxId());
+                   perfil.setId(pS.ultimoId() - 1);
+                   
                     SendMail.sendMail(perfil.getUsuario().getEmail(), "Ativar sua conta.", "<html><head> </head> <body>Oi " + perfil.getUsuario().getNome() + ", <br />"
                             + "para ter seu cadastro aceito, ative sua conta acessando o endereço abaixo. Obs: Você terá sete dias para ativar sua conta.<br /><br />"
                             + "<a href=" + Util.getUrl(request) + "/sappe/ServletCentral?comando=CmdAtivarConta&id=" + perfil.getId() + "&cod=" + perfil.getUsuario().getCodigo()+ ">ativar minha conta</a> </body></html>");

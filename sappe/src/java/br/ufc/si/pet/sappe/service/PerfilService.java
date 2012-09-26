@@ -80,6 +80,9 @@ public class PerfilService {
         return null;
     }
 
+    public Long ultimoId() throws SQLException{
+     return  dao.proxId();
+    }
     /*
     public Long contaPerfisByUsuarioId(Long id){
     Long numero = 0L;

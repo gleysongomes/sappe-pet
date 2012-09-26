@@ -40,8 +40,8 @@ public class PerfilDAO {
         return (ArrayList<Perfil>) PostGresMapConfig.getSqlMapClient().queryForList("getListAllContasInativas");
     }
 
-    private Long proxId() throws SQLException {
-        Long id = (Long) PostGresMapConfig.getSqlMapClient().queryForObject("getMaxIdUsuario");
+    public  Long proxId() throws SQLException {
+        Long id = (Long) PostGresMapConfig.getSqlMapClient().queryForObject("getMaxIdPerfil");
         return id;
     }
     /*

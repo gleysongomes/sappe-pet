@@ -58,5 +58,6 @@
     <select id="getMaxIdPerfil" resultClass="long">
         SELECT nextval('sappe.perfil_id_seq');
     </select>
+
     
 </sqlMap>

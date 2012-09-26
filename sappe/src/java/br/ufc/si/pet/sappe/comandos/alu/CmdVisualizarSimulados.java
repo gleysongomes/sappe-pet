@@ -28,7 +28,13 @@ public class CmdVisualizarSimulados implements Comando {
         HttpSession session=request.getSession(true);
         Perfil perfil=(Perfil)session.getAttribute("user");
         SimuladoService simuladoService=new SimuladoService();
-        List<Simulado> simulados = simuladoService.getListSimuladosByUsuario(perfil.getUsuario().getId());
+        List<Simulado> simulados = simuladoService.getAllSimuladosUsuarios();
+        List<Simulado> temp =simuladoService.getListSimuladosByUsuario(perfil.getUsuario().getId());
+
+        for(Simulado elem:temp){
+            simulados.add(elem);
+        }
+
         session.setAttribute("simulados", simulados);
         return "/alu/visualizar_simulados.jsp";
     }

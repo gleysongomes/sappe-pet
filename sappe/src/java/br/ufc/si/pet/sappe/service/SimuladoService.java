@@ -63,6 +63,17 @@ public class SimuladoService {
         return null;
     }
 
+
+    public ArrayList<Simulado> getAllSimuladosUsuarios() {
+        try {
+            ArrayList<Simulado> simulados = simuladoDAO.getAllSimuladosUsuarios();
+            return simulados;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     public ArrayList<Simulado> getListSimuladosByUsuario(Long id) {
         try {
             ArrayList<Simulado> simulados = simuladoDAO.getListSimuladosByUsuario(id);

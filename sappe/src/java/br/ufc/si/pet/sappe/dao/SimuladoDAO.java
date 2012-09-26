@@ -31,6 +31,10 @@ public class SimuladoDAO {
         return (ArrayList<Simulado>) PostGresMapConfig.getSqlMapClient().queryForList("getTodosSimulados");
     }
 
+    public ArrayList<Simulado> getAllSimuladosUsuarios() throws SQLException {
+        return (ArrayList<Simulado>) PostGresMapConfig.getSqlMapClient().queryForList("getTodosSimuladosUsuarios");
+    }
+
     public ArrayList<Simulado> getListSimuladosByUsuario(Long id) throws SQLException {
         return (ArrayList<Simulado>) PostGresMapConfig.getSqlMapClient().queryForList("getListSimuladosByUsuario", id);
     }

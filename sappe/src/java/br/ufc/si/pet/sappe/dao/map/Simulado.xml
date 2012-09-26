@@ -48,6 +48,11 @@
         FROM sappe.simulado;
     </select>
 
+    <select id="getTodosSimuladosUsuarios" resultClass="simulado" resultMap="simuladoResult">
+        SELECT *
+        FROM sappe.simulado where status=false;
+    </select>
+
     <select id="getListSimuladosByUsuario" resultClass="simulado" parameterClass="long" resultMap="simuladoResult">
         SELECT *
         FROM sappe.simulado AS s,sappe.usuario_simulado AS us

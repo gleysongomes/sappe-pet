@@ -63,7 +63,7 @@
                             <td><%= e.getNome()%></td>
                             <td><%= a.getNome()%></td>
                             <td><%= q.getAno()%></td>
-                            <td><a href="../ServletCentral?comando=CmdAdminExcluirQuestao&id=<%= q.getId()%>">Excluir</a>/<a href="../ServletCentral?comando=CmdAdminEditarQuestao&id=<%= q.getId()%>">Atualizar</a></td>
+                            <td><a href="../ServletCentral?comando=CmdAdminExcluirQuestao&id=<%= q.getId()%>&ano=<%=q.getAno()%>">Excluir</a>/<a href="../ServletCentral?comando=CmdAdminEditarQuestao&id=<%= q.getId()%>">Atualizar</a></td>
                         </tr>
                         <%}%>
                     </tbody>

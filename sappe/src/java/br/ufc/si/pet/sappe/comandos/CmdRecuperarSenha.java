@@ -62,6 +62,7 @@ public class CmdRecuperarSenha implements Comando {
                             + "abaixo seu Login e sua nova Senha de acesso.<br /><br />"
                             + "Login: " + u.getLogin() + "<br />" + "Senha: " + senha + "</body> </html>");
                     hS.setAttribute("sucesso", "A senha foi enviada para o seu email.");
+                     return "/recuperar_senha.jsp";
                 } catch (AddressException ex) {
                     Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
@@ -72,7 +73,6 @@ public class CmdRecuperarSenha implements Comando {
                     e.printStackTrace();
                 }
                 hS.setAttribute("erro", "não foi possivel enviar o email.");
-
                 return "/recuperar_senha.jsp";
             } else {
                // System.out.println("não encontrado");

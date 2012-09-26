@@ -43,7 +43,7 @@ public class CmdAtivarConta implements Comando {
                 System.out.println("deu certo!!");
             }
         }
-        hS.setAttribute("erro", "sua conta foi ativada");
+        hS.setAttribute("sucesso", "sua conta foi ativada");
         return "/index.jsp";
     }
     }

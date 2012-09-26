@@ -10,7 +10,8 @@
                 String erro = (String) session.getAttribute("erro");
                 session.removeAttribute("sucesso");
                 session.removeAttribute("erro");
-                if (erro != null) {%>
+
+            if (erro != null) {%>
                 <p class="mensagemErro" style="color: red"><%=erro%></p>
     <%}
                 if (sucesso != null) {%>

@@ -85,6 +85,7 @@ public class CmdSalvarProvaEditada implements Comando {
                 count++;
             }
             hS.setAttribute("sucesso", "Prova atualizada com sucesso.");
+            return "/alu/visualizar_provas.jsp";
         } catch (SqlMapException e) {
             e.printStackTrace();
             hS.setAttribute("erro", "Erro ao tentar atualizada a prova.");

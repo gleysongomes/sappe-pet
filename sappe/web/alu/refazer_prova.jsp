@@ -35,7 +35,7 @@
                 </h1><br /><br /><br />
                 <form name="rP" action="../ServletCentral" method="post">
                     <input type="hidden" name="comando" value="CmdSalvarProvaEditada" />
-                    <%@include file="../error.jsp" %>
+                    <%--   <%@include file="../error.jsp" %> --%>
                     <%
                                 int itemIncr = 0;
                                 List<QuestaoProva> qPs = (List<QuestaoProva>) session.getAttribute("qPs");

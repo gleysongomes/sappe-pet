@@ -33,7 +33,7 @@
                 <h1 class="titulo"style="width: 875px;" ><%=tipo.getNome()%></h1><br />
                 <form id="lsQ" action="../ServletCentral" method="POST"  style="margin-top: 0px;">
                     <input type="hidden" name="comando" value="CmdSalvarProva" />
-                    <%@include file="../error.jsp" %>
+                    <%--  <%@include file="../error.jsp" %> --%>
                     <%
                                 int itemIncr = 0;
                                 List<Questao> questoes = (List<Questao>) session.getAttribute("subListaDeQuestoes");

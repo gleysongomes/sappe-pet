@@ -11,6 +11,7 @@ import br.ufc.si.pet.sappe.service.PerfilService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,9 +20,16 @@ import javax.servlet.http.HttpServletResponse;
 public class CmdAtivarConta implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) {
-
-        Long id = Long.parseLong(request.getParameter("id"));
+        String aux = request.getParameter("id");
         String codigo = request.getParameter("cod");
+
+        HttpSession hS = request.getSession(true);
+
+        if(aux == null || aux.trim().isEmpty() || codigo == null || codigo.trim().isEmpty() ){
+          hS.setAttribute("erro", "não foi possivel ativar sua conta,tente novamente");
+            return "/index.jsp";
+        }else{
+         Long id = Long.parseLong(aux);
         PerfilService pS = new PerfilService();
         Perfil perfil = pS.getPerfilById(id);
         //System.out.println("======" + id);
@@ -35,6 +43,8 @@ public class CmdAtivarConta implements Comando {
                 System.out.println("deu certo!!");
             }
         }
+        hS.setAttribute("erro", "sua conta foi ativada");
         return "/index.jsp";
+    }
     }
 }

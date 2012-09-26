@@ -32,6 +32,7 @@ public class CmdAdicionarAluno implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) {
 
+        //recebe os dados da requisição
         HttpSession hS = request.getSession(true);
         String login = request.getParameter("login");
         String nome = request.getParameter("nome");
@@ -42,14 +43,13 @@ public class CmdAdicionarAluno implements Comando {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         Date data = Util.treatToDate(dateFormat.format(date));
-
         UsuarioService usuarioService = new UsuarioService();
-        //verifica se o email fornecido ja está cadastrado no sistema
-        Usuario usuario = usuarioService.getUsuarioByEmail(email);
 
+        //busca o usuario por email
+        Usuario usuario = usuarioService.getUsuarioByEmail(email);
         if (nome == null || nome.trim().isEmpty() || email == null || email.trim().isEmpty()
                 || senha == null || senha.trim().isEmpty() || rSenha == null || rSenha.trim().isEmpty()) {
-            hS.setAttribute("erro", "Preencha todos os campos obrigatórios (*).");
+            hS.setAttribute("erro", "Preencha todos os campos.");
             return "/cadastro.jsp";
         } else if (!senha.trim().equals(rSenha)) {
             hS.setAttribute("erro", "A senha não confere com a sua confirmação.");
@@ -64,58 +64,36 @@ public class CmdAdicionarAluno implements Comando {
             u.setEmail(email);
             u.setSenha(Util.criptografar(senha));
             u.setCodigo(Util.createRandomString(9));
-            
-            try{
-                //insere o usário
-                usuarioService.insertUsuario(u);
+            //insere o usuario
+            UsuarioService uS = new UsuarioService();
+            uS.insertUsuario(u);
+            //busca o usuario pelo login e a senha
+            usuario = uS.getUsuarioByLoginSenha(u);
 
-             //busca o usuário inserido pelo login e a senha
-
-            u = usuarioService.getUsuarioByLoginSenha(u);
-
-
-            //cria o perfil do usuário
             Perfil perfil = new Perfil();
-            perfil.setUsuario(u);
+            perfil.setUsuario(usuario);
             perfil.setPapel(new PapelService().getPapelById(1L));
             perfil.setDataCriacao(data);
-            perfil.setAtivo(true);
-
+            perfil.setAtivo(false);
             PerfilService pS = new PerfilService();
-             //insere o perfil do usuário
-                pS.insertPerfil(perfil);
-
+            if (pS.insertPerfil(perfil)) {
                 try {
-                    //envia o email
-                    SendMail.sendMail(perfil.getUsuario().getEmail(), "Conta Criada Com Sucesso.", "Oi " + perfil.getUsuario().getNome() + ", <br />"
-                            + "Sua conta foi criada com sucesso,bem vindo ao sappe.<br /><br />" + "Para acessar sua conta click no Link abaixo.<br /><br />"
-                            + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp/>");
-
+                    System.out.println("===" + perfil.getUsuario().getEmail());
+                    SendMail.sendMail(perfil.getUsuario().getEmail(), "Ativar sua conta.", "<html><head> </head> <body>Oi " + perfil.getUsuario().getNome() + ", <br />"
+                            + "para ter seu cadastro aceito, ative sua conta acessando o endereço abaixo. Obs: Você terá sete dias para ativar sua conta.<br /><br />"
+                            + "<a href=" + Util.getUrl(request) + "/sappe/ServletCentral?comando=CmdAtivarConta&id=" + perfil.getId() + "&cod=" + perfil.getUsuario().getCodigo()+ ">ativar minha conta</a> </body></html>");
                 } catch (AddressException ex) {
                     Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
-                    ex.printStackTrace();
                 } catch (MessagingException ex) {
                     Logger.getLogger(CmdAdicionarAluno.class.getName()).log(Level.SEVERE, null, ex);
-                    ex.printStackTrace();
-                }catch(Exception e){
-                    e.printStackTrace();
                 }
-                hS.setAttribute("sucesso", "Seu cadastro foi aceito,uma mensagem de confirmação foi enviado para o seu e-mail.");
+                hS.setAttribute("sucesso", "Para ter seu cadastro aceito entre no email fornecido e ative sua conta.");
                 return "/cadastro.jsp";
-
-
-            }catch(Exception e){
-                e.printStackTrace();
+            } else {
                 hS.setAttribute("erro", "Erro ao tentar cadastrar.");
-
-            }
-           
-           
-            
-        }//fim do else
-
-
-                hS.setAttribute("erro", "Erro ao tentar cadastrar.Não foi possível enviar o email");
                 return "/cadastro.jsp";
+            }
+        }
+    
     }//fim do método
 }

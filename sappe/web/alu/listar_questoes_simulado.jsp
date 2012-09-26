@@ -34,7 +34,7 @@
                 <h1 class="titulo"><%=simulado.getNome()%></h1><br />
                 <form id="lsQ" action="../ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdSalvarSimulado" />
-                    <%@include file="../error.jsp" %>
+                    <%--         <%@include file="../error.jsp" %>  --%>
                     <%
                                 int itemIncr = 0;
                                 List<QuestaoSimulado> questoes = (List<QuestaoSimulado>) session.getAttribute("questaoSimulados");

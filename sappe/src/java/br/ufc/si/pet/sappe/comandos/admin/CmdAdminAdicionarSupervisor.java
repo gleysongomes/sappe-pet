@@ -68,7 +68,7 @@ public class CmdAdminAdicionarSupervisor implements Comando {
             UsuarioService uS = new UsuarioService();
             uS.insertUsuario(u);
 
-            usuario = uS.getUsuarioById(uS.getProxId());
+            usuario = uS.getUsuarioByLoginSenha(u);
             Perfil perfil = new Perfil();
             perfil.setUsuario(usuario);
             perfil.setPapel(new PapelService().getPapelById(2L));

@@ -4,9 +4,12 @@
  */
 package br.ufc.si.pet.sappe.comandos.admin;
 
+import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Supervisor;
 import br.ufc.si.pet.sappe.interfaces.Comando;
+import br.ufc.si.pet.sappe.service.PerfilService;
 import br.ufc.si.pet.sappe.service.SupervisorService;
+import br.ufc.si.pet.sappe.service.UsuarioService;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,7 +30,12 @@ public class CmdAdminExcluirSupervisor implements Comando {
         try {
             Long id = Long.parseLong(request.getParameter("id"));
             SupervisorService ss = new SupervisorService();
+            PerfilService ps = new PerfilService();
+            Perfil p = ps.getPerfilById(id);
             if (ss.deleteSupervisor(id)) {
+                UsuarioService us = new UsuarioService();
+                us.deleteUsuario(p.getUsuario().getId());
+
                 List<Supervisor> supervisores = ss.getAll();
                 session.setAttribute("supervisores", supervisores);
                 session.setAttribute("sucesso", "Operação efetuada com sucesso.");

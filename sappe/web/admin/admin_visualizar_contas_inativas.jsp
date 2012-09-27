@@ -27,7 +27,6 @@
             <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Alunos Inativos</h1><br />
                 <form action="../ServletCentral" method="POST">
-                    <input type="hidden" name="comando" value="CmdAdminExcluirTodasContasInativas" />
                     <%@include file="../error.jsp" %>
                     <div id="">
                         <table border="1px" style="margin-left: 0px; width: 99%">
@@ -41,28 +40,26 @@
                             <tbody>
                                 <%
 
-                                            int i = 0;
+                                           
                                             List<Perfil> perfils = (List<Perfil>) session.getAttribute("perfils");
                                             if (perfils == null) {
                                                 perfils = new ArrayList<Perfil>();
                                             }
                                             for (Perfil p : perfils) {
+                                                System.out.println(p.getId());
                                 %>
-                            <input type="hidden" name="id<%=i++%>" value="<%= p.getId()%>" />
                             <tr>
                                 <td ><center><%= p.getUsuario().getNome()%></center></td>
                                 <td><center><%= p.getUsuario().getEmail()%></center></td>
-                             
+                                <td><center><a  href="../ServletCentral?comando=CmdAdminExcluirTodasContasInativas&id=<%=p.getId()%>" name="Excluir"  class="button" >Excluir</a></center></td>
                             </tr>
                             <%}%>
                             
                            
-                                <input type="hidden" name="nci" value="<%= perfils.size()%>" />
                             
                             </tbody>
                         </table>
-                            <input type="submit" name="Excluir Todas" value="Excluir Todas" class="button" />
-                    </div>
+                              </div>
                 </form>
             </div>
             <div id="content_right"></div>

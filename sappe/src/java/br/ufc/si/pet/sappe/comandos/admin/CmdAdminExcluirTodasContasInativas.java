@@ -5,6 +5,7 @@
 package br.ufc.si.pet.sappe.comandos.admin;
 
 import br.ufc.si.pet.sappe.entidades.Perfil;
+import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.PerfilService;
 import br.ufc.si.pet.sappe.service.UsuarioService;
@@ -26,20 +27,24 @@ public class CmdAdminExcluirTodasContasInativas implements Comando {
 
         HttpSession session = request.getSession(true);
         try {
-            int numeroContasInativas = Integer.parseInt(request.getParameter("nci"));
+            String idc = request.getParameter("id");
             PerfilService ps = new PerfilService();
             UsuarioService us = new UsuarioService();
-            for (int i = 0; i < numeroContasInativas; i++) {
-                Long id = Long.parseLong(request.getParameter("id" + i));
-                Perfil p = ps.getPerfilById(id);
-                ps.deletePerfil(id);
+                Long id = Long.parseLong(idc);
+
+                Perfil p = ps.getPerfilByUsuarioId(id);
+                p.setUsuario(us.getUsuarioById(id));
+                
+                System.out.println(p.getId());
+                System.out.println(p.getUsuario().getId());
+                ps.deletePerfil(p.getId());
                 us.deleteUsuario(p.getUsuario().getId());
-            }
+            
             session.removeAttribute("perfils");
-            session.setAttribute("sucesso", "Contas excluidas com sucesso.");
+            session.setAttribute("sucesso", "Conta excluida com sucesso.");
             return "/admin/admin_visualizar_contas_inativas.jsp";
         } catch (NumberFormatException nfe) {
-            session.setAttribute("erro", nfe.getMessage());
+            session.setAttribute("erro", "não foi possivel remover o aluno");
             return "/admin/admin_visualizar_contas_inativas.jsp";
         } catch (Exception e) {
             session.setAttribute("erro", e.getMessage());

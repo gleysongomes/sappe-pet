@@ -49,7 +49,8 @@
                                 <th>Questões Brancas</th>
                                 <th>Questões Erradas</th>
                                 <th>Tempo de Prova</th>
-                                <th>Data</th>
+                                <th>Data Início</th>
+                                 <th>Data Término</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,7 +61,8 @@
                                 <td><%= us.getBrancas()%></td>
                                 <td><%= us.getErradas()%></td>
                                 <td><%= us.getTempo_prova()%></td>
-                                <td><%= simulado.getData()%></td>
+                                <td><%= simulado.getData_ini()%></td>
+                                <td><%= simulado.getData_fim()%></td>
                             </tr>
                         </tbody>
                     </table>

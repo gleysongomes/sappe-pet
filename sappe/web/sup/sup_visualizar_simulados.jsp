@@ -31,7 +31,8 @@
                     <thead>
                         <tr>
                             <th class="tabela">Nome</th>
-                            <th class="tabela">Data</th>
+                            <th class="tabela">Data Inicio</th>
+                            <th class="tabela">Data Término</th>
                             <th class="tabela">Número de Questões</th>
                             <th class="tabela">Horário Início</th>
                             <th class="tabela">Horário Término</th>
@@ -51,7 +52,10 @@
                                 <%= s.getNome()%>
                             </td>
                             <td>
-                                <%= s.getData()%>
+                                <%= s.getData_ini()%>
+                            </td>
+                            <td>
+                                <%= s.getData_fim()%>
                             </td>
                             <td>
                                 <%= s.getNum_questao()%>

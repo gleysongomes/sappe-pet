@@ -19,6 +19,7 @@ import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,13 +38,22 @@ public class CmdSalvarSimulado implements Comando {
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
         Format format = new SimpleDateFormat("dd/MM/yyyy");
         Simulado simulado = (Simulado) session.getAttribute("simulado");
-        String data = simulado.getData();
-        String dataAtual = format.format(new Date());
-        System.out.println(data + "====" + dataAtual);
+        String data_ini = simulado.getData_ini();
+        String data_fim = simulado.getData_fim();
+
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        GregorianCalendar gc = new GregorianCalendar();
+
+        Date inicio = formatador.parse(data_ini);
+        Date fim = formatador.parse(data_fim);
+        Date data_atual = gc.getTime();
+
+
         Date horaini = sdf.parse(simulado.getHoraini());
         Date horafim = sdf.parse(simulado.getHorafim());
         Date horaAtual = sdf.parse(Util.getTime());
-        if (dataAtual.equals(data) && horaAtual.after(horaini) && horaAtual.before(horafim)) {
+
+        if ((data_atual.before(fim)|| data_atual.equals(fim)) && horaAtual.after(horaini) && horaAtual.before(horafim)) {
             List<QuestaoSimulado> questoes = (List<QuestaoSimulado>) session.getAttribute("questaoSimulados");
             DateTime hi = (DateTime) session.getAttribute("hi");
             DateTime dt = new DateTime();

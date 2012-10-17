@@ -30,7 +30,8 @@
                     <thead>
                         <tr>
                             <th >Nome</th>
-                            <th >Data</th>
+                            <th >Data Início</th>
+                            <th >Data Término</th>
                             <th >Horário Início</th>
                             <th >Horário Término</th>
                             <th >Ação</th>
@@ -49,7 +50,10 @@
                                 <%= s.getNome()%>
                             </td>
                             <td>
-                                <%= s.getData()%>
+                                <%= s.getData_ini()%>
+                            </td>
+                            <td>
+                                <%= s.getData_fim()%>
                             </td>
                             <td>
                                 <%= s.getHoraini()%>

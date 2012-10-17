@@ -33,11 +33,12 @@ public class CmdSupervisorAdicionarSimuladoRestrito implements Comando {
         try {
             String nome = request.getParameter("nome");
             Long eid = Long.parseLong(request.getParameter("exame"));
-            String data = request.getParameter("data");
+            String data_ini = request.getParameter("data_ini");
+            String data_fim = request.getParameter("data_fin");
             String hi = request.getParameter("hi");
             String ht = request.getParameter("ht");
 
-            if (nome == null || nome.isEmpty() || eid == null || eid.equals(0L) || data == null || data.isEmpty() || hi == null || hi.isEmpty() || ht == null || ht.isEmpty()) {
+            if (nome == null || nome.isEmpty() || eid == null || eid.equals(0L) || data_ini == null || data_ini.isEmpty() || data_fim == null || data_fim.isEmpty() || hi == null || hi.isEmpty() || ht == null || ht.isEmpty()) {
                 session.setAttribute("erro", "Preencha todos os campos (*).");
                 return "/sup/sup_adicionar_simulado_restrito.jsp";
             } else if (eid == 1L) {
@@ -46,7 +47,8 @@ public class CmdSupervisorAdicionarSimuladoRestrito implements Comando {
                 int ntc = Integer.parseInt(request.getParameter("ntc"));
                 Simulado simulado = new Simulado();
                 simulado.setNome(nome);
-                simulado.setData(data);
+                simulado.setData_fim(data_fim);
+                simulado.setData_ini(data_ini);
                 simulado.setHoraini(hi);
                 simulado.setHorafim(ht);
                 simulado.setNum_questao(nm + nfc + ntc);
@@ -72,7 +74,8 @@ public class CmdSupervisorAdicionarSimuladoRestrito implements Comando {
                 int ncg = Integer.parseInt(request.getParameter("ncg"));
                 Simulado simulado = new Simulado();
                 simulado.setNome(nome);
-                simulado.setData(data);
+                simulado.setData_fim(data_fim);
+                simulado.setData_ini(data_ini);
                 simulado.setHoraini(hi);
                 simulado.setHorafim(ht);
                 simulado.setNum_questao(nsi + nes + ncg);

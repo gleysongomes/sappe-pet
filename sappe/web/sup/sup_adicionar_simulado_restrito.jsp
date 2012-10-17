@@ -47,8 +47,12 @@
                                     <td width="10px;"><input type="text" name="nome" value="" style="width: 140px;" maxlength="80"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Data:</label></td>
-                                    <td><input type="text" name="data" value="" style="width: 140px;" onkeypress="return formataData(this,event)" maxlength="10"/></td>
+                                    <td><label>Data Inicio:</label></td>
+                                    <td><input type="text" name="data_ini" value="" style="width: 140px;" onkeypress="return formataData(this,event)" maxlength="10"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Data Término:</label></td>
+                                    <td><input type="text" name="data_fim" value="" style="width: 140px;" onkeypress="return formataData(this,event)" maxlength="10"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Horário de Inicio:</label></td>

@@ -17,6 +17,7 @@
 <%@page import="br.ufc.si.pet.sappe.entidades.Area"%>
 <%@page import="br.ufc.si.pet.sappe.service.ExameService"  %>
 <%@page import="br.ufc.si.pet.sappe.service.AreaService"  %>
+<%@page import="br.ufc.si.pet.sappe.service.QuestaoService"  %>
 <%@page import="java.util.List"%>
 
 <html>
@@ -38,8 +39,23 @@
                     <%@include file="../error.jsp" %>
                     <form action="../ServletCentral">
                         <input type="hidden" name="comando" value="CmdAdminVisualizarQuestoes" />
-                        <label>Digite o ano:</label><input type="text" name="ano"  />
-                         <input type="submit" value="buscar" name="buscar" class="button" />
+                        <input type="hidden" name="id" value="9" />
+                    <input type="hidden" name="ide" value="1" />
+                    <input type="hidden" name="nQ" value="70" />
+                    <input type="hidden" name="caminho" value="/alu/poscomp_padrao.jsp" />
+                    <%@include file="../error.jsp" %>
+                    <label style="font: caption; font-size: 15px;">Selecione o ano da prova:<select name="ano">
+                            <option value="0">Selecione</option>
+                            <%
+                                        QuestaoService qs = new QuestaoService();
+                                        List<Questao> questoes = qs.visualizarTodasQuestoes();
+                                        for (Questao q : questoes) {
+                            %>
+                            <option value="<%= q.getAno()%>"><%= q.getAno()%></option>
+                            <%}%>
+                        </select>
+                    </label>
+                        <input type="submit" value="buscar" name="buscar" class="button" />
                     </form>
 
 

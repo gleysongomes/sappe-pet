@@ -44,11 +44,12 @@ public class CmdSupervisorAdicionarSimulado implements Comando {
         try {
             String nome = request.getParameter("nome");
             Long eid = Long.parseLong(request.getParameter("exame"));
-            String data = request.getParameter("data");
+            String data_ini = request.getParameter("data_ini");
+            String data_fim = request.getParameter("data_fim");
             String hi = request.getParameter("hi");
             String ht = request.getParameter("ht");
             Integer nq = Integer.parseInt(request.getParameter("nq"));
-            if (nome == null || nome.isEmpty() || eid == null || eid.equals(0L) || data == null || data.isEmpty() || hi == null || hi.isEmpty() || ht == null || ht.isEmpty()) {
+            if (nome == null || nome.isEmpty() || eid == null || eid.equals(0L) || data_ini == null || data_ini.isEmpty() || data_fim == null || data_fim.isEmpty() || hi == null || hi.isEmpty() || ht == null || ht.isEmpty()) {
                 session.setAttribute("erro", "Preencha todos os campos (*).");
                 return "/sup/sup_adicionar_simulado.jsp";
             } else {
@@ -61,7 +62,8 @@ public class CmdSupervisorAdicionarSimulado implements Comando {
                 if (nq <= subListaDeQuestoes.size()) {
                     Simulado simulado = new Simulado();
                     simulado.setNome(nome);
-                    simulado.setData(data);
+                    simulado.setData_fim(data_fim);
+                    simulado.setData_ini(data_ini);
                     simulado.setHoraini(hi);
                     simulado.setHorafim(ht);
                     simulado.setNum_questao(nq);

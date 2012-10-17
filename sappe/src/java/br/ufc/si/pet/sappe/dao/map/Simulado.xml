@@ -17,7 +17,8 @@
         <result property="id" column="id"/>
         <result property="exame_id" column="exame_id"/>
         <result property="nome" column="nome"/>
-        <result property="data" column="data"/>
+        <result property="data_ini" column="data_ini"/>
+        <result property="data_fim" column="data_fim"/>
         <result property="horaini" column="horaini"/>
         <result property="horafim" column="horafim"/>
         <result property="num_questao" column="num_questao"/>
@@ -25,8 +26,8 @@
     </resultMap>
 
     <insert id="addSimulado" parameterClass="simulado">
-        INSERT INTO sappe.simulado(exame_id, nome,data,horaini,horafim,num_questao,status)
-        VALUES (#exame_id#, #nome#,#data#,#horaini#,#horafim#,#num_questao#,#status#);
+        INSERT INTO sappe.simulado(exame_id, nome,data_ini,data_fim,horaini,horafim,num_questao,status)
+        VALUES (#exame_id#, #nome#,#data_ini#,#data_fim#,#horaini#,#horafim#,#num_questao#,#status#);
     </insert>
 
     <select id="getMaxIdSimulado" resultClass="long">

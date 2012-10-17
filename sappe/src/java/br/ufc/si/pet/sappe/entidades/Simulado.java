@@ -13,7 +13,8 @@ public class Simulado extends Bean {
     private String nome;
     private String horaini;
     private String horafim;
-    private String data;
+    private String data_ini;
+    private String data_fim;
     private Long exame_id;
     private Integer num_questao;
     private boolean status;
@@ -41,14 +42,7 @@ public class Simulado extends Bean {
     public void setExame_id(Long exame_id) {
         this.exame_id = exame_id;
     }
-    
-    public String getData() {
-        return data;
-    }
 
-    public void setData(String data) {
-        this.data = data;
-    }
 
     public String getHorafim() {
         return horafim;
@@ -73,4 +67,23 @@ public class Simulado extends Bean {
     public void setNome(String nome) {
         this.nome = nome;
     }
-}
+
+    public String getData_fim() {
+        return data_fim;
+    }
+
+    public void setData_fim(String data_fim) {
+        this.data_fim = data_fim;
+    }
+
+    public String getData_ini() {
+        return data_ini;
+    }
+
+    public void setData_ini(String data_ini) {
+        this.data_ini = data_ini;
+    }
+
+
+
+}//fim da classe

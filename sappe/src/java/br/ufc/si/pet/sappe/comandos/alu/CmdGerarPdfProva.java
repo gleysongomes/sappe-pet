@@ -95,8 +95,8 @@ public class CmdGerarPdfProva implements Comando {
             for (QuestaoProva qP : qPs) {
                 table.addCell(new Phrase("\nQuestão " + count + ":\n", fonteDesc));
                 Questao q = questaoService.getQuestaoById(qP.getQuestao_id());
-                Image jpg2 = Image.getInstance(q.getArquivo());
-                table.addCell(jpg2);
+               // Image jpg2 = Image.getInstance(q.getArquivo());
+                //table.addCell(jpg2);
                 count++;
             }
             document.add(table);

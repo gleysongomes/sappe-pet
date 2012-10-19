@@ -7,6 +7,9 @@ package br.ufc.si.pet.sappe.servlets.admin;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoService;
+import br.ufc.si.pet.sappe.util.Upload;
+import br.ufc.si.pet.sappe.util.Util;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -29,7 +32,6 @@ import org.apache.commons.fileupload.FileUploadException;
 public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
-
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
         int eid = 0, aid = 0;
@@ -76,7 +78,8 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
                         questao.setAno(ano);
                         questao.setItem(ic);
                         questao.setNome(fi.getName());
-                        questao.setArquivo(fi.get());
+                        Upload upload = new Upload();
+                        upload.Enviar(request, response);
                         questaoService.inserir(questao);
                         fileItems.clear();
                         session.setAttribute("sucesso", "Cadastro realizado com sucesso.");
@@ -102,7 +105,7 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
             session.setAttribute("erro", ex.getMessage());
             return "/admin/admin_adicionar_questao.jsp";
         }
-    }
+    }//fim do método
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {

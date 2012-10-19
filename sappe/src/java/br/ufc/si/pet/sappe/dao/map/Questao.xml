@@ -20,12 +20,12 @@
         <result property="ano" column="ano"/>
         <result property="nome" column="nome"/>
         <result property="item" column="item"/>
-        <result property="arquivo" column="arquivo"/>
+       
     </resultMap>
 
     <insert id="addQuestao" parameterClass="questao">
-        INSERT INTO sappe.questao(exame_id,area_id,ano,item,nome,arquivo)
-        VALUES (#exame_id#, #area_id#, #ano#, #item#, #nome#, #arquivo#);
+        INSERT INTO sappe.questao(exame_id,area_id,ano,item,nome)
+        VALUES (#exame_id#, #area_id#, #ano#, #item#, #nome#);
     </insert>
 
     <select id="getListQuestoes" resultClass="questao" parameterClass="utility" resultMap="questaoResult">

@@ -26,8 +26,8 @@ public class CmdListarQuestoesSimuladoById implements Comando {
         Long id = Long.parseLong(request.getParameter("id"));
         QuestaoService questaoService = new QuestaoService();
         Questao q = questaoService.getQuestaoById(id);
-        response.setContentLength(q.getArquivo().length);
-        response.getOutputStream().write(q.getArquivo());
+        //response.setContentLength(q.getArquivo().length);
+        //response.getOutputStream().write(q.getArquivo());
         return "/alu/listar_questoes_simulado.jsp";
     }
 }

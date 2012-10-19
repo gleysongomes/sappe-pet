@@ -26,14 +26,14 @@
             <div id="content_left">
                 <h1 class="titulo">Adicionar Questão</h1><br />
                
-                <form action="../ServletAdminAdicionarQuestao" method="POST" enctype="multipart/form-data">
+                <form action="../ServletAdminAdicionarQuestao" method="post" enctype="multipart/form-data">
                     <%@include file="../error.jsp" %>
                     <table border="0">
                         <tbody>
                             <tr>
                                 <td><label>Exame:</label></td>
                                 <td >
-                                    <select name="eid" style="width: 250px;">
+                                    <select name="exame_id" style="width: 250px;">
                                         <option value="0">Selecione</option>
                                         <option value="1">Poscomp</option>
                                         <option value="2">Enade</option>
@@ -43,7 +43,7 @@
                             <tr>
                                 <td><label>Área: </label></td>
                                 <td>
-                                    <select name="aid" style="width: 250px;">
+                                    <select name="area_id" style="width: 250px;">
                                         <option value="0">Selecione</option>
                                         <option value="1">Matemática</option>
                                         <option value="2">Fundamentos da Computação</option>

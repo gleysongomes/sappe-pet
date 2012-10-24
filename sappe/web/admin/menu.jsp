@@ -48,8 +48,10 @@
             </ul>
         </li>
         
+        <li>
+            <a href="../ServletCentral?comando=CmdAdminEditarPerfil" style="width: 110px;"> Editar Cadastro </a>
+        </li>
         
-
         <li>
             <a href="../ServletCentral?comando=CmdLogout" style="width: 110px;">Sair</a>
         </li>

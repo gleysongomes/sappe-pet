@@ -12,10 +12,12 @@ import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarArea;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAdicionarSupervisor;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminAtualizarQuestao;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminBuscarAluno;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminEditarPerfil;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminEditarQuestao;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirQuestao;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirSupervisor;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminExcluirTodasContasInativas;
+import br.ufc.si.pet.sappe.comandos.admin.CmdAdminSalvarCadastroEditado;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarAlunos;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarContasInativas;
 import br.ufc.si.pet.sappe.comandos.admin.CmdAdminVisualizarSupervisores;
@@ -220,7 +222,10 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdAdminVisualizarContasInativas", cmdo);
         cmdo = new CmdAdminExcluirTodasContasInativas();
         comandos.put("CmdAdminExcluirTodasContasInativas", cmdo);
-
+        cmdo = new CmdAdminEditarPerfil();
+        comandos.put("CmdAdminEditarPerfil", cmdo);
+        cmdo = new CmdAdminSalvarCadastroEditado();
+        comandos.put("CmdAdminSalvarCadastroEditado", cmdo);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 

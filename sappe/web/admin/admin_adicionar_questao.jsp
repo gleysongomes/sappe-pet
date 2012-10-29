@@ -26,7 +26,7 @@
             <div id="content_left">
                 <h1 class="titulo">Adicionar Questão</h1><br />
                
-                <form action="../ServletAdminAdicionarQuestao" method="post" enctype="multipart/form-data">
+                <form action="../ServletAdminAdicionarQuestao" method="POST" enctype="multipart/form-data">
                     <%@include file="../error.jsp" %>
                     <table border="0">
                         <tbody>

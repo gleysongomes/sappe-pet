@@ -10,6 +10,8 @@ import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.util.Upload;
 import br.ufc.si.pet.sappe.util.Util;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -21,6 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.catalina.core.ApplicationContext;
 import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -41,17 +44,21 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
             fu.setSizeMax(1000000);
             List fileItems = fu.parseRequest(request);
             Iterator itr = fileItems.iterator();
+            String diretorio = "C:/arquivos/poscomp/";
             while (itr.hasNext()) {
                 FileItem fi = (FileItem) itr.next();
                 String id = fi.getFieldName();
                 String valor = fi.getString();
-                if (id.equals("aid")) {
+
+
+
+                if (id.equals("area_id")) {
                     if (valor == null || valor.isEmpty()) {
                         session.setAttribute("erro", "Preencha todos os campos (*).");
                         return "/admin/admin_adicionar_questao.jsp";
                     }
                     aid = Integer.parseInt(valor);
-                } else if (id.equals("eid")) {
+                } else if (id.equals("exame_id")) {
                     if (valor == null || valor.isEmpty()) {
                         session.setAttribute("erro", "Preencha todos os campos (*).");
                         return "/admin/admin_adicionar_questao.jsp";
@@ -77,21 +84,31 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
                         questao.setArea_id(aid);
                         questao.setAno(ano);
                         questao.setItem(ic);
-                        questao.setNome(fi.getName());
-                        Upload upload = new Upload();
-                        upload.Enviar(request, response);
+
+                        
+                        questao.setNome(diretorio + fi.getName());
+                        //insere a questão no banco
                         questaoService.inserir(questao);
+                        //insere a img na pasta do projeto
+                       
+                        try {
+                        fi.write(new File(diretorio + fi.getName()));
+                       
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                       
                         fileItems.clear();
                         session.setAttribute("sucesso", "Cadastro realizado com sucesso.");
                         return "/admin/admin_adicionar_questao.jsp";
                     } catch (Exception ex) {
+                        ex.printStackTrace();
                         session.setAttribute("erro", ex.getMessage());
                         return "/admin/admin_adicionar_questao.jsp";
                     }
                 }
             }
-            session.setAttribute("erro", "Erro ao tentar cadastrar a questão.");
-            return "/admin/admin_adicionar_questao.jsp";
+
         } catch (NumberFormatException nfe) {
             session.setAttribute("erro", nfe.getMessage());
             return "/admin/admin_adicionar_questao.jsp";
@@ -105,6 +122,8 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
             session.setAttribute("erro", ex.getMessage());
             return "/admin/admin_adicionar_questao.jsp";
         }
+        session.setAttribute("erro", "Erro ao tentar cadastrar a questão.");
+        return "/admin/admin_adicionar_questao.jsp";
     }//fim do método
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

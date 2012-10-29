@@ -7,6 +7,9 @@ package br.ufc.si.pet.sappe.comandos.alu;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoService;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
@@ -25,8 +28,28 @@ public class CmdListarImagesById implements Comando {
         Long id = Long.parseLong(request.getParameter("id"));
         QuestaoService questaoService = new QuestaoService();
         Questao q = questaoService.getQuestaoById(id);
+        File originFile = new File(q.getNome());
+
+    if (!originFile.exists() ) {
+      return "";
+    }
+    try {
+      byte[] readData = new byte[1024];
+      FileInputStream fis = new FileInputStream(originFile);
+      int i = fis.read(readData);
+
+      while (i != -1) {
+         response.getOutputStream().write(readData);
+        i = fis.read(readData);
+      }
+      fis.close();
+
+    } catch (IOException e) {
+      System.out.println(e);
+    }
   //      response.setContentLength(q.getArquivo().length);
     //    response.getOutputStream().write(q.getArquivo());
         return "/alu/listar_questoes.jsp";
     }
 }
+

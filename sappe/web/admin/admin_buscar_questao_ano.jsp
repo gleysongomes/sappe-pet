@@ -7,7 +7,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 
 <%@page import="br.ufc.si.pet.sappe.util.Util"%>
@@ -36,10 +36,10 @@
             <div id="content_left" style="width: 900px; overflow:auto;height:430px; margin-top: 10px;" >
                 <h1 class="titulo"style="width: 875px;" >Buscar Questões por Ano</h1><br />
 
-                    <%@include file="../error.jsp" %>
-                    <form action="../ServletCentral">
-                        <input type="hidden" name="comando" value="CmdAdminVisualizarQuestoes" />
-                        <input type="hidden" name="id" value="9" />
+                <form action="../ServletCentral">
+                
+                    <input type="hidden" name="comando" value="CmdAdminVisualizarQuestoes" />
+                    <input type="hidden" name="id" value="9" />
                     <input type="hidden" name="ide" value="1" />
                     <input type="hidden" name="nQ" value="70" />
                     <input type="hidden" name="caminho" value="/alu/poscomp_padrao.jsp" />
@@ -55,8 +55,8 @@
                             <%}%>
                         </select>
                     </label>
-                        <input type="submit" value="buscar" name="buscar" class="button" />
-                    </form>
+                    <input type="submit" value="buscar" name="buscar" class="button" />
+                </form>
 
 
 

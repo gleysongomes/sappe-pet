@@ -240,6 +240,12 @@ public class Util {
         return null;
 
     }//fim do método
+
+
+    public static String getDiretorio(){
+        String diretorio = "C:/arquivos/poscomp/";
+        return  diretorio;
+    }
 }//fim da classe
 
 

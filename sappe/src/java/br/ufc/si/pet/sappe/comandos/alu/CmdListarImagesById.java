@@ -7,6 +7,7 @@ package br.ufc.si.pet.sappe.comandos.alu;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoService;
+import br.ufc.si.pet.sappe.util.Util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -28,7 +29,7 @@ public class CmdListarImagesById implements Comando {
         Long id = Long.parseLong(request.getParameter("id"));
         QuestaoService questaoService = new QuestaoService();
         Questao q = questaoService.getQuestaoById(id);
-        File originFile = new File(q.getNome());
+        File originFile = new File(Util.getDiretorio() + "/" + q.getExame_id() + "/" + q.getAno() + "/" + q.getNome());
 
     if (!originFile.exists() ) {
       return "";

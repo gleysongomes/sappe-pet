@@ -44,7 +44,6 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
             fu.setSizeMax(1000000);
             List fileItems = fu.parseRequest(request);
             Iterator itr = fileItems.iterator();
-            String diretorio = "C:/arquivos/poscomp/";
             while (itr.hasNext()) {
                 FileItem fi = (FileItem) itr.next();
                 String id = fi.getFieldName();
@@ -86,13 +85,13 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
                         questao.setItem(ic);
 
                         
-                        questao.setNome(diretorio + "/" + questao.getExame_id() + "/" + questao.getAno() + "/" + fi.getName());
+                        questao.setNome(fi.getName());
                         //insere a questão no banco
                         questaoService.inserir(questao);
                         //insere a img na pasta do projeto
                        
                         try {
-                        fi.write(new File(diretorio + fi.getName()));
+                        fi.write(new File(Util.getDiretorio() + "/" + questao.getExame_id()+ "/" + questao.getAno() + fi.getName()));
                        
                         } catch (Exception e) {
                             e.printStackTrace();

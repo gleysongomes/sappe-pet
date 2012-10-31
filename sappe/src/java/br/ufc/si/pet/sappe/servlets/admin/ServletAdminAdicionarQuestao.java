@@ -86,7 +86,7 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
                         questao.setItem(ic);
 
                         
-                        questao.setNome(diretorio + "/" + questao.getAno() + "/" + fi.getName());
+                        questao.setNome(diretorio + "/" + questao.getExame_id() + "/" + questao.getAno() + "/" + fi.getName());
                         //insere a questão no banco
                         questaoService.inserir(questao);
                         //insere a img na pasta do projeto

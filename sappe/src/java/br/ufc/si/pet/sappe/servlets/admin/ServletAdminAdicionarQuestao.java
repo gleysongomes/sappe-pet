@@ -91,7 +91,8 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
                         //insere a img na pasta do projeto
                        
                         try {
-                        fi.write(new File(Util.getDiretorio() + "/" + questao.getExame_id()+ "/" + questao.getAno() + fi.getName()));
+                         String exame = questao.getExame_id()==1?"poscomp":"enade";
+                        fi.write(new File(Util.getDiretorio() + "/" + exame + "/" + questao.getAno() + "/" + fi.getName()));
                        
                         } catch (Exception e) {
                             e.printStackTrace();

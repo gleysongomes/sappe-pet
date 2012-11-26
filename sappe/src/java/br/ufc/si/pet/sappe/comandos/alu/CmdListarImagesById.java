@@ -29,7 +29,8 @@ public class CmdListarImagesById implements Comando {
         Long id = Long.parseLong(request.getParameter("id"));
         QuestaoService questaoService = new QuestaoService();
         Questao q = questaoService.getQuestaoById(id);
-        File originFile = new File(Util.getDiretorio() + "/" + q.getExame_id() + "/" + q.getAno() + "/" + q.getNome());
+         String exame = q.getExame_id()==1?"poscomp":"enade";
+        File originFile = new File(Util.getDiretorio() + "/" + exame + "/" + q.getAno() + "/" + q.getNome());
 
     if (!originFile.exists() ) {
       return "";

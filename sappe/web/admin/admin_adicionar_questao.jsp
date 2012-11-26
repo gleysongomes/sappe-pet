@@ -74,7 +74,7 @@
                             </tr>
                             <tr>
                                 <td><label>Questão:</label></td>
-                                <td><input type="file" name="questao" value="Arquivo" size="14" /></td>
+                                <td><input type="file" name="questao" value="Arquivo" size="12" /></td>
                             </tr>
                             <tr>
                                 <td></td>

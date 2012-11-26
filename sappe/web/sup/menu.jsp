@@ -20,7 +20,7 @@
              <a href="../sup/sup_adicionar_simulado_restrito.jsp" style="width: 250px;">Adiconar Simulado Restrito</a>
         </li>
         <li>
-            <a href="../ServletCentral?comando=CmdSupervisorVisualizarSimulados">Visualizar Simulados</a>
+            <a href="../ServletCentral?comando=CmdSupervisorVisualizarSimulados" style="width: 225px;">Visualizar Simulados</a>
         </li>
         <li>
             <a href="../ServletCentral?comando=CmdLogout">Sair</a>

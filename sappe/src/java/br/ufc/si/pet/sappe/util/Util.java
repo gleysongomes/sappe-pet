@@ -243,7 +243,7 @@ public class Util {
 
 
     public static String getDiretorio(){
-        String diretorio = "C:/arquivos/poscomp/";
+        String diretorio = "C:/Users/mardson/Documents/NetBeansProjects/sappe/web/provas";
         return  diretorio;
     }
 }//fim da classe

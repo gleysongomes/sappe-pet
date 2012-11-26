@@ -38,8 +38,11 @@
                                 int itemIncr = 0;
                                 List<Questao> questoes = (List<Questao>) session.getAttribute("subListaDeQuestoes");
                                 for (Questao q : questoes) {
+                                    String exame = q.getExame_id()==1?"poscomp":"enade";
+                                    String path =  exame +"/"+q.getAno() +"/"+q.getNome();
+                                    System.out.println(path);
                     %>
-                    <label>Questão <%= itemIncr+1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= q.getId()%>" style="width: 80%; height: 70%" alt="images" />
+                    <label>Questão <%= itemIncr+1%>:<br /><img src="../provas/<%=path%>" style="width: 80%; height: 70%" alt="images" />
                     </label><br />
                     <table border="0">
                         <thead>

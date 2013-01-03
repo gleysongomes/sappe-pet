@@ -12,6 +12,7 @@ import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoSimuladoService;
 import br.ufc.si.pet.sappe.service.QuestaoUsuarioSimuladoService;
 import br.ufc.si.pet.sappe.service.SimuladoService;
+import br.ufc.si.pet.sappe.util.Horario;
 import br.ufc.si.pet.sappe.util.Util;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,24 +42,13 @@ public class CmdRealizarSimulado implements Comando {
         Perfil p = (Perfil) session.getAttribute("user");
         SimuladoService simuladoService = new SimuladoService();
         Simulado simulado = simuladoService.getSimuladoById(id);
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-        Format format = new SimpleDateFormat("dd/MM/yyyy");
         String data_ini = simulado.getData_ini();
+        String hora_ini = simulado.getHoraini();
         String data_fim = simulado.getData_fim();
-
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        GregorianCalendar gc = new GregorianCalendar();
-
-        Date inicio = formatador.parse(data_ini);
-        Date fim = formatador.parse(data_fim);
-        Date data_atual = gc.getTime();
-
-
-
-        Date horaini = sdf.parse(simulado.getHoraini());
-        Date horafim = sdf.parse(simulado.getHorafim());
-        Date horaAtual = sdf.parse(Util.getTime());
-        if (inicio.after(data_atual) && horaAtual.after(horaini) && horaAtual.before(horafim)) {
+        String hora_fim = simulado.getHorafim();
+        Horario h = new Horario();
+        boolean statusSimulado = h.verificar(data_ini,hora_ini,data_fim,hora_fim,new Date());
+        if (statusSimulado) {
             QuestaoSimuladoService questaoSimuladoService = new QuestaoSimuladoService();
             List<QuestaoSimulado> questaoSimulados = questaoSimuladoService.getListQuestaoSimuladoByIdSimulado(id);
             QuestaoUsuarioSimuladoService quss = new QuestaoUsuarioSimuladoService();

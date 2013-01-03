@@ -23,6 +23,7 @@
         <title>SAPPE - Simulador do Ambiente das Provas do POSCOMP e Enade</title>
     </head>
     <body>
+        <%@include file="../admin/redirect.jsp" %>
         <div id="content" >
             <div id="top" >
                 <img src="../images/sappe2.gif" width="910" height="76" alt="sappe2"/>

@@ -4,7 +4,7 @@
 
 <%
             Perfil perfil = (Perfil) session.getAttribute("user");
-            if ((perfil == null) || !(perfil instanceof Administrador)) {
+            if ((perfil == null) || !(perfil instanceof Supervisor)) {
                 response.sendRedirect("../index.jsp");
             }
 %>

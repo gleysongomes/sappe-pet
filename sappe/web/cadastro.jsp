@@ -25,7 +25,7 @@
                 <h1 class="titulo">Cadastro</h1><br />
 
                 <form name="addAluno" action="ServletCentral" method="POST">
-                    <input type="hidden" name="comando" value="CmdAdicionarAluno" />
+                    <input type="hidden" name="comando" value="CmdVerificarEmail" />
                     <%@include file="error.jsp" %>
                     <table border="0" >
                             <tbody>

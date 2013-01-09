@@ -38,6 +38,7 @@ import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProvaEditada;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarSimulado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSelecionarAnosProvas;
+import br.ufc.si.pet.sappe.comandos.alu.CmdVerificarEmail;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarProvas;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdVisualizarResultadoSimulado;
@@ -81,11 +82,11 @@ public class ServletCentral extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String cmd = request.getParameter("comando");
-        System.out.println("Cmd:" + cmd);
+            System.out.println("Cmd:" + cmd);
         Comando comando = (Comando) comandos.get(cmd);
         Perfil perfil = (Perfil) request.getSession().getAttribute("user");
         String statusConexao = (perfil == null || perfil.getId() == null)
-                ? ("Não logado.") : ("" + perfil.getId());
+                    ? ("Não logado.") : ("" + perfil.getId());
         try {
             String tela = comando.executa(request, response);
             if (tela != null && !tela.trim().equals("")) {
@@ -172,6 +173,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdVisualizarResultadoSimulado", cmdo);
         cmdo = new CmdSelecionarAnosProvas();
         comandos.put("CmdSelecionarAnosProvas", cmdo);
+        cmdo = new CmdVerificarEmail();
+        comandos.put("CmdVerificarEmail", cmdo);
 
         //Supervisor
         cmdo = new CmdSupervisorAdicionarSimuladoRestrito();

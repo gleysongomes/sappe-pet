@@ -41,7 +41,7 @@
                                 List<QuestaoUsuarioSimulado> quses = (List<QuestaoUsuarioSimulado>) session.getAttribute("quses");
                                 for (QuestaoSimulado qs : questoes) {
                     %>
-                    <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarImagesById&id=<%= qs.getQuestao_id()%>" style="width: 80%; height: 70%" alt="images"/>
+                    <label>Questão <%= itemIncr + 1%>:<br /><img src="../ServletCentral?comando=CmdListarQuestoesSimuladoById&id=<%=qs.getQuestao_id()%>" style="width: 80%; height: 70%" alt="images"/>
                     </label><br />
                     <table border="0">
                         <thead>

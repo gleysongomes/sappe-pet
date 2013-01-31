@@ -32,6 +32,7 @@ import br.ufc.si.pet.sappe.comandos.alu.CmdGerarPdfProva;
 import br.ufc.si.pet.sappe.comandos.alu.CmdGerarRelatorio;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarImagesById;
 import br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoesExamePadrao;
+import br.ufc.si.pet.sappe.comandos.alu.CmdListarQuestoesSimuladoById;
 import br.ufc.si.pet.sappe.comandos.alu.CmdRealizarSimulado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarCadastroEditado;
 import br.ufc.si.pet.sappe.comandos.alu.CmdSalvarProva;
@@ -175,6 +176,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdSelecionarAnosProvas", cmdo);
         cmdo = new CmdVerificarEmail();
         comandos.put("CmdVerificarEmail", cmdo);
+        cmdo = new CmdListarQuestoesSimuladoById();
+        comandos.put("CmdListarQuestoesSimuladoById", cmdo);
 
         //Supervisor
         cmdo = new CmdSupervisorAdicionarSimuladoRestrito();

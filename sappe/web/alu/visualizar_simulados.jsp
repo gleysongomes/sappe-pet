@@ -26,7 +26,7 @@
             <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Simulados</h1><br /><br /><br />
                 <%@include file="../error.jsp" %>
-                <table border="1px" style="margin-left: 0px; width: 99%">
+                <table border="1px" style="margin-left: 0px; width: 98%">
                     <thead>
                         <tr>
                             <th >Nome</th>
@@ -61,7 +61,7 @@
                             <td>
                                 <%= s.getHorafim()%>
                             </td>
-                            <td><a href="../ServletCentral?comando=CmdRealizarSimulado&id=<%= s.getId()%>">Realizar Simulado</a>/<a href="../ServletCentral?comando=CmdVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a></td>
+                            <td><a href="../ServletCentral?comando=CmdRealizarSimulado&id=<%=s.getId()%>">Realizar Simulado</a>/<a href="../ServletCentral?comando=CmdVisualizarResultadoSimulado&id=<%= s.getId()%>">Visualizar Resultado</a></td>
                         </tr>
                         <%}%>
                     </tbody>

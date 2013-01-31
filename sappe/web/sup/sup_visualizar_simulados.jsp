@@ -27,7 +27,7 @@
             <div id="content_left" style="width: 900px; overflow:auto;height:440px;">
                 <h1 class="titulo">Visualizar Simulados</h1><br/>
                 <%@include file="../error.jsp" %>
-                <table style="margin-left: 170px;" border="1px">
+                <table style="margin-left: 80px;" border="1px">
                     <thead>
                         <tr>
                             <th class="tabela">Nome</th>

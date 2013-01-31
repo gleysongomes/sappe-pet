@@ -5,10 +5,12 @@
 package br.ufc.si.pet.sappe.comandos.alu;
 
 import br.ufc.si.pet.sappe.entidades.Perfil;
+import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.QuestaoSimulado;
 import br.ufc.si.pet.sappe.entidades.QuestaoUsuarioSimulado;
 import br.ufc.si.pet.sappe.entidades.Simulado;
 import br.ufc.si.pet.sappe.interfaces.Comando;
+import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.service.QuestaoSimuladoService;
 import br.ufc.si.pet.sappe.service.QuestaoUsuarioSimuladoService;
 import br.ufc.si.pet.sappe.service.SimuladoService;
@@ -21,7 +23,9 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -57,14 +61,30 @@ public class CmdRealizarSimulado implements Comando {
             qus.setUsuario_id(p.getUsuario().getId());
             List<QuestaoUsuarioSimulado> quses = quss.getQuestoesUsuarioSimuladoByIdUsuarioESimulado(qus);
             DateTime hi = new DateTime();
+
+
+            QuestaoService qs = new QuestaoService();
+
+
+             Map<Long, Questao> mapQuestoesSimulado = new HashMap<Long, Questao>();
+
+        for(QuestaoSimulado elem: questaoSimulados){
+            Questao temp = qs.getQuestaoById(elem.getQuestao_id());
+            mapQuestoesSimulado.put(temp.getId(), temp);
+        }
+
+
+
             session.setAttribute("simulado", simulado);
             session.setAttribute("hi", hi);
             session.setAttribute("questaoSimulados", questaoSimulados);
+            session.setAttribute("MapQuestaoSimulados", mapQuestoesSimulado);
+
             //if(quses.size()==0)return "/index.jsp";
             session.setAttribute("quses", quses);
             return "/alu/listar_questoes_simulado.jsp";
         } else {
-            session.setAttribute("erro", "Sem permissão para realizar este simulado, verifique os horários corretamente.");
+ session.setAttribute("erro", "Sem permissão para realizar este simulado, verifique os horários corretamente.");
             return "/alu/visualizar_simulados.jsp";
         }
     }

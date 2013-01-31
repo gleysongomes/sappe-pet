@@ -20,12 +20,12 @@
         <result property="ano" column="ano"/>
         <result property="nome" column="nome"/>
         <result property="item" column="item"/>
-       
+        <result property="arquivo" column="arquivo"/>
     </resultMap>
 
     <insert id="addQuestao" parameterClass="questao">
-        INSERT INTO sappe.questao(exame_id,area_id,ano,item,nome)
-        VALUES (#exame_id#, #area_id#, #ano#, #item#, #nome#);
+        INSERT INTO sappe.questao(exame_id,area_id,ano,item,nome,arquivo)
+        VALUES (#exame_id#, #area_id#, #ano#, #item#, #nome#, #arquivo#);
     </insert>
 
     <select id="getListQuestoes" resultClass="questao" parameterClass="utility" resultMap="questaoResult">
@@ -70,10 +70,31 @@
         WHERE ano = #var# ORDER BY id;
     </select>
 
-    <select id="getAllQuestoes" resultClass="questao"  resultMap="questaoResult">
-        SELECT *
-        FROM sappe.questao ORDER BY id;
+    <resultMap id="questaoResultAno" class="java.lang.String">
+        <result property="ano" column="ano"/>
+    </resultMap>
+
+    <select id="getAllAnoQuestoes" resultClass="java.util.List"  resultMap="questaoResultAno">
+        SELECT DISTINCT ano
+        FROM sappe.questao;
     </select>
+
+
+ <resultMap id="questaoAnoExame" class="questao">
+        <result property="id" column="id"/>
+        <result property="exame_id" column="exame_id"/>
+        <result property="area_id" column="area_id"/>
+        <result property="ano" column="ano"/>
+        <result property="nome" column="nome"/>
+        <result property="item" column="item"/>
+    </resultMap>
+
+     <select id="listaQuestoesPeloAnoEPeloExame" resultClass="questao" parameterClass="utility" resultMap="questaoAnoExame">
+        SELECT exame_id,area_id,ano,item,nome
+        FROM sappe.questao WHERE ano=#ano# AND exame_id=#ide#;
+    </select>
+
+    
 
     <delete id="deleteQuestao" parameterClass="long">
         DELETE FROM sappe.questao

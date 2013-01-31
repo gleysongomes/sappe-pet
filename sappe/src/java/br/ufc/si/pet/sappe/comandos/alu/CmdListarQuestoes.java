@@ -13,9 +13,11 @@ import br.ufc.si.pet.sappe.service.TipoService;
 import br.ufc.si.pet.sappe.service.QuestaoService;
 import br.ufc.si.pet.sappe.util.Msg;
 import java.sql.SQLException;
+import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.joda.time.DateTime;
 
@@ -42,6 +44,14 @@ public class CmdListarQuestoes implements Comando {
         utility.setQtdq(nq);
         utility.setIde(ide);
         List<Questao> subListaDeQuestoes = qS.getListQuestoesByArea(utility);
+
+        Map<Long, Questao> mapQuestoes = new HashMap<Long, Questao>();
+
+        for(Questao elem: subListaDeQuestoes){
+            mapQuestoes.put(elem.getId(), elem);
+        }
+
+
         if (nq == 0) {
             return Mensagens(request, caminho, "Selecione uma opção.");
         } else if (subListaDeQuestoes.size() == 0) {
@@ -51,6 +61,7 @@ public class CmdListarQuestoes implements Comando {
         } else {
             hS.removeAttribute("provaSalva");
             hS.setAttribute("subListaDeQuestoes", subListaDeQuestoes);
+            hS.setAttribute("MapaQuestoes", mapQuestoes);
             hS.setAttribute("hI", hI);
             TipoService aS = new TipoService();
             Tipo t = aS.getTipoById(id);

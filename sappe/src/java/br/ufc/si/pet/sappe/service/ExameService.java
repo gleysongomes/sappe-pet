@@ -7,6 +7,7 @@ package br.ufc.si.pet.sappe.service;
 import br.ufc.si.pet.sappe.dao.ExameDAO;
 import br.ufc.si.pet.sappe.entidades.Exame;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,6 +30,16 @@ public class ExameService {
         try {
             Exame e = exameDAO.getExameById(id);
             return e;
+        } catch (SQLException ex) {
+            Logger.getLogger(ExameService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+
+     public List<Exame> listarTodosExames() {
+        try {
+            return exameDAO.listarTodosExames();
         } catch (SQLException ex) {
             Logger.getLogger(ExameService.class.getName()).log(Level.SEVERE, null, ex);
         }

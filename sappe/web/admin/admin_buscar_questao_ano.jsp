@@ -37,11 +37,12 @@
             <div id="content_left" style="width: 900px; overflow:auto;height:430px; margin-top: 10px;" >
                 <h1 class="titulo"style="width: 875px;" >Buscar Questões por Ano</h1><br />
 
-                <form action="../ServletCentral">
                 
-                    <input type="hidden" name="comando" value="CmdAdminVisualizarQuestoes" />
-                    <input type="hidden" name="id" value="9" />
-                    <input type="hidden" name="ide" value="1" />
+                
+                    <form action="../ServletCentral">
+                        
+                        <input type="hidden" name="comando" value="CmdAdminVisualizarQuestoes" />
+                        <input type="hidden" name="id" value="9" />
                     <input type="hidden" name="nQ" value="70" />
                     <input type="hidden" name="caminho" value="/alu/poscomp_padrao.jsp" />
                     <%@include file="../error.jsp" %>
@@ -49,15 +50,31 @@
                             <option value="0">Selecione</option>
                             <%
                                         QuestaoService qs = new QuestaoService();
-                                        List<Questao> questoes = qs.visualizarTodasQuestoes();
-                                        for (Questao q : questoes) {
+                                        List<String> anos = qs.visualizarAnoQuestoes();
+                                        if(anos != null){
+                                        for (String e : anos) {
                             %>
-                            <option value="<%= q.getAno()%>"><%= q.getAno()%></option>
-                            <%}%>
+                            <option value="<%= e%>"><%= e%></option>
+                            <%}
+                              }%>
                         </select>
                     </label>
-                    <input type="submit" value="buscar" name="buscar" class="button" />
-                </form>
+
+                         <label style="font: caption; font-size: 15px;">Selecione o Tipo de Exame:<select name="ide">
+                            <option value="0">Selecione</option>
+                            <%
+                                        ExameService es = new ExameService();
+                                        List<Exame> exames = es.listarTodosExames();
+                                        if(exames != null){
+                                        for (Exame e : exames) {
+                            %>
+                            <option value="<%= e.getId()%>"><%= e.getNome()%></option>
+                            <%}
+                              }%>
+                        </select>
+                    </label>
+                        <input type="submit" value="buscar" name="buscar" class="button" />
+                    </form>
 
 
 

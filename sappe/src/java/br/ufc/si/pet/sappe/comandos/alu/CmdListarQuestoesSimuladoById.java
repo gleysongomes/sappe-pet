@@ -13,9 +13,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileUploadException;
 
 /**
@@ -25,33 +28,39 @@ import org.apache.commons.fileupload.FileUploadException;
 public class CmdListarQuestoesSimuladoById implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
-        response.setContentType("image/png");
-        Long id = Long.parseLong(request.getParameter("id"));
-        QuestaoService questaoService = new QuestaoService();
-        Questao q = questaoService.getQuestaoById(id);
+      response.setContentType("image/png");
+        HttpSession hs = request.getSession();
 
-           File originFile = new File(Util.getDiretorio() + "/" + q.getExame_id() + "/" + q.getAno() + "/" + q.getNome());
+        try{
 
-    if (!originFile.exists() ) {
-      return "";
+        String id = request.getParameter("id");
+
+            if(id == null || id.trim().isEmpty()){
+                hs.setAttribute("erro", "id não encontrado");
+                 return "/alu/listar_questoes_simulado.jsp";
+            }else{
+             System.out.println(id);
+                Long temp = Long.parseLong(id);
+                Map<Long, Questao> map = new HashMap<Long, Questao>();
+                   map = (Map<Long, Questao>) hs.getAttribute("MapQuestaoSimulados");
+
+                if(map  == null){
+                     hs.setAttribute("erro", "id não encontrado");
+                      return "/alu/listar_questoes_simulado.jsp";
+                }else{
+                    Questao questao = new Questao();
+                    questao = map.get(temp);
+
+                    response.setContentLength(questao.getArquivo().length);
+                    response.getOutputStream().write(questao.getArquivo());
+                     return "/alu/listar_questoes_simulado.jsp";
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+             return "/alu/listar_questoes_simulado.jsp";
+        }
     }
-    try {
-      byte[] readData = new byte[1024];
-      FileInputStream fis = new FileInputStream(originFile);
-      int i = fis.read(readData);
-
-      while (i != -1) {
-         response.getOutputStream().write(readData);
-        i = fis.read(readData);
-      }
-      fis.close();
-
-    } catch (IOException e) {
-      System.out.println(e);
-    }
-
-        //response.setContentLength(q.getArquivo().length);
-        //response.getOutputStream().write(q.getArquivo());
-        return "/alu/listar_questoes_simulado.jsp";
-    }
+       
+    
 }

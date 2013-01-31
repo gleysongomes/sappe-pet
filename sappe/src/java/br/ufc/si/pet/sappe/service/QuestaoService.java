@@ -9,6 +9,7 @@ import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.Utility;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -67,9 +68,20 @@ public class QuestaoService {
         }
     }//fim do método
 
-    public ArrayList<Questao> visualizarTodasQuestoes() {
+
+    public ArrayList<Questao> listaQuestoesPeloAnoEPeloExame(Utility utility) {
         try {
-            ArrayList<Questao> questaos = questaoDAO.getAllListQuestoes();
+            ArrayList<Questao> questaos = questaoDAO.listaQuestoesPeloAnoEPeloExame(utility);
+            return questaos;
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }//fim do método
+
+    public List<String> visualizarAnoQuestoes() {
+        try {
+            List<String> questaos = questaoDAO.getAllListAnoQuestoes();
             return questaos;
         } catch (SQLException ex) {
             Logger.getLogger(QuestaoService.class.getName()).log(Level.SEVERE, null, ex);

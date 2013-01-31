@@ -18,7 +18,7 @@
             <a href="../admin/admin_adicionar_questao.jsp" style="width: 170px;">Adiconar Questão</a>
         </li>
          <li>
-             <a href="../admin/admin_buscar_questao_ano.jsp" style="width: 170px;">Buscar Questões por Ano</a>
+             <a href="../admin/admin_buscar_questao_ano.jsp" style="width: 170px;">Buscar Questões</a>
         </li>
             </ul>
         </li>
@@ -49,7 +49,7 @@
         </li>
         
         <li>
-            <a href="../ServletCentral?comando=CmdAdminEditarPerfil" style="width: 110px;"> Editar Cadastro </a>
+            <a href="../ServletCentral?comando=CmdAdminEditarPerfil" style="width: 110px;"> Editar</a>
         </li>
         
         <li>

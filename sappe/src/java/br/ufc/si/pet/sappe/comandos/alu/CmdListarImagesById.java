@@ -7,15 +7,15 @@ package br.ufc.si.pet.sappe.comandos.alu;
 import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.interfaces.Comando;
 import br.ufc.si.pet.sappe.service.QuestaoService;
-import br.ufc.si.pet.sappe.util.Util;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileUploadException;
 
 /**
@@ -26,32 +26,36 @@ public class CmdListarImagesById implements Comando {
 
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, FileUploadException, Exception {
         response.setContentType("image/png");
-        Long id = Long.parseLong(request.getParameter("id"));
-        QuestaoService questaoService = new QuestaoService();
-        Questao q = questaoService.getQuestaoById(id);
-         String exame = q.getExame_id()==1?"poscomp":"enade";
-        File originFile = new File(Util.getDiretorio() + "/" + exame + "/" + q.getAno() + "/" + q.getNome());
+        HttpSession hs = request.getSession();
 
-    if (!originFile.exists() ) {
-      return "";
-    }
-    try {
-      byte[] readData = new byte[1024];
-      FileInputStream fis = new FileInputStream(originFile);
-      int i = fis.read(readData);
+        try{
 
-      while (i != -1) {
-         response.getOutputStream().write(readData);
-        i = fis.read(readData);
-      }
-      fis.close();
+        String id = request.getParameter("id");
+        
+            if(id == null || id.trim().isEmpty()){
+                hs.setAttribute("erro", "id não encontrado");
+                return "/alu/listar_questoes.jsp";
+            }else{
+             System.out.println(id);
+                Long temp = Long.parseLong(id);
+                Map<Long, Questao> map = new HashMap<Long, Questao>();
+                   map = (Map<Long, Questao>) hs.getAttribute("MapaQuestoes");
 
-    } catch (IOException e) {
-      System.out.println(e);
-    }
-  //      response.setContentLength(q.getArquivo().length);
-    //    response.getOutputStream().write(q.getArquivo());
-        return "/alu/listar_questoes.jsp";
+                if(map  == null){
+                     hs.setAttribute("erro", "id não encontrado");
+                     return "/alu/listar_questoes.jsp";
+                }else{
+                    Questao questao = new Questao();
+                    questao = map.get(temp);
+                    
+                    response.setContentLength(questao.getArquivo().length);
+                    response.getOutputStream().write(questao.getArquivo());
+                    return "/alu/listar_questoes.jsp";
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return "/alu/listar_questoes.jsp";
+        }
     }
 }
-

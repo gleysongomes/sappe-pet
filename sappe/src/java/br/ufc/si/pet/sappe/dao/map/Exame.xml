@@ -24,4 +24,9 @@
         WHERE id = #var#;
     </select>
 
+    <select id="listarTodosExames" resultClass="exame" resultMap="exameResult">
+        SELECT *
+        FROM sappe.exame;
+    </select>
+
 </sqlMap>

@@ -9,6 +9,7 @@ import br.ufc.si.pet.sappe.entidades.Questao;
 import br.ufc.si.pet.sappe.entidades.Utility;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -48,8 +49,12 @@ public class QuestaoDAO {
         return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getQuestoesByAnoExame", ano);
     }//fim do método
 
-    public ArrayList<Questao> getAllListQuestoes() throws SQLException {
-        return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("getAllQuestoes");
+     public ArrayList<Questao> listaQuestoesPeloAnoEPeloExame(Utility utility) throws SQLException {
+        return (ArrayList<Questao>) PostGresMapConfig.getSqlMapClient().queryForList("listaQuestoesPeloAnoEPeloExame", utility);
+    }//fim do método
+
+    public List<String> getAllListAnoQuestoes() throws SQLException {
+        return (List<String>) PostGresMapConfig.getSqlMapClient().queryForList("getAllAnoQuestoes");
     }//fim do método
 
     public boolean deleteQuestao(long id) {

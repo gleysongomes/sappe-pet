@@ -71,10 +71,10 @@ public class SendMail {
         SimpleEmail email = new SimpleEmail();
         email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
         email.addTo(to, "Usuário"); //destinatário
-        email.setFrom("petufc.quixada@gmail.com", "pet"); // remetente
+        email.setFrom("sistema.sappe@gmail.com", "pet"); // remetente
         email.setSubject(subject); // assunto do e-mail
         email.setMsg(Mensagem); //conteudo do e-mail
-        email.setAuthentication("petufc.quixada@gmail.com", "ufcquixada");
+        email.setAuthentication("sistema.sappe@gmail.com", "castelo.sappe");
         email.setSmtpPort(465);
         email.setSSL(true);
         email.setTLS(true);
@@ -97,13 +97,13 @@ public class SendMail {
 
         email.addTo(to, to); //destinatário
 
-        email.setFrom("petufc.quixada@gmail.com", "sappe"); // remetente</div>
+        email.setFrom("sistema.sappe@gmail.com", "sappe"); // remetente</div>
 
         email.setSubject(subject); // assunto do e-mail
 
 //email.setMsg(Mensagem); //conteudo do e-mail
 
-        email.setAuthentication("petufc.quixada@gmail.com", "ufcquixada");
+        email.setAuthentication("sistema.sappe@gmail.com", "castelo.sappe");
 
         email.setSmtpPort(465);
 
@@ -119,7 +119,7 @@ public class SendMail {
 
     public static void sendMail(String to, String subject, String Mensagem)
             throws AddressException, MessagingException, EmailException, MalformedURLException {
-        SendMail.sendMail("smtp.gmail.com", "petufc.quixada@gmail.com", to, subject, Mensagem);
+        SendMail.sendMail("smtp.gmail.com", "sistema.sappe@gmail.com", to, subject, Mensagem);
 
     }
 

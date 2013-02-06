@@ -59,44 +59,48 @@ public class CmdSupervisorAdicionarSimulado implements Comando {
                 QuestaoService qS = new QuestaoService();
                 List<Questao> subListaDeQuestoes = qS.getListQuestoesByExame(utility);
                 QuestaoSimuladoService questaoSimuladoService = new QuestaoSimuladoService();
-                if (nq <= subListaDeQuestoes.size()) {
-                    Simulado simulado = new Simulado();
-                    simulado.setNome(nome);
-                    simulado.setData_fim(data_fim);
-                    simulado.setData_ini(data_ini);
-                    simulado.setHoraini(hi);
-                    simulado.setHorafim(ht);
-                    simulado.setNum_questao(nq);
-                    simulado.setExame_id(eid);
-                    SimuladoService simuladoService = new SimuladoService();
-                    simuladoService.inserir(simulado);
-                    for (Questao q : subListaDeQuestoes) {
-                        QuestaoSimulado questaoSimulado = new QuestaoSimulado();
-                        questaoSimulado.setSimulado_id(simuladoService.proxId());
-                        questaoSimulado.setQuestao_id(q.getId());
-                        questaoSimuladoService.inserir(questaoSimulado);
-                    }
-                    UsuarioService us = new UsuarioService();
-                    UsuarioSimuladoService uss = new UsuarioSimuladoService();
-                    List<Usuario> usuarios = us.getAllUsuariosAlunos();
-                    for (Usuario u : usuarios) {
-                        try {
-                            UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
-                            usuarioSimulado.setSimulado_id(simuladoService.proxId());
-                            usuarioSimulado.setUsuario_id(u.getId());
-                            uss.insertUsuarioSimulado(usuarioSimulado);
-                            SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
-                                    + "um simulado foi adicionado ao sistema.<br /><br />"
-                                    + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp" + ">Realizar Simulado</a>");
-                        } catch (AddressException ex) {
-                            Logger.getLogger(CmdSupervisorAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (MessagingException ex) {
-                            Logger.getLogger(CmdSupervisorAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
+                if (subListaDeQuestoes != null) {
+                    if (nq <= subListaDeQuestoes.size()) {
+                        Simulado simulado = new Simulado();
+                        simulado.setNome(nome);
+                        simulado.setData_fim(data_fim);
+                        simulado.setData_ini(data_ini);
+                        simulado.setHoraini(hi);
+                        simulado.setHorafim(ht);
+                        simulado.setNum_questao(nq);
+                        simulado.setExame_id(eid);
+                        SimuladoService simuladoService = new SimuladoService();
+                        simuladoService.inserir(simulado);
+                        for (Questao q : subListaDeQuestoes) {
+                            QuestaoSimulado questaoSimulado = new QuestaoSimulado();
+                            questaoSimulado.setSimulado_id(simuladoService.proxId());
+                            questaoSimulado.setQuestao_id(q.getId());
+                            questaoSimuladoService.inserir(questaoSimulado);
                         }
+                        UsuarioService us = new UsuarioService();
+                        UsuarioSimuladoService uss = new UsuarioSimuladoService();
+                        List<Usuario> usuarios = us.getAllUsuariosAlunos();
+                        for (Usuario u : usuarios) {
+                            try {
+                                UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
+                                usuarioSimulado.setSimulado_id(simuladoService.proxId());
+                                usuarioSimulado.setUsuario_id(u.getId());
+                                uss.insertUsuarioSimulado(usuarioSimulado);
+                                SendMail.sendMail(u.getEmail(), "Realizar Simulado.", "Oi " + u.getNome() + ", <br />"
+                                        + "um simulado foi adicionado ao sistema.<br /><br />"
+                                        + "<a href=" + Util.getUrl(request) + "/sappe/index.jsp" + ">Realizar Simulado</a>");
+                            } catch (AddressException ex) {
+                                Logger.getLogger(CmdSupervisorAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (MessagingException ex) {
+                                Logger.getLogger(CmdSupervisorAdicionarSimulado.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                        session.setAttribute("sucesso", "Simulado cadastrado com sucesso.");
+                    } else {
+                        session.setAttribute("erro", "No momento temos apenas " + subListaDeQuestoes.size() + " questões disponíveis para este exame.");
                     }
-                    session.setAttribute("sucesso", "Simulado cadastrado com sucesso.");
                 } else {
-                    session.setAttribute("erro", "No momento temos apenas " + subListaDeQuestoes.size() + " questões disponíveis para este exame.");
+                    session.setAttribute("erro", "No momento não temos questões cadastradas para este exame.");
                 }
             }
         } catch (SqlMapException e) {

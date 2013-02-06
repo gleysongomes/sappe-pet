@@ -83,19 +83,21 @@ public class ServletAdminAdicionarQuestao extends HttpServlet implements Comando
                         questao.setAno(ano);
                         questao.setItem(ic);
 
-                        
+                        //add file a questão.
+                        questao.setArquivo(fi.get());
+
                         questao.setNome(fi.getName());
                         //insere a questão no banco
                         questaoService.inserir(questao);
                         //insere a img na pasta do projeto
                        
-                        try {
+                        /*try {
                          String exame = questao.getExame_id()==1?"poscomp":"enade";
                         fi.write(new File(Util.getDiretorio() + "/" + exame + "/" + questao.getAno() + "/" + fi.getName()));
                        
                         } catch (Exception e) {
                             e.printStackTrace();
-                        }
+                        }*/
                        
                         fileItems.clear();
                         session.setAttribute("sucesso", "Cadastro realizado com sucesso.");

@@ -214,8 +214,11 @@ public class Util {
 
       //  Format format = new SimpleDateFormat("dd/MM/yyyy");
         //String dataAtual = format.format(new Date());
-        System.out.println(criptografar("a"));
-        System.out.println(criptografar("DMF1ucDxtqgxw5niaXcmYQ=="));
+      //  System.out.println(criptografar("a"));
+       // System.out.println(criptografar("DMF1ucDxtqgxw5niaXcmYQ=="));
+
+         System.out.println(comparar("21/02/2013", "22/02/2013", "08:00:00", "23:59:00"));
+
     }
 
     public static String getUrl(HttpServletRequest req) {
@@ -246,6 +249,91 @@ public class Util {
         String diretorio = "C:/Users/mardson/Documents/NetBeansProjects/sappe/web/provas";
         return  diretorio;
     }
+
+
+
+    public static boolean comparar(String data_inicial,String data_final, String hora_inicial,String hora_final){
+        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+
+        
+        try{
+
+         long temp = System.currentTimeMillis();
+         Date data_atual = new Date(temp);
+         SimpleDateFormat f2 = new SimpleDateFormat("dd/MM/yyyy");
+         
+         Date d3 = f2.parse(data_inicial);
+         Date d4 = f2.parse(data_final);
+
+        System.out.println(data_atual);
+        System.out.println(d3);
+        System.out.println(d4);
+
+
+         //comparando o dia,mês e ano
+         if((data_atual.getTime() >= d3.getTime()) &&  (data_atual.getTime() < d4.getTime())){ //se está no intervalo
+            Date d1 = formatter.parse(hora_inicial);
+            Date d2 = formatter.parse(hora_final);
+
+            String hha = "" + data_atual.getHours();
+            String mma = "" + data_atual.getMinutes();
+            String ssa = "" + data_atual.getSeconds();
+
+            
+            data_atual.setHours(Integer.parseInt(hha));
+            data_atual.setMinutes(Integer.parseInt(mma));
+            data_atual.setSeconds(Integer.parseInt(ssa));
+
+            //verifica as horas, minutos e segundos
+            if(data_atual.getHours() >= d1.getHours() && data_atual.getHours() <= d2.getHours()){
+                if(data_atual.getMinutes() >= d1.getMinutes() && data_atual.getSeconds() >= d1.getSeconds())
+                    if(data_atual.getMinutes() <= d2.getMinutes())
+                    return true;
+                return false;
+            }else if(data_atual.getHours() == d2.getHours()){
+                if(data_atual.getMinutes() <= d2.getMinutes() && data_atual.getSeconds() <= d2.getSeconds())
+                   return true;
+            }else{
+                return false;
+            }
+         }else if(data_atual.compareTo(d4) == 1){
+            Date d1 = formatter.parse(hora_inicial);
+            Date d2 = formatter.parse(hora_final);
+
+            String hha = "" + data_atual.getHours();
+            String mma = "" + data_atual.getMinutes();
+            String ssa = "" + data_atual.getSeconds();
+
+
+            data_atual.setHours(Integer.parseInt(hha));
+            data_atual.setMinutes(Integer.parseInt(mma));
+            data_atual.setSeconds(Integer.parseInt(ssa));
+
+            //verifica as horas, minutos e segundos
+            if(data_atual.getHours() >= d1.getHours() && data_atual.getHours() <= d2.getHours()){
+                if(data_atual.getMinutes() >= d1.getMinutes() && data_atual.getSeconds() >= d1.getSeconds())
+                    if(data_atual.getMinutes() <= d2.getMinutes())
+                       return true;
+                return false;
+            }else if(data_atual.getHours() == d2.getHours()){
+                if(data_atual.getMinutes() <= d2.getMinutes() && data_atual.getSeconds() <= d2.getSeconds())
+                   return true;
+            }else{
+                return false;
+            }
+         }else{
+             System.out.println(1);
+            return false;
+         }      
+          
+      }
+      catch(Exception e){
+         System.out.println(e);
+      }
+
+        return false;
+
+    }//fim do método
 }//fim da classe
 
 

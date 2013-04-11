@@ -4,7 +4,7 @@
     Author     : gleyson
 --%>
 
-<%@page import="br.ufc.si.pet.sappe.entidades.Aluno"%>
+<%@page import="br.ufc.si.pet.sappe.entidades.*"%>
 <%@page import="br.ufc.si.pet.sappe.entidades.Perfil"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,11 +12,11 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <%
             Perfil perfil = (Perfil) session.getAttribute("user");
-            if (!(perfil instanceof Aluno)) {
+            if (perfil != null && !(perfil instanceof Aluno)) {
                 response.sendRedirect("../index.jsp");
             }
 
-            Aluno alu = (Aluno) session.getAttribute("user");
+         //   Aluno alu = (Aluno) session.getAttribute("user");
 %>
 <html>
     <head>
@@ -32,7 +32,7 @@
             <%@include file="../alu/menu.jsp" %>
 
             <div id="content_left">
-                <h1 class="titulo">Bem-vindo: <%= alu.getUsuario().getNome()%></h1><br /><br /><br />
+                <h1 class="titulo">Bem-vindo: <%= perfil.getUsuario().getNome()%></h1><br /><br /><br />
                 <div id="bh"></div>
             </div>
                 <div id="content_right"></div>

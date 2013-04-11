@@ -50,9 +50,16 @@ public class CmdRealizarSimulado implements Comando {
         String hora_ini = simulado.getHoraini();
         String data_fim = simulado.getData_fim();
         String hora_fim = simulado.getHorafim();
+
+
+        
+
+
         Horario h = new Horario();
-        boolean statusSimulado = h.verificar(data_ini,hora_ini,data_fim,hora_fim,new Date());
-        if (statusSimulado) {
+        //boolean statusSimulado = h.verificar(data_ini,hora_ini,data_fim,hora_fim,new Date());
+        boolean statusSimulado = Util.comparar(data_ini, data_fim, hora_ini, hora_fim);
+
+        if (statusSimulado == true) {
             QuestaoSimuladoService questaoSimuladoService = new QuestaoSimuladoService();
             List<QuestaoSimulado> questaoSimulados = questaoSimuladoService.getListQuestaoSimuladoByIdSimulado(id);
             QuestaoUsuarioSimuladoService quss = new QuestaoUsuarioSimuladoService();

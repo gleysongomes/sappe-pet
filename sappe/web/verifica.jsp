@@ -26,7 +26,7 @@
                 <form action="ServletCentral" method="POST">
                     <input type="hidden" name="comando" value="CmdAdicionarAluno" />
                     <%@include file="error.jsp" %>
-                    <label>Código de verificação que enviamos para o seu email:</label><br><br>
+                    <label>Digite o Código de verificação que enviamos para o seu email:</label><br><br>
                     <input type="text" name="codigo"  style="width: 360px"/><br><br>
                     <input type="submit" value="Enviar"  class="button">
                     <input type="button" value="Voltar" onclick="history.back(); return false;" class="button" />

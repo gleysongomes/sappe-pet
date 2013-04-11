@@ -4,6 +4,7 @@
  */
 package br.ufc.si.pet.sappe.comandos.alu;
 
+import br.ufc.si.pet.sappe.entidades.Aluno;
 import br.ufc.si.pet.sappe.entidades.Perfil;
 import br.ufc.si.pet.sappe.entidades.Usuario;
 import br.ufc.si.pet.sappe.interfaces.Comando;
@@ -99,7 +100,7 @@ public class CmdAdicionarAluno implements Comando {
         }
         }*/
 
-        HttpSession hS = request.getSession(true);
+        HttpSession hS = request.getSession();
 
         try {
             Usuario u = (Usuario) hS.getAttribute("usuario");
@@ -112,11 +113,11 @@ public class CmdAdicionarAluno implements Comando {
                 uS.insertUsuario(u);
                 //busca o usuario pelo login e a senha
                 Usuario usuario = uS.getUsuarioByLoginSenha(u);
-                Perfil perfil = new Perfil();
+                Perfil perfil = new Aluno();
                 perfil.setUsuario(usuario);
                 perfil.setPapel(new PapelService().getPapelById(1L));
                 perfil.setDataCriacao(data);
-                perfil.setAtivo(false);
+                perfil.setAtivo(true);
                 PerfilService pS = new PerfilService();
                 if (pS.insertPerfil(perfil)) {
                     hS.setAttribute("user", perfil);

@@ -14,7 +14,9 @@ import br.ufc.si.pet.sappe.entidades.Utility;
 import br.ufc.si.pet.sappe.service.TipoService;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -42,6 +44,13 @@ public class CmdListarQuestoesExamePadrao implements Comando {
         utility.setAno(ano);
         QuestaoService qS = new QuestaoService();
         List<Questao> subListaDeQuestoes = qS.getListQuestoes(utility);
+
+        Map<Long, Questao> mapQuestoes = new HashMap<Long, Questao>();
+
+        for(Questao elem: subListaDeQuestoes){
+            mapQuestoes.put(elem.getId(), elem);
+        }
+
         System.out.println("=================="+subListaDeQuestoes.size());
         if (ano.trim().equals("0")) {
             return Mensagens(request, caminho, "Selecione uma opção.");
@@ -51,6 +60,7 @@ public class CmdListarQuestoesExamePadrao implements Comando {
             return Mensagens(request, caminho, Msg.msg2);
         } else {
             hS.setAttribute("subListaDeQuestoes", subListaDeQuestoes);
+             hS.setAttribute("MapaQuestoes", mapQuestoes);
             hS.setAttribute("hI", hI);
             TipoService aS = new TipoService();
             Tipo t = aS.getTipoById(id);

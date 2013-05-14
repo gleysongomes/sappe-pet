@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/sappe"/>
+<Context antiJARLocking="true" path="/sappe">
+
+    <Resource
+        name="mail/Session" auth="Container"
+        type="javax.mail.Session"
+        mail.transport.protocol="smtp"
+        mail.smtp.host="200.129.38.134"
+        mail.smtp.port="587"
+        />
+
+</Context>

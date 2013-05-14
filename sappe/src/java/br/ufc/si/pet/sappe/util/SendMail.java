@@ -15,6 +15,8 @@ import java.util.*;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.SimpleEmail;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 
 public class SendMail {
 
@@ -58,8 +60,8 @@ public class SendMail {
 
     public static void enviarEmail(String to, String subject, String Mensagem)
             throws AddressException, MessagingException, MalformedURLException {
-        SendMail.enviarEmail("smtp.gmail.com", "sistema.sappe@gmail.com", to, subject, Mensagem);
-
+      //  SendMail.enviarEmail("smtp.gmail.com", "sistema.sappe@gmail.com", to, subject, Mensagem);
+       SendMail.sendEmailAtualizado(Mensagem, "apps@quixada.ufc.br", to, subject);
     }
 
     public static void sendMail(String mailServer, String from, String to, String subject, String Mensagem)
@@ -119,11 +121,60 @@ public class SendMail {
 
     public static void sendMail(String to, String subject, String Mensagem)
             throws AddressException, MessagingException, EmailException, MalformedURLException {
-        SendMail.sendMail("smtp.gmail.com", "sistema.sappe@gmail.com", to, subject, Mensagem);
-
+       // SendMail.sendMail("smtp.gmail.com", "sistema.sappe@gmail.com", to, subject, Mensagem);
+       SendMail.sendEmailAtualizado(Mensagem, "apps@quixada.ufc.br", to, subject);
     }
 
     public static void main(String args[]) throws AddressException, MessagingException, MalformedURLException {
         enviarEmail("fgleysondasilva@gmail.com", "Meu primeiro teste para enviar email", "Meu primeiro teste para enviar email e o trabalho foi ralizado com sucesso.");
     }
+
+
+
+    public static void sendEmailAtualizado(String messageBody, String from, String to, String subject){
+
+        System.out.println(to);
+        try{
+        Context initCtx = new InitialContext();
+        Session s = (javax.mail.Session)initCtx.lookup("java:comp/env/"+"mail/Session");
+
+        MimeMessage message = new MimeMessage( s);
+        message.setFrom(new InternetAddress(from));
+        message.setRecipients(Message.RecipientType.TO, to);
+//        message.setSubject(MimeUtility.encodeText(SendMail.SUBJECT), "us-ascii");
+        message.setSubject(MimeUtility.encodeText(subject), "UTF-8");
+//        message.setSubject(SendMail.SUBJECT);
+        String messageBodyContent = "<html><body>";
+        messageBodyContent+="<html><body> " + messageBody + "</body></html>";
+
+        message.setContent(messageBodyContent, "text/html; charset=\"UTF-8\"");
+       //Objeto encarregado de enviar os dados para o email
+        Transport tr;
+        try {
+            tr = s.getTransport("smtp"); //define smtp para transporte
+            Properties props = s.getProperties();
+            String host =props.getProperty("mail.smtp.host");
+            int port = Integer.parseInt(props.getProperty("mail.smtp.port"));
+            String user = props.getProperty("mail.smtp.user");
+            String password = s.getProperties().getProperty("mail.smtp.password");
+          System.out.println("host "+ props.getProperty("mail.smtp.host"));
+            System.out.println("port "+ Integer.parseInt(props.getProperty("mail.smtp.port")));
+            System.out.println("user "+ props.getProperty("mail.smtp.user"));
+            System.out.println("pasw "+ props.getProperty("mail.smtp.password"));
+            tr.connect(host, port, user, password);
+            message.saveChanges(); // don't forget this
+            //envio da mensagem
+            tr.sendMessage(message, message.getAllRecipients());
+            tr.close();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            System.out.println(">> Erro: Envio Mensagem");
+            e.printStackTrace();
+        }
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+
+        }
+    }
+
 }

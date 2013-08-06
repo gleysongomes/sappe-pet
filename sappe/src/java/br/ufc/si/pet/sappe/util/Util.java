@@ -214,7 +214,7 @@ public class Util {
 
       //  Format format = new SimpleDateFormat("dd/MM/yyyy");
         //String dataAtual = format.format(new Date());
-        System.out.println(criptografar("pet"));
+        System.out.println(criptografar("123"));
         //System.out.println(criptografar("bEPAqI+/D0S6lE0AUk5Fww=="));
         // System.out.println(comparar("21/02/2013", "22/02/2013", "08:00:00", "23:59:00"));
 

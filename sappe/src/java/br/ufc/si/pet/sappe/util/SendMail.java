@@ -60,8 +60,8 @@ public class SendMail {
 
     public static void enviarEmail(String to, String subject, String Mensagem)
             throws AddressException, MessagingException, MalformedURLException {
-      //  SendMail.enviarEmail("smtp.gmail.com", "sistema.sappe@gmail.com", to, subject, Mensagem);
-       SendMail.sendEmailAtualizado(Mensagem, "apps@quixada.ufc.br", to, subject);
+        SendMail.enviarEmail("smtp.gmail.com", "sistema.sappe@gmail.com", to, subject, Mensagem);
+    //   SendMail.sendEmailSappe(Mensagem, "apps@quixada.ufc.br", to, subject);
     }
 
     public static void sendMail(String mailServer, String from, String to, String subject, String Mensagem)
@@ -121,23 +121,27 @@ public class SendMail {
 
     public static void sendMail(String to, String subject, String Mensagem)
             throws AddressException, MessagingException, EmailException, MalformedURLException {
-       // SendMail.sendMail("smtp.gmail.com", "sistema.sappe@gmail.com", to, subject, Mensagem);
-       SendMail.sendEmailAtualizado(Mensagem, "apps@quixada.ufc.br", to, subject);
+        SendMail.sendMail("smtp.gmail.com", "sistema.sappe@gmail.com", to, subject, Mensagem);
+       //SendMail.sendEmailSappe(Mensagem, "apps@quixada.ufc.br", to, subject);
     }
 
     public static void main(String args[]) throws AddressException, MessagingException, MalformedURLException {
-        enviarEmail("fgleysondasilva@gmail.com", "Meu primeiro teste para enviar email", "Meu primeiro teste para enviar email e o trabalho foi ralizado com sucesso.");
+        enviarEmail("mardsonferreira25@gmail.com", "Meu primeiro teste para enviar email", "Meu primeiro teste para enviar email e o trabalho foi ralizado com sucesso.");
     }
 
 
 
-    public static void sendEmailAtualizado(String messageBody, String from, String to, String subject){
+    public static void sendEmailSappe(String messageBody, String from, String to, String subject){
 
         System.out.println(to);
+
+
         try{
         Context initCtx = new InitialContext();
+
         Session s = (javax.mail.Session)initCtx.lookup("java:comp/env/"+"mail/Session");
 
+ 
         MimeMessage message = new MimeMessage( s);
         message.setFrom(new InternetAddress(from));
         message.setRecipients(Message.RecipientType.TO, to);
@@ -157,10 +161,6 @@ public class SendMail {
             int port = Integer.parseInt(props.getProperty("mail.smtp.port"));
             String user = props.getProperty("mail.smtp.user");
             String password = s.getProperties().getProperty("mail.smtp.password");
-          System.out.println("host "+ props.getProperty("mail.smtp.host"));
-            System.out.println("port "+ Integer.parseInt(props.getProperty("mail.smtp.port")));
-            System.out.println("user "+ props.getProperty("mail.smtp.user"));
-            System.out.println("pasw "+ props.getProperty("mail.smtp.password"));
             tr.connect(host, port, user, password);
             message.saveChanges(); // don't forget this
             //envio da mensagem

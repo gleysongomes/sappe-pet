@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufc.si.pet.sappe.util;
 
 /**
@@ -18,6 +14,7 @@ import org.apache.commons.mail.SimpleEmail;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
+//esta versão ainda não usa o servidor da UFC
 public class SendMail {
 
     public static void enviarEmail(String mailServer, String from, String to, String subject, String Mensagem)
